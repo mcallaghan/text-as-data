@@ -198,6 +198,7 @@ This session will explore some of the latest developments in NLP, and show some 
 **Readings:**
 
 Devlin, Jacob, et al. 2019. "Bert: Pre-training of deep bidirectional transformers for language understanding." Proceedings of NAACL-HLT: 4171–4186.
+
 Alammar, Jay. The Illustrated Transformer: https://jalammar.github.io/illustrated-transformer/
 
 ## Session 12: Wrapup and final presentations
