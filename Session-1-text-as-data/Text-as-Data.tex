@@ -1,0 +1,547 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+  aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Singapore}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newenvironment{cols}[1][]{}{}
+
+\newenvironment{col}[1]{\begin{minipage}{#1}\ignorespaces}{%
+\end{minipage}
+\ifhmode\unskip\fi
+\aftergroup\useignorespacesandallpars}
+
+\def\useignorespacesandallpars#1\ignorespaces\fi{%
+#1\fi\ignorespacesandallpars}
+
+\makeatletter
+\def\ignorespacesandallpars{%
+  \@ifnextchar\par
+    {\expandafter\ignorespacesandallpars\@gobble}%
+    {}%
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Text-as-data},
+  pdfauthor={Max Callaghan},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Text-as-data}
+\author{Max Callaghan}
+\date{2022-09-08}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{welcome}{%
+\section{Welcome}\label{welcome}}
+
+\begin{frame}{Introductions}
+\protect\hypertarget{introductions}{}
+\begin{cols}
+
+\begin{col}{0.32\textwidth}
+\includegraphics[width=\textwidth,height=0.78125in]{../presentation-resources/csm_callaghan_max_1000_7807075c51.jpg}
+
+\end{col}
+
+\begin{col}{0.68\textwidth}
+I am a researcher at the \href{https://www.mcc-berlin.net/}{Mercator
+Research Institute on Global Commons and Climate Change}, where I work
+on applications of Natural Language Processing (NLP) in climate science.
+
+\medskip
+
+Before that I completed a Bachelors degree in English Literature at the
+University of York, and a Masters of Public Policy at the Hertie School
+of Governance (2016). I received my PhD from the School of Earth and
+Environment at the University of Leeds in 2022.
+
+\end{col}
+
+\end{cols}
+
+\only<2->{
+\center
+\bigskip
+
+\line(1,0){250}
+
+\medskip
+
+Over to you. Who are you? What do you already understand by ``text as data''? 
+What are you excited about covering in the course? What are you nervous about tackling?
+}
+\end{frame}
+
+\begin{frame}{Objectives for the course}
+\protect\hypertarget{objectives-for-the-course}{}
+In this course, we will learn about how, and why, to treat text as data.
+We'll get an overview of the main methods for doing this, and practical
+experience applying these to texts that are interesting to social
+scientists.
+
+This will involve learning new quantitative techniques, but the emphasis
+will be on applications over theory. By the end of the course you should
+be
+
+\begin{itemize}
+\tightlist
+\item
+  Able to acquire and process text data from various sources
+\item
+  comfortable producing a range of different analyses of text data
+\item
+  aware of what research questions are possible to address with text
+  data, and able to understand what a good research question is
+\item
+  able to \emph{critically} engage with this type of analysis
+\item
+  able to report the results of your work, and show your working
+\end{itemize}
+\end{frame}
+
+\hypertarget{organisation}{%
+\section{Organisation}\label{organisation}}
+
+\begin{frame}[fragile]{R and Python}
+\protect\hypertarget{r-and-python}{}
+\begin{cols}
+
+\begin{col}{0.38\textwidth}
+
+\includegraphics[width=\textwidth,height=0.26042in]{../presentation-resources/Rlogo.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{square\_x }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \FunctionTok{return}\NormalTok{(x}\SpecialCharTok{**}\DecValTok{2}\NormalTok{)}
+\NormalTok{\} }
+\FunctionTok{square\_x}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.61\textwidth}
+Everything in the course will be taught with R by default.
+
+\end{col}
+
+\end{cols}
+
+\begin{cols}
+
+\begin{col}{0.38\textwidth}
+
+\includegraphics[width=\textwidth,height=0.26042in]{../presentation-resources/python-logo-master-v3-TM.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ square\_x(x): }
+  \ControlFlowTok{return}\NormalTok{ x}\OperatorTok{**}\DecValTok{2}
+\NormalTok{square\_x(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 4
+\end{verbatim}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.61\textwidth}
+Python is more common in many areas working with text, so I'll provide
+examples of python workflows too.
+
+\end{col}
+
+\end{cols}
+
+It's up to you how you complete your assignments: assessments will be
+made on the basis of whether the code does what it is supposed to in a
+clear and transparent way.
+\end{frame}
+
+\begin{frame}{RMarkdown and Github}
+\protect\hypertarget{rmarkdown-and-github}{}
+I use:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://git-scm.com/}{git} for version control of projects,
+\item
+  \href{https://github.com/}{Github} to host projects, and
+\item
+  \href{https://rmarkdown.rstudio.com/}{Rmarkdown} to produce documents
+  with integrated code and output
+\end{itemize}
+
+For example, all materials for this course will be contained in the
+\href{https://github.com/mcallaghan/text-as-data}{Github project}. This
+presentation is available
+\href{https://github.com/mcallaghan/text-as-data/Session-1-text-as-data/Text-as-Data.pdf}{here},
+and the Rmarkdown file used to create the presentation is available
+\href{https://github.com/mcallaghan/text-as-data/Text-as-Data.Rmd}{here}.
+
+You can download all the materials for yourself by ``forking'' or
+``pulling'' from the repository. We will also use the GitHub repository
+to \textbf{collectively} troubleshoot. If you have a problem,
+\href{https://github.com/mcallaghan/text-as-data/issues/new}{open an
+issue}. If you can help, post an answer. I \emph{want} you to help each
+other, but do this transparently!
+
+A basic familiarity with git and github is \emph{extremely useful}.
+\href{https://the-turing-way.netlify.app/collaboration/github-novice.html}{Here}
+is an intro.
+
+\begin{cols}
+
+\begin{col}{0.38\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.61\textwidth}
+~
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Course Mechanics}
+\protect\hypertarget{course-mechanics}{}
+\begin{block}{Classes}
+\protect\hypertarget{classes}{}
+Classes will consist of an input from me along with examples of code,
+short coding exercises, and interactive tasks.
+\end{block}
+
+\begin{block}{Assignments}
+\protect\hypertarget{assignments}{}
+Assessment will comprise
+
+\begin{itemize}
+\tightlist
+\item
+  A programming exercise, set 6 October - due on 13 October (30\%)
+\item
+  A data analysis exercise, set 3 November - due on November 17 (30\%)
+\item
+  Group presentation of a research project, detailed instructions
+  November 3, presentations on December 1 (40\%)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\hypertarget{introduction-to-text-as-data}{%
+\section{Introduction to text as
+data}\label{introduction-to-text-as-data}}
+
+\begin{frame}{Why texts?}
+\protect\hypertarget{why-texts}{}
+\begin{itemize}
+  \item<1-> "Politics and political conflict often occur in the written and spoken word" \citep{grimmer_text_2013}
+  \item<2-> Many other processes -- science, culture, consumer behaviour, corporate behaviour --  are observable through texts. 
+  \item<3-> \textit{Reading} texts allows us to understand these domains and processes
+  \item<4-> \text{Research} that reads texts can result in useful findings about the world
+\end{itemize}
+
+\only<5->{
+\center
+\bigskip
+
+\line(1,0){250}
+
+\medskip
+
+What are some examples of texts we can learn from?
+}
+\end{frame}
+
+\begin{frame}{Why treat text as data?}
+\protect\hypertarget{why-treat-text-as-data}{}
+\begin{itemize}
+  \item<1-> Reading texts takes time
+  \item<2-> Digitized collections of texts are increasingly available at increasingly large scales
+  \item<3-> How computers can ``read'' texts has advanced in leaps and bounds.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How can we treat text as data?}
+\protect\hypertarget{how-can-we-treat-text-as-data}{}
+Text is incredibly complex. Turning this into data is not easy.
+
+\medskip 
+\begin{quote}
+``Time flies like an arrow. Fruit flies like a banana.''
+\end{quote}
+
+\bigskip
+
+To turn a text into data we need a way of representing its
+``features'\,' in numerical form.
+
+\only<2->{\center
+\bigskip
+
+\line(1,0){250}
+
+\medskip
+
+Which words are used, how frequently, in what order, in what context?}
+\end{frame}
+
+\begin{frame}{What questions can we ask?}
+\protect\hypertarget{what-questions-can-we-ask}{}
+\begin{itemize}
+  \item{What is this text about?}
+  \item{What texts is this text similar to?}
+  \item{What emotions/opinions/political stances does this text express?}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What do we need to consider when treating text as data?}
+\protect\hypertarget{what-do-we-need-to-consider-when-treating-text-as-data}{}
+\label{CONSIDERATIONS}
+
+\begin{itemize}
+  \item<1-> All models of text are wrong, some are useful, some of the time 
+  \begin{itemize}
+    \item<2-> There is no single best method
+    \item<3-> Validation is key to understanding what is useful, when, to do what
+  \end{itemize}
+  \item<4-> Models of text can be a ``dangerous supplement''  \hyperlink{PHARMAKON}{\beamerbutton{link}} - they are better complements to than substitutes for human reading.
+
+
+\end{itemize}
+\end{frame}
+
+\hypertarget{outlook}{%
+\section{Outlook}\label{outlook}}
+
+\begin{frame}{What will we cover this term?}
+\protect\hypertarget{what-will-we-cover-this-term}{}
+\begin{block}{Part 1 (weeks 1-6) - Foundations}
+\protect\hypertarget{part-1-weeks-1-6---foundations}{}
+In the first part of the course we will encounter a range of different
+texts, and get comfortable working with these in R
+\end{block}
+
+\begin{block}{Part 2 (weeks 7-11) - Analysis}
+\protect\hypertarget{part-2-weeks-7-11---analysis}{}
+In the following 5 weeks, we will learn 5 different approaches to
+analysing texts, how to carry these out in R, and how to use and
+interpret the results
+\end{block}
+
+\begin{block}{Wrapup (week 12)}
+\protect\hypertarget{wrapup-week-12}{}
+In the final session, you will present your group research projects.
+\end{block}
+\end{frame}
+
+\hypertarget{appendix}{%
+\section*{Appendix}\label{appendix}}
+
+\begin{frame}{Plato's Pharmacy}
+\protect\hypertarget{platos-pharmacy}{}
+\label{PHARMAKON}
+
+\hyperlink{CONSIDERATIONS}{\beamerbutton{back}}
+
+\medskip
+
+\centering
+\begin{columns}
+\centering
+\begin{column}{0.5\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth]{logos.png}
+\end{column}
+
+\begin{column}{0.5\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth]{thamus.png}
+\end{column}
+
+\begin{column}{0.5\linewidth}
+
+\end{column}
+
+\medskip
+
+[Source](http://www.occt.ox.ac.uk/sites/default/files/derrida\_platos\_pharmacy.pdf)
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \bibliography{../presentation-resources/MyLibrary.bib}
+\end{frame}
+
+\end{document}

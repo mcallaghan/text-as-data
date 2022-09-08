@@ -1,0 +1,307 @@
+---
+title: "Text-as-data"
+author: "Max Callaghan"
+date: "2022-09-08"
+output: 
+  beamer_presentation:
+    keep_tex: true
+    citation_package: natbib
+    theme: "Singapore"
+    highlight: zenburn
+    includes:
+      in_header: columns.tex
+extra_dependencies: "hyperref"
+classoption: aspectratio=169  
+fontsize: 10pt
+urlcolor: blue
+bibliography: ../presentation-resources/MyLibrary.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(reticulate)
+use_python("/usr/bin/python3.9")
+```
+
+# Welcome
+
+## Introductions
+
+
+
+
+
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.32\textwidth}"}
+
+![[Max Callaghan](https://www.researchgate.net/profile/Max-Callaghan)](../presentation-resources/csm_callaghan_max_1000_7807075c51.jpg){height=75px}
+
+:::
+
+
+::: {.col data-latex="{0.68\textwidth}"}
+
+I am a researcher at the [Mercator Research Institute on Global Commons and Climate Change](https://www.mcc-berlin.net/), where I work on applications of Natural Language Processing (NLP) in climate science.
+
+\medskip
+
+Before that I completed a Bachelors degree in English Literature at the University of York, and a Masters of Public Policy at the Hertie School of Governance (2016). I received my PhD from the School of Earth and Environment at the University of Leeds in 2022. 
+
+:::
+::::::
+
+
+
+
+\only<2->{
+\center
+\bigskip
+
+\line(1,0){250}
+
+\medskip
+
+Over to you. Who are you? What do you already understand by ``text as data''? 
+What are you excited about covering in the course? What are you nervous about tackling?
+}
+
+## Objectives for the course
+
+In this course, we will learn about how, and why, to treat text as data. We'll get an overview of the main methods for doing this, and practical experience applying these to texts that are interesting to social scientists.
+
+This will involve learning new quantitative techniques, but the emphasis will be on applications over theory. By the end of the course you should be
+
+- Able to acquire and process text data from various sources 
+- comfortable producing a range of different analyses of text data
+- aware of what research questions are possible to address with text data, and able to understand what a good research question is
+- able to *critically* engage with this type of analysis
+- able to report the results of your work, and show your working
+
+# Organisation
+
+## R and Python
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.38\textwidth}"}
+
+![](../presentation-resources/Rlogo.png){height=25px}
+
+```{r echo=TRUE, include=TRUE}
+square_x <- function(x) {
+  return(x**2)
+} 
+square_x(2)
+```
+
+
+:::
+
+::: {.col data-latex="{0.05\textwidth}"}
+\ 
+:::
+
+::: {.col data-latex="{0.61\textwidth}"}
+Everything in the course will be taught with R by default. 
+
+:::
+
+::::::
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.38\textwidth}"}
+![](../presentation-resources/python-logo-master-v3-TM.png){height=25px}
+
+```{python echo=TRUE, include=TRUE}
+def square_x(x): 
+  return x**2
+square_x(2)
+```
+
+:::
+
+::: {.col data-latex="{0.05\textwidth}"}
+\ 
+:::
+
+::: {.col data-latex="{0.61\textwidth}"}
+Python is more common in many areas working with text, so I'll provide examples of python workflows too.
+:::
+
+:::::: 
+
+It's up to you how you complete your assignments: assessments will be made on the basis of whether the code does what it is supposed to in a clear and transparent way.
+
+## RMarkdown and Github
+
+I use:
+
+- [git](https://git-scm.com/) for version control of projects, 
+- [Github](https://github.com/) to host projects, and
+- [Rmarkdown](https://rmarkdown.rstudio.com/) to produce documents with integrated code and output
+
+For example, all materials for this course will be contained in the [Github project](https://github.com/mcallaghan/text-as-data). This presentation is available [here](https://github.com/mcallaghan/text-as-data/Session-1-text-as-data/Text-as-Data.pdf), and the Rmarkdown file used to create the presentation is available [here](https://github.com/mcallaghan/text-as-data/Text-as-Data.Rmd). 
+
+You can download all the materials for yourself by "forking" or "pulling" from the repository. We will also use the GitHub repository to **collectively** troubleshoot. If you have a problem, [open an issue](https://github.com/mcallaghan/text-as-data/issues/new). If you can help, post an answer. I *want* you to help each other, but do this transparently!
+
+A basic familiarity with git and github is *extremely useful*. [Here](https://the-turing-way.netlify.app/collaboration/github-novice.html) is an intro.
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.38\textwidth}"}
+\ 
+:::
+
+::: {.col data-latex="{0.05\textwidth}"}
+\ 
+:::
+
+::: {.col data-latex="{0.61\textwidth}"}
+\ 
+:::
+
+:::::: 
+
+## Course Mechanics
+
+### Classes
+
+Classes will consist of an input from me along with examples of code, short coding exercises, and interactive tasks.
+
+### Assignments
+
+Assessment will comprise
+
+- A programming exercise, set 6 October - due on 13 October (30%)
+- A data analysis exercise, set 3 November - due on November 17 (30%)
+- Group presentation of a research project, detailed instructions November 3, presentations on December 1 (40%)
+
+
+
+# Introduction to text as data
+
+## Why texts?
+
+\begin{itemize}
+  \item<1-> "Politics and political conflict often occur in the written and spoken word" \citep{grimmer_text_2013}
+  \item<2-> Many other processes -- science, culture, consumer behaviour, corporate behaviour --  are observable through texts. 
+  \item<3-> \textit{Reading} texts allows us to understand these domains and processes
+  \item<4-> \text{Research} that reads texts can result in useful findings about the world
+\end{itemize} 
+
+\only<5->{
+\center
+\bigskip
+
+\line(1,0){250}
+
+\medskip
+
+What are some examples of texts we can learn from?
+}
+
+## Why treat text as data?
+
+\begin{itemize}
+  \item<1-> Reading texts takes time
+  \item<2-> Digitized collections of texts are increasingly available at increasingly large scales
+  \item<3-> How computers can ``read'' texts has advanced in leaps and bounds.
+\end{itemize}
+
+## How can we treat text as data?
+
+Text is incredibly complex. Turning this into data is not easy.
+
+\medskip 
+\begin{quote}
+``Time flies like an arrow. Fruit flies like a banana.''
+\end{quote}
+
+\bigskip
+
+To turn a text into data we need a way of representing its ``features'' in numerical form. 
+
+\only<2->{\center
+\bigskip
+
+\line(1,0){250}
+
+\medskip
+
+Which words are used, how frequently, in what order, in what context?}
+
+## What questions can we ask?
+
+\begin{itemize}
+  \item{What is this text about?}
+  \item{What texts is this text similar to?}
+  \item{What emotions/opinions/political stances does this text express?}
+\end{itemize}
+
+## What do we need to consider when treating text as data?
+
+\label{CONSIDERATIONS}
+
+\begin{itemize}
+  \item<1-> All models of text are wrong, some are useful, some of the time 
+  \begin{itemize}
+    \item<2-> There is no single best method
+    \item<3-> Validation is key to understanding what is useful, when, to do what
+  \end{itemize}
+  \item<4-> Models of text can be a ``dangerous supplement''  \hyperlink{PHARMAKON}{\beamerbutton{link}} - they are better complements to than substitutes for human reading.
+
+
+\end{itemize}
+
+# Outlook
+
+## What will we cover this term?
+
+### Part 1 (weeks 1-6) - Foundations
+
+In the first part of the course we will encounter a range of different texts, and get comfortable working with these in R
+
+### Part 2 (weeks 7-11) - Analysis
+
+In the following 5 weeks, we will learn 5 different approaches to analysing texts, how to carry these out in R, and how to use and interpret the results
+
+### Wrapup (week 12)
+
+In the final session, you will present your group research projects.
+
+# Appendix {.unlisted .unnumbered}
+
+## Plato's Pharmacy
+\label{PHARMAKON}
+
+\hyperlink{CONSIDERATIONS}{\beamerbutton{back}}
+
+\medskip
+
+\centering
+\begin{columns}
+\centering
+\begin{column}{0.5\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth]{logos.png}
+\end{column}
+
+\begin{column}{0.5\linewidth}
+\centering
+\includegraphics[width=0.9\linewidth]{thamus.png}
+\end{column}
+
+\begin{column}{0.5\linewidth}
+
+\end{column}
+
+\medskip
+
+[Source](http://www.occt.ox.ac.uk/sites/default/files/derrida\_platos\_pharmacy.pdf)
+
+\end{columns}
+
+

@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.aux
+*.bbl
+*.blg
+*.sav
+*.snm
+*.toc
+*.vrb

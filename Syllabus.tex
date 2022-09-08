@@ -1,0 +1,405 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Text as data - syllabus},
+  pdfauthor={Max Callaghan},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Text as data - syllabus}
+\author{Max Callaghan}
+\date{2022-09-08}
+
+\begin{document}
+\maketitle
+
+\hypertarget{course-contents-and-learning-objectives}{%
+\section{Course contents and learning
+objectives}\label{course-contents-and-learning-objectives}}
+
+\hypertarget{course-contents}{%
+\subsection{Course contents:}\label{course-contents}}
+
+There is an abundance of unstructured data around us. Working with text
+is key, not just to measure discussions and opinions on social media or
+in product reviews, but also to gain insights into concepts important to
+the study of politics such as ideological positions or policy
+sentiments. The vast amount of textual data that one frequently needs to
+process, and the messy form that it often comes in, poses special
+challenges to researchers. This course introduces students to
+computational tools and methods that enable them to treat text as data.
+We will touch upon core theoretical concepts, but the main goal is to
+give you hands-on experience in using R to collect, load, prepare and
+analyze text data.
+
+\hypertarget{main-learning-objectives}{%
+\subsection{Main learning objectives}\label{main-learning-objectives}}
+
+Students will gain hands-on experience working with different types of
+text data in R. This includes obtaining, managing, and wrangling data,
+as well as applying different models for analysing text
+
+\hypertarget{target-group}{%
+\subsection{Target group}\label{target-group}}
+
+The course is aimed at students with an interest in programming, who
+wish to gain experience analysing large collections of texts.
+
+\hypertarget{prerequisites}{%
+\subsection{Prerequisites}\label{prerequisites}}
+
+Basic knowledge of R is required
+
+\hypertarget{diversity-statement}{%
+\subsection{Diversity Statement}\label{diversity-statement}}
+
+Understanding and respect for all cultures and ethnicities is central to
+the teaching at Hertie. Being mindful of diversity is an important issue
+for policy professionals in the planning, implementation, and evaluation
+of programmes designed for specific groups, populations, or communities.
+Diversity and cultural awareness will be integrated in the course
+content whenever possible.
+
+\hypertarget{grading-and-assignments}{%
+\subsection{Grading and Assignments}\label{grading-and-assignments}}
+
+\begin{tabular}{p{0.28\linewidth}p{0.25\linewidth}p{0.2\linewidth}p{0.1\linewidth}}
+
+\toprule[1pt]
+
+\textbf{Assignment 1: Programming exercise} & Deadline: 13 October & Submit via Moodle & 30\% \\
+\midrule[0.5pt]
+\textbf{Assignment 2: data analysis exercise} & Deadline:17  November & Submit via Moodle & 30\% \\
+
+\midrule[0.5pt]
+
+\textbf{Assignment 3: Oral presentation of your own research project} & Deadline 1 December & Presentation in class & 40\% \\
+\bottomrule[0.5pt]
+
+
+\end{tabular}
+
+\hypertarget{assignment-details}{%
+\subsection{Assignment Details}\label{assignment-details}}
+
+\hypertarget{assignment-1}{%
+\subsubsection{Assignment 1}\label{assignment-1}}
+
+The first assignment will be a programming exercise, where you will
+receive a dataset and clear step-by-step instructions to import and
+manage text, and produce a simple analysis. Using what we have learnt in
+class, you will be required to write a script to carry out the
+instructions.
+
+\hypertarget{assignment-2}{%
+\subsubsection{Assignment 2}\label{assignment-2}}
+
+The second assignment will involve the construction of a topic model,
+including a visualization and brief discussion of the results. Your
+grade for this assignment will be based on how you approach this task
+and if you follow the steps discussed in class.
+
+\hypertarget{assignment-3}{%
+\subsubsection{Assignment 3}\label{assignment-3}}
+
+Your final assignment is the presentation of a group research project.
+You are free to choose your subject and methods, as long as the project
+involves the analysis of text and that the methods are covered in this
+course. Grading will be determined by the quality of the presentation,
+and the degree to which you manage to apply the skills you have learned
+during the course.
+
+\hypertarget{late-submission-of-assignments}{%
+\subsection{Late submission of
+assignments}\label{late-submission-of-assignments}}
+
+For each day the assignment is turned in late, the grade will be reduced
+by 10 percentage points.
+
+\hypertarget{attendance}{%
+\subsection{Attendance}\label{attendance}}
+
+Students are expected to be present and prepared for every class
+session. Active participation during lectures and seminar discussions is
+essential. If unavoidable circumstances arise which prevent attendance
+or preparation, the instructor should be advised by email with as much
+advance notice as possible. Please note that students cannot miss more
+than two out of 12 course sessions. For further information please
+consult the
+\href{https://moodle.hertie-school.org/mod/book/view.php?id=47912}{Examination
+Rules} §10.
+
+\hypertarget{academic-integrity}{%
+\subsection{Academic Integrity}\label{academic-integrity}}
+
+The Hertie School is committed to the standards of good academic and
+ethical conduct. Any violation of these standards shall be subject to
+disciplinary action. Plagiarism, deceitful actions as well as
+free-riding in group work are not tolerated. See
+\href{https://moodle.hertie-school.org/mod/book/view.php?id=47912}{Examination
+Rules} §16 and the
+\href{https://moodle.hertie-school.org/mod/page/view.php?id=66059}{Hertie
+Plagiarism Policy}.
+
+\hypertarget{compensation-for-disadvantages}{%
+\subsection{Compensation for
+Disadvantages}\label{compensation-for-disadvantages}}
+
+If a student furnishes evidence that he or she is not able to take an
+examination as required in whole or in part due to disability or
+permanent illness, the Examination Committee may upon written request
+approve learning accommodation(s). In this respect, the submission of
+adequate certificates may be required. See
+\href{https://moodle.hertie-school.org/mod/book/view.php?id=47912}{Examination
+Rules} §14.
+
+\hypertarget{extenuating-circumstances}{%
+\subsection{Extenuating circumstances}\label{extenuating-circumstances}}
+
+An extension can be granted due to extenuating circumstances (i.e., for
+reasons like illness, personal loss or hardship, or caring duties). In
+such cases, please contact the course instructors and the Examination
+Office in advance of the deadline.
+
+\hypertarget{general-readings}{%
+\section{General Readings}\label{general-readings}}
+
+Silge, Julia, and David Robinson. 2017. Text mining with R: A tidy
+approach. O'Reilly Media, Inc.~\url{https://www.tidytextmining.com/}
+
+Wickham, H. and G. Grolemund. 2017. R for Data Science: Import, Tidy,
+Transform, Visualize, and Model Data. O'Reilly.
+\url{https://r4ds.had.co.nz/}
+
+\hypertarget{session-overview}{%
+\section{Session Overview}\label{session-overview}}
+
+\hypertarget{session-1-text-as-data}{%
+\subsection{Session 1: Text as data}\label{session-1-text-as-data}}
+
+The first session provides a general introduction to the subject, and
+outlines how we will proceed with the course.
+
+\textbf{Readings}: Grimmer and Stewart (2013). `Text as Data: The
+Promise and Pitfalls of Automatic Content Analysis Methods for Political
+Documents'. Political Analysis.
+\href{https://www.cambridge.org/core/journals/political-analysis/article/text-as-data-the-promise-and-pitfalls-of-automatic-content-analysis-methods-for-political-texts/F7AAC8B2909441603FEB25C156448F20}{link}
+
+\hypertarget{session-2-preprocessing-and-turning-texts-into-features}{%
+\subsection{Session 2: Preprocessing, and turning texts into
+features}\label{session-2-preprocessing-and-turning-texts-into-features}}
+
+This week, we will learn how we turn texts into features, and consider
+the choices we can make in doing so
+
+\textbf{Readings}: Watanabe, Kohei and Stefan Müller. 2022. ``Quanteda
+Tutorials''. Chapter 3.
+\url{https://tutorials.quanteda.io/basic-operations/}.
+
+\hypertarget{session-3-acquiring-importing-and-reading-texts}{%
+\subsection{Session 3: Acquiring, importing, and reading
+texts}\label{session-3-acquiring-importing-and-reading-texts}}
+
+In the third session we will cover how to acquire, and import text data,
+and we will demonstrate how to retrieve texts from APIs
+
+\textbf{Readings:}
+
+Bail, Chris. 2019. Text as Data: Application Programming Interfaces in
+R.
+\url{https://cbail.github.io/textasdata/apis/rmarkdown/Application_Programming_interfaces.html}
+
+\hypertarget{session-4-manipulating-strings}{%
+\subsection{Session 4: Manipulating
+strings}\label{session-4-manipulating-strings}}
+
+This session will introduce you to regex expressions, and explain how
+the stringr package can be used to manipulate strings.
+
+\textbf{Readings:}
+
+Wickham, H. and G. Grolemund. 2017. R for Data Science: Import, Tidy,
+Transform, Visualize, and Model Data. O'Reilly. Chapter 14
+
+Wickham, Hadley. 2010. ``stringr: modern, consistent string
+processing''. The R Journal 2 (2): 38-40.
+
+\hypertarget{session-5-visualising-text-features-with-ggplot}{%
+\subsection{Session 5: Visualising text features with
+ggplot}\label{session-5-visualising-text-features-with-ggplot}}
+
+In this session, we will explore how to visualise the features we have
+generated from texts, and make graphs that show how corpora differ, or
+how they have changed over time.
+
+\textbf{Readings:}
+
+Silge, Julia, and David Robinson. 2017. Text mining with R: A tidy
+approach. O'Reilly Media, Inc.~\url{https://www.tidytextmining.com/}.
+Chapter 3.
+
+\colorbox{yellow}{Assignment 1 set}
+
+\hypertarget{session-6-word-embeddings}{%
+\subsection{Session 6: Word
+embeddings}\label{session-6-word-embeddings}}
+
+In this session, we will learn about how word embeddings can offer
+richer representations of the content of texts
+
+\textbf{Readings:}
+
+Hvitfeldt, Emil, and Silge, Julia. 2019. Supervised Machine Learning for
+Text Analysis in R. Chapter 5 - Word Embeddings.
+\url{https://smltar.com/embeddings.html}
+
+\colorbox{pink}{Assignment 1 due}
+
+\hypertarget{session-7-dimensionality-reduction}{%
+\subsection{Session 7: Dimensionality
+reduction}\label{session-7-dimensionality-reduction}}
+
+This session will demonstrate ways to represent multidimensional data in
+a 2-dimensional space.
+
+\textbf{Readings:}
+
+Conlen, Matthew, and Hohman, Fred. 2018. The Beginner's Guide to
+Dimensionality Reduction.
+\url{https://dimensionality-reduction-293e465c2a3443e8941b016d.vercel.app/}
+
+\hypertarget{session-8-topic-modelling}{%
+\subsection{Session 8: Topic
+modelling}\label{session-8-topic-modelling}}
+
+This session will introduce topic models, and show how these can be run
+and visualised in R.
+
+\textbf{Readings:}
+
+Blei, David M. 2012. Probabilistic Topic Models. Communications of the
+ACM. 55 (4) pp 77--84 \url{https://doi.org/10.1145/2133806.2133826}
+\url{http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf}
+
+\colorbox{yellow}{Assignment 2 set}
+
+\hypertarget{session-9-sentiment-analysis}{%
+\subsection{Session 9: Sentiment
+analysis}\label{session-9-sentiment-analysis}}
+
+This session will demonstrate how we can analyse the sentiment of texts
+using R.
+
+\textbf{Readings:}
+
+Silge, Julia, and David Robinson. 2017. Text mining with R: A tidy
+approach. O'Reilly Media, Inc.~\url{https://www.tidytextmining.com/}.
+Chapter 2.
+
+\hypertarget{session-10-supervised-learning}{%
+\subsection{Session 10: Supervised
+learning}\label{session-10-supervised-learning}}
+
+This session will demonstrate how we can use R to train machine learning
+models to reproduce a set of labels applied to texts
+
+\textbf{Readings:}
+
+Hvitfeldt, Emil, and Silge, Julia. 2022. Supervised Machine Learning for
+Text Analysis in R. CRC Press. \url{https://smltar.com/}. Chapter 7.
+
+\colorbox{pink}{Assignment 2 due}
+
+\hypertarget{session-11-spacy-and-transformers}{%
+\subsection{Session 11: Spacy and
+Transformers}\label{session-11-spacy-and-transformers}}
+
+This session will explore some of the latest developments in NLP, and
+show some of the capabilities of Spacy and Transformers.
+
+\textbf{Readings:}
+
+Devlin, Jacob, et al.~2019. ``Bert: Pre-training of deep bidirectional
+transformers for language understanding.'' Proceedings of NAACL-HLT:
+4171--4186. Alammar, Jay. The Illustrated Transformer:
+\url{https://jalammar.github.io/illustrated-transformer/}
+
+\hypertarget{session-12-wrapup-and-final-presentations}{%
+\subsection{Session 12: Wrapup and final
+presentations}\label{session-12-wrapup-and-final-presentations}}
+
+In the final session, we will hear the presentations of the group
+projects you have conducted, and do a final wrap-up of what we have
+learned.
+
+\colorbox{pink}{Assignment 3 due}
+
+  \bibliography{../presentation-resources/MyLibrary.bib}
+
+\end{document}
