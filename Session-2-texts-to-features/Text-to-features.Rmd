@@ -1,0 +1,345 @@
+---
+title: "Texts to features"
+author: "Max Callaghan"
+date: "2022-09-15"
+output: 
+  beamer_presentation:
+    keep_tex: true
+    citation_package: natbib
+    theme: "Singapore"
+    highlight: zenburn
+    includes:
+      in_header: columns.tex
+extra_dependencies: "hyperref"
+classoption: aspectratio=169  
+fontsize: 10pt
+urlcolor: blue
+bibliography: ../presentation-resources/MyLibrary.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(reticulate)
+library(quanteda)
+library(lexicon)
+use_python("/usr/bin/python3.9")
+
+#def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+#knitr::knit_hooks$set(chunk = function(x, options) {
+#  x <- def.chunk.hook(x, options)
+#  paste0("\n \\", "tiny","\n\n", x, "\n\n \\normalsize")
+#})
+
+```
+
+# Objectives
+
+## Methods
+
+By the end of this session, you will be able to
+
+\begin{itemize}
+  \item<1-> Turn a list of texts into document-feature matrix
+  \item<2-> Understand the choices you make to do this, and their implications
+  \item<3-> Use document-feature matrices to do things with texts
+\end{itemize}
+
+## Definitions
+
+You should also be familiar with the following definitions. We will rely on these throughout the course
+
+\begin{itemize}
+  \item<1-> A \textbf{document} 
+  \item<2-> A \textbf{corpus} (plural \textbf{corpora}) 
+  \item<3-> A \textbf{token}
+  \item<4-> A \textbf{term} 
+  \item<5-> A \textbf{vocabulary}
+\end{itemize}
+
+# Foundations
+
+## Creating a document feature matrix
+
+\begin{enumerate}
+  \item<1-> Get some texts. A \textbf{corpus} is our collection of texts
+  \item<2-> \textit{split} / \textit{merge} our text(s) into \textbf{documents}. A \textbf{document} is what we call an individual \textit{arbitrary} unit of text. It could be chapters, paragraphs or sentences of a book; individual tweets, or twitter threads. 
+  \item<3-> \textit{split} each \textbf{document} into \textbf{tokens}
+  \item<4-> \textit{Remove} unwanted \textbf{tokens}.
+  \item<5-> \textit{Map} tokens to a common form (\textbf{lemmatization} or \textbf{stemming})
+  \item<6-> \textit{Count} the occurrences of each \textbf{term} (and apply weighting if necessary)
+\end{enumerate}
+
+\only<7->{
+These steps are referred to as \textbf{preprocessing}. Choices we make here affect the resulting matrix.
+}
+
+## What is a document feature matrix?
+
+A \textbf{matrix} is a 2 dimensional array with *m* **rows**, and *n* **columns**.
+
+In a document feature matrix, each **row** represents a **document**, and each **column** represents a **feature**
+
+\only<2->{
+\includegraphics[width=\linewidth]{plots/doc_feature_matrix.pdf}
+}
+
+## Feature matrix exercise!
+
+Group exercise!
+
+Form pairs. Each member of the group should come up with a short list of short documents. 
+
+Swap document lists, and each make a feature matrix by hand
+
+## Practise
+
+Now do this in R
+
+\scriptsize
+
+```{r echo=TRUE, include=TRUE}
+library(quanteda)
+texts <- c("System change not climate change","The Current State of the Climate")
+dfmat <- texts %>%
+  tokens() %>%
+  dfm()
+dfmat
+```
+
+\normalsize
+
+And in Python
+
+\scriptsize
+
+```{python echo=TRUE, include=TRUE}
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+texts = ["System change not climate change","The Current State of the Climate"]
+vectorizer = CountVectorizer()
+dfm = vectorizer.fit_transform(texts)
+dfm
+```
+
+# Preprocessing choices
+
+## Preprocessing 
+
+Now we have seen how to make a document feature matrix with sensible defaults, let's explore *some* of the choices we can make along the way.
+
+All of these choices are about *lowering* the *signal to noise ratio*, preferably without removing too much signal
+
+## Splitting/joining documents
+
+A **document** is our single unit of analysis. For different applications, we may want this to be larger or smaller. 
+
+Consider the questions:
+
+- Which party's manifesto mentions immigration the most?
+- What topics co-occur with immigration in each party's manifesto?
+
+We may exploit given (often hierarchical structures) of documents to do this, and we may at times need to do further joining or splitting ourselves
+
+Check out `quanteda::corpus_reshape()` [link](https://tutorials.quanteda.io/basic-operations/corpus/corpus_reshape/) and `nltk.sent_tokenizer` [link](https://www.nltk.org/api/nltk.tokenize.html) for some help with this.
+
+## Tokenizing
+
+We also have some choices about how we create tokens.
+
+This mainly involves how we "clean" texts (check out the arguments of `?tokens` - or write a custom preprocessor to pass to `CountVectorizer`) 
+
+In different contexts, we may or may not want to keep punctuation, urls, or numbers
+
+## Stopwords
+
+Stopwords are a words that are very common and therefore not that interesting. In *most* cases, we don't  care how many times the word "the" appears in a document.
+
+We can add a stopword remover to our pipe
+
+\scriptsize
+
+```{r echo=TRUE, include=TRUE}
+library(quanteda)
+texts <- c("System change not climate change","The Current State of the Climate")
+dfmat <- texts %>%
+  tokens() %>%
+  tokens_remove(pattern=stopwords("en")) %>% 
+  dfm()
+dfmat
+```
+
+\normalsize
+
+In Python we can pass "english" or a list of stopwords to the `stop_words` parameter of our `CountVectorizer` instance.
+
+## Ngrams
+
+By default we use single words (or **unigrams**) as our features. A **unigram** is an **n-gram** where $n=1$, where an **n-gram** is a continuous sequence of items with length $n$. We can also have bigrams, trigrams, four-grams, or five-grams, or a combination of these.
+
+\smallskip
+
+\scriptsize
+
+```{r echo=TRUE, include=TRUE}
+library(quanteda)
+texts <- c("System change not climate change","The Current State of the Climate")
+dfmat <- texts %>%
+  tokens() %>%
+  tokens_ngrams(2) %>% 
+  dfm()
+dfmat
+```
+
+\normalsize
+
+In python, we can set the `ngram_range` parameter of our CountVectorizer instance.
+
+## Stemming
+
+If we are interested in the *subject* of a document, we may consider multiple forms of the same dictionary word (climate, climatic) as equivalents.
+
+We can reduce all words to a common stem by **stemming** 
+
+\smallskip
+
+\scriptsize
+
+```{r echo=TRUE, include=TRUE}
+library(quanteda)
+texts <- c("System change not climate change","The Current State of the Climate")
+dfmat <- texts %>%
+  tokens() %>%
+  tokens_wordstem() %>% 
+  dfm()
+dfmat
+```
+## Lemmatizing
+
+Stemming works by chopping off the end of words. Lemmatization works by reducing words to their dictionary form (e.g. am -> be).
+
+Doing this in R requires the `lexicon` package.
+
+\smallskip
+
+\scriptsize
+
+```{r echo=TRUE, include=TRUE}
+library(quanteda)
+texts <- c("I am","you are", "she is")
+dfmat <- texts %>%
+  tokens() %>%
+  tokens_replace(pattern = lexicon::hash_lemmas$token, replacement = lexicon::hash_lemmas$lemma) %>% 
+  dfm()
+dfmat
+```
+\normalsize
+
+Stemming and Lemmatization can be achieved in Python by passing a custom tokenizer to your `CountVectorizer` [link](https://scikit-learn.org/stable/modules/feature_extraction.html#customizing-the-vectorizer-classes)
+
+
+
+## TFIDF
+
+In the **dfms** we have made so far, we assume that each feature is equally informative. 
+
+However, often the presence of an *uncommon* word will tell us more about a document than the presence of a word that appears in almost every other document.
+
+To reflect this, we often apply a *weight* which penalizes words that appear in many documents in our corpus. 
+
+Formally, multiplying the count of each word in each document by the log of the number of documents in the corpus divided by the number of documents containing the word gives us the *term frequency inverse document frequency* of *tf-idf* for short.
+
+EXERCISE: Go back to your handmade document feature matrices. Turn these into tfidf matrices.
+
+## TFIDF in practice
+
+To use *term frequency inverse document frequency* weighting, we simply add `dfm_tfidf` to our pipe
+
+\scriptsize
+
+```{r echo=TRUE, include=TRUE}
+library(quanteda)
+texts <- c("I am","you are", "she is")
+dfmat <- texts %>%
+  tokens() %>%
+  tokens_replace(pattern = lexicon::hash_lemmas$token, replacement = lexicon::hash_lemmas$lemma) %>% 
+  dfm() %>%
+  dfm_tfidf()
+dfmat
+```
+
+\normalsize
+
+In python, we use a `TfidfVectorizer` in place of a `CountVectorizer`
+
+# Using a document-feature matrix
+
+## Classification
+
+The document feature matrix is often the input to other analyses, one of which might be to build a classifier that says whether a text belongs to class or classes of interest. 
+
+We can build our own very naive classifier that uses the scores in the **dfm** to predict an outcome. Let's take an toy example that predicts whether a paper title is about NLP.
+
+\scriptsize
+
+```{r echo=TRUE, include=TRUE}
+texts <- c(
+  "Poverty and inequality implications of carbon pricing",
+  "Optimizing and Comparing Topic Models is Simple",
+  "How to stop cities and companies causing planetary harm",
+  "Contextualized Document Embeddings Improve Topic Coherence",
+  "Optimal carbon taxation and horizontal equity"
+)
+dfmat <- texts %>%
+  tokens() %>%
+  tokens_wordstem() %>% 
+  dfm() %>%
+  dfm_tfidf()
+pred <- (-1 + dfmat[,"document"]*0.5 + dfmat[,"topic"]*3)@x
+pred
+
+```
+
+## Classification with python
+
+We can do the same in python
+
+\scriptsize
+
+```{python echo=TRUE, include=TRUE}
+texts = [
+  "Poverty and inequality implications of carbon pricing",
+  "Optimizing and Comparing Topic Models is Simple",
+  "How to stop cities and companies causing planetary harm",
+  "Contextualized Document Embeddings Improve Topic Coherence",
+  "Optimal carbon taxation and horizontal equity"
+]
+
+vectorizer = TfidfVectorizer()
+dfm = vectorizer.fit_transform(texts)
+vocab = vectorizer.get_feature_names_out()
+X = dfm.toarray()
+# We just need to create a dictionary to map feature names to column indices
+vi = dict(zip(vocab, range(dfm.shape[1])))
+pred = -1 + X[:,vi["document"]]*0.5 + X[:,vi["topic"]]*4
+
+pred
+
+```
+
+
+## Build your own classifiers!
+
+Get into pairs again. One of you will be spammer, and the other will be a spam filterer.
+
+The spammer starts by writing 5 email subject-like texts (using only standard English words) which are obviously spam or non-spam. The filterer must build a classifier (maximum 3 coefficients) which predicts the spam-ness of the texts. 
+
+On each round, the spammer can add 4 texts, and the spammer can add 1 coefficient (and edit the others as well as any pre-processing steps).
+
+Keep track of the accuracy of your classifiers!
+
+# Outlook
+
+## Next week
+
+Next week we'll be looking at a variety of text sources, and exploring how to acquire and use them. We'll cover scraping as well as using APIs.
+
+Have a look at this [explanation of how to use APIs in R](https://cbail.github.io/textasdata/apis/rmarkdown/Application_Programming_interfaces.html) as well as this [recent paper](https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00173-5/fulltext) on the relationship between temperatures and hate speech.

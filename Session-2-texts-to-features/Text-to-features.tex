@@ -1,0 +1,649 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+  aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Singapore}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newenvironment{cols}[1][]{}{}
+
+\newenvironment{col}[1]{\begin{minipage}{#1}\ignorespaces}{%
+\end{minipage}
+\ifhmode\unskip\fi
+\aftergroup\useignorespacesandallpars}
+
+\def\useignorespacesandallpars#1\ignorespaces\fi{%
+#1\fi\ignorespacesandallpars}
+
+\makeatletter
+\def\ignorespacesandallpars{%
+  \@ifnextchar\par
+    {\expandafter\ignorespacesandallpars\@gobble}%
+    {}%
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Texts to features},
+  pdfauthor={Max Callaghan},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Texts to features}
+\author{Max Callaghan}
+\date{2022-09-15}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{objectives}{%
+\section{Objectives}\label{objectives}}
+
+\begin{frame}{Methods}
+\protect\hypertarget{methods}{}
+By the end of this session, you will be able to
+
+\begin{itemize}
+  \item<1-> Turn a list of texts into document-feature matrix
+  \item<2-> Understand the choices you make to do this, and their implications
+  \item<3-> Use document-feature matrices to do things with texts
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Definitions}
+\protect\hypertarget{definitions}{}
+You should also be familiar with the following definitions. We will rely
+on these throughout the course
+
+\begin{itemize}
+  \item<1-> A \textbf{document} 
+  \item<2-> A \textbf{corpus} (plural \textbf{corpora}) 
+  \item<3-> A \textbf{token}
+  \item<4-> A \textbf{term} 
+  \item<5-> A \textbf{vocabulary}
+\end{itemize}
+\end{frame}
+
+\hypertarget{foundations}{%
+\section{Foundations}\label{foundations}}
+
+\begin{frame}{Creating a document feature matrix}
+\protect\hypertarget{creating-a-document-feature-matrix}{}
+\begin{enumerate}
+  \item<1-> Get some texts. A \textbf{corpus} is our collection of texts
+  \item<2-> \textit{split} / \textit{merge} our text(s) into \textbf{documents}. A \textbf{document} is what we call an individual \textit{arbitrary} unit of text. It could be chapters, paragraphs or sentences of a book; individual tweets, or twitter threads. 
+  \item<3-> \textit{split} each \textbf{document} into \textbf{tokens}
+  \item<4-> \textit{Remove} unwanted \textbf{tokens}.
+  \item<5-> \textit{Map} tokens to a common form (\textbf{lemmatization} or \textbf{stemming})
+  \item<6-> \textit{Count} the occurrences of each \textbf{term} (and apply weighting if necessary)
+\end{enumerate}
+
+\only<7->{
+These steps are referred to as \textbf{preprocessing}. Choices we make here affect the resulting matrix.
+}
+\end{frame}
+
+\begin{frame}{What is a document feature matrix?}
+\protect\hypertarget{what-is-a-document-feature-matrix}{}
+A \textbf{matrix} is a 2 dimensional array with \emph{m} \textbf{rows},
+and \emph{n} \textbf{columns}.
+
+In a document feature matrix, each \textbf{row} represents a
+\textbf{document}, and each \textbf{column} represents a
+\textbf{feature}
+
+\only<2->{
+\includegraphics[width=\linewidth]{plots/doc_feature_matrix.pdf}
+}
+\end{frame}
+
+\begin{frame}{Feature matrix exercise!}
+\protect\hypertarget{feature-matrix-exercise}{}
+Group exercise!
+
+Form pairs. Each member of the group should come up with a short list of
+short documents.
+
+Swap document lists, and each make a feature matrix by hand
+\end{frame}
+
+\begin{frame}[fragile]{Practise}
+\protect\hypertarget{practise}{}
+Now do this in R
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(quanteda)}
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"System change not climate change"}\NormalTok{,}\StringTok{"The Current State of the Climate"}\NormalTok{)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{dfm}\NormalTok{()}
+\NormalTok{dfmat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Document-feature matrix of: 2 documents, 8 features (43.75% sparse) and 0 docvars.
+##        features
+## docs    system change not climate the current state of
+##   text1      1      2   1       1   0       0     0  0
+##   text2      0      0   0       1   2       1     1  1
+\end{verbatim}
+
+\normalsize
+
+And in Python
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.feature\_extraction.text }\ImportTok{import}\NormalTok{ CountVectorizer, TfidfVectorizer}
+\NormalTok{texts }\OperatorTok{=}\NormalTok{ [}\StringTok{"System change not climate change"}\NormalTok{,}\StringTok{"The Current State of the Climate"}\NormalTok{]}
+\NormalTok{vectorizer }\OperatorTok{=}\NormalTok{ CountVectorizer()}
+\NormalTok{dfm }\OperatorTok{=}\NormalTok{ vectorizer.fit\_transform(texts)}
+\NormalTok{dfm}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## <2x8 sparse matrix of type '<class 'numpy.int64'>'
+##  with 9 stored elements in Compressed Sparse Row format>
+\end{verbatim}
+\end{frame}
+
+\hypertarget{preprocessing-choices}{%
+\section{Preprocessing choices}\label{preprocessing-choices}}
+
+\begin{frame}{Preprocessing}
+\protect\hypertarget{preprocessing}{}
+Now we have seen how to make a document feature matrix with sensible
+defaults, let's explore \emph{some} of the choices we can make along the
+way.
+
+All of these choices are about \emph{lowering} the \emph{signal to noise
+ratio}, preferably without removing too much signal
+\end{frame}
+
+\begin{frame}[fragile]{Splitting/joining documents}
+\protect\hypertarget{splittingjoining-documents}{}
+A \textbf{document} is our single unit of analysis. For different
+applications, we may want this to be larger or smaller.
+
+Consider the questions:
+
+\begin{itemize}
+\tightlist
+\item
+  Which party's manifesto mentions immigration the most?
+\item
+  What topics co-occur with immigration in each party's manifesto?
+\end{itemize}
+
+We may exploit given (often hierarchical structures) of documents to do
+this, and we may at times need to do further joining or splitting
+ourselves
+
+Check out \texttt{quanteda::corpus\_reshape()}
+\href{https://tutorials.quanteda.io/basic-operations/corpus/corpus_reshape/}{link}
+and \texttt{nltk.sent\_tokenizer}
+\href{https://www.nltk.org/api/nltk.tokenize.html}{link} for some help
+with this.
+\end{frame}
+
+\begin{frame}[fragile]{Tokenizing}
+\protect\hypertarget{tokenizing}{}
+We also have some choices about how we create tokens.
+
+This mainly involves how we ``clean'' texts (check out the arguments of
+\texttt{?tokens} - or write a custom preprocessor to pass to
+\texttt{CountVectorizer})
+
+In different contexts, we may or may not want to keep punctuation, urls,
+or numbers
+\end{frame}
+
+\begin{frame}[fragile]{Stopwords}
+\protect\hypertarget{stopwords}{}
+Stopwords are a words that are very common and therefore not that
+interesting. In \emph{most} cases, we don't care how many times the word
+``the'' appears in a document.
+
+We can add a stopword remover to our pipe
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(quanteda)}
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"System change not climate change"}\NormalTok{,}\StringTok{"The Current State of the Climate"}\NormalTok{)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens\_remove}\NormalTok{(}\AttributeTok{pattern=}\FunctionTok{stopwords}\NormalTok{(}\StringTok{"en"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{dfm}\NormalTok{()}
+\NormalTok{dfmat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Document-feature matrix of: 2 documents, 5 features (40.00% sparse) and 0 docvars.
+##        features
+## docs    system change climate current state
+##   text1      1      2       1       0     0
+##   text2      0      0       1       1     1
+\end{verbatim}
+
+\normalsize
+
+In Python we can pass ``english'' or a list of stopwords to the
+\texttt{stop\_words} parameter of our \texttt{CountVectorizer} instance.
+\end{frame}
+
+\begin{frame}[fragile]{Ngrams}
+\protect\hypertarget{ngrams}{}
+By default we use single words (or \textbf{unigrams}) as our features. A
+\textbf{unigram} is an \textbf{n-gram} where \(n=1\), where an
+\textbf{n-gram} is a continuous sequence of items with length \(n\). We
+can also have bigrams, trigrams, four-grams, or five-grams, or a
+combination of these.
+
+\smallskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(quanteda)}
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"System change not climate change"}\NormalTok{,}\StringTok{"The Current State of the Climate"}\NormalTok{)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens\_ngrams}\NormalTok{(}\DecValTok{2}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{dfm}\NormalTok{()}
+\NormalTok{dfmat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Document-feature matrix of: 2 documents, 9 features (50.00% sparse) and 0 docvars.
+##        features
+## docs    system_change change_not not_climate climate_change the_current
+##   text1             1          1           1              1           0
+##   text2             0          0           0              0           1
+##        features
+## docs    current_state state_of of_the the_climate
+##   text1             0        0      0           0
+##   text2             1        1      1           1
+\end{verbatim}
+
+\normalsize
+
+In python, we can set the \texttt{ngram\_range} parameter of our
+CountVectorizer instance.
+\end{frame}
+
+\begin{frame}[fragile]{Stemming}
+\protect\hypertarget{stemming}{}
+If we are interested in the \emph{subject} of a document, we may
+consider multiple forms of the same dictionary word (climate, climatic)
+as equivalents.
+
+We can reduce all words to a common stem by \textbf{stemming}
+
+\smallskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(quanteda)}
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"System change not climate change"}\NormalTok{,}\StringTok{"The Current State of the Climate"}\NormalTok{)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens\_wordstem}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{dfm}\NormalTok{()}
+\NormalTok{dfmat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Document-feature matrix of: 2 documents, 8 features (43.75% sparse) and 0 docvars.
+##        features
+## docs    system chang not climat the current state of
+##   text1      1     2   1      1   0       0     0  0
+##   text2      0     0   0      1   2       1     1  1
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Lemmatizing}
+\protect\hypertarget{lemmatizing}{}
+Stemming works by chopping off the end of words. Lemmatization works by
+reducing words to their dictionary form (e.g.~am -\textgreater{} be).
+
+Doing this in R requires the \texttt{lexicon} package.
+
+\smallskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(quanteda)}
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"I am"}\NormalTok{,}\StringTok{"you are"}\NormalTok{, }\StringTok{"she is"}\NormalTok{)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens\_replace}\NormalTok{(}\AttributeTok{pattern =}\NormalTok{ lexicon}\SpecialCharTok{::}\NormalTok{hash\_lemmas}\SpecialCharTok{$}\NormalTok{token, }\AttributeTok{replacement =}\NormalTok{ lexicon}\SpecialCharTok{::}\NormalTok{hash\_lemmas}\SpecialCharTok{$}\NormalTok{lemma) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{dfm}\NormalTok{()}
+\NormalTok{dfmat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Document-feature matrix of: 3 documents, 4 features (50.00% sparse) and 0 docvars.
+##        features
+## docs    i be you she
+##   text1 1  1   0   0
+##   text2 0  1   1   0
+##   text3 0  1   0   1
+\end{verbatim}
+
+\normalsize
+
+Stemming and Lemmatization can be achieved in Python by passing a custom
+tokenizer to your \texttt{CountVectorizer}
+\href{https://scikit-learn.org/stable/modules/feature_extraction.html\#customizing-the-vectorizer-classes}{link}
+\end{frame}
+
+\begin{frame}{TFIDF}
+\protect\hypertarget{tfidf}{}
+In the \textbf{dfms} we have made so far, we assume that each feature is
+equally informative.
+
+However, often the presence of an \emph{uncommon} word will tell us more
+about a document than the presence of a word that appears in almost
+every other document.
+
+To reflect this, we often apply a \emph{weight} which penalizes words
+that appear in many documents in our corpus.
+
+Formally, multiplying the count of each word in each document by the log
+of the number of documents in the corpus divided by the number of
+documents containing the word gives us the \emph{term frequency inverse
+document frequency} of \emph{tf-idf} for short.
+
+EXERCISE: Go back to your handmade document feature matrices. Turn these
+into tfidf matrices.
+\end{frame}
+
+\begin{frame}[fragile]{TFIDF in practice}
+\protect\hypertarget{tfidf-in-practice}{}
+To use \emph{term frequency inverse document frequency} weighting, we
+simply add \texttt{dfm\_tfidf} to our pipe
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(quanteda)}
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"I am"}\NormalTok{,}\StringTok{"you are"}\NormalTok{, }\StringTok{"she is"}\NormalTok{)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens\_replace}\NormalTok{(}\AttributeTok{pattern =}\NormalTok{ lexicon}\SpecialCharTok{::}\NormalTok{hash\_lemmas}\SpecialCharTok{$}\NormalTok{token, }\AttributeTok{replacement =}\NormalTok{ lexicon}\SpecialCharTok{::}\NormalTok{hash\_lemmas}\SpecialCharTok{$}\NormalTok{lemma) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{dfm}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{dfm\_tfidf}\NormalTok{()}
+\NormalTok{dfmat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Document-feature matrix of: 3 documents, 4 features (50.00% sparse) and 0 docvars.
+##        features
+## docs            i be       you       she
+##   text1 0.4771213  0 0         0        
+##   text2 0          0 0.4771213 0        
+##   text3 0          0 0         0.4771213
+\end{verbatim}
+
+\normalsize
+
+In python, we use a \texttt{TfidfVectorizer} in place of a
+\texttt{CountVectorizer}
+\end{frame}
+
+\hypertarget{using-a-document-feature-matrix}{%
+\section{Using a document-feature
+matrix}\label{using-a-document-feature-matrix}}
+
+\begin{frame}[fragile]{Classification}
+\protect\hypertarget{classification}{}
+The document feature matrix is often the input to other analyses, one of
+which might be to build a classifier that says whether a text belongs to
+class or classes of interest.
+
+We can build our own very naive classifier that uses the scores in the
+\textbf{dfm} to predict an outcome. Let's take an toy example that
+predicts whether a paper title is about NLP.
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{"Poverty and inequality implications of carbon pricing"}\NormalTok{,}
+  \StringTok{"Optimizing and Comparing Topic Models is Simple"}\NormalTok{,}
+  \StringTok{"How to stop cities and companies causing planetary harm"}\NormalTok{,}
+  \StringTok{"Contextualized Document Embeddings Improve Topic Coherence"}\NormalTok{,}
+  \StringTok{"Optimal carbon taxation and horizontal equity"}
+\NormalTok{)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens\_wordstem}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{dfm}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{dfm\_tfidf}\NormalTok{()}
+\NormalTok{pred }\OtherTok{\textless{}{-}}\NormalTok{ (}\SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ dfmat[,}\StringTok{"document"}\NormalTok{]}\SpecialCharTok{*}\FloatTok{0.5} \SpecialCharTok{+}\NormalTok{ dfmat[,}\StringTok{"topic"}\NormalTok{]}\SpecialCharTok{*}\DecValTok{3}\NormalTok{)}\SpecialCharTok{@}\NormalTok{x}
+\NormalTok{pred}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.000000  0.193820 -1.000000  0.543305 -1.000000
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Classification with python}
+\protect\hypertarget{classification-with-python}{}
+We can do the same in python
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{texts }\OperatorTok{=}\NormalTok{ [}
+  \StringTok{"Poverty and inequality implications of carbon pricing"}\NormalTok{,}
+  \StringTok{"Optimizing and Comparing Topic Models is Simple"}\NormalTok{,}
+  \StringTok{"How to stop cities and companies causing planetary harm"}\NormalTok{,}
+  \StringTok{"Contextualized Document Embeddings Improve Topic Coherence"}\NormalTok{,}
+  \StringTok{"Optimal carbon taxation and horizontal equity"}
+\NormalTok{]}
+
+\NormalTok{vectorizer }\OperatorTok{=}\NormalTok{ TfidfVectorizer()}
+\NormalTok{dfm }\OperatorTok{=}\NormalTok{ vectorizer.fit\_transform(texts)}
+\NormalTok{vocab }\OperatorTok{=}\NormalTok{ vectorizer.get\_feature\_names\_out()}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ dfm.toarray()}
+\CommentTok{\# We just need to create a dictionary to map feature names to column indices}
+\NormalTok{vi }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(vocab, }\BuiltInTok{range}\NormalTok{(dfm.shape[}\DecValTok{1}\NormalTok{])))}
+\NormalTok{pred }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{1} \OperatorTok{+}\NormalTok{ X[:,vi[}\StringTok{"document"}\NormalTok{]]}\OperatorTok{*}\FloatTok{0.5} \OperatorTok{+}\NormalTok{ X[:,vi[}\StringTok{"topic"}\NormalTok{]]}\OperatorTok{*}\DecValTok{4}
+
+\NormalTok{pred}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## array([-1.        ,  0.32098105, -1.        ,  0.56790713, -1.        ])
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Build your own classifiers!}
+\protect\hypertarget{build-your-own-classifiers}{}
+Get into pairs again. One of you will be spammer, and the other will be
+a spam filterer.
+
+The spammer starts by writing 5 email subject-like texts (using only
+standard English words) which are obviously spam or non-spam. The
+filterer must build a classifier (maximum 3 coefficients) which predicts
+the spam-ness of the texts.
+
+On each round, the spammer can add 4 texts, and the spammer can add 1
+coefficient (and edit the others as well as any pre-processing steps).
+
+Keep track of the accuracy of your classifiers!
+\end{frame}
+
+\hypertarget{outlook}{%
+\section{Outlook}\label{outlook}}
+
+\begin{frame}{Next week}
+\protect\hypertarget{next-week}{}
+Next week we'll be looking at a variety of text sources, and exploring
+how to acquire and use them. We'll cover scraping as well as using APIs.
+
+Have a look at this
+\href{https://cbail.github.io/textasdata/apis/rmarkdown/Application_Programming_interfaces.html}{explanation
+of how to use APIs in R} as well as this
+\href{https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00173-5/fulltext}{recent
+paper} on the relationship between temperatures and hate speech.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \bibliography{../presentation-resources/MyLibrary.bib}
+\end{frame}
+
+\end{document}
