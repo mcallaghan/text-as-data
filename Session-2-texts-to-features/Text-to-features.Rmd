@@ -82,7 +82,12 @@ In a document feature matrix, each **row** represents a **document**, and each *
 
 \only<2->{
 \includegraphics[width=\linewidth]{plots/doc_feature_matrix.pdf}
+
+This is the \textbf{Bag of Words} model. What attributes of the texts are represented?
+
+
 }
+
 
 ## Feature matrix exercise!
 
