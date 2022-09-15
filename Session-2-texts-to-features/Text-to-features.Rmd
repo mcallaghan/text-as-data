@@ -360,7 +360,7 @@ Get into pairs again. One of you will be spammer, and the other will be a spam f
 
 The spammer starts by writing 5 email subject-like texts (using only standard English words) which are obviously spam or non-spam. The filterer must build a classifier (maximum 3 coefficients) which predicts the spam-ness of the texts. 
 
-On each round, the spammer can add 4 texts, and the spammer can add 1 coefficient (and edit the others as well as any pre-processing steps).
+On each round, the spammer can add 4 texts, and the spam filterer can add 1 coefficient (and edit the others as well as any pre-processing steps).
 
 Keep track of the accuracy of your classifiers!
 
