@@ -541,6 +541,54 @@ In python, we use a \texttt{TfidfVectorizer} in place of a
 \section{Using a document-feature
 matrix}\label{using-a-document-feature-matrix}}
 
+\begin{frame}[fragile]{Basic matrix operations}
+\protect\hypertarget{basic-matrix-operations}{}
+We can inspect the terms with the highest total scores with some basic
+matrix operations
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"System change not climate change"}\NormalTok{,}\StringTok{"The Current State of the Climate"}\NormalTok{)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{tokens}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{dfm}\NormalTok{()}
+\NormalTok{sums }\OtherTok{\textless{}{-}} \FunctionTok{colSums}\NormalTok{(dfmat)}
+\NormalTok{sums[}\FunctionTok{order}\NormalTok{(sums, }\AttributeTok{decreasing=}\ConstantTok{TRUE}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  change climate     the  system     not current   state      of 
+##       2       2       2       1       1       1       1       1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{texts }\OperatorTok{=}\NormalTok{ [}\StringTok{"System change not climate change"}\NormalTok{,}\StringTok{"The Current State of the Climate"}\NormalTok{]}
+\NormalTok{vectorizer }\OperatorTok{=}\NormalTok{ CountVectorizer()}
+\NormalTok{dfm }\OperatorTok{=}\NormalTok{ vectorizer.fit\_transform(texts)}
+\NormalTok{counts }\OperatorTok{=}\NormalTok{ dfm.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{0}\NormalTok{).A1}
+\NormalTok{order }\OperatorTok{=}\NormalTok{ np.argsort(counts)[::}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(vectorizer.get\_feature\_names\_out()[order])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ['the' 'climate' 'change' 'system' 'state' 'of' 'not' 'current']
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(counts[order])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [2 2 2 1 1 1 1 1]
+\end{verbatim}
+\end{frame}
+
 \begin{frame}[fragile]{Classification}
 \protect\hypertarget{classification}{}
 The document feature matrix is often the input to other analyses, one of
@@ -595,10 +643,8 @@ We can do the same in python
 
 \NormalTok{vectorizer }\OperatorTok{=}\NormalTok{ TfidfVectorizer()}
 \NormalTok{dfm }\OperatorTok{=}\NormalTok{ vectorizer.fit\_transform(texts)}
-\NormalTok{vocab }\OperatorTok{=}\NormalTok{ vectorizer.get\_feature\_names\_out()}
 \NormalTok{X }\OperatorTok{=}\NormalTok{ dfm.toarray()}
-\CommentTok{\# We just need to create a dictionary to map feature names to column indices}
-\NormalTok{vi }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(vocab, }\BuiltInTok{range}\NormalTok{(dfm.shape[}\DecValTok{1}\NormalTok{])))}
+\NormalTok{vi }\OperatorTok{=}\NormalTok{ vectorizer.vocabulary\_}
 \NormalTok{pred }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{1} \OperatorTok{+}\NormalTok{ X[:,vi[}\StringTok{"document"}\NormalTok{]]}\OperatorTok{*}\FloatTok{0.5} \OperatorTok{+}\NormalTok{ X[:,vi[}\StringTok{"topic"}\NormalTok{]]}\OperatorTok{*}\DecValTok{4}
 
 \NormalTok{pred}

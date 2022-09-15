@@ -32,6 +32,7 @@ use_python("/usr/bin/python3.9")
 
 ```
 
+
 # Objectives
 
 ## Methods
@@ -272,6 +273,30 @@ In python, we use a `TfidfVectorizer` in place of a `CountVectorizer`
 
 # Using a document-feature matrix
 
+## Basic matrix operations
+
+We can inspect the terms with the highest total scores with some basic matrix operations
+
+\scriptsize
+
+```{r echo=TRUE, include=TRUE}
+texts <- c("System change not climate change","The Current State of the Climate")
+dfmat <- texts %>% tokens() %>% dfm()
+sums <- colSums(dfmat)
+sums[order(sums, decreasing=TRUE)]
+```
+
+```{python echo=TRUE, include=TRUE}
+import numpy as np
+texts = ["System change not climate change","The Current State of the Climate"]
+vectorizer = CountVectorizer()
+dfm = vectorizer.fit_transform(texts)
+counts = dfm.sum(axis=0).A1
+order = np.argsort(counts)[::-1]
+print(vectorizer.get_feature_names_out()[order])
+print(counts[order])
+```
+
 ## Classification
 
 The document feature matrix is often the input to other analyses, one of which might be to build a classifier that says whether a text belongs to class or classes of interest. 
@@ -315,10 +340,8 @@ texts = [
 
 vectorizer = TfidfVectorizer()
 dfm = vectorizer.fit_transform(texts)
-vocab = vectorizer.get_feature_names_out()
 X = dfm.toarray()
-# We just need to create a dictionary to map feature names to column indices
-vi = dict(zip(vocab, range(dfm.shape[1])))
+vi = vectorizer.vocabulary_
 pred = -1 + X[:,vi["document"]]*0.5 + X[:,vi["topic"]]*4
 
 pred
