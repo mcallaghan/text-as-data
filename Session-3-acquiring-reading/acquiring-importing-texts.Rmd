@@ -319,7 +319,7 @@ Now we just need to parse the json, which is very easy in python
 from dotenv import load_dotenv
 import os
 load_dotenv()
-headers = {"email": os.getenv("bearer_token")}
+headers = {"email": os.getenv("email")}
 r = requests.get(
   "https://api.openalex.org/works?filter=authorships.institutions.id:I24830596",
   headers=headers

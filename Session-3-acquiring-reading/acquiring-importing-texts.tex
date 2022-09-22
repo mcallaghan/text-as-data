@@ -633,7 +633,7 @@ Now we just need to parse the json, which is very easy in python
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{headers }\OperatorTok{=}\NormalTok{ \{}\StringTok{"email"}\NormalTok{: os.getenv(}\StringTok{"bearer\_token"}\NormalTok{)\}}
+\NormalTok{headers }\OperatorTok{=}\NormalTok{ \{}\StringTok{"email"}\NormalTok{: os.getenv(}\StringTok{"email"}\NormalTok{)\}}
 \NormalTok{r }\OperatorTok{=}\NormalTok{ requests.get(}
   \StringTok{"https://api.openalex.org/works?filter=authorships.institutions.id:I24830596"}\NormalTok{,}
 \NormalTok{  headers}\OperatorTok{=}\NormalTok{headers}
@@ -647,7 +647,7 @@ Now we just need to parse the json, which is very easy in python
 ## {
 ## │   'meta': {
 ## │   │   'count': 1275,
-## │   │   'db_response_time_ms': 17,
+## │   │   'db_response_time_ms': 46,
 ## │   │   'page': 1,
 ## │   │   'per_page': 25
 ## │   },
