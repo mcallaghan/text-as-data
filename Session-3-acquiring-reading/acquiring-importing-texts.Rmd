@@ -150,8 +150,8 @@ In Python, a similar no-frills option is [requests](https://requests.readthedocs
 ```{python echo=TRUE, include=TRUE, cache=TRUE}
 import requests
 from rich.pretty import pprint
-#r = requests.get("https://www.iea.org/policies")
-#pprint(r.__dict__, max_string=40)
+r = requests.get("https://www.iea.org/policies")
+pprint(r.__dict__, max_string=40)
 ```
 
 
