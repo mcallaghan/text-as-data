@@ -1,0 +1,1053 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+  aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Singapore}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newenvironment{cols}[1][]{}{}
+
+\newenvironment{col}[1]{\begin{minipage}{#1}\ignorespaces}{%
+\end{minipage}
+\ifhmode\unskip\fi
+\aftergroup\useignorespacesandallpars}
+
+\def\useignorespacesandallpars#1\ignorespaces\fi{%
+#1\fi\ignorespacesandallpars}
+
+\makeatletter
+\def\ignorespacesandallpars{%
+  \@ifnextchar\par
+    {\expandafter\ignorespacesandallpars\@gobble}%
+    {}%
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Manipulating Strings},
+  pdfauthor={Max Callaghan},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Manipulating Strings}
+\author{Max Callaghan}
+\date{2022-09-15}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{objectives}{%
+\section{Objectives}\label{objectives}}
+
+\begin{frame}{Objectives}
+\protect\hypertarget{objectives-1}{}
+In this session we'll cover a broad overview of how strings (text
+sequences) can be manipulated in R/Python, as well as how we can use
+REGEX expressions to extract information from texts.
+
+\medskip
+
+But first, we will do a quick recap of the scraping exercise
+\end{frame}
+
+\hypertarget{recap}{%
+\section{Recap}\label{recap}}
+
+\begin{frame}{Recap}
+\protect\hypertarget{recap-1}{}
+I posted a step-by-step \href{online}{solution}
+
+Some useful basic concepts
+
+\begin{itemize}
+\tightlist
+\item
+  Data types:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A vector is a 1-dimensional series of values with the same type
+  \item
+    A list is simply a list of things that can be accessed via index, or
+    via named attributes
+  \end{itemize}
+\item
+  Indexes allow us to access the nth item of a series
+\item
+  Loops allow us to repeat an action several times (for example do the
+  same operation on each item of a list)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Lists in R}
+\protect\hypertarget{lists-in-r}{}
+Let's make a list in R. We often encounter these as key, value pairs.
+This is a list of named attributes
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{height=}\DecValTok{172}\NormalTok{, }\AttributeTok{weight=}\DecValTok{75}\NormalTok{)}
+\NormalTok{l}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $height
+## [1] 172
+## 
+## $weight
+## [1] 75
+\end{verbatim}
+
+\normalsize
+
+We can \textbf{set} OR \textbf{get} the value of a certain attribute
+with the \$ sign or with square brackets
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(l}\SpecialCharTok{$}\NormalTok{height)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 172
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l[[}\StringTok{"height"}\NormalTok{]] }\OtherTok{\textless{}{-}} \DecValTok{188}
+\FunctionTok{print}\NormalTok{(l[[}\StringTok{"height"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 188
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Lists in R II}
+\protect\hypertarget{lists-in-r-ii}{}
+We can also \textbf{get} OR \textbf{set} the elements of a list by
+saying if we want the first, second, etc. item
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(l}\SpecialCharTok{$}\NormalTok{height)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 188
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(l[[}\DecValTok{1}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 188
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Lists and dictionaries in Python}
+\protect\hypertarget{lists-and-dictionaries-in-python}{}
+In python, we have two distinct data types - key,value pairs
+(dictionaries), and lists.
+
+Dictionaries are defined inside curly brackets. We can only get or set
+the values using the keys
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\OperatorTok{=}\NormalTok{ \{}\StringTok{"height"}\NormalTok{: }\DecValTok{172}\NormalTok{, }\StringTok{"weight"}\NormalTok{: }\DecValTok{75}\NormalTok{\}}
+\BuiltInTok{print}\NormalTok{(d[}\StringTok{"height"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 172
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d[}\StringTok{"height"}\NormalTok{] }\OperatorTok{=} \DecValTok{188}
+\BuiltInTok{print}\NormalTok{(d[}\StringTok{"height"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 188
+\end{verbatim}
+
+\normalsize
+
+Lists are simply comma-separated series of things, from which we can
+access the 1st, 2nd, etc. item. Warning! Python uses ZERO-indexing
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l }\OperatorTok{=}\NormalTok{ [}\DecValTok{172}\NormalTok{, }\DecValTok{175}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(l[}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 172
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{JSON Records}
+\protect\hypertarget{json-records}{}
+The JSON format strongly resembles python lists and dictionaries, which
+we can flexibly combine as a list of records with attributes
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{people }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{  \{}\StringTok{"height"}\NormalTok{: }\DecValTok{172}\NormalTok{, }\StringTok{"name"}\NormalTok{: }\StringTok{"Liz"}\NormalTok{, }\StringTok{"top\_3\_colours"}\NormalTok{: [}\StringTok{"Red"}\NormalTok{, }\StringTok{"Blue"}\NormalTok{, }\StringTok{"Green"}\NormalTok{]\},}
+\NormalTok{  \{}\StringTok{"height"}\NormalTok{: }\DecValTok{180}\NormalTok{, }\StringTok{"weight"}\NormalTok{: }\StringTok{"Kwasi"}\NormalTok{, }\StringTok{"top\_3\_colours"}\NormalTok{: [}\StringTok{"Yellow"}\NormalTok{, }\StringTok{"Orange"}\NormalTok{, }\StringTok{"Lilac"}\NormalTok{]\},}
+\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\medskip
+\normalsize
+
+We can also represent this in R with a list of lists
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{people }\OtherTok{=} \FunctionTok{list}\NormalTok{(}
+  \FunctionTok{list}\NormalTok{(}\AttributeTok{height=}\DecValTok{172}\NormalTok{, }\AttributeTok{name=}\StringTok{"Liz"}\NormalTok{, }\AttributeTok{top\_3\_colours=}\FunctionTok{list}\NormalTok{(}\StringTok{"Red"}\NormalTok{, }\StringTok{"Blue"}\NormalTok{, }\StringTok{"Green"}\NormalTok{)),}
+  \FunctionTok{list}\NormalTok{(}\AttributeTok{height=}\DecValTok{188}\NormalTok{, }\AttributeTok{name=}\StringTok{"Kwasi"}\NormalTok{, }\AttributeTok{top\_3\_colours=}\FunctionTok{list}\NormalTok{(}\StringTok{"Yellow"}\NormalTok{, }\StringTok{"Orange"}\NormalTok{, }\StringTok{"Lilac"}\NormalTok{))}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+How would we get or set the 3rd favourite colour of the 1st person?
+\end{frame}
+
+\begin{frame}[fragile]{Loops in R}
+\protect\hypertarget{loops-in-r}{}
+Loops allow us to repeat an action multiple times. This is especially
+helpful when we have lists. In R, the thing we loop through goes in the
+brackets, and what we do with the thing goes in curly brackets
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (person }\ControlFlowTok{in}\NormalTok{ people) \{}
+  \FunctionTok{print}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{height)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 172
+## [1] 188
+\end{verbatim}
+
+\normalsize
+
+An alternative to loops is to use apply, which performs a function on a
+list and returns a list
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(people, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{return}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{height))}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 172
+## 
+## [[2]]
+## [1] 188
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Loops in Python}
+\protect\hypertarget{loops-in-python}{}
+Loops allow us to repeat an action multiple times. This is especially
+helpful when we have lists.
+
+In python, we write what we call each thing in a list of things we want
+to loop through before a colon: Then everything else indented below is
+what we do with the thing
+
+\medskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ person }\KeywordTok{in}\NormalTok{ people: }
+    \BuiltInTok{print}\NormalTok{(person[}\StringTok{"height"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 172
+## 180
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\hypertarget{basic-introduction-to-strings}{%
+\section{Basic introduction to
+strings}\label{basic-introduction-to-strings}}
+
+\begin{frame}[fragile]{Representing strings}
+\protect\hypertarget{representing-strings}{}
+To create a string, we need to put quotation marks around its content
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"Hello world"}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hello world"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ Hello world}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error: <text>:1:12: unexpected symbol
+## 1: x <- Hello world
+##                ^
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Quotation marks}
+\protect\hypertarget{quotation-marks}{}
+You can use either single or double quotation marks, but the same type
+of quotation mark again will close the string and cause an error. The
+backslash character ``\textbackslash{}'' is called an ``escape''
+character.
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"Hello world"}
+\NormalTok{y }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Hello world\textquotesingle{}}
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{c}\NormalTok{(x,y))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Hello world Hello world
+\end{verbatim}
+
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}They\textquotesingle{}}\NormalTok{re great}\StringTok{\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error: <text>:1:12: unexpected symbol
+## 1: x <- 'They're
+##                ^
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"They\textquotesingle{}re great"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says "they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
+\FunctionTok{cat}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Tony says "they're great"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{The difference between strings and numbers}
+\protect\hypertarget{the-difference-between-strings-and-numbers}{}
+Pay attention to the type of data
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{y }\OtherTok{\textless{}{-}} \StringTok{"2"}
+\NormalTok{x}\SpecialCharTok{+}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in x + y: non-numeric argument to binary operator
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{1}
+\NormalTok{y }\OperatorTok{=} \StringTok{"2"}
+\NormalTok{x}\OperatorTok{+}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: unsupported operand type(s) for +: 'int' and 'str'
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Inserting variables into strings}
+\protect\hypertarget{inserting-variables-into-strings}{}
+We can use
+\href{https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sprintf}{sprintf}
+/ \href{https://peps.python.org/pep-0498/}{f strings} to insert
+variables into text and define how they are formatted.
+
+\scriptsize
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{addressee }\OtherTok{\textless{}{-}} \StringTok{"world"}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"Hello \%s, Pi is equal to \%.2f"}\NormalTok{, addressee, pi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hello world, Pi is equal to 3.14"
+\end{verbatim}
+
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{addressee }\OperatorTok{=} \StringTok{"world"}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Hello }\SpecialCharTok{\{}\NormalTok{addressee}\SpecialCharTok{\}}\SpecialStringTok{, Pi is equal to }\SpecialCharTok{\{}\NormalTok{math}\SpecialCharTok{.}\NormalTok{pi}\SpecialCharTok{:.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Hello world, Pi is equal to 3.14
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{An exercise with for loops, variables and strings}
+\protect\hypertarget{an-exercise-with-for-loops-variables-and-strings}{}
+Using the list of records we made earlier, write and print a message to
+each person on our list, letting them know that we have T-shirts for
+sale in their favourite colour.
+\end{frame}
+
+\begin{frame}[fragile]{Special characters in strings}
+\protect\hypertarget{special-characters-in-strings}{}
+Take note of the special characters \textbackslash n, \textbackslash r,
+\textbackslash t (new line, carriage return, and tab). You might need
+these when processing, splitting up text you acquire.
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says}\SpecialCharTok{\textbackslash{}n}\StringTok{"they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
+\FunctionTok{cat}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Tony says
+## "they're great"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says }\SpecialCharTok{\textbackslash{}r}\StringTok{"they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
+\FunctionTok{cat}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Tony says "they're great"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says}\SpecialCharTok{\textbackslash{}t}\StringTok{"they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
+\FunctionTok{cat}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Tony says    "they're great"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Basic properties of strings}
+\protect\hypertarget{basic-properties-of-strings}{}
+How long is a string?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says}\SpecialCharTok{\textbackslash{}t}\StringTok{"they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
+\FunctionTok{nchar}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 25
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \StringTok{\textquotesingle{}Tony says}\CharTok{\textbackslash{}t}\StringTok{"they}\CharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
+\BuiltInTok{len}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25
+\end{verbatim}
+\end{frame}
+
+\hypertarget{basic-operations-on-strings}{%
+\section{Basic operations on
+strings}\label{basic-operations-on-strings}}
+
+\begin{frame}[fragile]{An example string}
+\protect\hypertarget{an-example-string}{}
+Let's start by reading in a poem as a single string.
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{poem }\OtherTok{\textless{}{-}} \FunctionTok{read\_file}\NormalTok{(}\StringTok{"the\_tiger.txt"}\NormalTok{)}
+\NormalTok{poem}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "THE TIGER\n\n\nTiger, tiger, burning bright\nIn the forests of the night,\nWhat immortal hand or eye\nCould frame thy fearful symmetry?\n\nIn what distant deeps or skies\nBurnt the fire of thine eyes?\nOn what wings dare he aspire?\nWhat the hand dare seize the fire?\n\nAnd what shoulder and what art\nCould twist the sinews of thy heart?\nAnd, when thy heart began to beat,\nWhat dread hand and what dread feet?\n\nWhat the hammer? what the chain?\nIn what furnace was thy brain?\nWhat the anvil? what dread grasp\nDare its deadly terrors clasp?\n\nWhen the stars threw down their spears,\nAnd watered heaven with their tears,\nDid He smile His work to see?\nDid He who made the lamb make thee?\n\nTiger, tiger, burning bright\nIn the forests of the night,\nWhat immortal hand or eye\nDare frame thy fearful symmetry?"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{"the\_tiger.txt"}\NormalTok{, }\StringTok{"r"}\NormalTok{) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{    poem }\OperatorTok{=}\NormalTok{ f.read()}
+\NormalTok{poem}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'THE TIGER\n\n\nTiger, tiger, burning bright\nIn the forests of the night,\nWhat immortal hand or eye\nCould frame thy fearful symmetry?\n\nIn what distant deeps or skies\nBurnt the fire of thine eyes?\nOn what wings dare he aspire?\nWhat the hand dare seize the fire?\n\nAnd what shoulder and what art\nCould twist the sinews of thy heart?\nAnd, when thy heart began to beat,\nWhat dread hand and what dread feet?\n\nWhat the hammer? what the chain?\nIn what furnace was thy brain?\nWhat the anvil? what dread grasp\nDare its deadly terrors clasp?\n\nWhen the stars threw down their spears,\nAnd watered heaven with their tears,\nDid He smile His work to see?\nDid He who made the lamb make thee?\n\nTiger, tiger, burning bright\nIn the forests of the night,\nWhat immortal hand or eye\nDare frame thy fearful symmetry?'
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Splitting strings}
+\protect\hypertarget{splitting-strings}{}
+Often we want to split one string (or several strings) into shorter
+strings according to a certain pattern. In our poem, we can split this
+into lines using the newline character \texttt{\textbackslash{}n}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stringr)}
+\NormalTok{lines }\OtherTok{\textless{}{-}} \FunctionTok{str\_split}\NormalTok{(poem,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{lines[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "THE TIGER"                    ""                            
+## [3] ""                             "Tiger, tiger, burning bright"
+## [5] "In the forests of the night,"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lines }\OperatorTok{=}\NormalTok{ poem.split(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{lines[:}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ['THE TIGER', '', '', 'Tiger, tiger, burning bright', 'In the forests of the night,']
+\end{verbatim}
+
+\normalsize
+
+What if we want to split into stanzas (verses)? What if we want to split
+each line into words? How could we tell how many words are on each line?
+\end{frame}
+
+\begin{frame}[fragile]{Joining strings}
+\protect\hypertarget{joining-strings}{}
+Sometimes we want to combine strings into a single string, for this we
+use \texttt{str\_c} or \texttt{paste}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{poem\_start }\OtherTok{\textless{}{-}} \FunctionTok{str\_c}\NormalTok{(lines[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{collapse=}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{poem\_start}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "THE TIGER\n\n\nTiger, tiger, burning bright\nIn the forests of the night,"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{poem\_start }\OperatorTok{=} \StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{.join(lines[:}\DecValTok{5}\NormalTok{])}
+\NormalTok{poem\_start}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'THE TIGER\n\n\nTiger, tiger, burning bright\nIn the forests of the night,'
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Replacing parts of strings}
+\protect\hypertarget{replacing-parts-of-strings}{}
+Sometimes we want to replace occurences of a certain string or sequence
+of characters with something or nothing.
+
+\medskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new\_poem }\OtherTok{\textless{}{-}} \FunctionTok{str\_replace\_all}\NormalTok{(poem, }\StringTok{"tiger"}\NormalTok{, }\StringTok{"lion"}\NormalTok{)}
+\NormalTok{new\_poem}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "THE TIGER\n\n\nTiger, lion, burning bright\nIn the forests of the night,\nWhat immortal hand or eye\nCould frame thy fearful symmetry?\n\nIn what distant deeps or skies\nBurnt the fire of thine eyes?\nOn what wings dare he aspire?\nWhat the hand dare seize the fire?\n\nAnd what shoulder and what art\nCould twist the sinews of thy heart?\nAnd, when thy heart began to beat,\nWhat dread hand and what dread feet?\n\nWhat the hammer? what the chain?\nIn what furnace was thy brain?\nWhat the anvil? what dread grasp\nDare its deadly terrors clasp?\n\nWhen the stars threw down their spears,\nAnd watered heaven with their tears,\nDid He smile His work to see?\nDid He who made the lamb make thee?\n\nTiger, lion, burning bright\nIn the forests of the night,\nWhat immortal hand or eye\nDare frame thy fearful symmetry?"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new\_poem }\OperatorTok{=}\NormalTok{ poem.replace(}\StringTok{"tiger"}\NormalTok{, }\StringTok{"lion"}\NormalTok{)}
+\NormalTok{new\_poem}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'THE TIGER\n\n\nTiger, lion, burning bright\nIn the forests of the night,\nWhat immortal hand or eye\nCould frame thy fearful symmetry?\n\nIn what distant deeps or skies\nBurnt the fire of thine eyes?\nOn what wings dare he aspire?\nWhat the hand dare seize the fire?\n\nAnd what shoulder and what art\nCould twist the sinews of thy heart?\nAnd, when thy heart began to beat,\nWhat dread hand and what dread feet?\n\nWhat the hammer? what the chain?\nIn what furnace was thy brain?\nWhat the anvil? what dread grasp\nDare its deadly terrors clasp?\n\nWhen the stars threw down their spears,\nAnd watered heaven with their tears,\nDid He smile His work to see?\nDid He who made the lamb make thee?\n\nTiger, lion, burning bright\nIn the forests of the night,\nWhat immortal hand or eye\nDare frame thy fearful symmetry?'
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Cleaning whitespace from strings}
+\protect\hypertarget{cleaning-whitespace-from-strings}{}
+Often, when we parse strings (especially from html), we include a bunch
+of whitespace at the beginnings and ends of strings.
+\texttt{str\_trim()}, or \texttt{strip()} in Python, helps us get rid of
+these.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{messy\_lines }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{" Hello world   "}\NormalTok{, }\StringTok{" How are you "}\NormalTok{)}
+\FunctionTok{str\_trim}\NormalTok{(messy\_lines)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hello world" "How are you"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{messy\_lines }\OperatorTok{=}\NormalTok{ [}\StringTok{" Hello world   "}\NormalTok{, }\StringTok{" How are you "}\NormalTok{]}
+\NormalTok{[x.strip() }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ messy\_lines]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ['Hello world', 'How are you']
+\end{verbatim}
+\end{frame}
+
+\hypertarget{regex}{%
+\section{Regex}\label{regex}}
+
+\begin{frame}[fragile]{Why regex}
+\protect\hypertarget{why-regex}{}
+Regex (Regular expressions) offers a way of manipulating strings based
+on powerful pattern matching. Patterns are defined sequences of
+characters or character types.
+
+We can use these patterns to \textbf{detect, locate, extract, match,
+replace}, and \textbf{split} strings.
+
+Regex allows us to allow for variations in spelling, e.g.~colour/color
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pattern }\OtherTok{\textless{}{-}} \StringTok{"colou?r"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pattern }\OperatorTok{=} \StringTok{"colou?r"}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Quantifiers}
+\protect\hypertarget{quantifiers}{}
+The first fancy REGEX thing we have seen is a quantifier. It defines how
+often we need to see a character in order to match. In our example
+below, it says ``u'' must appear 0 or 1 times
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pattern }\OtherTok{\textless{}{-}} \StringTok{"colou?r"}
+\NormalTok{strings }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"color"}\NormalTok{, }\StringTok{"colour"}\NormalTok{)}
+\FunctionTok{str\_detect}\NormalTok{(strings, pattern)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ re}
+\NormalTok{pattern }\OperatorTok{=} \StringTok{"colou?r"}
+\NormalTok{strings }\OperatorTok{=}\NormalTok{ [}\StringTok{"color"}\NormalTok{, }\StringTok{"colour"}\NormalTok{]}
+\NormalTok{[re.match(pattern,x) }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ strings]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [<re.Match object; span=(0, 5), match='color'>, <re.Match object; span=(0, 6), match='colour'>]
+\end{verbatim}
+
+\normalsize
+
+Other useful quantifiers are \texttt{*} (0 or more times), \texttt{+} (1
+or more times), \texttt{\{m\}} exactly m times, \texttt{\{m,n\}} from m
+to n times. See
+\href{https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf}{here}
+for a stringr and regex cheatsheet, and \href{https://pythex.org/}{here}
+for an online python regex explorer and cheatsheet.
+\end{frame}
+
+\begin{frame}[fragile]{Special characters}
+\protect\hypertarget{special-characters}{}
+\texttt{.} will match any character
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{strings }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"digitalise"}\NormalTok{, }\StringTok{"digitalize"}\NormalTok{)}
+\FunctionTok{str\_detect}\NormalTok{(strings, }\StringTok{"digitali.e"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE
+\end{verbatim}
+
+\normalsize
+
+\texttt{\^{}} matches the beginning of a string, and \texttt{\$} matches
+the end of a string
+
+\normalsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{strings }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"hello world"}\NormalTok{, }\StringTok{"Hi, hello"}\NormalTok{)}
+\FunctionTok{str\_detect}\NormalTok{(strings, }\StringTok{"\^{}hello"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Lists of characters}
+\protect\hypertarget{lists-of-characters}{}
+Square brackets indicate a list of possible character matches
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{{[}sz{]}} matches either an s or a z (we can also use the
+  \texttt{\textbar{}} symbol as an or operator, so \texttt{s\textbar{}z}
+  is equivalent)
+\item
+  \texttt{{[}0-5{]}} matches any digit from 0 to 5
+\item
+  \texttt{{[}a-f{]}} matches any lower case letter from a to f
+\item
+  \texttt{{[}G-Z{]}} matches any lower case letter from G to Z
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise}
+\protect\hypertarget{exercise}{}
+Download a list of 1,000 tweets which mention net zero. Use regular
+expressions to find dates in the future. How many tweets mention a date?
+If we extract the first date using \texttt{str\_extract()}, what dates
+are most common?
+\end{frame}
+
+\begin{frame}[fragile]{Shortcuts to character lists}
+\protect\hypertarget{shortcuts-to-character-lists}{}
+We also have some shortcuts that represent character lists or types. The
+upper case letter is often the negated version of the lower case letter
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\textbackslash{}b} word boundary
+\item
+  \texttt{\textbackslash{}B} not-word boundary
+\item
+  \texttt{\textbackslash{}d} digit
+\item
+  \texttt{\textbackslash{}D} non-digit
+\item
+  \texttt{\textbackslash{}s} whitespace
+\item
+  \texttt{\textbackslash{}S} non-whitespace
+\item
+  \texttt{\textbackslash{}w} alphanumeric
+\item
+  \texttt{\textbackslash{}W} non-alphanumeric
+\end{itemize}
+
+\texttt{{[}:punct:{]}} is an additional useful pattern for punctuation
+(R also uses this representation of these character types)
+\end{frame}
+
+\begin{frame}[fragile]{Groups}
+\protect\hypertarget{groups}{}
+By using brackets \texttt{()} we can specify parts of a pattern which we
+want to extract
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{estimates }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"0.039"}\NormalTok{, }\StringTok{"0.042"}\NormalTok{, }\StringTok{"−0.003*"}\NormalTok{, }\StringTok{"49"}\NormalTok{, }\StringTok{"1.3*"}\NormalTok{)}
+\NormalTok{pattern }\OtherTok{\textless{}{-}} \StringTok{"({-}*[0{-}9]*}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.*[0{-}9]*)}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{*"}
+\FunctionTok{str\_match}\NormalTok{(estimates, pattern)[,}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA      NA      "0.003" NA      "1.3"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{What else can we use regex for}
+\protect\hypertarget{what-else-can-we-use-regex-for}{}
+Anything that follows a pattern that we want to detect, or extract a
+part of. URLs, email addresses, telefone numbers, speakers in a
+transcript, party names\ldots{}
+\end{frame}
+
+\begin{frame}{Exercise}
+\protect\hypertarget{exercise-1}{}
+QJE.txt contains the opening two paragraphs of a recent paper in the
+Quarterly Journal of Economics. We are interested in finding out what
+papers are cited. Using what we have covered in this session, can you
+extract a list of first author, year pairs that represent each citation
+made in the text?
+\end{frame}
+
+\hypertarget{outlook}{%
+\section{Outlook}\label{outlook}}
+
+\begin{frame}{Next week}
+\protect\hypertarget{next-week}{}
+Next week we'll be brushing up on our ggplot skills, and putting them to
+use in plotting text data
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \bibliography{../presentation-resources/MyLibrary.bib}
+\end{frame}
+
+\end{document}
