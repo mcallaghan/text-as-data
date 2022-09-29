@@ -47,7 +47,7 @@ But first, we will do a quick recap of the scraping exercise
 
 ## Recap
 
-I posted a step-by-step [solution](online)
+I posted a step-by-step [solution](https://github.com/mcallaghan/text-as-data/blob/master/Session-3-acquiring-reading/scraping_iea.html) online
 
 Some useful basic concepts
 
@@ -124,7 +124,7 @@ The JSON format strongly resembles python lists and dictionaries, which we can f
 ```{python echo=TRUE, include=TRUE}
 people = [
   {"height": 172, "name": "Liz", "top_3_colours": ["Red", "Blue", "Green"]},
-  {"height": 180, "weight": "Kwasi", "top_3_colours": ["Yellow", "Orange", "Lilac"]},
+  {"height": 180, "name": "Kwasi", "top_3_colours": ["Yellow", "Orange", "Lilac"]},
 ]
 ```
 
