@@ -185,6 +185,17 @@ for person in people:
 
 \normalsize
 
+We also have this nice thing called list comprehension
+
+\scriptsize
+
+
+```{python echo=TRUE, include=TRUE}
+heights = [person["height"] for person in people] 
+print(heights)
+```
+
+
 # Basic introduction to strings
 
 
@@ -227,7 +238,7 @@ x <- "They're great"
 
 ```{r echo=TRUE, include=TRUE, error=TRUE}
 x <- 'Tony says "they\'re great"'
-cat(x)
+writeLines(x)
 ```
 
 ## The difference between strings and numbers
@@ -247,6 +258,12 @@ x = 1
 y = "2"
 x+y
 ```
+
+\medskip
+
+\normalsize
+
+What happens in R and in Python if we try to add two numbers stored as strings?
 
 ## Inserting variables into strings
 
@@ -278,17 +295,17 @@ Take note of the special characters \\n, \\r, \\t (new line, carriage return, an
 
 ```{r echo=TRUE, include=TRUE, error=TRUE}
 x <- 'Tony says\n"they\'re great"'
-cat(x)
+writeLines(x)
 ```
 
 ```{r echo=TRUE, include=TRUE, error=TRUE}
 x <- 'Tony says \r"they\'re great"'
-cat(x)
+writeLines(x)
 ```
 
 ```{r echo=TRUE, include=TRUE, error=TRUE}
 x <- 'Tony says\t"they\'re great"'
-cat(x)
+writeLines(x)
 ```
 
 ## Basic properties of strings

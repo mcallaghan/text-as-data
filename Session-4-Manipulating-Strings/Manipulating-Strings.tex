@@ -443,6 +443,21 @@ what we do with the thing
 \end{verbatim}
 
 \normalsize
+
+We also have this nice thing called list comprehension
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heights }\OperatorTok{=}\NormalTok{ [person[}\StringTok{"height"}\NormalTok{] }\ControlFlowTok{for}\NormalTok{ person }\KeywordTok{in}\NormalTok{ people] }
+\BuiltInTok{print}\NormalTok{(heights)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [172, 180]
+\end{verbatim}
 \end{frame}
 
 \hypertarget{basic-introduction-to-strings}{%
@@ -522,7 +537,7 @@ character.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says "they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
-\FunctionTok{cat}\NormalTok{(x)}
+\FunctionTok{writeLines}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -560,6 +575,13 @@ Pay attention to the type of data
 \begin{verbatim}
 ## Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: unsupported operand type(s) for +: 'int' and 'str'
 \end{verbatim}
+
+\medskip
+
+\normalsize
+
+What happens in R and in Python if we try to add two numbers stored as
+strings?
 \end{frame}
 
 \begin{frame}[fragile]{Inserting variables into strings}
@@ -615,7 +637,7 @@ these when processing, splitting up text you acquire.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says}\SpecialCharTok{\textbackslash{}n}\StringTok{"they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
-\FunctionTok{cat}\NormalTok{(x)}
+\FunctionTok{writeLines}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -627,7 +649,7 @@ these when processing, splitting up text you acquire.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says }\SpecialCharTok{\textbackslash{}r}\StringTok{"they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
-\FunctionTok{cat}\NormalTok{(x)}
+\FunctionTok{writeLines}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -638,7 +660,7 @@ these when processing, splitting up text you acquire.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Tony says}\SpecialCharTok{\textbackslash{}t}\StringTok{"they}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{re great"\textquotesingle{}}
-\FunctionTok{cat}\NormalTok{(x)}
+\FunctionTok{writeLines}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -897,7 +919,7 @@ below, it says ``u'' must appear 0 or 1 times
 \end{Shaded}
 
 \begin{verbatim}
-## [<re.Match object; span=(0, 5), match='color'>, <re.Match object; span=(0, 6), match='colour'>]
+## [<_sre.SRE_Match object; span=(0, 5), match='color'>, <_sre.SRE_Match object; span=(0, 6), match='colour'>]
 \end{verbatim}
 
 \normalsize
