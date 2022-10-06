@@ -479,14 +479,17 @@ tidy_dfm = pd.DataFrame({
 }).sort_values("count",ascending=False).reset_index(drop=True)
 
 fig, ax = plt.subplots(figsize=(4,4))
-sns.barplot(data=tidy_dfm.head(), x="count", y="feature", color="grey")
+sns.barplot(
+  data=tidy_dfm.head(10), 
+  x="count", y="feature", color="grey"
+)
 
-plt.savefig("plots/top_terms_sns.png")
+plt.savefig("plots/top_terms_sns.png", bbox_inches="tight")
 ```
 
 :::
 
-::: {.col data-latex="{0.04\textwidth}"}
+::: {.col data-latex="{0.08\textwidth}"}
 \ 
 :::
 
