@@ -1,0 +1,72 @@
+---
+title: "Extracting citations"
+author: "Max Callaghan"
+date: "2022-09-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this notebook, we will use regex expressions to extract citations from a piece of text from the QJE.
+
+
+```{r include=TRUE, echo=TRUE}
+library(readr)
+qje <- readr::read_file("QJE.txt")
+writeLines(qje)
+```
+The first thing we can do is build a regular expression to capture a year followed by either a bracket or a semicolon.
+
+```{r include=TRUE, echo=TRUE}
+library(stringr)
+pattern <- "(\\d{4})[;\\)]"
+matches <- stringr::str_match_all(qje, pattern)[[1]][,2]
+matches
+```
+This gives us every citation except for the last one. Where two or more items are cited from the same author in the same year then a small letter is appended to year. Let's make a provision that the four digits can be followed by 0 or 1 lower case letters. 
+
+```{r include=TRUE, echo=TRUE}
+pattern <- "(\\d{4})[a-z]?[;\\)]"
+matches <- stringr::str_match_all(qje, pattern)[[1]]
+matches
+```
+Now we've got a pattern that matches all of our citations, let's try to capture the bits in front of the year that we want. We'll start with simplest version which is a single author citation. We'll look for a capital letter followed by lower case letters immediately before the year
+
+```{r include=TRUE, echo=TRUE}
+pattern <- "([A-Z]{1}[a-z]+) \\(?(\\d{4})[a-z]?[;\\)]"
+matches <- stringr::str_match_all(qje, pattern)[[1]]
+matches
+```
+
+Now we only capture 6 out of 10 citations, but we successfully match an author's surname. Another type of author is one that is at least two capital letters, points, or spaces. We'll use brackets to say this or that.
+
+```{r include=TRUE, echo=TRUE}
+pattern <- "(([A-Z \\.]{2,})|([A-Z]{1}[a-z]+)) \\(?(\\d{4})[a-z]?[;\\)]"
+matches <- stringr::str_match_all(qje, pattern)[[1]]
+matches
+```
+We have now covered all cases where there is a single author. Let's extend this to capture the "et al." pattern
+
+```{r include=TRUE, echo=TRUE}
+pattern <- "(([A-Z \\.]{2,})|([A-Z]{1}[a-z]+)) (et al. )?\\(?(\\d{4})[a-z]?[;\\)]"
+matches <- stringr::str_match_all(qje, pattern)[[1]]
+matches
+```
+Now, when we only have few authors, we don't say et al. but name them separated by "and"s If we look carefully we can see that we are capturing the last instances in each of these. We'll add one pattern that looks for a comma immediately after the first author and that is followed by a name. Then we add one more pattern looking for "and" followed by alphanumeric characters.
+
+```{r include=TRUE, echo=TRUE}
+pattern <- "(([A-Z \\.]{2,})|([A-Z]{1}[a-z]+))(, [A-Z]{1}[a-z]+,*)* (et al. )?(and \\w+,* )*\\(?(\\d{4})[a-z]?[;\\)]"
+matches <- stringr::str_match_all(qje, pattern)[[1]]
+matches
+```
+
+We can now combine this into a dataframe.
+
+```{r include=TRUE, echo=TRUE}
+authors <- matches[,2]
+years <- matches[,8]
+df <- dplyr::tibble(authors=authors, years=years)
+df
+```
