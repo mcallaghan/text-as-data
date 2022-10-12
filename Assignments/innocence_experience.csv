@@ -1,0 +1,917 @@
+book,poem,line_n,stanza_n,text
+SONGS OF INNOCENCE,INTRODUCTION,0,0,"Piping down the valleys wild,"
+SONGS OF INNOCENCE,INTRODUCTION,1,0,"Piping songs of pleasant glee,"
+SONGS OF INNOCENCE,INTRODUCTION,2,0,"On a cloud I saw a child,"
+SONGS OF INNOCENCE,INTRODUCTION,3,0,And he laughing said to me:
+SONGS OF INNOCENCE,INTRODUCTION,4,1,‘Pipe a song about a Lamb!’
+SONGS OF INNOCENCE,INTRODUCTION,5,1,So I piped with merry cheer.
+SONGS OF INNOCENCE,INTRODUCTION,6,1,"‘Piper, pipe that song again.’"
+SONGS OF INNOCENCE,INTRODUCTION,7,1,So I piped: he wept to hear.
+SONGS OF INNOCENCE,INTRODUCTION,8,2,"‘Drop thy pipe, thy happy pipe;"
+SONGS OF INNOCENCE,INTRODUCTION,9,2,Sing thy songs of happy cheer!’
+SONGS OF INNOCENCE,INTRODUCTION,10,2,"So I sung the same again,"
+SONGS OF INNOCENCE,INTRODUCTION,11,2,While he wept with joy to hear.
+SONGS OF INNOCENCE,INTRODUCTION,12,3,"‘Piper, sit thee down and write"
+SONGS OF INNOCENCE,INTRODUCTION,13,3,"In a book, that all may read.’"
+SONGS OF INNOCENCE,INTRODUCTION,14,3,So he vanished from my sight;
+SONGS OF INNOCENCE,INTRODUCTION,15,3,"And I plucked a hollow reed,"
+SONGS OF INNOCENCE,INTRODUCTION,16,4,"And I made a rural pen,"
+SONGS OF INNOCENCE,INTRODUCTION,17,4,"And I stained the water clear,"
+SONGS OF INNOCENCE,INTRODUCTION,18,4,And I wrote my happy songs
+SONGS OF INNOCENCE,INTRODUCTION,19,4,Every child may joy to hear.
+SONGS OF INNOCENCE,THE SHEPHERD,0,0,How sweet is the shepherd’s sweet lot!
+SONGS OF INNOCENCE,THE SHEPHERD,1,0,From the morn to the evening he strays;
+SONGS OF INNOCENCE,THE SHEPHERD,2,0,"He shall follow his sheep all the day,"
+SONGS OF INNOCENCE,THE SHEPHERD,3,0,And his tongue shall be fillèd with praise.
+SONGS OF INNOCENCE,THE SHEPHERD,4,1,"For he hears the lambs’ innocent call,"
+SONGS OF INNOCENCE,THE SHEPHERD,5,1,And he hears the ewes’ tender reply;
+SONGS OF INNOCENCE,THE SHEPHERD,6,1,"He is watchful while they are in peace,"
+SONGS OF INNOCENCE,THE SHEPHERD,7,1,For they know when their shepherd is nigh.
+SONGS OF INNOCENCE,THE ECHOING GREEN,0,0,"The sun does arise,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,1,0,And make happy the skies;
+SONGS OF INNOCENCE,THE ECHOING GREEN,2,0,The merry bells ring
+SONGS OF INNOCENCE,THE ECHOING GREEN,3,0,To welcome the Spring;
+SONGS OF INNOCENCE,THE ECHOING GREEN,4,0,"The skylark and thrush,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,5,0,"The birds of the bush,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,6,0,Sing louder around
+SONGS OF INNOCENCE,THE ECHOING GREEN,7,0,To the bells’ cheerful sound;
+SONGS OF INNOCENCE,THE ECHOING GREEN,8,0,While our sports shall be seen
+SONGS OF INNOCENCE,THE ECHOING GREEN,9,0,On the echoing green.
+SONGS OF INNOCENCE,THE ECHOING GREEN,10,1,"Old John, with white hair,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,11,1,"Does laugh away care,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,12,1,"Sitting under the oak,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,13,1,Among the old folk.
+SONGS OF INNOCENCE,THE ECHOING GREEN,14,1,"They laugh at our play,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,15,1,"And soon they all say,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,16,1,"‘Such, such were the joys"
+SONGS OF INNOCENCE,THE ECHOING GREEN,17,1,When we all—girls and boys—
+SONGS OF INNOCENCE,THE ECHOING GREEN,18,1,In our youth-time were seen
+SONGS OF INNOCENCE,THE ECHOING GREEN,19,1,On the echoing green.’
+SONGS OF INNOCENCE,THE ECHOING GREEN,20,2,"Till the little ones, weary,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,21,2,No more can be merry:
+SONGS OF INNOCENCE,THE ECHOING GREEN,22,2,"The sun does descend,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,23,2,And our sports have an end.
+SONGS OF INNOCENCE,THE ECHOING GREEN,24,2,Round the laps of their mothers
+SONGS OF INNOCENCE,THE ECHOING GREEN,25,2,"Many sisters and brothers,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,26,2,"Like birds in their nest,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,27,2,"Are ready for rest,"
+SONGS OF INNOCENCE,THE ECHOING GREEN,28,2,And sport no more seen
+SONGS OF INNOCENCE,THE ECHOING GREEN,29,2,On the darkening green.
+SONGS OF INNOCENCE,THE LAMB,0,0,"Little lamb, who made thee?"
+SONGS OF INNOCENCE,THE LAMB,1,0,"Does thou know who made thee,"
+SONGS OF INNOCENCE,THE LAMB,2,0,"Gave thee life, and bid thee feed"
+SONGS OF INNOCENCE,THE LAMB,3,0,By the stream and o’er the mead;
+SONGS OF INNOCENCE,THE LAMB,4,0,"Gave thee clothing of delight,"
+SONGS OF INNOCENCE,THE LAMB,5,0,"Softest clothing, woolly, bright;"
+SONGS OF INNOCENCE,THE LAMB,6,0,"Gave thee such a tender voice,"
+SONGS OF INNOCENCE,THE LAMB,7,0,Making all the vales rejoice?
+SONGS OF INNOCENCE,THE LAMB,8,0,"Little lamb, who made thee?"
+SONGS OF INNOCENCE,THE LAMB,9,0,Does thou know who made thee?
+SONGS OF INNOCENCE,THE LAMB,10,1,"Little lamb, I’ll tell thee;"
+SONGS OF INNOCENCE,THE LAMB,11,1,"Little lamb, I’ll tell thee:"
+SONGS OF INNOCENCE,THE LAMB,12,1,"He is callèd by thy name,"
+SONGS OF INNOCENCE,THE LAMB,13,1,For He calls Himself a Lamb.
+SONGS OF INNOCENCE,THE LAMB,14,1,"He is meek, and He is mild,"
+SONGS OF INNOCENCE,THE LAMB,15,1,He became a little child.
+SONGS OF INNOCENCE,THE LAMB,16,1,"I a child, and thou a lamb,"
+SONGS OF INNOCENCE,THE LAMB,17,1,We are callèd by His name.
+SONGS OF INNOCENCE,THE LAMB,18,1,"Little lamb, God bless thee!"
+SONGS OF INNOCENCE,THE LAMB,19,1,"Little lamb, God bless thee!"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,0,0,"My mother bore me in the southern wild,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,1,0,"And I am black, but O my soul is white!"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,2,0,"White as an angel is the English child,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,3,0,"But I am black, as if bereaved of light."
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,4,1,"My mother taught me underneath a tree,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,5,1,"And, sitting down before the heat of day,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,6,1,"She took me on her lap and kissèd me,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,7,1,"And, pointing to the East, began to say:"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,8,2,"‘Look on the rising sun: there God does live,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,9,2,"And gives His light, and gives His heat away,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,10,2,And flowers and trees and beasts and men receive
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,11,2,"Comfort in morning, joy in the noonday."
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,12,3,"‘And we are put on earth a little space,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,13,3,That we may learn to bear the beams of love;
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,14,3,And these black bodies and this sunburnt face
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,15,3,"Are but a cloud, and like a shady grove."
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,16,4,"‘For, when our souls have learned the heat to bear,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,17,4,"The cloud will vanish, we shall hear His voice,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,18,4,"Saying, “Come out from the grove, my love and care,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,19,4,And round my golden tent like lambs rejoice.”’
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,20,5,"Thus did my mother say, and kissed me,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,21,5,And thus I say to little English boy.
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,22,5,"When I from black, and he from white cloud free,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,23,5,"And round the tent of God like lambs we joy,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,24,6,I’ll shade him from the heat till he can bear
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,25,6,To lean in joy upon our Father’s knee;
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,26,6,"And then I’ll stand and stroke his silver hair,"
+SONGS OF INNOCENCE,THE LITTLE BLACK BOY,27,6,"And be like him, and he will then love me."
+SONGS OF INNOCENCE,THE BLOSSOM,0,0,"Merry, merry sparrow!"
+SONGS OF INNOCENCE,THE BLOSSOM,1,0,Under leaves so green
+SONGS OF INNOCENCE,THE BLOSSOM,2,0,A happy blossom
+SONGS OF INNOCENCE,THE BLOSSOM,3,0,"Sees you, swift as arrow,"
+SONGS OF INNOCENCE,THE BLOSSOM,4,0,"Seek your cradle narrow,"
+SONGS OF INNOCENCE,THE BLOSSOM,5,0,Near my bosom.
+SONGS OF INNOCENCE,THE BLOSSOM,6,1,"Pretty, pretty robin!"
+SONGS OF INNOCENCE,THE BLOSSOM,7,1,Under leaves so green
+SONGS OF INNOCENCE,THE BLOSSOM,8,1,A happy blossom
+SONGS OF INNOCENCE,THE BLOSSOM,9,1,"Hears you sobbing, sobbing,"
+SONGS OF INNOCENCE,THE BLOSSOM,10,1,"Pretty, pretty robin,"
+SONGS OF INNOCENCE,THE BLOSSOM,11,1,Near my bosom.
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,0,0,"When my mother died I was very young,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,1,0,And my father sold me while yet my tongue
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,2,0,Could scarcely cry ‘Weep! weep! weep! weep!’
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,3,0,"So your chimneys I sweep, and in soot I sleep."
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,4,1,"There’s little Tom Dacre, who cried when his head,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,5,1,"That curled like a lamb’s back, was shaved; so I said,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,6,1,"‘Hush, Tom! never mind it, for, when your head’s bare,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,7,1,You know that the soot cannot spoil your white hair.’
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,8,2,"And so he was quiet, and that very night,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,9,2,"As Tom was a-sleeping, he had such a sight!—"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,10,2,"That thousands of sweepers, Dick, Joe, Ned, and Jack,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,11,2,Were all of them locked up in coffins of black.
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,12,3,"And by came an angel, who had a bright key,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,13,3,"And he opened the coffins, and set them all free;"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,14,3,"Then down a green plain, leaping, laughing, they run"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,15,3,"And wash in a river, and shine in the sun."
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,16,4,"Then naked and white, all their bags left behind,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,17,4,"They rise upon clouds, and sport in the wind:"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,18,4,"And the angel told Tom, if he’d be a good boy,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,19,4,"He’d have God for his father, and never want joy."
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,20,5,"And so Tom awoke, and we rose in the dark,"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,21,5,And got with our bags and our brushes to work.
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,22,5,"Though the morning was cold, Tom was happy and warm:"
+SONGS OF INNOCENCE,THE CHIMNEY-SWEEPER,23,5,"So, if all do their duty, they need not fear harm."
+SONGS OF INNOCENCE,THE LITTLE BOY LOST,0,0,"‘Father, father, where are you going?"
+SONGS OF INNOCENCE,THE LITTLE BOY LOST,1,0,O do not walk so fast!
+SONGS OF INNOCENCE,THE LITTLE BOY LOST,2,0,"Speak, father, speak to your little boy,"
+SONGS OF INNOCENCE,THE LITTLE BOY LOST,3,0,Or else I shall be lost.’
+SONGS OF INNOCENCE,THE LITTLE BOY LOST,4,1,"The night was dark, no father was there,"
+SONGS OF INNOCENCE,THE LITTLE BOY LOST,5,1,The child was wet with dew;
+SONGS OF INNOCENCE,THE LITTLE BOY LOST,6,1,"The mire was deep, and the child did weep,"
+SONGS OF INNOCENCE,THE LITTLE BOY LOST,7,1,And away the vapour flew.
+SONGS OF INNOCENCE,THE LITTLE BOY FOUND,0,0,"The little boy lost in the lonely fen,"
+SONGS OF INNOCENCE,THE LITTLE BOY FOUND,1,0,"Led by the wandering light,"
+SONGS OF INNOCENCE,THE LITTLE BOY FOUND,2,0,"Began to cry, but God, ever nigh,"
+SONGS OF INNOCENCE,THE LITTLE BOY FOUND,3,0,"Appeared like his father, in white."
+SONGS OF INNOCENCE,THE LITTLE BOY FOUND,4,1,"He kissed the child, and by the hand led,"
+SONGS OF INNOCENCE,THE LITTLE BOY FOUND,5,1,"And to his mother brought,"
+SONGS OF INNOCENCE,THE LITTLE BOY FOUND,6,1,"Who in sorrow pale, through the lonely dale,"
+SONGS OF INNOCENCE,THE LITTLE BOY FOUND,7,1,Her little boy weeping sought.
+SONGS OF INNOCENCE,LAUGHING SONG,0,0,"When the green woods laugh with the voice of joy,"
+SONGS OF INNOCENCE,LAUGHING SONG,1,0,And the dimpling stream runs laughing by;
+SONGS OF INNOCENCE,LAUGHING SONG,2,0,"When the air does laugh with our merry wit,"
+SONGS OF INNOCENCE,LAUGHING SONG,3,0,And the green hill laughs with the noise of it;
+SONGS OF INNOCENCE,LAUGHING SONG,4,1,"When the meadows laugh with lively green,"
+SONGS OF INNOCENCE,LAUGHING SONG,5,1,And the grasshopper laughs in the merry scene;
+SONGS OF INNOCENCE,LAUGHING SONG,6,1,When Mary and Susan and Emily
+SONGS OF INNOCENCE,LAUGHING SONG,7,1,With their sweet round mouths sing ‘Ha ha he!’
+SONGS OF INNOCENCE,LAUGHING SONG,8,2,"When the painted birds laugh in the shade,"
+SONGS OF INNOCENCE,LAUGHING SONG,9,2,Where our table with cherries and nuts is spread:
+SONGS OF INNOCENCE,LAUGHING SONG,10,2,"Come live, and be merry, and join with me,"
+SONGS OF INNOCENCE,LAUGHING SONG,11,2,To sing the sweet chorus of ‘Ha ha he!’
+SONGS OF INNOCENCE,LAUGHING SONG,12,6,A CRADLE SONG
+SONGS OF INNOCENCE,LAUGHING SONG,13,8,"Sweet dreams, form a shade"
+SONGS OF INNOCENCE,LAUGHING SONG,14,8,O’er my lovely infant’s head!
+SONGS OF INNOCENCE,LAUGHING SONG,15,8,Sweet dreams of pleasant streams
+SONGS OF INNOCENCE,LAUGHING SONG,16,8,"By happy, silent, moony beams!"
+SONGS OF INNOCENCE,LAUGHING SONG,17,9,"Sweet Sleep, with soft down"
+SONGS OF INNOCENCE,LAUGHING SONG,18,9,Weave thy brows an infant crown!
+SONGS OF INNOCENCE,LAUGHING SONG,19,9,"Sweet Sleep, angel mild,"
+SONGS OF INNOCENCE,LAUGHING SONG,20,9,Hover o’er my happy child!
+SONGS OF INNOCENCE,LAUGHING SONG,21,10,"Sweet smiles, in the night"
+SONGS OF INNOCENCE,LAUGHING SONG,22,10,Hover over my delight!
+SONGS OF INNOCENCE,LAUGHING SONG,23,10,"Sweet smiles, mother’s smiles,"
+SONGS OF INNOCENCE,LAUGHING SONG,24,10,All the livelong night beguiles.
+SONGS OF INNOCENCE,LAUGHING SONG,25,11,"Sweet moans, dovelike sighs,"
+SONGS OF INNOCENCE,LAUGHING SONG,26,11,Chase not slumber from thy eyes!
+SONGS OF INNOCENCE,LAUGHING SONG,27,11,"Sweet moans, sweeter smiles,"
+SONGS OF INNOCENCE,LAUGHING SONG,28,11,All the dovelike moans beguiles.
+SONGS OF INNOCENCE,LAUGHING SONG,29,12,"Sleep, sleep, happy child!"
+SONGS OF INNOCENCE,LAUGHING SONG,30,12,All creation slept and smiled.
+SONGS OF INNOCENCE,LAUGHING SONG,31,12,"Sleep, sleep, happy sleep,"
+SONGS OF INNOCENCE,LAUGHING SONG,32,12,While o’er thee thy mother weep.
+SONGS OF INNOCENCE,LAUGHING SONG,33,13,"Sweet babe, in thy face"
+SONGS OF INNOCENCE,LAUGHING SONG,34,13,Holy image I can trace;
+SONGS OF INNOCENCE,LAUGHING SONG,35,13,"Sweet babe, once like thee"
+SONGS OF INNOCENCE,LAUGHING SONG,36,13,"Thy Maker lay, and wept for me:"
+SONGS OF INNOCENCE,LAUGHING SONG,37,14,"Wept for me, for thee, for all,"
+SONGS OF INNOCENCE,LAUGHING SONG,38,14,When He was an infant small.
+SONGS OF INNOCENCE,LAUGHING SONG,39,14,"Thou His image ever see,"
+SONGS OF INNOCENCE,LAUGHING SONG,40,14,Heavenly face that smiles on thee!
+SONGS OF INNOCENCE,LAUGHING SONG,41,15,"Smiles on thee, on me, on all,"
+SONGS OF INNOCENCE,LAUGHING SONG,42,15,Who became an infant small;
+SONGS OF INNOCENCE,LAUGHING SONG,43,15,Infant smiles are His own smiles;
+SONGS OF INNOCENCE,LAUGHING SONG,44,15,Heaven and earth to peace beguiles.
+SONGS OF INNOCENCE,THE DIVINE IMAGE,0,0,"To Mercy, Pity, Peace, and Love,"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,1,0,"All pray in their distress,"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,2,0,And to these virtues of delight
+SONGS OF INNOCENCE,THE DIVINE IMAGE,3,0,Return their thankfulness.
+SONGS OF INNOCENCE,THE DIVINE IMAGE,4,1,"For Mercy, Pity, Peace, and Love,"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,5,1,Is God our Father dear;
+SONGS OF INNOCENCE,THE DIVINE IMAGE,6,1,"And Mercy, Pity, Peace, and Love,"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,7,1,"Is man, His child and care."
+SONGS OF INNOCENCE,THE DIVINE IMAGE,8,2,For Mercy has a human heart;
+SONGS OF INNOCENCE,THE DIVINE IMAGE,9,2,"Pity, a human face;"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,10,2,"And Love, the human form divine:"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,11,2,And Peace the human dress.
+SONGS OF INNOCENCE,THE DIVINE IMAGE,12,3,"Then every man, of every clime,"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,13,3,"That prays in his distress,"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,14,3,Prays to the human form divine:
+SONGS OF INNOCENCE,THE DIVINE IMAGE,15,3,"Love, Mercy, Pity, Peace."
+SONGS OF INNOCENCE,THE DIVINE IMAGE,16,4,"And all must love the human form,"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,17,4,"In heathen, Turk, or Jew."
+SONGS OF INNOCENCE,THE DIVINE IMAGE,18,4,"Where Mercy, Love, and Pity dwell,"
+SONGS OF INNOCENCE,THE DIVINE IMAGE,19,4,There God is dwelling too.
+SONGS OF INNOCENCE,HOLY THURSDAY,0,0,"’Twas on a holy Thursday, their innocent faces clean,"
+SONGS OF INNOCENCE,HOLY THURSDAY,1,0,"The children walking two and two, in red, and blue, and green:"
+SONGS OF INNOCENCE,HOLY THURSDAY,2,0,"Grey-headed beadles walked before, with wands as white as snow,"
+SONGS OF INNOCENCE,HOLY THURSDAY,3,0,Till into the high dome of Paul’s they like Thames waters flow.
+SONGS OF INNOCENCE,HOLY THURSDAY,4,1,"O what a multitude they seemed, these flowers of London town!"
+SONGS OF INNOCENCE,HOLY THURSDAY,5,1,"Seated in companies they sit, with radiance all their own."
+SONGS OF INNOCENCE,HOLY THURSDAY,6,1,"The hum of multitudes was there, but multitudes of lambs,"
+SONGS OF INNOCENCE,HOLY THURSDAY,7,1,Thousands of little boys and girls raising their innocent hands.
+SONGS OF INNOCENCE,HOLY THURSDAY,8,2,"Now like a mighty wind they raise to heaven the voice of song,"
+SONGS OF INNOCENCE,HOLY THURSDAY,9,2,Or like harmonious thunderings the seats of heaven among:
+SONGS OF INNOCENCE,HOLY THURSDAY,10,2,"Beneath them sit the aged men, wise guardians of the poor."
+SONGS OF INNOCENCE,HOLY THURSDAY,11,2,"Then cherish pity, lest you drive an angel from your door."
+SONGS OF INNOCENCE,NIGHT,0,0,"The sun descending in the West,"
+SONGS OF INNOCENCE,NIGHT,1,0,The evening star does shine;
+SONGS OF INNOCENCE,NIGHT,2,0,"The birds are silent in their nest,"
+SONGS OF INNOCENCE,NIGHT,3,0,And I must seek for mine.
+SONGS OF INNOCENCE,NIGHT,4,0,"The moon, like a flower"
+SONGS OF INNOCENCE,NIGHT,5,0,"In heaven’s high bower,"
+SONGS OF INNOCENCE,NIGHT,6,0,"With silent delight,"
+SONGS OF INNOCENCE,NIGHT,7,0,Sits and smiles on the night.
+SONGS OF INNOCENCE,NIGHT,8,1,"Farewell, green fields and happy groves,"
+SONGS OF INNOCENCE,NIGHT,9,1,"Where flocks have took delight,"
+SONGS OF INNOCENCE,NIGHT,10,1,"Where lambs have nibbled, silent moves"
+SONGS OF INNOCENCE,NIGHT,11,1,The feet of angels bright;
+SONGS OF INNOCENCE,NIGHT,12,1,"Unseen, they pour blessing,"
+SONGS OF INNOCENCE,NIGHT,13,1,"And joy without ceasing,"
+SONGS OF INNOCENCE,NIGHT,14,1,"On each bud and blossom,"
+SONGS OF INNOCENCE,NIGHT,15,1,And each sleeping bosom.
+SONGS OF INNOCENCE,NIGHT,16,2,They look in every thoughtless nest
+SONGS OF INNOCENCE,NIGHT,17,2,Where birds are covered warm;
+SONGS OF INNOCENCE,NIGHT,18,2,"They visit caves of every beast,"
+SONGS OF INNOCENCE,NIGHT,19,2,To keep them all from harm:
+SONGS OF INNOCENCE,NIGHT,20,2,If they see any weeping
+SONGS OF INNOCENCE,NIGHT,21,2,"That should have been sleeping,"
+SONGS OF INNOCENCE,NIGHT,22,2,"They pour sleep on their head,"
+SONGS OF INNOCENCE,NIGHT,23,2,And sit down by their bed.
+SONGS OF INNOCENCE,NIGHT,24,3,"When wolves and tigers howl for prey,"
+SONGS OF INNOCENCE,NIGHT,25,3,They pitying stand and weep;
+SONGS OF INNOCENCE,NIGHT,26,3,"Seeking to drive their thirst away,"
+SONGS OF INNOCENCE,NIGHT,27,3,And keep them from the sheep.
+SONGS OF INNOCENCE,NIGHT,28,3,"But, if they rush dreadful,"
+SONGS OF INNOCENCE,NIGHT,29,3,"The angels, most heedful,"
+SONGS OF INNOCENCE,NIGHT,30,3,"Receive each mild spirit,"
+SONGS OF INNOCENCE,NIGHT,31,3,New worlds to inherit.
+SONGS OF INNOCENCE,NIGHT,32,4,And there the lion’s ruddy eyes
+SONGS OF INNOCENCE,NIGHT,33,4,Shall flow with tears of gold:
+SONGS OF INNOCENCE,NIGHT,34,4,"And pitying the tender cries,"
+SONGS OF INNOCENCE,NIGHT,35,4,And walking round the fold:
+SONGS OF INNOCENCE,NIGHT,36,4,"Saying: ‘Wrath by His meekness,"
+SONGS OF INNOCENCE,NIGHT,37,4,"And, by His health, sickness,"
+SONGS OF INNOCENCE,NIGHT,38,4,Is driven away
+SONGS OF INNOCENCE,NIGHT,39,4,From our immortal day.
+SONGS OF INNOCENCE,NIGHT,40,5,"‘And now beside thee, bleating lamb,"
+SONGS OF INNOCENCE,NIGHT,41,5,"I can lie down and sleep,"
+SONGS OF INNOCENCE,NIGHT,42,5,"Or think on Him who bore thy name,"
+SONGS OF INNOCENCE,NIGHT,43,5,"Graze after thee, and weep."
+SONGS OF INNOCENCE,NIGHT,44,5,"For, washed in life’s river,"
+SONGS OF INNOCENCE,NIGHT,45,5,My bright mane for ever
+SONGS OF INNOCENCE,NIGHT,46,5,"Shall shine like the gold,"
+SONGS OF INNOCENCE,NIGHT,47,5,As I guard o’er the fold.
+SONGS OF INNOCENCE,SPRING,0,0,Sound the flute!
+SONGS OF INNOCENCE,SPRING,1,0,Now it’s mute!
+SONGS OF INNOCENCE,SPRING,2,0,"Birds delight,"
+SONGS OF INNOCENCE,SPRING,3,0,"Day and night,"
+SONGS OF INNOCENCE,SPRING,4,0,"Nightingale,"
+SONGS OF INNOCENCE,SPRING,5,0,"In the dale,"
+SONGS OF INNOCENCE,SPRING,6,0,"Lark in sky,—"
+SONGS OF INNOCENCE,SPRING,7,0,"Merrily,"
+SONGS OF INNOCENCE,SPRING,8,0,"Merrily, merrily to welcome in the year."
+SONGS OF INNOCENCE,SPRING,9,1,"Little boy,"
+SONGS OF INNOCENCE,SPRING,10,1,Full of joy;
+SONGS OF INNOCENCE,SPRING,11,1,"Little girl,"
+SONGS OF INNOCENCE,SPRING,12,1,Sweet and small;
+SONGS OF INNOCENCE,SPRING,13,1,"Cock does crow,"
+SONGS OF INNOCENCE,SPRING,14,1,So do you;
+SONGS OF INNOCENCE,SPRING,15,1,"Merry voice,"
+SONGS OF INNOCENCE,SPRING,16,1,Infant noise;
+SONGS OF INNOCENCE,SPRING,17,1,"Merrily, merrily to welcome in the year."
+SONGS OF INNOCENCE,SPRING,18,2,"Little lamb,"
+SONGS OF INNOCENCE,SPRING,19,2,Here I am;
+SONGS OF INNOCENCE,SPRING,20,2,Come and lick
+SONGS OF INNOCENCE,SPRING,21,2,My white neck;
+SONGS OF INNOCENCE,SPRING,22,2,Let me pull
+SONGS OF INNOCENCE,SPRING,23,2,Your soft wool;
+SONGS OF INNOCENCE,SPRING,24,2,Let me kiss
+SONGS OF INNOCENCE,SPRING,25,2,Your soft face;
+SONGS OF INNOCENCE,SPRING,26,2,"Merrily, merrily we welcome in the year."
+SONGS OF INNOCENCE,NURSE’S SONG,0,0,"When voices of children are heard on the green,"
+SONGS OF INNOCENCE,NURSE’S SONG,1,0,"And laughing is heard on the hill,"
+SONGS OF INNOCENCE,NURSE’S SONG,2,0,"My heart is at rest within my breast,"
+SONGS OF INNOCENCE,NURSE’S SONG,3,0,And everything else is still.
+SONGS OF INNOCENCE,NURSE’S SONG,4,1,"‘Then come home, my children, the sun is gone down,"
+SONGS OF INNOCENCE,NURSE’S SONG,5,1,And the dews of night arise;
+SONGS OF INNOCENCE,NURSE’S SONG,6,1,"Come, come, leave off play, and let us away,"
+SONGS OF INNOCENCE,NURSE’S SONG,7,1,Till the morning appears in the skies.’
+SONGS OF INNOCENCE,NURSE’S SONG,8,2,"‘No, no, let us play, for it is yet day,"
+SONGS OF INNOCENCE,NURSE’S SONG,9,2,And we cannot go to sleep;
+SONGS OF INNOCENCE,NURSE’S SONG,10,2,"Besides, in the sky the little birds fly,"
+SONGS OF INNOCENCE,NURSE’S SONG,11,2,And the hills are all covered with sheep.’
+SONGS OF INNOCENCE,NURSE’S SONG,12,3,"‘Well, well, go and play till the light fades away,"
+SONGS OF INNOCENCE,NURSE’S SONG,13,3,And then go home to bed.’
+SONGS OF INNOCENCE,NURSE’S SONG,14,3,"The little ones leaped, and shouted, and laughed,"
+SONGS OF INNOCENCE,NURSE’S SONG,15,3,And all the hills echoèd.
+SONGS OF INNOCENCE,INFANT JOY,0,0,‘I have no name;
+SONGS OF INNOCENCE,INFANT JOY,1,0,I am but two days old.’
+SONGS OF INNOCENCE,INFANT JOY,2,0,What shall I call thee?
+SONGS OF INNOCENCE,INFANT JOY,3,0,"‘I happy am,"
+SONGS OF INNOCENCE,INFANT JOY,4,0,Joy is my name.’
+SONGS OF INNOCENCE,INFANT JOY,5,0,Sweet joy befall thee!
+SONGS OF INNOCENCE,INFANT JOY,6,1,Pretty joy!
+SONGS OF INNOCENCE,INFANT JOY,7,1,"Sweet joy, but two days old."
+SONGS OF INNOCENCE,INFANT JOY,8,1,Sweet joy I call thee:
+SONGS OF INNOCENCE,INFANT JOY,9,1,"Thou dost smile,"
+SONGS OF INNOCENCE,INFANT JOY,10,1,I sing the while;
+SONGS OF INNOCENCE,INFANT JOY,11,1,Sweet joy befall thee!
+SONGS OF INNOCENCE,INFANT JOY,12,5,A DREAM
+SONGS OF INNOCENCE,INFANT JOY,13,7,Once a dream did weave a shade
+SONGS OF INNOCENCE,INFANT JOY,14,7,"O’er my angel-guarded bed,"
+SONGS OF INNOCENCE,INFANT JOY,15,7,That an emmet lost its way
+SONGS OF INNOCENCE,INFANT JOY,16,7,Where on grass methought I lay.
+SONGS OF INNOCENCE,INFANT JOY,17,8,"Troubled, wildered, and forlorn,"
+SONGS OF INNOCENCE,INFANT JOY,18,8,"Dark, benighted, travel-worn,"
+SONGS OF INNOCENCE,INFANT JOY,19,8,"Over many a tangled spray,"
+SONGS OF INNOCENCE,INFANT JOY,20,8,"All heart-broke, I heard her say:"
+SONGS OF INNOCENCE,INFANT JOY,21,9,"‘O my children! do they cry,"
+SONGS OF INNOCENCE,INFANT JOY,22,9,Do they hear their father sigh?
+SONGS OF INNOCENCE,INFANT JOY,23,9,"Now they look abroad to see,"
+SONGS OF INNOCENCE,INFANT JOY,24,9,Now return and weep for me.’
+SONGS OF INNOCENCE,INFANT JOY,25,10,"Pitying, I dropped a tear:"
+SONGS OF INNOCENCE,INFANT JOY,26,10,"But I saw a glow-worm near,"
+SONGS OF INNOCENCE,INFANT JOY,27,10,"Who replied, ‘What wailing wight"
+SONGS OF INNOCENCE,INFANT JOY,28,10,Calls the watchman of the night?’
+SONGS OF INNOCENCE,INFANT JOY,29,11,"‘I am set to light the ground,"
+SONGS OF INNOCENCE,INFANT JOY,30,11,While the beetle goes his round:
+SONGS OF INNOCENCE,INFANT JOY,31,11,Follow now the beetle’s hum;
+SONGS OF INNOCENCE,INFANT JOY,32,11,"Little wanderer, hie thee home!’"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,0,0,"Can I see another’s woe,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,1,0,And not be in sorrow too?
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,2,0,"Can I see another’s grief,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,3,0,And not seek for kind relief?
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,4,1,"Can I see a falling tear,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,5,1,And not feel my sorrow’s share?
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,6,1,Can a father see his child
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,7,1,"Weep, nor be with sorrow filled?"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,8,2,Can a mother sit and hear
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,9,2,"An infant groan, an infant fear?"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,10,2,"No, no! never can it be!"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,11,2,"Never, never can it be!"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,12,3,And can He who smiles on all
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,13,3,"Hear the wren with sorrows small,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,14,3,"Hear the small bird’s grief and care,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,15,3,Hear the woes that infants bear—
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,16,4,"And not sit beside the nest,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,17,4,"Pouring pity in their breast,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,18,4,"And not sit the cradle near,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,19,4,Weeping tear on infant’s tear?
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,20,5,"And not sit both night and day,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,21,5,Wiping all our tears away?
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,22,5,O no! never can it be!
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,23,5,"Never, never can it be!"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,24,6,He doth give His joy to all:
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,25,6,"He becomes an infant small,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,26,6,"He becomes a man of woe,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,27,6,He doth feel the sorrow too.
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,28,7,"Think not thou canst sigh a sigh,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,29,7,And thy Maker is not by:
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,30,7,"Think not thou canst weep a tear,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,31,7,And thy Maker is not near.
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,32,8,"O He gives to us His joy,"
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,33,8,That our grief He may destroy:
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,34,8,Till our grief is fled and gone
+SONGS OF INNOCENCE,ON ANOTHER’S SORROW,35,8,He doth sit by us and moan.
+SONGS OF EXPERIENCE,INTRODUCTION,0,0,"Hear the voice of the Bard,"
+SONGS OF EXPERIENCE,INTRODUCTION,1,0,"Who present, past, and future, sees;"
+SONGS OF EXPERIENCE,INTRODUCTION,2,0,Whose ears have heard
+SONGS OF EXPERIENCE,INTRODUCTION,3,0,The Holy Word
+SONGS OF EXPERIENCE,INTRODUCTION,4,0,That walked among the ancient trees;
+SONGS OF EXPERIENCE,INTRODUCTION,5,1,"Calling the lapséd soul,"
+SONGS OF EXPERIENCE,INTRODUCTION,6,1,And weeping in the evening dew;
+SONGS OF EXPERIENCE,INTRODUCTION,7,1,That might control
+SONGS OF EXPERIENCE,INTRODUCTION,8,1,"The starry pole,"
+SONGS OF EXPERIENCE,INTRODUCTION,9,1,"And fallen, fallen light renew!"
+SONGS OF EXPERIENCE,INTRODUCTION,10,2,"‘O Earth, O Earth, return!"
+SONGS OF EXPERIENCE,INTRODUCTION,11,2,Arise from out the dewy grass!
+SONGS OF EXPERIENCE,INTRODUCTION,12,2,"Night is worn,"
+SONGS OF EXPERIENCE,INTRODUCTION,13,2,And the morn
+SONGS OF EXPERIENCE,INTRODUCTION,14,2,Rises from the slumbrous mass.
+SONGS OF EXPERIENCE,INTRODUCTION,15,3,‘Turn away no more;
+SONGS OF EXPERIENCE,INTRODUCTION,16,3,Why wilt thou turn away?
+SONGS OF EXPERIENCE,INTRODUCTION,17,3,"The starry floor,"
+SONGS OF EXPERIENCE,INTRODUCTION,18,3,"The watery shore,"
+SONGS OF EXPERIENCE,INTRODUCTION,19,3,Is given thee till the break of day.’
+SONGS OF EXPERIENCE,EARTH’S ANSWER,0,0,Earth raised up her head
+SONGS OF EXPERIENCE,EARTH’S ANSWER,1,0,"From the darkness dread and drear,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,2,0,"Her light fled,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,3,0,"Stony, dread,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,4,0,And her locks covered with grey despair.
+SONGS OF EXPERIENCE,EARTH’S ANSWER,5,1,"‘Prisoned on watery shore,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,6,1,Starry jealousy does keep my den
+SONGS OF EXPERIENCE,EARTH’S ANSWER,7,1,Cold and hoar;
+SONGS OF EXPERIENCE,EARTH’S ANSWER,8,1,"Weeping o’er,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,9,1,I hear the father of the ancient men.
+SONGS OF EXPERIENCE,EARTH’S ANSWER,10,2,‘Selfish father of men!
+SONGS OF EXPERIENCE,EARTH’S ANSWER,11,2,"Cruel, jealous, selfish fear!"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,12,2,"Can delight,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,13,2,"Chained in night,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,14,2,The virgins of youth and morning bear.
+SONGS OF EXPERIENCE,EARTH’S ANSWER,15,3,"‘Does spring hide its joy,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,16,3,When buds and blossoms grow?
+SONGS OF EXPERIENCE,EARTH’S ANSWER,17,3,Does the sower
+SONGS OF EXPERIENCE,EARTH’S ANSWER,18,3,"Sow by night,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,19,3,Or the ploughman in darkness plough?
+SONGS OF EXPERIENCE,EARTH’S ANSWER,20,4,"‘Break this heavy chain,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,21,4,That does freeze my bones around!
+SONGS OF EXPERIENCE,EARTH’S ANSWER,22,4,"Selfish, vain,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,23,4,"Eternal bane,"
+SONGS OF EXPERIENCE,EARTH’S ANSWER,24,4,That free love with bondage bound.’
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,0,0,"‘Love seeketh not itself to please,"
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,1,0,"Nor for itself hath any care,"
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,2,0,"But for another gives its ease,"
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,3,0,And builds a heaven in hell’s despair.’
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,4,1,"So sung a little clod of clay,"
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,5,1,"Trodden with the cattle’s feet,"
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,6,1,But a pebble of the brook
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,7,1,Warbled out these metres meet:
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,8,2,"‘Love seeketh only Self to please,"
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,9,2,"To bind another to its delight,"
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,10,2,"Joys in another’s loss of ease,"
+SONGS OF EXPERIENCE,THE CLOD AND THE PEBBLE,11,2,And builds a hell in heaven’s despite.’
+SONGS OF EXPERIENCE,HOLY THURSDAY,0,0,Is this a holy thing to see
+SONGS OF EXPERIENCE,HOLY THURSDAY,1,0,"In a rich and fruitful land,—"
+SONGS OF EXPERIENCE,HOLY THURSDAY,2,0,"Babes reduced to misery,"
+SONGS OF EXPERIENCE,HOLY THURSDAY,3,0,Fed with cold and usurous hand?
+SONGS OF EXPERIENCE,HOLY THURSDAY,4,1,Is that trembling cry a song?
+SONGS OF EXPERIENCE,HOLY THURSDAY,5,1,Can it be a song of joy?
+SONGS OF EXPERIENCE,HOLY THURSDAY,6,1,And so many children poor?
+SONGS OF EXPERIENCE,HOLY THURSDAY,7,1,It is a land of poverty!
+SONGS OF EXPERIENCE,HOLY THURSDAY,8,2,"And their sun does never shine,"
+SONGS OF EXPERIENCE,HOLY THURSDAY,9,2,"And their fields are bleak and bare,"
+SONGS OF EXPERIENCE,HOLY THURSDAY,10,2,"And their ways are filled with thorns,"
+SONGS OF EXPERIENCE,HOLY THURSDAY,11,2,It is eternal winter there.
+SONGS OF EXPERIENCE,HOLY THURSDAY,12,3,"For where’er the sun does shine,"
+SONGS OF EXPERIENCE,HOLY THURSDAY,13,3,"And where’er the rain does fall,"
+SONGS OF EXPERIENCE,HOLY THURSDAY,14,3,"Babe can never hunger there,"
+SONGS OF EXPERIENCE,HOLY THURSDAY,15,3,Nor poverty the mind appal.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,0,0,In futurity
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,1,0,I prophesy
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,2,0,That the earth from sleep
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,3,0,(Grave the sentence deep)
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,4,1,"Shall arise, and seek"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,5,1,For her Maker meek;
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,6,1,And the desert wild
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,7,1,Become a garden mild.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,8,2,"In the southern clime,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,9,2,Where the summer’s prime
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,10,2,"Never fades away,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,11,2,Lovely Lyca lay.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,12,3,Seven summers old
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,13,3,Lovely Lyca told.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,14,3,"She had wandered long,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,15,3,Hearing wild birds’ song.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,16,4,"‘Sweet sleep, come to me,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,17,4,Underneath this tree;
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,18,4,"Do father, mother, weep?"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,19,4,Where can Lyca sleep?
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,20,5,‘Lost in desert wild
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,21,5,Is your little child.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,22,5,How can Lyca sleep
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,23,5,If her mother weep?
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,24,6,"‘If her heart does ache,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,25,6,Then let Lyca wake;
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,26,6,"If my mother sleep,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,27,6,Lyca shall not weep.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,28,7,"‘Frowning, frowning night,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,29,7,O’er this desert bright
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,30,7,"Let thy moon arise,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,31,7,While I close my eyes.’
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,32,8,"Sleeping Lyca lay,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,33,8,"While the beasts of prey,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,34,8,"Come from caverns deep,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,35,8,Viewed the maid asleep.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,36,9,"The kingly lion stood,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,37,9,And the virgin viewed:
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,38,9,Then he gambolled round
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,39,9,O’er the hallowed ground.
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,40,10,"Leopards, tigers, play"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,41,10,Round her as she lay;
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,42,10,While the lion old
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,43,10,"Bowed his mane of gold,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,44,11,"And her bosom lick,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,45,11,"And upon her neck,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,46,11,"From his eyes of flame,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,47,11,Ruby tears there came;
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,48,12,While the lioness
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,49,12,"Loosed her slender dress,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,50,12,And naked they conveyed
+SONGS OF EXPERIENCE,THE LITTLE GIRL LOST,51,12,To caves the sleeping maid.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,0,0,All the night in woe
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,1,0,Lyca’s parents go
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,2,0,"Over valleys deep,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,3,0,While the deserts weep.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,4,1,"Tired and woe-begone,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,5,1,"Hoarse with making moan,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,6,1,"Arm in arm, seven days"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,7,1,They traced the desert ways.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,8,2,Seven nights they sleep
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,9,2,"Among shadows deep,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,10,2,And dream they see their child
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,11,2,Starved in desert wild.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,12,3,Pale through pathless ways
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,13,3,"The fancied image strays,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,14,3,"Famished, weeping, weak,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,15,3,With hollow piteous shriek.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,16,4,"Rising from unrest,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,17,4,The trembling woman pressed
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,18,4,With feet of weary woe;
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,19,4,She could no further go.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,20,5,In his arms he bore
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,21,5,"Her, armed with sorrow sore;"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,22,5,Till before their way
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,23,5,A couching lion lay.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,24,6,Turning back was vain:
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,25,6,Soon his heavy mane
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,26,6,"Bore them to the ground,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,27,6,"Then he stalked around,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,28,7,Smelling to his prey;
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,29,7,But their fears allay
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,30,7,"When he licks their hands,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,31,7,And silent by them stands.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,32,8,"They look upon his eyes,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,33,8,Filled with deep surprise;
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,34,8,And wondering behold
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,35,8,A spirit armed in gold.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,36,9,"On his head a crown,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,37,9,On his shoulders down
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,38,9,Flowed his golden hair.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,39,9,Gone was all their care.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,40,10,"‘Follow me,’ he said;"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,41,10,‘Weep not for the maid;
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,42,10,"In my palace deep,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,43,10,Lyca lies asleep.’
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,44,11,Then they followèd
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,45,11,"Where the vision led,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,46,11,And saw their sleeping child
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,47,11,Among tigers wild.
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,48,12,To this day they dwell
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,49,12,"In a lonely dell,"
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,50,12,Nor fear the wolvish howl
+SONGS OF EXPERIENCE,THE LITTLE GIRL FOUND,51,12,Nor the lion’s growl.
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,0,0,"A little black thing among the snow,"
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,1,0,Crying! ‘weep! weep!’ in notes of woe!
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,2,0,‘Where are thy father and mother? Say!’—
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,3,0,‘They are both gone up to the church to pray.
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,4,1,"‘Because I was happy upon the heath,"
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,5,1,"And smiled among the winter’s snow,"
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,6,1,"They clothed me in the clothes of death,"
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,7,1,And taught me to sing the notes of woe.
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,8,2,"‘And because I am happy and dance and sing,"
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,9,2,"They think they have done me no injury,"
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,10,2,"And are gone to praise God and His priest and king,"
+SONGS OF EXPERIENCE,THE CHIMNEY-SWEEPER,11,2,Who made up a heaven of our misery.’
+SONGS OF EXPERIENCE,NURSE’S SONG,0,0,"When the voices of children are heard on the green,"
+SONGS OF EXPERIENCE,NURSE’S SONG,1,0,"And whisperings are in the dale,"
+SONGS OF EXPERIENCE,NURSE’S SONG,2,0,"The days of my youth rise fresh in my mind,"
+SONGS OF EXPERIENCE,NURSE’S SONG,3,0,My face turns green and pale.
+SONGS OF EXPERIENCE,NURSE’S SONG,4,1,"Then come home, my children, the sun is gone down,"
+SONGS OF EXPERIENCE,NURSE’S SONG,5,1,And the dews of night arise;
+SONGS OF EXPERIENCE,NURSE’S SONG,6,1,"Your spring and your day are wasted in play,"
+SONGS OF EXPERIENCE,NURSE’S SONG,7,1,And your winter and night in disguise.
+SONGS OF EXPERIENCE,THE SICK ROSE,0,0,"O rose, thou art sick!"
+SONGS OF EXPERIENCE,THE SICK ROSE,1,0,"The invisible worm,"
+SONGS OF EXPERIENCE,THE SICK ROSE,2,0,"That flies in the night,"
+SONGS OF EXPERIENCE,THE SICK ROSE,3,0,"In the howling storm,"
+SONGS OF EXPERIENCE,THE SICK ROSE,4,1,Has found out thy bed
+SONGS OF EXPERIENCE,THE SICK ROSE,5,1,"Of crimson joy,"
+SONGS OF EXPERIENCE,THE SICK ROSE,6,1,And his dark secret love
+SONGS OF EXPERIENCE,THE SICK ROSE,7,1,Does thy life destroy.
+SONGS OF EXPERIENCE,THE FLY,0,0,"Little Fly,"
+SONGS OF EXPERIENCE,THE FLY,1,0,Thy summer’s play
+SONGS OF EXPERIENCE,THE FLY,2,0,My thoughtless hand
+SONGS OF EXPERIENCE,THE FLY,3,0,Has brushed away.
+SONGS OF EXPERIENCE,THE FLY,4,1,Am not I
+SONGS OF EXPERIENCE,THE FLY,5,1,A fly like thee?
+SONGS OF EXPERIENCE,THE FLY,6,1,Or art not thou
+SONGS OF EXPERIENCE,THE FLY,7,1,A man like me?
+SONGS OF EXPERIENCE,THE FLY,8,2,"For I dance,"
+SONGS OF EXPERIENCE,THE FLY,9,2,"And drink, and sing,"
+SONGS OF EXPERIENCE,THE FLY,10,2,Till some blind hand
+SONGS OF EXPERIENCE,THE FLY,11,2,Shall brush my wing.
+SONGS OF EXPERIENCE,THE FLY,12,3,If thought is life
+SONGS OF EXPERIENCE,THE FLY,13,3,"And strength and breath,"
+SONGS OF EXPERIENCE,THE FLY,14,3,And the want
+SONGS OF EXPERIENCE,THE FLY,15,3,Of thought is death;
+SONGS OF EXPERIENCE,THE FLY,16,4,Then am I
+SONGS OF EXPERIENCE,THE FLY,17,4,A happy fly.
+SONGS OF EXPERIENCE,THE FLY,18,4,"If I live,"
+SONGS OF EXPERIENCE,THE FLY,19,4,Or if I die.
+SONGS OF EXPERIENCE,THE ANGEL,0,0,I dreamt a dream!  What can it mean?
+SONGS OF EXPERIENCE,THE ANGEL,1,0,And that I was a maiden Queen
+SONGS OF EXPERIENCE,THE ANGEL,2,0,Guarded by an Angel mild:
+SONGS OF EXPERIENCE,THE ANGEL,3,0,Witless woe was ne’er beguiled!
+SONGS OF EXPERIENCE,THE ANGEL,4,1,"And I wept both night and day,"
+SONGS OF EXPERIENCE,THE ANGEL,5,1,And he wiped my tears away;
+SONGS OF EXPERIENCE,THE ANGEL,6,1,"And I wept both day and night,"
+SONGS OF EXPERIENCE,THE ANGEL,7,1,And hid from him my heart’s delight.
+SONGS OF EXPERIENCE,THE ANGEL,8,2,"So he took his wings, and fled;"
+SONGS OF EXPERIENCE,THE ANGEL,9,2,Then the morn blushed rosy red.
+SONGS OF EXPERIENCE,THE ANGEL,10,2,"I dried my tears, and armed my fears"
+SONGS OF EXPERIENCE,THE ANGEL,11,2,With ten thousand shields and spears.
+SONGS OF EXPERIENCE,THE ANGEL,12,3,Soon my Angel came again;
+SONGS OF EXPERIENCE,THE ANGEL,13,3,"I was armed, he came in vain;"
+SONGS OF EXPERIENCE,THE ANGEL,14,3,"For the time of youth was fled,"
+SONGS OF EXPERIENCE,THE ANGEL,15,3,And grey hairs were on my head.
+SONGS OF EXPERIENCE,THE TIGER,0,0,"Tiger, tiger, burning bright"
+SONGS OF EXPERIENCE,THE TIGER,1,0,"In the forests of the night,"
+SONGS OF EXPERIENCE,THE TIGER,2,0,What immortal hand or eye
+SONGS OF EXPERIENCE,THE TIGER,3,0,Could frame thy fearful symmetry?
+SONGS OF EXPERIENCE,THE TIGER,4,1,In what distant deeps or skies
+SONGS OF EXPERIENCE,THE TIGER,5,1,Burnt the fire of thine eyes?
+SONGS OF EXPERIENCE,THE TIGER,6,1,On what wings dare he aspire?
+SONGS OF EXPERIENCE,THE TIGER,7,1,What the hand dare seize the fire?
+SONGS OF EXPERIENCE,THE TIGER,8,2,And what shoulder and what art
+SONGS OF EXPERIENCE,THE TIGER,9,2,Could twist the sinews of thy heart?
+SONGS OF EXPERIENCE,THE TIGER,10,2,"And, when thy heart began to beat,"
+SONGS OF EXPERIENCE,THE TIGER,11,2,What dread hand and what dread feet?
+SONGS OF EXPERIENCE,THE TIGER,12,3,What the hammer? what the chain?
+SONGS OF EXPERIENCE,THE TIGER,13,3,In what furnace was thy brain?
+SONGS OF EXPERIENCE,THE TIGER,14,3,What the anvil? what dread grasp
+SONGS OF EXPERIENCE,THE TIGER,15,3,Dare its deadly terrors clasp?
+SONGS OF EXPERIENCE,THE TIGER,16,4,"When the stars threw down their spears,"
+SONGS OF EXPERIENCE,THE TIGER,17,4,"And watered heaven with their tears,"
+SONGS OF EXPERIENCE,THE TIGER,18,4,Did He smile His work to see?
+SONGS OF EXPERIENCE,THE TIGER,19,4,Did He who made the lamb make thee?
+SONGS OF EXPERIENCE,THE TIGER,20,5,"Tiger, tiger, burning bright"
+SONGS OF EXPERIENCE,THE TIGER,21,5,"In the forests of the night,"
+SONGS OF EXPERIENCE,THE TIGER,22,5,What immortal hand or eye
+SONGS OF EXPERIENCE,THE TIGER,23,5,Dare frame thy fearful symmetry?
+SONGS OF EXPERIENCE,MY PRETTY ROSE TREE,0,0,"A flower was offered to me,"
+SONGS OF EXPERIENCE,MY PRETTY ROSE TREE,1,0,Such a flower as May never bore;
+SONGS OF EXPERIENCE,MY PRETTY ROSE TREE,2,0,"But I said, ‘I’ve a pretty rose tree,’"
+SONGS OF EXPERIENCE,MY PRETTY ROSE TREE,3,0,And I passed the sweet flower o’er.
+SONGS OF EXPERIENCE,MY PRETTY ROSE TREE,4,1,"Then I went to my pretty rose tree,"
+SONGS OF EXPERIENCE,MY PRETTY ROSE TREE,5,1,To tend her by day and by night;
+SONGS OF EXPERIENCE,MY PRETTY ROSE TREE,6,1,"But my rose turned away with jealousy,"
+SONGS OF EXPERIENCE,MY PRETTY ROSE TREE,7,1,And her thorns were my only delight.
+SONGS OF EXPERIENCE,"AH, SUNFLOWER",0,0,"Ah, sunflower, weary of time,"
+SONGS OF EXPERIENCE,"AH, SUNFLOWER",1,0,Who countest the steps of the sun;
+SONGS OF EXPERIENCE,"AH, SUNFLOWER",2,0,Seeking after that sweet golden clime
+SONGS OF EXPERIENCE,"AH, SUNFLOWER",3,0,Where the traveller’s journey is done;
+SONGS OF EXPERIENCE,"AH, SUNFLOWER",4,1,"Where the Youth pined away with desire,"
+SONGS OF EXPERIENCE,"AH, SUNFLOWER",5,1,"And the pale virgin shrouded in snow,"
+SONGS OF EXPERIENCE,"AH, SUNFLOWER",6,1,"Arise from their graves, and aspire"
+SONGS OF EXPERIENCE,"AH, SUNFLOWER",7,1,Where my Sunflower wishes to go!
+SONGS OF EXPERIENCE,THE LILY,0,0,"The modest Rose puts forth a thorn,"
+SONGS OF EXPERIENCE,THE LILY,1,0,The humble sheep a threat’ning horn:
+SONGS OF EXPERIENCE,THE LILY,2,0,"While the Lily white shall in love delight,"
+SONGS OF EXPERIENCE,THE LILY,3,0,Nor a thorn nor a threat stain her beauty bright.
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,0,0,"I went to the Garden of Love,"
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,1,0,And saw what I never had seen;
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,2,0,"A Chapel was built in the midst,"
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,3,0,Where I used to play on the green.
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,4,1,"And the gates of this Chapel were shut,"
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,5,1,And ‘Thou shalt not’ writ over the door;
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,6,1,So I turned to the Garden of Love
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,7,1,That so many sweet flowers bore.
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,8,2,"And I saw it was filled with graves,"
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,9,2,And tombstones where flowers should be;
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,10,2,"And priests in black gowns were walking their rounds,"
+SONGS OF EXPERIENCE,THE GARDEN OF LOVE,11,2,And binding with briars my joys and desires.
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,0,0,"Dear mother, dear mother, the Church is cold;"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,1,0,"But the Alehouse is healthy, and pleasant, and warm."
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,2,0,"Besides, I can tell where I am used well;"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,3,0,Such usage in heaven will never do well.
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,4,1,"But, if at the Church they would give us some ale,"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,5,1,"And a pleasant fire our souls to regale,"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,6,1,"We’d sing and we’d pray all the livelong day,"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,7,1,Nor ever once wish from the Church to stray.
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,8,2,"Then the Parson might preach, and drink, and sing,"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,9,2,And we’d be as happy as birds in the spring;
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,10,2,"And modest Dame Lurch, who is always at church,"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,11,2,"Would not have bandy children, nor fasting, nor birch."
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,12,3,"And God, like a father, rejoicing to see"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,13,3,"His children as pleasant and happy as He,"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,14,3,"Would have no more quarrel with the Devil or the barrel,"
+SONGS OF EXPERIENCE,THE LITTLE VAGABOND,15,3,"But kiss him, and give him both drink and apparel."
+SONGS OF EXPERIENCE,LONDON,0,0,"I wander through each chartered street,"
+SONGS OF EXPERIENCE,LONDON,1,0,"Near where the chartered Thames does flow,"
+SONGS OF EXPERIENCE,LONDON,2,0,"A mark in every face I meet,"
+SONGS OF EXPERIENCE,LONDON,3,0,"Marks of weakness, marks of woe."
+SONGS OF EXPERIENCE,LONDON,4,1,"In every cry of every man,"
+SONGS OF EXPERIENCE,LONDON,5,1,"In every infant’s cry of fear,"
+SONGS OF EXPERIENCE,LONDON,6,1,"In every voice, in every ban,"
+SONGS OF EXPERIENCE,LONDON,7,1,The mind-forged manacles I hear:
+SONGS OF EXPERIENCE,LONDON,8,2,How the chimney-sweeper’s cry
+SONGS OF EXPERIENCE,LONDON,9,2,"Every blackening church appals,"
+SONGS OF EXPERIENCE,LONDON,10,2,And the hapless soldier’s sigh
+SONGS OF EXPERIENCE,LONDON,11,2,Runs in blood down palace-walls.
+SONGS OF EXPERIENCE,LONDON,12,3,"But most, through midnight streets I hear"
+SONGS OF EXPERIENCE,LONDON,13,3,How the youthful harlot’s curse
+SONGS OF EXPERIENCE,LONDON,14,3,"Blasts the new-born infant’s tear,"
+SONGS OF EXPERIENCE,LONDON,15,3,And blights with plagues the marriage hearse.
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,0,0,Pity would be no more
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,1,0,"If we did not make somebody poor,"
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,2,0,And Mercy no more could be
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,3,0,If all were as happy as we.
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,4,1,"And mutual fear brings Peace,"
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,5,1,Till the selfish loves increase;
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,6,1,"Then Cruelty knits a snare,"
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,7,1,And spreads his baits with care.
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,8,2,"He sits down with holy fears,"
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,9,2,And waters the ground with tears;
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,10,2,Then Humility takes its root
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,11,2,Underneath his foot.
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,12,3,Soon spreads the dismal shade
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,13,3,"Of Mystery over his head,"
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,14,3,And the caterpillar and fly
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,15,3,Feed on the Mystery.
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,16,4,"And it bears the fruit of Deceit,"
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,17,4,"Ruddy and sweet to eat,"
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,18,4,And the raven his nest has made
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,19,4,In its thickest shade.
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,20,5,The gods of the earth and sea
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,21,5,"Sought through nature to find this tree,"
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,22,5,But their search was all in vain:
+SONGS OF EXPERIENCE,THE HUMAN ABSTRACT,23,5,There grows one in the human Brain.
+SONGS OF EXPERIENCE,INFANT SORROW,0,0,"My mother groaned, my father wept:"
+SONGS OF EXPERIENCE,INFANT SORROW,1,0,"Into the dangerous world I leapt,"
+SONGS OF EXPERIENCE,INFANT SORROW,2,0,"Helpless, naked, piping loud,"
+SONGS OF EXPERIENCE,INFANT SORROW,3,0,Like a fiend hid in a cloud.
+SONGS OF EXPERIENCE,INFANT SORROW,4,1,"Struggling in my father’s hands,"
+SONGS OF EXPERIENCE,INFANT SORROW,5,1,"Striving against my swaddling bands,"
+SONGS OF EXPERIENCE,INFANT SORROW,6,1,"Bound and weary, I thought best"
+SONGS OF EXPERIENCE,INFANT SORROW,7,1,To sulk upon my mother’s breast.
+SONGS OF EXPERIENCE,INFANT SORROW,8,5,A POISON TREE
+SONGS OF EXPERIENCE,INFANT SORROW,9,7,I was angry with my friend:
+SONGS OF EXPERIENCE,INFANT SORROW,10,7,"I told my wrath, my wrath did end."
+SONGS OF EXPERIENCE,INFANT SORROW,11,7,I was angry with my foe:
+SONGS OF EXPERIENCE,INFANT SORROW,12,7,"I told it not, my wrath did grow."
+SONGS OF EXPERIENCE,INFANT SORROW,13,8,And I watered it in fears
+SONGS OF EXPERIENCE,INFANT SORROW,14,8,"Night and morning with my tears,"
+SONGS OF EXPERIENCE,INFANT SORROW,15,8,And I sunnèd it with smiles
+SONGS OF EXPERIENCE,INFANT SORROW,16,8,And with soft deceitful wiles.
+SONGS OF EXPERIENCE,INFANT SORROW,17,9,"And it grew both day and night,"
+SONGS OF EXPERIENCE,INFANT SORROW,18,9,"Till it bore an apple bright,"
+SONGS OF EXPERIENCE,INFANT SORROW,19,9,"And my foe beheld it shine,"
+SONGS OF EXPERIENCE,INFANT SORROW,20,9,"And he knew that it was mine,—"
+SONGS OF EXPERIENCE,INFANT SORROW,21,10,And into my garden stole
+SONGS OF EXPERIENCE,INFANT SORROW,22,10,When the night had veiled the pole;
+SONGS OF EXPERIENCE,INFANT SORROW,23,10,"In the morning, glad, I see"
+SONGS OF EXPERIENCE,INFANT SORROW,24,10,My foe outstretched beneath the tree.
+SONGS OF EXPERIENCE,INFANT SORROW,25,14,A LITTLE BOY LOST
+SONGS OF EXPERIENCE,INFANT SORROW,26,16,"‘Nought loves another as itself,"
+SONGS OF EXPERIENCE,INFANT SORROW,27,16,"Nor venerates another so,"
+SONGS OF EXPERIENCE,INFANT SORROW,28,16,Nor is it possible to thought
+SONGS OF EXPERIENCE,INFANT SORROW,29,16,A greater than itself to know.
+SONGS OF EXPERIENCE,INFANT SORROW,30,17,"‘And, father, how can I love you"
+SONGS OF EXPERIENCE,INFANT SORROW,31,17,Or any of my brothers more?
+SONGS OF EXPERIENCE,INFANT SORROW,32,17,I love you like the little bird
+SONGS OF EXPERIENCE,INFANT SORROW,33,17,That picks up crumbs around the door.’
+SONGS OF EXPERIENCE,INFANT SORROW,34,18,The Priest sat by and heard the child;
+SONGS OF EXPERIENCE,INFANT SORROW,35,18,"In trembling zeal he seized his hair,"
+SONGS OF EXPERIENCE,INFANT SORROW,36,18,"He led him by his little coat,"
+SONGS OF EXPERIENCE,INFANT SORROW,37,18,And all admired his priestly care.
+SONGS OF EXPERIENCE,INFANT SORROW,38,19,"And standing on the altar high,"
+SONGS OF EXPERIENCE,INFANT SORROW,39,19,"‘Lo, what a fiend is here!’ said he:"
+SONGS OF EXPERIENCE,INFANT SORROW,40,19,‘One who sets reason up for judge
+SONGS OF EXPERIENCE,INFANT SORROW,41,19,Of our most holy mystery.’
+SONGS OF EXPERIENCE,INFANT SORROW,42,20,"The weeping child could not be heard,"
+SONGS OF EXPERIENCE,INFANT SORROW,43,20,The weeping parents wept in vain:
+SONGS OF EXPERIENCE,INFANT SORROW,44,20,"They stripped him to his little shirt,"
+SONGS OF EXPERIENCE,INFANT SORROW,45,20,"And bound him in an iron chain,"
+SONGS OF EXPERIENCE,INFANT SORROW,46,21,And burned him in a holy place
+SONGS OF EXPERIENCE,INFANT SORROW,47,21,Where many had been burned before;
+SONGS OF EXPERIENCE,INFANT SORROW,48,21,The weeping parents wept in vain.
+SONGS OF EXPERIENCE,INFANT SORROW,49,21,Are such things done on Albion’s shore?
+SONGS OF EXPERIENCE,INFANT SORROW,50,25,A LITTLE GIRL LOST
+SONGS OF EXPERIENCE,INFANT SORROW,51,27,"Children of the future age,"
+SONGS OF EXPERIENCE,INFANT SORROW,52,27,"Reading this indignant page,"
+SONGS OF EXPERIENCE,INFANT SORROW,53,27,Know that in a former time
+SONGS OF EXPERIENCE,INFANT SORROW,54,27,"Love, sweet love, was thought a crime."
+SONGS OF EXPERIENCE,INFANT SORROW,55,28,"In the age of gold,"
+SONGS OF EXPERIENCE,INFANT SORROW,56,28,"Free from winter’s cold,"
+SONGS OF EXPERIENCE,INFANT SORROW,57,28,"Youth and maiden bright,"
+SONGS OF EXPERIENCE,INFANT SORROW,58,28,"To the holy light,"
+SONGS OF EXPERIENCE,INFANT SORROW,59,28,Naked in the sunny beams delight.
+SONGS OF EXPERIENCE,INFANT SORROW,60,29,"Once a youthful pair,"
+SONGS OF EXPERIENCE,INFANT SORROW,61,29,"Filled with softest care,"
+SONGS OF EXPERIENCE,INFANT SORROW,62,29,Met in garden bright
+SONGS OF EXPERIENCE,INFANT SORROW,63,29,Where the holy light
+SONGS OF EXPERIENCE,INFANT SORROW,64,29,Had just removed the curtains of the night.
+SONGS OF EXPERIENCE,INFANT SORROW,65,30,"There, in rising day,"
+SONGS OF EXPERIENCE,INFANT SORROW,66,30,On the grass they play;
+SONGS OF EXPERIENCE,INFANT SORROW,67,30,"Parents were afar,"
+SONGS OF EXPERIENCE,INFANT SORROW,68,30,"Strangers came not near,"
+SONGS OF EXPERIENCE,INFANT SORROW,69,30,And the maiden soon forgot her fear.
+SONGS OF EXPERIENCE,INFANT SORROW,70,31,"Tired with kisses sweet,"
+SONGS OF EXPERIENCE,INFANT SORROW,71,31,They agree to meet
+SONGS OF EXPERIENCE,INFANT SORROW,72,31,When the silent sleep
+SONGS OF EXPERIENCE,INFANT SORROW,73,31,"Waves o’er heaven’s deep,"
+SONGS OF EXPERIENCE,INFANT SORROW,74,31,And the weary tired wanderers weep.
+SONGS OF EXPERIENCE,INFANT SORROW,75,32,To her father white
+SONGS OF EXPERIENCE,INFANT SORROW,76,32,Came the maiden bright;
+SONGS OF EXPERIENCE,INFANT SORROW,77,32,"But his loving look,"
+SONGS OF EXPERIENCE,INFANT SORROW,78,32,"Like the holy book,"
+SONGS OF EXPERIENCE,INFANT SORROW,79,32,All her tender limbs with terror shook.
+SONGS OF EXPERIENCE,INFANT SORROW,80,33,"Ona, pale and weak,"
+SONGS OF EXPERIENCE,INFANT SORROW,81,33,To thy father speak!
+SONGS OF EXPERIENCE,INFANT SORROW,82,33,O the trembling fear!
+SONGS OF EXPERIENCE,INFANT SORROW,83,33,O the dismal care
+SONGS OF EXPERIENCE,INFANT SORROW,84,33,That shakes the blossoms of my hoary hair!’
+SONGS OF EXPERIENCE,INFANT SORROW,85,37,A DIVINE IMAGE
+SONGS OF EXPERIENCE,INFANT SORROW,86,39,"Cruelty has a human heart,"
+SONGS OF EXPERIENCE,INFANT SORROW,87,39,And Jealousy a human face;
+SONGS OF EXPERIENCE,INFANT SORROW,88,39,"Terror the human form divine,"
+SONGS OF EXPERIENCE,INFANT SORROW,89,39,And Secrecy the human dress.
+SONGS OF EXPERIENCE,INFANT SORROW,90,40,"The human dress is forgèd iron,"
+SONGS OF EXPERIENCE,INFANT SORROW,91,40,"The human form a fiery forge,"
+SONGS OF EXPERIENCE,INFANT SORROW,92,40,"The human face a furnace sealed,"
+SONGS OF EXPERIENCE,INFANT SORROW,93,40,The human heart its hungry gorge.
+SONGS OF EXPERIENCE,INFANT SORROW,94,44,A CRADLE SONG
+SONGS OF EXPERIENCE,INFANT SORROW,95,46,"Sleep, sleep, beauty bright,"
+SONGS OF EXPERIENCE,INFANT SORROW,96,46,Dreaming in the joys of night;
+SONGS OF EXPERIENCE,INFANT SORROW,97,46,"Sleep, sleep; in thy sleep"
+SONGS OF EXPERIENCE,INFANT SORROW,98,46,Little sorrows sit and weep.
+SONGS OF EXPERIENCE,INFANT SORROW,99,47,"Sweet babe, in thy face"
+SONGS OF EXPERIENCE,INFANT SORROW,100,47,"Soft desires I can trace,"
+SONGS OF EXPERIENCE,INFANT SORROW,101,47,"Secret joys and secret smiles,"
+SONGS OF EXPERIENCE,INFANT SORROW,102,47,Little pretty infant wiles.
+SONGS OF EXPERIENCE,INFANT SORROW,103,48,"As thy softest limbs I feel,"
+SONGS OF EXPERIENCE,INFANT SORROW,104,48,Smiles as of the morning steal
+SONGS OF EXPERIENCE,INFANT SORROW,105,48,"O’er thy cheek, and o’er thy breast"
+SONGS OF EXPERIENCE,INFANT SORROW,106,48,Where thy little heart doth rest.
+SONGS OF EXPERIENCE,INFANT SORROW,107,49,O the cunning wiles that creep
+SONGS OF EXPERIENCE,INFANT SORROW,108,49,In thy little heart asleep!
+SONGS OF EXPERIENCE,INFANT SORROW,109,49,"When thy little heart doth wake,"
+SONGS OF EXPERIENCE,INFANT SORROW,110,49,Then the dreadful light shall break.
+SONGS OF EXPERIENCE,TO TIRZAH,0,0,Whate’er is born of mortal birth
+SONGS OF EXPERIENCE,TO TIRZAH,1,0,"Must be consumèd with the earth,"
+SONGS OF EXPERIENCE,TO TIRZAH,2,0,To rise from generation free:
+SONGS OF EXPERIENCE,TO TIRZAH,3,0,Then what have I to do with thee?
+SONGS OF EXPERIENCE,TO TIRZAH,4,1,"The sexes sprung from shame and pride,"
+SONGS OF EXPERIENCE,TO TIRZAH,5,1,"Blowed in the morn, in evening died;"
+SONGS OF EXPERIENCE,TO TIRZAH,6,1,But mercy changed death into sleep;
+SONGS OF EXPERIENCE,TO TIRZAH,7,1,The sexes rose to work and weep.
+SONGS OF EXPERIENCE,TO TIRZAH,8,2,"Thou, mother of my mortal part,"
+SONGS OF EXPERIENCE,TO TIRZAH,9,2,"With cruelty didst mould my heart,"
+SONGS OF EXPERIENCE,TO TIRZAH,10,2,And with false self-deceiving tears
+SONGS OF EXPERIENCE,TO TIRZAH,11,2,"Didst blind my nostrils, eyes, and ears,"
+SONGS OF EXPERIENCE,TO TIRZAH,12,3,"Didst close my tongue in senseless clay,"
+SONGS OF EXPERIENCE,TO TIRZAH,13,3,And me to mortal life betray.
+SONGS OF EXPERIENCE,TO TIRZAH,14,3,The death of Jesus set me free:
+SONGS OF EXPERIENCE,TO TIRZAH,15,3,Then what have I to do with thee?
+SONGS OF EXPERIENCE,THE SCHOOLBOY,0,0,"I love to rise in a summer morn,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,1,0,When the birds sing on every tree;
+SONGS OF EXPERIENCE,THE SCHOOLBOY,2,0,"The distant huntsman winds his horn,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,3,0,And the skylark sings with me:
+SONGS OF EXPERIENCE,THE SCHOOLBOY,4,0,O what sweet company!
+SONGS OF EXPERIENCE,THE SCHOOLBOY,5,1,"But to go to school in a summer morn,—"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,6,1,O it drives all joy away!
+SONGS OF EXPERIENCE,THE SCHOOLBOY,7,1,"Under a cruel eye outworn,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,8,1,The little ones spend the day
+SONGS OF EXPERIENCE,THE SCHOOLBOY,9,1,In sighing and dismay.
+SONGS OF EXPERIENCE,THE SCHOOLBOY,10,2,"Ah then at times I drooping sit,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,11,2,And spend many an anxious hour;
+SONGS OF EXPERIENCE,THE SCHOOLBOY,12,2,"Nor in my book can I take delight,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,13,2,"Nor sit in learning’s bower,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,14,2,Worn through with the dreary shower.
+SONGS OF EXPERIENCE,THE SCHOOLBOY,15,3,How can the bird that is born for joy
+SONGS OF EXPERIENCE,THE SCHOOLBOY,16,3,Sit in a cage and sing?
+SONGS OF EXPERIENCE,THE SCHOOLBOY,17,3,"How can a child, when fears annoy,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,18,3,"But droop his tender wing,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,19,3,And forget his youthful spring!
+SONGS OF EXPERIENCE,THE SCHOOLBOY,20,4,"O father and mother if buds are nipped,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,21,4,And blossoms blown away;
+SONGS OF EXPERIENCE,THE SCHOOLBOY,22,4,And if the tender plants are stripped
+SONGS OF EXPERIENCE,THE SCHOOLBOY,23,4,"Of their joy in the springing day,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,24,4,"By sorrow and care’s dismay,—"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,25,5,"How shall the summer arise in joy,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,26,5,Or the summer fruits appear?
+SONGS OF EXPERIENCE,THE SCHOOLBOY,27,5,"Or how shall we gather what griefs destroy,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,28,5,"Or bless the mellowing year,"
+SONGS OF EXPERIENCE,THE SCHOOLBOY,29,5,When the blasts of winter appear?
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,0,0,Youth of delight! come hither
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,1,0,"And see the opening morn,"
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,2,0,Image of Truth new-born.
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,3,0,"Doubt is fled, and clouds of reason,"
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,4,0,Dark disputes and artful teazing.
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,5,0,Folly is an endless maze;
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,6,0,Tangled roots perplex her ways;
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,7,0,How many have fallen there!
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,8,0,They stumble all night over bones of the dead;
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,9,0,And feel—they know not what but care;
+SONGS OF EXPERIENCE,THE VOICE OF THE ANCIENT BARD,10,0,"And wish to lead others, when they should be led."
