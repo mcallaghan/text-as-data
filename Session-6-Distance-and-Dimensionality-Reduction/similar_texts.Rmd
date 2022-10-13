@@ -1,0 +1,58 @@
+---
+title: "Scraping the IEA policy database"
+author: "Max Callaghan"
+date: "2022-10-13"
+output: html_document
+---
+
+We know how to calculate the similarity of texts from our data frame, but how do we get information about which texts we are comparing
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We first need to make sure we give each item in our dataframe a unique ID which we can use to identify it.
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+library(readr)
+df <- read_csv("data/uk_manifestos.csv")
+df$id <- as.character(seq(1,length(df$text)))
+df
+```
+
+Now we need to create a corpus object, and tell quanteda what to use as IDs
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+library(quanteda)
+corp <- corpus(df)
+docnames(corp) <- df$id
+```
+
+We can pass this corpus object to our usual list functions for creating a document feature matrix and calculating similarity.
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+library(quanteda.textstats)
+dfmat <- corp %>% tokens(remove_punc=TRUE) %>%
+  tokens_remove(pattern=stopwords("en")) %>%
+  dfm() %>%
+  dfm_trim(min_termfreq=5)
+
+sim_mat <- textstat_simil(dfmat, method="cosine")
+sim_df <- as.data.frame(sim_mat, upper=TRUE)
+```
+
+Now when we can always merge with our original dataset using the id column
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+target_text <- 1335
+print(df$text[target_text])
+
+library(dplyr)
+similar_docs <- sim_df %>% filter(document1==target_text) %>%
+  arrange(desc(cosine)) %>%
+  head() %>%
+  left_join(df, by=c("document2"="id"))
+```
+
+
+
