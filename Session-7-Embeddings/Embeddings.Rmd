@@ -466,7 +466,7 @@ dfmat = vec.fit_transform(docs).todense()
 
 common_features = set(word_matrix.index) & set(vec.get_feature_names_out())
 vocab_ids = [vec.vocabulary_[x] for x in common_features]
-doc_matrix = np.inner(dfmat[:,vocab_ids], word_matrix.loc[common_features,].T)
+doc_matrix = dfmat[:,vocab_ids].dot(word_matrix.loc[common_features,])
 1 - cosine(doc_matrix[0,], doc_matrix[1,])
 ```
 

@@ -834,13 +834,13 @@ Embedding documents in python works exactly the same
 
 \NormalTok{common\_features }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(word\_matrix.index) }\OperatorTok{\&} \BuiltInTok{set}\NormalTok{(vec.get\_feature\_names\_out())}
 \NormalTok{vocab\_ids }\OperatorTok{=}\NormalTok{ [vec.vocabulary\_[x] }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ common\_features]}
-\NormalTok{doc\_matrix }\OperatorTok{=}\NormalTok{ np.inner(dfmat[:,vocab\_ids], word\_matrix.loc[common\_features,].T)}
+\NormalTok{doc\_matrix }\OperatorTok{=}\NormalTok{ dfmat[:,vocab\_ids].dot(word\_matrix.loc[common\_features,])}
 \DecValTok{1} \OperatorTok{{-}}\NormalTok{ cosine(doc\_matrix[}\DecValTok{0}\NormalTok{,], doc\_matrix[}\DecValTok{1}\NormalTok{,])}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## 0.7854257726317802
+## 0.7854257726317804
 \end{verbatim}
 
 \medskip
