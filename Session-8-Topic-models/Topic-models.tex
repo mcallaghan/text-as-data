@@ -1,0 +1,1210 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+  aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Singapore}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newenvironment{cols}[1][]{}{}
+
+\newenvironment{col}[1]{\begin{minipage}{#1}\ignorespaces}{%
+\end{minipage}
+\ifhmode\unskip\fi
+\aftergroup\useignorespacesandallpars}
+
+\def\useignorespacesandallpars#1\ignorespaces\fi{%
+#1\fi\ignorespacesandallpars}
+
+\makeatletter
+\def\ignorespacesandallpars{%
+  \@ifnextchar\par
+    {\expandafter\ignorespacesandallpars\@gobble}%
+    {}%
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Topic Models},
+  pdfauthor={Max Callaghan},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Topic Models}
+\author{Max Callaghan}
+\date{2022-11-03}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{introduction-and-objectives}{%
+\section{Introduction and
+Objectives}\label{introduction-and-objectives}}
+
+\begin{frame}{Summary of feedback}
+\protect\hypertarget{summary-of-feedback}{}
+95.5\% of respondents said they had learnt \emph{something} about text
+as data!
+
+Throughout the rest of the course I will try to provide
+
+\begin{itemize}
+\tightlist
+\item
+  More examples from real research
+\item
+  Materials before Thursday morning!
+\item
+  Exercises each non-homework week
+\item
+  No more poems!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Homework Assignment 1}
+\protect\hypertarget{homework-assignment-1}{}
+Marks have been communicated and solutions posted.
+
+Each section was marked independently, with 100 points for any answer
+that got the job done, with 5 points removed for every minor issue, and
+10 points removed for larger issues.
+
+The median grade was slightly higher than our target, expect slightly
+harsher marks next time!
+\end{frame}
+
+\begin{frame}{Objectives}
+\protect\hypertarget{objectives}{}
+By now we have figured out how to \textbf{represent} texts in simple and
+more complex ways
+
+In this session we will start asking \textbf{questions} about our
+corpora, based on a simple, per-text question:
+
+What is this text about?
+
+\textbf{Topics} are the what.
+
+If we can answer this about a corpus of text, we can analyse how
+different groups of texts use different topics, or how the use of
+different topics changes over time.
+\end{frame}
+
+\hypertarget{topic-models}{%
+\section{Topic models}\label{topic-models}}
+
+\begin{frame}{The simplest version of topic models}
+\protect\hypertarget{the-simplest-version-of-topic-models}{}
+Non-negative Matrix Factorization (NMF)
+(\href{https://www.nature.com/articles/44565}{Lee and Seung, 1999}) is a
+simple and effective method of learning topic models.
+
+Essentially, it is a form of \textbf{dimensionality reduction}, in that
+it takes our multidimensional document-feature matrix V, and creates two
+matrices W and H, which help us to describe it.
+
+\[ V_{i\mu} \approx (WH){i\mu} =\sum_{a=1}^{r}W_{ia}H_{a\mu} \]
+
+In this equation, \(r\) is the number of topics, \(W\) is a matrix
+describing the score for each topic in each document, and \(H\) is a
+matrix describing the score for each word in each topic.
+\end{frame}
+
+\begin{frame}[fragile]{A simplified NMF problem}
+\protect\hypertarget{a-simplified-nmf-problem}{}
+Let's take a simple corpus of documents, which we turn into a document
+feature matrix
+
+\medskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.feature\_extraction.text }\ImportTok{import}\NormalTok{ CountVectorizer}
+\NormalTok{texts }\OperatorTok{=}\NormalTok{ [}
+    \StringTok{"Cats, elephants, camels"}\NormalTok{,}
+    \StringTok{"Hawks doves pigeons"}\NormalTok{,}
+    \StringTok{"Cats pigeons"}
+\NormalTok{]}
+\NormalTok{vec }\OperatorTok{=}\NormalTok{ CountVectorizer()}
+\NormalTok{dfmat }\OperatorTok{=}\NormalTok{ vec.fit\_transform(texts)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{A simplified NMF problem}
+\protect\hypertarget{a-simplified-nmf-problem-1}{}
+We'll also write a function to turn a matrix into a heatmap with x and y
+labels
+
+\medskip
+
+\tiny
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{from}\NormalTok{ matplotlib.colors }\ImportTok{import}\NormalTok{ Normalize}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\KeywordTok{def}\NormalTok{ plot\_heatmap(X, xlabs, ylabs):}
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots()}
+\NormalTok{    ax.imshow(}
+\NormalTok{        X, cmap }\OperatorTok{=} \StringTok{"Greys"}\NormalTok{,}
+\NormalTok{        norm }\OperatorTok{=}\NormalTok{ Normalize(vmin}\OperatorTok{=}\DecValTok{0}\NormalTok{, vmax}\OperatorTok{=}\NormalTok{X.}\BuiltInTok{max}\NormalTok{()}\OperatorTok{*}\DecValTok{2}\NormalTok{)}
+\NormalTok{    )}
+
+    \CommentTok{\# Create a grid using minor ticks}
+\NormalTok{    ax.set\_xticks(np.arange(X.shape[}\DecValTok{1}\NormalTok{])}\OperatorTok{+}\FloatTok{0.5}\NormalTok{, minor}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{    ax.set\_yticks(np.arange(X.shape[}\DecValTok{0}\NormalTok{])}\OperatorTok{+}\FloatTok{0.5}\NormalTok{, minor}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{    ax.grid(which}\OperatorTok{=}\StringTok{"minor"}\NormalTok{, zorder}\OperatorTok{=}\DecValTok{5}\NormalTok{)}
+
+    \CommentTok{\# Set up x labels}
+\NormalTok{    ax.xaxis.tick\_top()}
+\NormalTok{    ax.set\_xticks(np.arange(X.shape[}\DecValTok{1}\NormalTok{]))}
+\NormalTok{    ax.set\_xticklabels(xlabs, rotation}\OperatorTok{=}\DecValTok{60}\NormalTok{, ha}\OperatorTok{=}\StringTok{"left"}\NormalTok{, va}\OperatorTok{=}\StringTok{"bottom"}\NormalTok{)}
+
+    \CommentTok{\# Set up y labels}
+\NormalTok{    ax.set\_yticks(}\BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(ylabs)))}
+\NormalTok{    ax.set\_yticklabels(ylabs)}
+
+    \CommentTok{\# Put the numbers in}
+    \ControlFlowTok{for}\NormalTok{ m }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(X.shape[}\DecValTok{0}\NormalTok{]):}
+        \ControlFlowTok{for}\NormalTok{ n }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(X.shape[}\DecValTok{1}\NormalTok{]):}
+\NormalTok{            ax.text(n, m, }\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{X[m, n]}\SpecialCharTok{:.2f\}}\SpecialStringTok{"}\NormalTok{, ha}\OperatorTok{=}\StringTok{"center"}\NormalTok{, va}\OperatorTok{=}\StringTok{"center"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{A simplified NMF problem}
+\protect\hypertarget{a-simplified-nmf-problem-2}{}
+Let's take a simple corpus of documents, which we turn into a document
+feature matrix
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{plots/V.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Fitting an NMF model}
+\protect\hypertarget{fitting-an-nmf-model}{}
+\begin{cols}
+
+\begin{col}{0.45\textwidth}
+To fit an NMF model, we just initialise an NMF instance from sklearn,
+and apply the \texttt{fit\_transform()} method to our document feature
+matrix.
+
+\medskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.decomposition }\ImportTok{import}\NormalTok{ NMF}
+\NormalTok{nmf }\OperatorTok{=}\NormalTok{ NMF(}\DecValTok{2}\NormalTok{)}
+\NormalTok{W }\OperatorTok{=}\NormalTok{ nmf.fit\_transform(dfmat)}
+\NormalTok{plot\_heatmap(W, [}\StringTok{"T1"}\NormalTok{,}\StringTok{"T2"}\NormalTok{], texts)}
+\NormalTok{plt.savefig(}\StringTok{"plots/W.pdf"}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+~
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.5\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/W.pdf}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{Inspecting the topics}
+\protect\hypertarget{inspecting-the-topics}{}
+\begin{cols}
+
+\begin{col}{0.45\textwidth}
+The Topic-word scores are contained in the matrix \(H\), which we can
+access in the \texttt{components\_} attribute of our nmf instance
+
+\medskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{H }\OperatorTok{=}\NormalTok{ nmf.components\_}
+\NormalTok{plot\_heatmap(}
+\NormalTok{  H, }
+\NormalTok{  vec.get\_feature\_names\_out(),}
+\NormalTok{  [}\StringTok{"T1"}\NormalTok{,}\StringTok{"T2"}\NormalTok{]}
+\NormalTok{)}
+\NormalTok{plt.savefig(}\StringTok{"plots/H.pdf"}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+~
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.5\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/H.pdf}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{Combining the parts to approximate the whole}
+\protect\hypertarget{combining-the-parts-to-approximate-the-whole}{}
+The dot product of \(W\) and \(H\) should give us a matrix that is
+similar to our document feature matrix
+
+\begin{cols}
+
+\begin{col}{0.2\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/W.pdf}
+\end{figure}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.35\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/H.pdf}
+\end{figure}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.35\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/WH.pdf}
+\end{figure}
+
+~
+
+\end{col}
+
+\end{cols}
+
+\medskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{WH }\OperatorTok{=}\NormalTok{ W.dot(H)}
+\NormalTok{plot\_heatmap(WH, vec.get\_feature\_names(), texts)}
+\NormalTok{plt.savefig(}\StringTok{"plots/WH.pdf"}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Combining the parts to approximate the whole}
+\protect\hypertarget{combining-the-parts-to-approximate-the-whole-1}{}
+The difference between the real document-feature matrix and the product
+of our document-topic and topic-word matrices is what our algorithm
+tries to minimize.
+
+\begin{cols}
+
+\begin{col}{0.31\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/V.pdf}
+\end{figure}
+
+\end{col}
+
+\begin{col}{0.03\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.31\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/WH.pdf}
+\end{figure}
+
+\end{col}
+
+\begin{col}{0.03\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.3\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/error.pdf}
+\end{figure}
+
+~
+
+\end{col}
+
+\end{cols}
+
+\medskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{error }\OperatorTok{=}\NormalTok{ V }\OperatorTok{{-}}\NormalTok{ WH}
+\NormalTok{plot\_heatmap(error, vec.get\_feature\_names(), texts)}
+\NormalTok{plt.savefig(}\StringTok{"plots/error.pdf"}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Hyperparameters for NMF}
+\protect\hypertarget{hyperparameters-for-nmf}{}
+What are hyperparameters?
+
+Hyperparameters are options that need to be set or left as default that
+are not strictly set by theory, but affect the result.
+
+It is useful to check different values of these
+
+\begin{itemize}
+\tightlist
+\item
+  TFIDF (usually a good idea)
+\item
+  numer of topics
+\item
+  alpha\_W - low values indicate documents should be composed of few
+  topics
+\item
+  alpha\_H - low values indicate topics should be composed of few words
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Latent Dirichlet Allocation}
+\protect\hypertarget{latent-dirichlet-allocation}{}
+Latent Dirichlet Allocation (\href{}{Blei, Ng, and Jordan, 2003}) does a
+very similar job, the way it gets there and the assumptions it makes are
+just slightly different.
+
+It also has a hyperparameter \(\alpha\) that encodes your prior about
+how many topics are present in a document, and a \(\beta\) parameter
+that encodes your prior about how many words are present in a topic (not
+settable with topicmodels!).
+\end{frame}
+
+\begin{frame}{Some nice features of these models}
+\protect\hypertarget{some-nice-features-of-these-models}{}
+\begin{itemize}
+\tightlist
+\item
+  Documents are mixtures of topics
+\item
+  The model outcome is a matrix of documents x topics, which is in
+  exactly the format of all the other representations we have been
+  looking at
+\item
+  Our features are small in number, and interpretable by humans
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Some limitations}
+\protect\hypertarget{some-limitations}{}
+Topics are very fuzzily defined and may mean different things in
+different contexts or even within the same model.
+
+Suppose we have a topic model of research where the largest topic is
+\textbf{climate change}, and there are 3 smaller topics on
+\textbf{cancer}, \textbf{asthma}, and \textbf{heart disease}. Can we say
+that most research is on climate change?
+
+Topic models can be sensitive to the dataset, if you only have few
+samples from a certain subclass, expect the model to fit these poorly.
+\end{frame}
+
+\begin{frame}{Naming topics}
+\protect\hypertarget{naming-topics}{}
+A quick heuristic for naming topics is to concatenate the top 3 terms
+for each topic.
+
+If we want to use our model then we should give meaningful names to
+topics by inspecting the top terms and top documents associated with
+each topic.
+\end{frame}
+
+\hypertarget{extensions}{%
+\section{Extensions}\label{extensions}}
+
+\begin{frame}{Structural Topic models}
+\protect\hypertarget{structural-topic-models}{}
+We often compare the prevalence of topics in documents of different
+types.
+
+\textbf{Structural Topic Models} incoporate additional variables into
+the modelling process, and allow us to test hypotheses with statistical
+significane about how the prevalence of topics varies with document
+characteristics.
+
+\href{https://www.structuraltopicmodel.com/}{STM} is only available in
+R!! It is used a lot by political scientists and was invented by those
+who wrote the
+\href{https://press.princeton.edu/books/hardcover/9780691207544/text-as-data}{textbook}
+on Text as Data.
+\end{frame}
+
+\begin{frame}{Dynamic Topic Models}
+\protect\hypertarget{dynamic-topic-models}{}
+Dynamic topic models incorporate time into the modelling process.
+\href{https://mimno.infosci.cornell.edu/info6150/readings/dynamic_topic_models.pdf}{Dynamic
+Topic Models} by from the Blei lab
+(\href{https://github.com/blei-lab/dtm}{Github}) does this by allowing
+the words associated with topics to update in each time period.
+
+I haven't come across any satisfying implementations that allow
+\textbf{new} topics to emerge..
+\end{frame}
+
+\begin{frame}{Topics from embeddings}
+\protect\hypertarget{topics-from-embeddings}{}
+The embedding space (into which we dipped our toes last session) is
+where a lot of things are happening in NLP these days.
+
+\href{https://github.com/ddangelov/Top2Vec}{Top2Vec}, and
+\href{https://maartengr.github.io/BERTopic/index.html}{BERTopic} work by
+identifying clusters of documents in an embedding space (potentially
+generated by the latest fancy language models), and then finding the
+words that are common in that cluster of documents.
+
+One drawback is that documents can only be assigned to a \emph{single}
+topic.
+\end{frame}
+
+\hypertarget{validation}{%
+\section{Validation}\label{validation}}
+
+\begin{frame}{Validating topic models}
+\protect\hypertarget{validating-topic-models}{}
+Creating a topic model is a bit like magic. You feed in a list of
+documents, and they come out the other side with topics that seem to
+make sense.
+
+But can you just use these topics unreflectingly? How can you be sure if
+this topic model was the ``best'' topic model?
+
+We are estimating \textbf{latent} (that is, hidden) variables, which
+means that unlike with supervised learning, there is no easy way to
+measure the ``rightness'' of the model.
+\end{frame}
+
+\begin{frame}{Data-driven measures of topic rightness}
+\protect\hypertarget{data-driven-measures-of-topic-rightness}{}
+We have two frequently used measures of topic quality that capture
+\emph{some} aspects of topic quality
+
+\textbf{Loss/heldout-likelihood based measures} work by comparing the
+topic \textbf{predictions} of words in documents to the actually
+observed numbers of words in documents.
+
+\textbf{Coherence based measures} work by assessing whether the words in
+a topic are similar. If words in a topic only infrequently co-occur in
+documents, then this topic is considered less coherent.
+\end{frame}
+
+\begin{frame}{Human measures}
+\protect\hypertarget{human-measures}{}
+Can the ``best'' topic model be found by maximising a metric? Or is this
+more a case of interpretation?
+
+\href{https://proceedings.neurips.cc/paper/2009/file/f92586a25bb3145facd64ab20fd554ff-Paper.pdf}{Chang,
+Boyd-Graber, and Blei, 2009} find that data-driven measures do not
+necessarily correspond to human evaluations.
+
+They propose 2 human annotation methods for topics.
+
+In \textbf{word intrusion} humans are presented with a set of words, of
+which all but one are from a topic.
+
+In \textbf{topic intrusion} humans are presented with a document and a
+set of topics of which all but one are related to the document.
+
+Where humans consistently identify the odd one out, we can say that the
+topic model is performing well.
+\end{frame}
+
+\begin{frame}{What is a good topic anyway?}
+\protect\hypertarget{what-is-a-good-topic-anyway}{}
+The definition of a ``good'' topic is not universal but task dependent.
+
+A good topic model is one that helps us to answer the research question
+we have in mind, or helps us to better perform the task we have.
+
+Sometimes we want the big picture (few topics), sometimes we want
+fine-grained detail (many topics).
+
+What we should \textbf{ensure} is that any results we present are not an
+\textbf{artefact} of an arbitrary model choice we make, but are robust
+to a variety of \emph{reasonable} specifications.
+\end{frame}
+
+\hypertarget{scaled-up-examples}{%
+\section{Scaled up examples}\label{scaled-up-examples}}
+
+\begin{frame}[fragile]{Topic modelling with R}
+\protect\hypertarget{topic-modelling-with-r}{}
+Let's load our old Hertie research dataset and see if we can dig deeper
+into what has been researched at this school. We'll start by preparing a
+document feature matrix
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(quanteda)}
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"../datasets/hertie\_papers.csv"}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(abstract) }\SpecialCharTok{\&} \SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(publication\_year)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{(abstract, }\AttributeTok{.keep\_all =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# remove duplicates}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{abstract }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens}\NormalTok{(}\AttributeTok{remove\_punct =}\NormalTok{ T) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tokens\_remove}\NormalTok{(}\AttributeTok{pattern=}\FunctionTok{stopwords}\NormalTok{(}\StringTok{"en"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{dfm}\NormalTok{()  }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{dfm\_trim}\NormalTok{(}\AttributeTok{min\_termfreq =} \DecValTok{5}\NormalTok{) }\CommentTok{\# Remove infrequent terms}
+
+\FunctionTok{rownames}\NormalTok{(dfmat) }\OtherTok{\textless{}{-}}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{id }\CommentTok{\# use meaningful names}
+
+\NormalTok{dfmat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Document-feature matrix of: 1,098 documents, 3,461 features (98.34% sparse) and 0 docvars.
+##                                   features
+## docs                               > 50 limiting warming 2 ° c recent scenarios
+##   https://openalex.org/W2195453830 1  1        1       1 1 1 1      1         1
+##   https://openalex.org/W18536190   0  0        0       0 0 0 0      0         0
+##   https://openalex.org/W2092902022 0  0        0       0 0 0 0      0         0
+##   https://openalex.org/W2041842081 0  0        0       0 0 0 0      0         0
+##   https://openalex.org/W2003457148 0  0        0       0 0 0 0      0         0
+##   https://openalex.org/W1483436082 0  0        0       0 0 0 0      0         0
+##                                   features
+## docs                               integrated
+##   https://openalex.org/W2195453830          1
+##   https://openalex.org/W18536190            0
+##   https://openalex.org/W2092902022          1
+##   https://openalex.org/W2041842081          0
+##   https://openalex.org/W2003457148          0
+##   https://openalex.org/W1483436082          0
+## [ reached max_ndoc ... 1,092 more documents, reached max_nfeat ... 3,451 more features ]
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Running an LDA model}
+\protect\hypertarget{running-an-lda-model}{}
+We can simply pass this to the LDA function of topic models to learn our
+first model, we just need to tell it how many topics we want
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(topicmodels)}
+\NormalTok{lda }\OtherTok{\textless{}{-}} \FunctionTok{LDA}\NormalTok{(dfmat, }\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Using LDA output}
+\protect\hypertarget{using-lda-output}{}
+Our document-topic matrix is stored in the ``gamma'' attribute, and our
+topic-term matrix is stored in the ``beta'' attribute.
+
+We can turn these into ``tidy'' data with tidytext
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidytext)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{dim}\NormalTok{(lda}\SpecialCharTok{@}\NormalTok{gamma))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1098   15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{dim}\NormalTok{(lda}\SpecialCharTok{@}\NormalTok{beta))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]   15 3461
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{topic\_words }\OtherTok{\textless{}{-}} \FunctionTok{tidy}\NormalTok{(lda, }\AttributeTok{matrix=}\StringTok{"beta"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(topic) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice\_max}\NormalTok{(beta, }\AttributeTok{n =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(topic, }\SpecialCharTok{{-}}\NormalTok{beta)}
+\NormalTok{topic\_words}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 75 x 3
+##    topic term       beta
+##    <int> <chr>     <dbl>
+##  1     1 die     0.0377 
+##  2     1 der     0.0353 
+##  3     1 und     0.0274 
+##  4     1 von     0.0196 
+##  5     1 ist     0.0188 
+##  6     2 health  0.0138 
+##  7     2 study   0.0117 
+##  8     2 data    0.0105 
+##  9     2 results 0.00774
+## 10     2 =       0.00740
+## # ... with 65 more rows
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Plotting the top words of each topic}
+\protect\hypertarget{plotting-the-top-words-of-each-topic}{}
+We can plot the top words of each topic using this tidy data and
+ggplot()
+
+\medskip
+
+\begin{cols}
+
+\begin{col}{0.4\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{topic\_words }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{term =} \FunctionTok{reorder\_within}\NormalTok{(term, beta, topic)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(beta, term, }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(topic))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ topic, }\AttributeTok{scales =} \StringTok{"free"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_reordered}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plots/top\_terms\_r.png"}\NormalTok{, }\AttributeTok{width=}\DecValTok{12}\NormalTok{, }\AttributeTok{height=}\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{col}
+
+\begin{col}{0.03\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.6\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/top_terms_r.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{Using the doc-topic data}
+\protect\hypertarget{using-the-doc-topic-data}{}
+We can also inspect the share of a topic in a particular group of
+documents by tidying our doc-topic data. In this case we get the share
+of documents on a topic in each year
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{doc\_topics }\OtherTok{\textless{}{-}} \FunctionTok{tidy}\NormalTok{(lda, }\AttributeTok{matrix=}\StringTok{"gamma"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(df, }\AttributeTok{by=}\FunctionTok{c}\NormalTok{(}\StringTok{"document"}\OtherTok{=}\StringTok{"id"}\NormalTok{))}
+
+\NormalTok{yearly\_topics }\OtherTok{\textless{}{-}}\NormalTok{ doc\_topics }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(publication\_year, topic) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{gamma =} \FunctionTok{sum}\NormalTok{(gamma)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(publication\_year) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{year\_share =}\NormalTok{ gamma}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(gamma)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{topic =} \FunctionTok{factor}\NormalTok{(topic))}
+
+\NormalTok{yearly\_topics}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 480 x 4
+##    publication_year topic    gamma year_share
+##               <dbl> <fct>    <dbl>      <dbl>
+##  1             1970 1     0.000318   0.000318
+##  2             1970 2     0.736      0.736   
+##  3             1970 3     0.260      0.260   
+##  4             1970 4     0.000318   0.000318
+##  5             1970 5     0.000318   0.000318
+##  6             1970 6     0.000318   0.000318
+##  7             1970 7     0.000318   0.000318
+##  8             1970 8     0.000318   0.000318
+##  9             1970 9     0.000318   0.000318
+## 10             1970 10    0.000318   0.000318
+## # ... with 470 more rows
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Using the doc-topic data}
+\protect\hypertarget{using-the-doc-topic-data-1}{}
+\medskip
+
+\begin{cols}
+
+\begin{col}{0.4\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{filter}\NormalTok{(yearly\_topics, topic }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{10}\NormalTok{)), }\FunctionTok{aes}\NormalTok{(}
+    \AttributeTok{x=}\NormalTok{publication\_year, }\AttributeTok{y=}\NormalTok{year\_share,}
+    \AttributeTok{group=}\NormalTok{topic, }\AttributeTok{colour=}\NormalTok{topic, }\AttributeTok{fill=}\NormalTok{topic}
+\NormalTok{  )) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plots/topic\_groups.png"}\NormalTok{, }\AttributeTok{width=}\DecValTok{12}\NormalTok{, }\AttributeTok{height=}\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{col}
+
+\begin{col}{0.03\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.6\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/topic_groups.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{An interactive site for exploring a topic model}
+\protect\hypertarget{an-interactive-site-for-exploring-a-topic-model}{}
+LDAvis is a nice package for producing interactive visualisations of our
+topic models. These are really helpful for exploring the model and
+understanding how it has worked
+
+To use this with the \texttt{topicmodels} package, we just need to
+slightly transform our default output data, we can reuse this function
+from the internet.
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(LDAvis)}
+\NormalTok{topicmodels2LDAvis }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, ...)\{}
+\NormalTok{  post }\OtherTok{\textless{}{-}}\NormalTok{ topicmodels}\SpecialCharTok{::}\FunctionTok{posterior}\NormalTok{(x)}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{ncol}\NormalTok{(post[[}\StringTok{"topics"}\NormalTok{]]) }\SpecialCharTok{\textless{}} \DecValTok{3}\NormalTok{) }\FunctionTok{stop}\NormalTok{(}\StringTok{"The model must contain \textgreater{} 2 topics"}\NormalTok{)}
+\NormalTok{  mat }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{@}\NormalTok{wordassignments}
+\NormalTok{  json }\OtherTok{\textless{}{-}}\NormalTok{ LDAvis}\SpecialCharTok{::}\FunctionTok{createJSON}\NormalTok{(}
+    \AttributeTok{phi =}\NormalTok{ post[[}\StringTok{"terms"}\NormalTok{]], }
+    \AttributeTok{theta =}\NormalTok{ post[[}\StringTok{"topics"}\NormalTok{]],}
+    \AttributeTok{vocab =} \FunctionTok{colnames}\NormalTok{(post[[}\StringTok{"terms"}\NormalTok{]]),}
+    \AttributeTok{doc.length =}\NormalTok{ slam}\SpecialCharTok{::}\FunctionTok{row\_sums}\NormalTok{(mat, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{term.frequency =}\NormalTok{ slam}\SpecialCharTok{::}\FunctionTok{col\_sums}\NormalTok{(mat, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  )}
+  \FunctionTok{return}\NormalTok{(json)}
+\NormalTok{\}}
+\NormalTok{json }\OtherTok{\textless{}{-}} \FunctionTok{topicmodels2LDAvis}\NormalTok{(lda)}
+\FunctionTok{serVis}\NormalTok{(json)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Topic modelling in python + a topic ``map'' in an
+embedding space}
+\protect\hypertarget{topic-modelling-in-python-a-topic-map-in-an-embedding-space}{}
+In the notebook tms.ipynb, you will find similar functions, including an
+extension that displays the documents in their topic space, using UMAP
+to represent this in 2 dimensions.
+\end{frame}
+
+\begin{frame}{Exercise}
+\protect\hypertarget{exercise}{}
+In pairs, independently come up with your own specification of the same
+topic model by altering the parameters (including in pre-processing).
+
+Discuss which model is better, or has more ``truthiness''
+\end{frame}
+
+\hypertarget{topic-models-in-research}{%
+\section{Topic models in research}\label{topic-models-in-research}}
+
+\begin{frame}{Performance determinants show European cities are
+delivering on climate mitigation}
+\protect\hypertarget{performance-determinants-show-european-cities-are-delivering-on-climate-mitigation}{}
+\begin{cols}
+
+\begin{col}{0.6\textwidth}
+In \href{https://www.nature.com/articles/s41558-020-0879-9}{Hsu et al.,
+2020}, the authors use topic modelling to inspect a corpus of 1,066
+European cities' Sustainable Energy and Climate Action Plans.
+
+\medskip
+
+They use emissions data to figure out which cities are on track to
+meeting emissions reductions targets, and investigate what is mentioned
+more in successful plans.
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.35\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/hsu_fig1.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Performance determinants show European cities are
+delivering on climate mitigation II}
+\protect\hypertarget{performance-determinants-show-european-cities-are-delivering-on-climate-mitigation-ii}{}
+\begin{cols}
+
+\begin{col}{0.6\textwidth}
+Using a Structural Topic Model, they find that increased prevalence of
+the topic on energy efficiency is associated with a significant
+reduction in emissions.
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.35\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/hsu_fig3.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Attention and counter-framing in the Black Lives Matter
+movement on Twitter}
+\protect\hypertarget{attention-and-counter-framing-in-the-black-lives-matter-movement-on-twitter}{}
+\begin{cols}
+
+\begin{col}{0.6\textwidth}
+
+In \href{https://www.nature.com/articles/s41599-022-01384-1}{Klein et
+al., 2022}, the authors use topic modelling to explore a corpus of 118
+million tweets about Black Lives Matter
+
+\begin{itemize}
+  \item<1->They cluster a retweet network in order to find distinct communities
+  \item<2->They use LDA to identify topics, and show how number of tweets referring to these topics has changed over time
+  \item<3->In particular, they identify a sharp increase in the "antifa terrorist" topic in the immediate aftermath of George Floyd's death
+\end{itemize}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.35\textwidth}
+
+\begin{figure}
+\only<1>{\includegraphics[width=\linewidth]{images/klein_fig1.png}}
+\only<2>{\includegraphics[width=\linewidth]{images/klein_fig5.png}}
+\only<3>{\includegraphics[width=\linewidth]{images/klein_fig6.png}}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\hypertarget{wrapup-and-outlook}{%
+\section{Wrapup and Outlook}\label{wrapup-and-outlook}}
+
+\begin{frame}{Wrapup}
+\protect\hypertarget{wrapup}{}
+We have done machine learning!
+
+We have now explored techniques used in real contemporary computational
+science research to investigate \emph{what} texts are about.
+
+Like many of our applications so far, our model forms a matrix with each
+document in a row, and features in a column. In our case, these features
+are of a manageable size defined by us, and they are
+\textbf{interpretable} with the help of another matrix which maps our
+features to the terms associated with them
+\end{frame}
+
+\begin{frame}{Assignment 2}
+\protect\hypertarget{assignment-2}{}
+Assignment 2 is now live, and due on 17. November 23:59. Please submit
+on Moodle.
+
+You are asked to use a topic model to answer a simple research question
+about the content of manifestos. For maximum \emph{possible} marks, this
+should be \textbf{interesting} and \textbf{answerable}. For maximum
+likelihood of \textbf{good} marks, focus on the \textbf{answerable}
+part.
+
+This time, there are more skills being assessed, not just coding but
+also \textbf{understanding}, \textbf{communication}, and
+\textbf{research} skills.
+
+\textbf{Comment on everything you are asked to comment on, and answer
+every question you are asked!!}.
+
+A mostly wrong answer is better than no answer at all.
+
+Remember to post issues and to ask me when something is not clear or if
+you are struggling!
+
+Good luck!
+\end{frame}
+
+\begin{frame}{Assignment 3}
+\protect\hypertarget{assignment-3}{}
+Assignment 3 is due for the last week of term. Time to start thinking
+about it.
+
+Assignment 2 is structured along the lines of answering a research
+question. This should prepare you for your group project where you will
+do just that.
+
+In around 10 minutes, you will need to present
+
+\begin{itemize}
+\tightlist
+\item
+  Your research question and why it is interesting
+\item
+  Your data and methods used to answer it
+\item
+  The results of your analysis, your interpretation of these and your
+  limitations and ideas for further work
+\end{itemize}
+
+Get into groups of 3-4. Consider joining forces across programmes, you
+will need complementary skills!
+
+Please email me your group and your proposed topic by the end of
+\textbf{week beginning 14 November}.
+\end{frame}
+
+\begin{frame}{Next week}
+\protect\hypertarget{next-week}{}
+Next week we will look at sentiment analysis, where we score texts
+according to whether they express positive or negative sentiment.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \bibliography{../presentation-resources/MyLibrary.bib}
+\end{frame}
+
+\end{document}

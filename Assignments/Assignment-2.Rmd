@@ -1,0 +1,44 @@
+---
+title: "Assignment 2"
+author: "Text as Data"
+date: "2022-11-03"
+output: 
+  pdf_document:
+    keep_tex: true
+    citation_package: natbib
+header-includes:
+- \usepackage{booktabs}
+- \usepackage{xcolor}
+
+extra_dependencies: ["hyperref","booktabs"]
+urlcolor: blue
+bibliography: ../presentation-resources/MyLibrary.bib
+---
+
+# Introduction
+
+In this assignment, you are asked to use topic modelling to investigate manifestos from the manifesto project maintained by [WZB](https://manifesto-project.wzb.eu/). You can either use the UK manifestos we looked at together in class, or collect your own set of manifestos by choosing the country/countries, year/years and party/parties you are interested in. You should produce a report which includes your code, that addresses the following aspects of creating a topic model, making sure to answer the questions below.
+
+## 1. Data acquisition, description, and preparation
+
+Bring together a dataset from the WZB. 
+
+What years, countries and parties are included in the dataset? How many texts do you have for each of these?
+
+Prepare your data for topic modelling by creating a document feature matrix. Describe the choices you make here, and comment on how these might affect your final result.
+
+## 2. Research question
+
+Describe a research question you want to explore with topic modelling. Comment on how answerable this is with the methods and data at your disposal.
+
+## 3. Topic model development
+
+Create a topic model using your data. Explain to a non-specialist what the topic model does. Comment on the choices you make here in terms of hyperparameter selection and model choice. How might these affect your results and the ability to answer your research question?
+
+## 4. Topic model description
+
+Describe the topic model. What topics does it contain? How are these distributed across the data?
+
+## 5. Answering your research question
+
+Use your topic model to answer your research question by showing plots or statistical results. Discuss the implications of what you find, and any limitations inherent in your approach. Discuss how the work could be improved upon in future research.

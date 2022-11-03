@@ -1,0 +1,139 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Assignment 2},
+  pdfauthor={Text as Data},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Assignment 2}
+\author{Text as Data}
+\date{2022-11-03}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+In this assignment, you are asked to use topic modelling to investigate
+manifestos from the manifesto project maintained by
+\href{https://manifesto-project.wzb.eu/}{WZB}. You can either use the UK
+manifestos we looked at together in class, or collect your own set of
+manifestos by choosing the country/countries, year/years and
+party/parties you are interested in. You should produce a report which
+includes your code, that addresses the following aspects of creating a
+topic model, making sure to answer the questions below.
+
+\hypertarget{data-acquisition-description-and-preparation}{%
+\subsection{1. Data acquisition, description, and
+preparation}\label{data-acquisition-description-and-preparation}}
+
+Bring together a dataset from the WZB.
+
+What years, countries and parties are included in the dataset? How many
+texts do you have for each of these?
+
+Prepare your data for topic modelling by creating a document feature
+matrix. Describe the choices you make here, and comment on how these
+might affect your final result.
+
+\hypertarget{research-question}{%
+\subsection{2. Research question}\label{research-question}}
+
+Describe a research question you want to explore with topic modelling.
+Comment on how answerable this is with the methods and data at your
+disposal.
+
+\hypertarget{topic-model-development}{%
+\subsection{3. Topic model development}\label{topic-model-development}}
+
+Create a topic model using your data. Explain to a non-specialist what
+the topic model does. Comment on the choices you make here in terms of
+hyperparameter selection and model choice. How might these affect your
+results and the ability to answer your research question?
+
+\hypertarget{topic-model-description}{%
+\subsection{4. Topic model description}\label{topic-model-description}}
+
+Describe the topic model. What topics does it contain? How are these
+distributed across the data?
+
+\hypertarget{answering-your-research-question}{%
+\subsection{5. Answering your research
+question}\label{answering-your-research-question}}
+
+Use your topic model to answer your research question by showing plots
+or statistical results. Discuss the implications of what you find, and
+any limitations inherent in your approach. Discuss how the work could be
+improved upon in future research.
+
+  \bibliography{../presentation-resources/MyLibrary.bib}
+
+\end{document}
