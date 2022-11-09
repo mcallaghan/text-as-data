@@ -1,0 +1,660 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+  aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Singapore}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newenvironment{cols}[1][]{}{}
+
+\newenvironment{col}[1]{\begin{minipage}{#1}\ignorespaces}{%
+\end{minipage}
+\ifhmode\unskip\fi
+\aftergroup\useignorespacesandallpars}
+
+\def\useignorespacesandallpars#1\ignorespaces\fi{%
+#1\fi\ignorespacesandallpars}
+
+\makeatletter
+\def\ignorespacesandallpars{%
+  \@ifnextchar\par
+    {\expandafter\ignorespacesandallpars\@gobble}%
+    {}%
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Sentiment Analysis},
+  pdfauthor={Max Callaghan},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Sentiment Analysis}
+\author{Max Callaghan}
+\date{2022-11-10}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{introduction-and-objectives}{%
+\section{Introduction and
+Objectives}\label{introduction-and-objectives}}
+
+\begin{frame}{Assignment 2}
+\protect\hypertarget{assignment-2}{}
+Assignment 2 is still live. If you have issues, or encounter
+difficulties, raise an issue on the Github repository, or write me an
+email!
+\end{frame}
+
+\begin{frame}{Assignment 3}
+\protect\hypertarget{assignment-3}{}
+Assignment 3 is approaching, and you should have a clear idea of what
+you want to do by the end of next week.
+
+Feel free to ask for quick feedback on any ideas you have in the coming
+days
+\end{frame}
+
+\begin{frame}{Objectives}
+\protect\hypertarget{objectives}{}
+By now we have spent a long time understanding how to \textbf{represent}
+texts in simple and more complex ways.
+
+We've also started asking questions about texts. Viz. What is it about?
+
+Today we will ask a new question about texts: what sentiment does it
+express?
+\end{frame}
+
+\hypertarget{introduction-to-sentiment-analysis}{%
+\section{Introduction to sentiment
+analysis}\label{introduction-to-sentiment-analysis}}
+
+\begin{frame}{What is a sentiment?}
+\protect\hypertarget{what-is-a-sentiment}{}
+The emotion embodied in a text. Often reduced to positive-negative, but
+can encompass a more complex range of emotions like joy, sadness, anger.
+\end{frame}
+
+\begin{frame}{Sentiment analysis as classification}
+\protect\hypertarget{sentiment-analysis-as-classification}{}
+In some ways
+\end{frame}
+
+\begin{frame}{An overview of techniques to do sentiment analysis}
+\protect\hypertarget{an-overview-of-techniques-to-do-sentiment-analysis}{}
+Doing sentiment analysis usually involves rule-based or statistical
+techniques
+
+\begin{itemize}
+  \item<1->Assessing sentiment based on counting words have a predefined sentiment
+  \item<2->Using a classifier that has been trained to identify sentiment with text examples that have been labelled.
+\end{itemize}
+\end{frame}
+
+\hypertarget{lexicon-based-sentiment-analysis}{%
+\section{Lexicon-based sentiment
+analysis}\label{lexicon-based-sentiment-analysis}}
+
+\begin{frame}[fragile]{Positive and negative words}
+\protect\hypertarget{positive-and-negative-words}{}
+We know about the ``bag of words'' model of representing texts.
+
+We also know that some words are rather positive, whereas some are
+rather negative.
+
+Consider the texts:
+
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{texts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{"Elon Musk is a champion of free speech"}\NormalTok{,}
+  \StringTok{"It\textquotesingle{}s a terrible shame to see mashed potato thrown at art"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\medskip
+
+Do they express positive or negative sentiment? How can we tell?
+\end{frame}
+
+\begin{frame}[fragile]{Using Lexicons in R}
+\protect\hypertarget{using-lexicons-in-r}{}
+We can import a lexicon in R using tidytext. Each row, contains a word
+and its value
+
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidytext)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\NormalTok{lex }\OtherTok{\textless{}{-}} \FunctionTok{get\_sentiments}\NormalTok{(}\StringTok{"afinn"}\NormalTok{)}
+\FunctionTok{sample\_n}\NormalTok{(lex, }\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   word        value
+##   <chr>       <dbl>
+## 1 incompetent    -2
+## 2 honour          2
+## 3 lawsuit        -2
+## 4 whore          -4
+## 5 flagship        2
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Using Lexicons in R}
+\protect\hypertarget{using-lexicons-in-r-1}{}
+Note that the Afinn lexicon is not the newest version. We can just read
+this in directly from the author's Github page.
+
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{lex }\OtherTok{\textless{}{-}} \FunctionTok{read\_tsv}\NormalTok{(}
+  \StringTok{"https://raw.githubusercontent.com/fnielsen/afinn/master/afinn/data/AFINN{-}en{-}165.txt"}\NormalTok{,}
+  \AttributeTok{col\_names=}\FunctionTok{c}\NormalTok{(}\StringTok{"word"}\NormalTok{,}\StringTok{"value"}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{lex}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3,382 x 2
+##    word       value
+##    <chr>      <dbl>
+##  1 abandon       -2
+##  2 abandoned     -2
+##  3 abandons      -2
+##  4 abducted      -2
+##  5 abduction     -2
+##  6 abductions    -2
+##  7 abhor         -3
+##  8 abhorred      -3
+##  9 abhorrent     -3
+## 10 abhors        -3
+## # ... with 3,372 more rows
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Using Lexicons in R}
+\protect\hypertarget{using-lexicons-in-r-2}{}
+There are a few different lexicons, compiled by different authors, using
+different techniques involving amazon turk and author knowledge, which
+encode different types of emotions.
+
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidytext)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\NormalTok{lex }\OtherTok{\textless{}{-}} \FunctionTok{get\_sentiments}\NormalTok{(}\StringTok{"nrc"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(lex)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##   word      sentiment
+##   <chr>     <chr>    
+## 1 abacus    trust    
+## 2 abandon   fear     
+## 3 abandon   negative 
+## 4 abandon   sadness  
+## 5 abandoned anger    
+## 6 abandoned fear
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Using Lexicons in R}
+\protect\hypertarget{using-lexicons-in-r-3}{}
+We can also put our usual document feature matrix into a similar format
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(quanteda)}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  tokens }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{dfm}\NormalTok{()}
+
+\NormalTok{text\_tokens }\OtherTok{\textless{}{-}} \FunctionTok{tidy}\NormalTok{(dfmat)}
+\FunctionTok{head}\NormalTok{(text\_tokens)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   document term     count
+##   <chr>    <chr>    <dbl>
+## 1 text1    elon         1
+## 2 text1    musk         1
+## 3 text1    is           1
+## 4 text1    a            1
+## 5 text2    a            1
+## 6 text1    champion     1
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Tidy lexicons}
+\protect\hypertarget{tidy-lexicons}{}
+Now we can join these to see which words in the texts have what
+sentiment
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lex }\OtherTok{\textless{}{-}} \FunctionTok{read\_tsv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/fnielsen/afinn/master/afinn/data/AFINN{-}en{-}165.txt"}\NormalTok{, }\AttributeTok{col\_names=}\FunctionTok{c}\NormalTok{(}\StringTok{"word"}\NormalTok{,}\StringTok{"value"}\NormalTok{))}
+\NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ texts }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  tokens }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{dfm}\NormalTok{()}
+
+\NormalTok{text\_tokens }\OtherTok{\textless{}{-}} \FunctionTok{tidy}\NormalTok{(dfmat) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{inner\_join}\NormalTok{(lex, }\AttributeTok{by=}\FunctionTok{c}\NormalTok{(}\StringTok{"term"} \OtherTok{=} \StringTok{"word"}\NormalTok{))}
+
+\NormalTok{text\_tokens}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 4
+##   document term     count value
+##   <chr>    <chr>    <dbl> <dbl>
+## 1 text1    champion     1     2
+## 2 text1    free         1     1
+## 3 text2    terrible     1    -3
+## 4 text2    shame        1    -2
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Tidy lexicons}
+\protect\hypertarget{tidy-lexicons-1}{}
+We can then just sum word scores for each document to get a sentiment
+score for that document
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{doc\_sentiments }\OtherTok{\textless{}{-}} \FunctionTok{tidy}\NormalTok{(dfmat) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{inner\_join}\NormalTok{(lex, }\AttributeTok{by=}\FunctionTok{c}\NormalTok{(}\StringTok{"term"} \OtherTok{=} \StringTok{"word"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{value=}\NormalTok{value}\SpecialCharTok{*}\NormalTok{count) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(document) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{value =} \FunctionTok{sum}\NormalTok{(value))}
+
+\NormalTok{doc\_sentiments}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##   document value
+##   <chr>    <dbl>
+## 1 text1        3
+## 2 text2       -5
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{VADER}
+\protect\hypertarget{vader}{}
+VADER represents just about the state of the art in lexicon-based
+sentiment analysis, and is especially suitable for social media texts.
+
+It also incorporates rules that extend it beyond the bag-of-words model
+\end{frame}
+
+\begin{frame}{5 Heuristics}
+\protect\hypertarget{heuristics}{}
+The Vader
+\href{https://www.aaai.org/ocs/index.php/ICWSM/ICWSM14/paper/view/8109/8122}{paper}
+identifies 5 heuristics that extend just counting words from a lexicon,
+and implements these in their algorithm.
+
+\begin{itemize}
+  \item<1->Punctuation (!) increases the magnitude of the sentiment: "Food here is good!!" > "Food here is good"
+  \item<2->CAPITALIZATION increaeses the magnitude of the sentiment: "Food here is GREAT" > "Food here is great"
+  \item<3->Degree modifiers impact intensity > or <. "Service is marginally good" < "service is good" < "service is extremely good".
+  \item<4->"But" signals shift in sentiment, and that second clause is stronger: "Food here is good, but the service is bad" -> Overall more negative than positive
+  \item<5->Negations in a tri-gram preceeding a sentiment-laden feature flip the polarity
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{VADER in practice}
+\protect\hypertarget{vader-in-practice}{}
+Let's load a \href{https://doi.org/10.7910/DVN/RQ7P1F}{dataset} of
+tweets from the VoteYes campaign from the Scottish independence
+referendum. We can calculate sentiment for each tweet using
+\texttt{vader\_df()}.
+
+Let's look at the most positive tweets
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(vader)}
+\NormalTok{tweets }\OtherTok{\textless{}{-}}\FunctionTok{read\_delim}\NormalTok{(}\StringTok{"../datasets/YesScotlandTweets\_cleaned.csv"}\NormalTok{, }\AttributeTok{delim=}\StringTok{","}\NormalTok{, }\AttributeTok{escape\_double=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{sentiments }\OtherTok{\textless{}{-}} \FunctionTok{vader\_df}\NormalTok{(tweets}\SpecialCharTok{$}\NormalTok{text)}
+
+\NormalTok{tweet\_sentiment }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(tweets, }\FunctionTok{select}\NormalTok{(sentiments,}\SpecialCharTok{{-}}\NormalTok{text))}
+
+\NormalTok{pos }\OtherTok{\textless{}{-}}\NormalTok{ tweet\_sentiment }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(compound)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{( i }\ControlFlowTok{in} \FunctionTok{rownames}\NormalTok{(pos) ) \{}
+  \FunctionTok{print}\NormalTok{(pos[i, }\StringTok{"text"}\NormalTok{])}
+  \FunctionTok{print}\NormalTok{(pos[i, }\StringTok{"compound"}\NormalTok{])}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "A Yes means greater financial security for families - we can expand free childcare, safeguard free education and create more jobs. #indyref"
+## [1] 0.96
+## [1] "RT @mstewart_23: #indyref is about the country we want to live in &amp; how best to create that. YES gives us the best opportunity to do that. \u008a\u0097_"
+## [1] 0.952
+## [1] "With Yes, we can build on Scotland's successes in delivering for older people, such as free personal care and the free bus pass. #indyref"
+## [1] 0.944
+## [1] "With a Yes, we can make Scotland's wealth work better for our families - with better jobs and increased free childcare. #indyref #VoteYes"
+## [1] 0.944
+## [1] "With a Yes vote, we can secure the best prospects for our children by safeguarding free university education http://t.co/6RC9ZCnL3v #indyref"
+## [1] 0.942
+## [1] "RT @theSNP: Nobel prize winning economist Joseph Stiglitz believes rUK will agree to shared currency as best option http://t.co/z7wWhGGORf \u008a\u0097_"
+## [1] 0.941
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{VADER in practice}
+\protect\hypertarget{vader-in-practice-1}{}
+Let's load a \href{https://doi.org/10.7910/DVN/RQ7P1F}{dataset} of
+tweets from the VoteYes campaign from the Scottish independence
+referendum. We can calculate sentiment for each tweet using
+\texttt{vader\_df()}.
+
+Let's look at the most negative tweets
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{neg }\OtherTok{\textless{}{-}}\NormalTok{ tweet\_sentiment }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(compound) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{( i }\ControlFlowTok{in} \FunctionTok{rownames}\NormalTok{(neg) ) \{}
+  \FunctionTok{print}\NormalTok{(neg[i, }\StringTok{"text"}\NormalTok{])}
+  \FunctionTok{print}\NormalTok{(neg[i, }\StringTok{"compound"}\NormalTok{])}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "A statement: There is ABSOLUTELY no place for attacks - be they abuse, graffiti, vandalism or physical assault - in this campaign. #indyref"
+## [1] -0.934
+## [1] "Westminster wants to waste our resources on renewing obscene and dangerous weapons of mass destruction. Scotland can do better. #indyref"
+## [1] -0.925
+## [1] "RT @AlexSalmond: The murder of David Haines shows a degree of brutality which defies description. Thoughts &amp; prayers with his family http:/\u008a\u0097_"
+## [1] -0.866
+## [1] "Damaging Westminster cuts are threatening Scotland\u008a\u0097Ès public services. #indyref #VoteYes http://t.co/xrpUlOBbJO"
+## [1] -0.836
+## [1] "RT @martin_compston: More ridiculous scare stories this regarding losing BBC shows I'm in a hotel in Ireland watching bbc1, reason im here \u008a\u0097_"
+## [1] -0.835
+## [1] "RT @StephenNoon: Hearing that a truly desperate &amp; shameful scare story is coming @DHgovuk about to threaten patients over cross-border tran\u008a\u0097_"
+## [1] -0.813
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Sentiment over time}
+\protect\hypertarget{sentiment-over-time}{}
+We can also look at how sentiment changed over time by taking the mean
+compound score in each time period. Given the regular week-weekend
+variation, it also makes sense to show the 7 day rolling mean
+
+\medskip
+
+\begin{cols}
+
+\begin{col}{0.6\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tweet\_sentiment}\SpecialCharTok{$}\NormalTok{date }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(tweet\_sentiment}\SpecialCharTok{$}\NormalTok{created) }
+\NormalTok{daily\_sentiment }\OtherTok{\textless{}{-}}\NormalTok{ tweet\_sentiment }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(date) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{score =} \FunctionTok{mean}\NormalTok{(compound)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{score7 =}\NormalTok{ data.table}\SpecialCharTok{::}\FunctionTok{frollmean}\NormalTok{(score, }\DecValTok{7}\NormalTok{))}
+
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(daily\_sentiment, }\FunctionTok{aes}\NormalTok{(date)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{score)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{score7))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plots/sentiment\_time.png"}\NormalTok{, }\AttributeTok{width=}\DecValTok{4}\NormalTok{, }\AttributeTok{height=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{col}
+
+\begin{col}{0.03\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.37\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/sentiment_time.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Comparing sentiment analysis with wordshift}
+\protect\hypertarget{comparing-sentiment-analysis-with-wordshift}{}
+Why is one corpus more positive/negative than another?
+\end{frame}
+
+\hypertarget{fancy-sentiment-analysis}{%
+\section{Fancy sentiment analysis}\label{fancy-sentiment-analysis}}
+
+\begin{frame}{Fancy sentiment analysis}
+\protect\hypertarget{fancy-sentiment-analysis-1}{}
+Fancy NLP does not apply rules that we give it. It \emph{learns} rules
+from training data.
+
+Complex models, which encode text in complex ways, have outperformed
+lexicon-based sentiment analysis \emph{on the main benchmarked tasks for
+which they are often optimized}.
+
+Sentiment datasets are often comprised of movie or product reviews.
+\end{frame}
+
+\begin{frame}{Fancy sentiment analysis}
+\protect\hypertarget{fancy-sentiment-analysis-2}{}
+We will learn more about how training such models work in the next
+sessions, but you can access one of many such models
+\href{https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment}{here}
+\end{frame}
+
+\hypertarget{sentiment-analysis-validation}{%
+\section{Sentiment analysis
+validation}\label{sentiment-analysis-validation}}
+
+\begin{frame}{Validation}
+\protect\hypertarget{validation}{}
+Almost all methods for sentiment analysis are validated, but almost none
+are validated on your dataset. Unless your dataset is very similar to
+the validation dataset, you should validate yourself.
+
+This means selecting a random sample of your texts, labelling the
+sentiment of these texts by hand, then comparing the label you gave with
+the score given by your method.
+
+If your method gives the same label as you in 100\% of cases, then you
+have an accuracy of 100\%
+\end{frame}
+
+\hypertarget{sentiment-analysis-in-the-wild}{%
+\section{Sentiment analysis in the
+wild}\label{sentiment-analysis-in-the-wild}}
+
+\begin{frame}{Paper 1}
+\protect\hypertarget{paper-1}{}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \bibliography{../presentation-resources/MyLibrary.bib}
+\end{frame}
+
+\end{document}

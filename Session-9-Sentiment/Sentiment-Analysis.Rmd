@@ -1,0 +1,329 @@
+---
+title: "Sentiment Analysis"
+author: "Max Callaghan"
+date: "2022-11-10"
+output: 
+  beamer_presentation:
+    latex_engine: xelatex
+    keep_tex: true
+    citation_package: natbib
+    theme: "Singapore"
+    highlight: zenburn
+    includes:
+      in_header: columns.tex
+extra_dependencies: "mathtools"
+classoption: aspectratio=169  
+fontsize: 10pt
+urlcolor: blue
+bibliography: ../presentation-resources/MyLibrary.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(reticulate)
+library(quanteda)
+library(lexicon)
+use_virtualenv("~/software/py39")
+library(dplyr)
+library(ggplot2)
+```
+
+
+
+```{python include=FALSE}
+import math
+import pandas as pd
+```
+
+# Introduction and Objectives
+
+## Assignment 2
+
+Assignment 2 is still live. If you have issues, or encounter difficulties, raise an issue on the Github repository, or write me an email!
+
+## Assignment 3
+
+Assignment 3 is approaching, and you should have a clear idea of what you want to do by the end of next week.
+
+Feel free to ask for quick feedback on any ideas you have in the coming days
+
+## Objectives
+
+By now we have spent a long time understanding how to **represent** texts in simple and more complex ways.
+
+We've also started asking questions about texts. Viz. What is it about?
+
+Today we will ask a new question about texts: what sentiment does it express?
+
+
+# Introduction to sentiment analysis
+
+## What is a sentiment?
+
+The emotion embodied in a text. Often reduced to positive-negative, but can encompass a more complex range of emotions like joy, sadness, anger. 
+
+## Sentiment analysis as classification
+
+In some ways
+
+## An overview of techniques to do sentiment analysis
+
+Doing sentiment analysis usually involves rule-based or statistical techniques
+
+\begin{itemize}
+  \item<1->Assessing sentiment based on counting words have a predefined sentiment
+  \item<2->Using a classifier that has been trained to identify sentiment with text examples that have been labelled.
+\end{itemize}
+
+# Lexicon-based sentiment analysis
+
+## Positive and negative words
+
+We know about the "bag of words" model of representing texts.
+
+We also know that some words are rather positive, whereas some are rather negative.
+
+Consider the texts:
+
+\medskip
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+texts <- c(
+  "Elon Musk is a champion of free speech",
+  "It's a terrible shame to see mashed potato thrown at art"
+)
+```
+
+\medskip
+
+Do they express positive or negative sentiment? How can we tell?
+
+
+## Using Lexicons in R
+
+We can import a lexicon in R using tidytext. Each row, contains a word and its value
+
+\medskip
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+library(tidytext)
+library(dplyr)
+lex <- get_sentiments("afinn")
+sample_n(lex, 5)
+```
+
+## Using Lexicons in R
+
+Note that the Afinn lexicon is not the newest version. We can just read this in directly from the author's Github page.
+
+\medskip
+
+```{r echo=TRUE, include=TRUE, message=FALSE, cache=TRUE}
+library(readr)
+lex <- read_tsv(
+  "https://raw.githubusercontent.com/fnielsen/afinn/master/afinn/data/AFINN-en-165.txt",
+  col_names=c("word","value")
+)
+
+lex
+
+```
+
+## Using Lexicons in R
+
+There are a few different lexicons, compiled by different authors, using different techniques involving amazon turk and author knowledge, which encode different types of emotions.
+
+\medskip
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+library(tidytext)
+library(dplyr)
+lex <- get_sentiments("nrc")
+head(lex)
+```
+## Using Lexicons in R
+
+We can also put our usual document feature matrix into a similar format
+
+\medskip
+\scriptsize
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+library(quanteda)
+dfmat <- texts %>%
+  tokens %>%
+  dfm()
+
+text_tokens <- tidy(dfmat)
+head(text_tokens)
+```
+
+## Tidy lexicons
+
+Now we can join these to see which words in the texts have what sentiment
+
+\medskip
+\scriptsize
+
+```{r echo=TRUE, include=TRUE, message=FALSE, cache=TRUE}
+lex <- read_tsv("https://raw.githubusercontent.com/fnielsen/afinn/master/afinn/data/AFINN-en-165.txt", col_names=c("word","value"))
+dfmat <- texts %>%
+  tokens %>%
+  dfm()
+
+text_tokens <- tidy(dfmat) %>% 
+  inner_join(lex, by=c("term" = "word"))
+
+text_tokens
+```
+
+## Tidy lexicons
+
+We can then just sum word scores for each document to get a sentiment score for that document
+
+\medskip
+\scriptsize
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+
+doc_sentiments <- tidy(dfmat) %>% 
+  inner_join(lex, by=c("term" = "word")) %>%
+  mutate(value=value*count) %>%
+  group_by(document) %>%
+  summarise(value = sum(value))
+
+doc_sentiments
+```
+
+## VADER
+
+VADER represents just about the state of the art in lexicon-based sentiment analysis, and is especially suitable for social media texts.
+
+It also incorporates rules that extend it beyond the bag-of-words model
+
+## 5 Heuristics 
+
+The Vader [paper](https://www.aaai.org/ocs/index.php/ICWSM/ICWSM14/paper/view/8109/8122) identifies 5 heuristics that extend just counting words from a lexicon, and implements these in their algorithm.
+
+\begin{itemize}
+  \item<1->Punctuation (!) increases the magnitude of the sentiment: "Food here is good!!" > "Food here is good"
+  \item<2->CAPITALIZATION increaeses the magnitude of the sentiment: "Food here is GREAT" > "Food here is great"
+  \item<3->Degree modifiers impact intensity > or <. "Service is marginally good" < "service is good" < "service is extremely good".
+  \item<4->"But" signals shift in sentiment, and that second clause is stronger: "Food here is good, but the service is bad" -> Overall more negative than positive
+  \item<5->Negations in a tri-gram preceeding a sentiment-laden feature flip the polarity
+\end{itemize}
+
+## VADER in practice
+
+Let's load a [dataset](https://doi.org/10.7910/DVN/RQ7P1F) of tweets from the VoteYes campaign from the Scottish independence referendum. We can calculate sentiment for each tweet using `vader_df()`.
+
+Let's look at the most positive tweets
+
+\medskip
+\scriptsize
+
+```{r echo=TRUE, warning=FALSE, include=TRUE, message=FALSE, cache=TRUE}
+library(vader)
+tweets <-read_delim("../datasets/YesScotlandTweets_cleaned.csv", delim=",", escape_double=TRUE)
+sentiments <- vader_df(tweets$text)
+
+tweet_sentiment <- cbind(tweets, select(sentiments,-text))
+
+pos <- tweet_sentiment %>% arrange(desc(compound)) %>% 
+  head()
+
+for( i in rownames(pos) ) {
+  print(pos[i, "text"])
+  print(pos[i, "compound"])
+}
+```
+## VADER in practice
+
+Let's load a [dataset](https://doi.org/10.7910/DVN/RQ7P1F) of tweets from the VoteYes campaign from the Scottish independence referendum. We can calculate sentiment for each tweet using `vader_df()`.
+
+Let's look at the most negative tweets
+
+\medskip
+\scriptsize
+
+```{r echo=TRUE, warning=FALSE, include=TRUE, message=FALSE, cache=TRUE}
+neg <- tweet_sentiment %>% arrange(compound) %>% 
+  head()
+
+for( i in rownames(neg) ) {
+  print(neg[i, "text"])
+  print(neg[i, "compound"])
+}
+```
+## Sentiment over time
+
+We can also look at how sentiment changed over time by taking the mean compound score in each time period. Given the regular week-weekend variation, it also makes sense to show the 7 day rolling mean
+
+\medskip
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.6\textwidth}"}
+\scriptsize
+
+```{r echo=TRUE, warning=FALSE, include=TRUE, message=FALSE, cache=TRUE, fig.show='hide'}
+tweet_sentiment$date <- as.Date(tweet_sentiment$created) 
+daily_sentiment <- tweet_sentiment %>% group_by(date) %>%
+  summarise(score = mean(compound)) %>%
+  mutate(score7 = data.table::frollmean(score, 7))
+
+library(ggplot2)
+ggplot(daily_sentiment, aes(date)) + 
+  geom_point(aes(y=score)) + 
+  geom_line(aes(y=score7))
+
+ggsave("plots/sentiment_time.png", width=4, height=3)
+```
+:::
+
+::: {.col data-latex="{0.03\textwidth}"}
+\ 
+:::
+
+::: {.col data-latex="{0.37\textwidth}"}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/sentiment_time.png}
+\end{figure}
+
+:::
+
+::::::
+
+## Comparing sentiment analysis with wordshift
+
+Why is one corpus more positive/negative than another?
+
+# Fancy sentiment analysis
+
+## Fancy sentiment analysis
+
+Fancy NLP does not apply rules that we give it. It *learns* rules from training data. 
+
+Complex models, which encode text in complex ways, have outperformed lexicon-based sentiment analysis *on the main benchmarked tasks for which they are often optimized*.
+
+Sentiment datasets are often comprised of movie or product reviews.
+
+## Fancy sentiment analysis
+
+We will learn more about how training such models work in the next sessions, but you can access one of many such models [here](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment)
+
+# Sentiment analysis validation
+
+## Validation
+
+Almost all methods for sentiment analysis are validated, but almost none are validated on your dataset. Unless your dataset is very similar to the validation dataset, you should validate yourself.
+
+
+This means selecting a random sample of your texts, labelling the sentiment of these texts by hand, then comparing the label you gave with the score given by your method.
+
+If your method gives the same label as you in 100\% of cases, then you have an accuracy of 100%
+
+# Sentiment analysis in the wild
+
+## Paper 1
