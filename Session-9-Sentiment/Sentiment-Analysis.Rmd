@@ -56,7 +56,7 @@ We've also started asking questions about texts. Viz. What is it about?
 Today we will ask a new question about texts: what sentiment does it express?
 
 
-# Introduction to sentiment analysis
+# Intro to sentiment analysis
 
 ## What is a sentiment?
 
@@ -64,7 +64,12 @@ The emotion embodied in a text. Often reduced to positive-negative, but can enco
 
 ## Sentiment analysis as classification
 
-In some ways
+In some ways, sentiment analysis is a special case of the broader **classification** task, where we ask:
+
+- Is a text of class A or not? or,
+- Is a text of class A or B
+
+With sentiment analysis, the classes are inherent features of how humans use language which *generalise* (to a certain extent) across contexts. 
 
 ## An overview of techniques to do sentiment analysis
 
@@ -224,9 +229,13 @@ Let's look at the most positive tweets
 
 ```{r echo=TRUE, warning=FALSE, include=TRUE, message=FALSE, cache=TRUE}
 library(vader)
-tweets <-read_delim("../datasets/YesScotlandTweets_cleaned.csv", delim=",", escape_double=TRUE)
-sentiments <- vader_df(tweets$text)
+yes <-read_csv("../datasets/YesScotlandTweets_cleaned.csv")
+yes$campaign <- "YesScotland"
+no <- read_csv("../datasets/UkTogetherTweets_cleaned.csv")
+no$campaign <- "UkTogether"
+tweets <- rbind(yes, no)
 
+sentiments <- vader_df(tweets$text)
 tweet_sentiment <- cbind(tweets, select(sentiments,-text))
 
 pos <- tweet_sentiment %>% arrange(desc(compound)) %>% 
@@ -239,7 +248,7 @@ for( i in rownames(pos) ) {
 ```
 ## VADER in practice
 
-Let's load a [dataset](https://doi.org/10.7910/DVN/RQ7P1F) of tweets from the VoteYes campaign from the Scottish independence referendum. We can calculate sentiment for each tweet using `vader_df()`.
+Let's load a [dataset](https://doi.org/10.7910/DVN/RQ7P1F) of tweets from the VoteYes and UkTogether campaigns from the Scottish independence referendum. We can calculate sentiment for each tweet using `vader_df()`.
 
 Let's look at the most negative tweets
 
@@ -257,35 +266,55 @@ for( i in rownames(neg) ) {
 ```
 ## Sentiment over time
 
-We can also look at how sentiment changed over time by taking the mean compound score in each time period. Given the regular week-weekend variation, it also makes sense to show the 7 day rolling mean
+We can also look at how sentiment changed over time by taking the mean compound score in each time period, for each campaign group. Given the regular week-weekend variation, it also makes sense to show the 7 day rolling mean.
+
+\medskip
+\scriptsize
+
+```{r echo=TRUE, warning=FALSE, include=TRUE, message=FALSE, cache=TRUE}
+library(tidyr)
+tweet_sentiment$date <- as.Date(tweet_sentiment$created) 
+wide_sentiment <- tweet_sentiment %>% 
+  group_by(campaign, date) %>%
+  summarise(score = mean(compound)) %>%
+  pivot_wider(names_from=campaign, values_from=score)
+
+days <- data.frame(date=seq(as.Date("2014-06-01"),as.Date("2014-09-18"),1))
+
+daily_sentiment <- days %>% left_join(wide_sentiment) %>%
+  pivot_longer(cols=-date, names_to="campaign", values_to="score") %>%
+  group_by(campaign) %>% arrange(date) %>%
+  mutate(score7 = data.table::frollmean(score, 7))
+
+daily_sentiment %>% head()
+```
+
+## Sentiment over time
+
+Now that we have the data in the format we want, we can plug this into ggplot2
 
 \medskip
 
 :::::: {.cols data-latex=""}
 
-::: {.col data-latex="{0.6\textwidth}"}
+::: {.col data-latex="{0.5\textwidth}"}
 \scriptsize
 
 ```{r echo=TRUE, warning=FALSE, include=TRUE, message=FALSE, cache=TRUE, fig.show='hide'}
-tweet_sentiment$date <- as.Date(tweet_sentiment$created) 
-daily_sentiment <- tweet_sentiment %>% group_by(date) %>%
-  summarise(score = mean(compound)) %>%
-  mutate(score7 = data.table::frollmean(score, 7))
-
 library(ggplot2)
-ggplot(daily_sentiment, aes(date)) + 
-  geom_point(aes(y=score)) + 
+ggplot(daily_sentiment, aes(date, colour=campaign)) + 
+  geom_point(aes(y=score),size=0.5) + 
   geom_line(aes(y=score7))
 
-ggsave("plots/sentiment_time.png", width=4, height=3)
+ggsave("plots/sentiment_time.png", width=6, height=3)
 ```
 :::
 
-::: {.col data-latex="{0.03\textwidth}"}
+::: {.col data-latex="{0.05\textwidth}"}
 \ 
 :::
 
-::: {.col data-latex="{0.37\textwidth}"}
+::: {.col data-latex="{0.45\textwidth}"}
 
 \begin{figure}
 \includegraphics[width=\linewidth]{plots/sentiment_time.png}
@@ -294,10 +323,6 @@ ggsave("plots/sentiment_time.png", width=4, height=3)
 :::
 
 ::::::
-
-## Comparing sentiment analysis with wordshift
-
-Why is one corpus more positive/negative than another?
 
 # Fancy sentiment analysis
 
@@ -313,7 +338,7 @@ Sentiment datasets are often comprised of movie or product reviews.
 
 We will learn more about how training such models work in the next sessions, but you can access one of many such models [here](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment)
 
-# Sentiment analysis validation
+# Validation
 
 ## Validation
 
@@ -322,8 +347,121 @@ Almost all methods for sentiment analysis are validated, but almost none are val
 
 This means selecting a random sample of your texts, labelling the sentiment of these texts by hand, then comparing the label you gave with the score given by your method.
 
-If your method gives the same label as you in 100\% of cases, then you have an accuracy of 100%
+If your method gives the same label as you in 100\% of cases, then you have an accuracy of 100%.
 
-# Sentiment analysis in the wild
+We will explore validation metrics in the next session on supervised learning.
 
-## Paper 1
+## Exercise - validating on your own data
+
+- In a spreadsheet, write 5 texts that express your feelings about recent political events, with each text in a new row of the same column
+- Ask your neighbour to rate the sentiment of your texts in the neighbouring column. The value should be between -1 (completely negative) and 1 (completely positive).
+- Apply one of the techniques we have learnt today to your texts and compare with the human annotation
+- What is the average (absolute) difference between your human label and the automated technique?
+- For what text is the divergence greatest?
+
+# Examples in research
+
+## Tones from a Narrowing Race
+
+In [Tones from a Narrowing Race: Polling and Online Political Communication during the 2014 Scottish Referendum Campaign](https://www.cambridge.org/core/journals/british-journal-of-political-science/article/tones-from-a-narrowing-race-polling-and-online-political-communication-during-the-2014-scottish-referendum-campaign/49CEE09374F4729B4C0B7048FBA4521C), Evelyne Brie and Yannick Dufresne set out to investigate the dynamics of how political campaigns use negative communication.
+
+They use the data that we've just seen: tweets sent by the pro-independence and pro-union campaigns in the Scottish independence referendum of 2014.
+
+## Tones from a Narrowing Race: Obectives
+
+The authors want to provide evidence on negative campaigning *in practice* that complements political theory about how and why actors use negative campaigning.
+
+They are interested in how real organisations use twitter, meaning their findings are not subject to the same external validity concerns generated by the unrepresentativeness of twitter.
+
+## Tones from a Narrowing Race: Results
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.5\textwidth}"}
+The authors' analysis, which uses the Opinion Observer lexicon (I think available with the "bing" option in tidytext's `get_sentiments()`) finds a similar pattern of sentiment scores in the different campaigns over time
+:::
+
+::: {.col data-latex="{0.05\textwidth}"}
+\ 
+:::
+
+::: {.col data-latex="{0.45\textwidth}"}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/narrowing-fig3.png}
+\end{figure}
+
+:::
+
+::::::
+
+## Tones from a Narrowing Race: Results
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.5\textwidth}"}
+They find a significant relationship between the no campaign leading in the polls and the negativity of their tweets. The more NO leads, the more negatively they tweet. 
+
+\medskip
+
+In a simpler model, there is a significant relationship between the number of days to the election and the negativity of the YES campaign. That is, the decline in positivity as the election is statistically significant.
+
+\medskip
+
+
+There is also evidence that the YES campaign tweeted more negatively the day after each debate (which they were said to have lost)
+:::
+
+::: {.col data-latex="{0.05\textwidth}"}
+\ 
+:::
+
+::: {.col data-latex="{0.45\textwidth}"}
+
+\begin{figure}
+\only<1>{\includegraphics[width=\linewidth]{images/narrowing-table1.png}}
+\only<2>{\includegraphics[width=\linewidth]{images/narrowing-fig1.png}}
+\end{figure}
+
+:::
+
+::::::
+
+## Discusion
+
+What does this tell us about the scottish election campagin?
+
+What does this tell us about negative communication in political campaigns in general?
+
+What potential confounding factors might explain the results?
+
+## Other examples
+
+- [Baylis and Obradovich et al.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195750) explore how weather affects sentiment
+- [Schwalbach](https://www.cambridge.org/core/journals/european-political-science-review/article/abs/going-in-circles-the-influence-of-the-electoral-cycle-on-the-party-behaviour-in-parliament/B4693B1A27049DB3BCE314F32D6BD1EB) looks at how political debate varies in sentiment through the legislative period, depending on their involvement in the government.
+- [Wang et al.](https://www.nature.com/articles/s41562-022-01312-y) explore how the COVID-19 pandemic affected how people expressed sentiment
+- [Arratia et al.](https://link.springer.com/chapter/10.1007/978-3-030-66891-4_9) describe how sentiment analysis is used to provide information about financial markets
+
+# Wrapup and Outlook
+
+## Wrapup
+
+So far in this course, we have covered:
+
+- How to get texts from tricky places
+- How to process them and manipulate them
+- How to represent them in different ways
+- How to find the similarity between texts
+- Hot to find what texts are about
+
+Now we know how to find out what emotions are present in texts
+
+
+
+## Outlook
+
+We said sentiment analysis is a special case of classification. We will explore this in detail next week when we cover **supervised text classification**. 
+
+We'll be training machine learning classifiers to assign documents to predefined classes, and learning how to evaluate how well these work.
+
+This is the last major technique we will learn, before the penultimate session where we will find about how to apply a range of the techniques we have seen using the fanciest most up-to-date methods.

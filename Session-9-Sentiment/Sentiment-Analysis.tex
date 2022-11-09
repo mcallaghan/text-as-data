@@ -193,9 +193,9 @@ Today we will ask a new question about texts: what sentiment does it
 express?
 \end{frame}
 
-\hypertarget{introduction-to-sentiment-analysis}{%
-\section{Introduction to sentiment
-analysis}\label{introduction-to-sentiment-analysis}}
+\hypertarget{intro-to-sentiment-analysis}{%
+\section{Intro to sentiment
+analysis}\label{intro-to-sentiment-analysis}}
 
 \begin{frame}{What is a sentiment?}
 \protect\hypertarget{what-is-a-sentiment}{}
@@ -205,7 +205,20 @@ can encompass a more complex range of emotions like joy, sadness, anger.
 
 \begin{frame}{Sentiment analysis as classification}
 \protect\hypertarget{sentiment-analysis-as-classification}{}
-In some ways
+In some ways, sentiment analysis is a special case of the broader
+\textbf{classification} task, where we ask:
+
+\begin{itemize}
+\tightlist
+\item
+  Is a text of class A or not? or,
+\item
+  Is a text of class A or B
+\end{itemize}
+
+With sentiment analysis, the classes are inherent features of how humans
+use language which \emph{generalise} (to a certain extent) across
+contexts.
 \end{frame}
 
 \begin{frame}{An overview of techniques to do sentiment analysis}
@@ -266,13 +279,13 @@ and its value
 
 \begin{verbatim}
 ## # A tibble: 5 x 2
-##   word        value
-##   <chr>       <dbl>
-## 1 incompetent    -2
-## 2 honour          2
-## 3 lawsuit        -2
-## 4 whore          -4
-## 5 flagship        2
+##   word         value
+##   <chr>        <dbl>
+## 1 hooligan        -2
+## 2 damn            -4
+## 3 slicker          2
+## 4 brainwashing    -3
+## 5 faggot          -3
 \end{verbatim}
 \end{frame}
 
@@ -476,9 +489,13 @@ Let's look at the most positive tweets
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(vader)}
-\NormalTok{tweets }\OtherTok{\textless{}{-}}\FunctionTok{read\_delim}\NormalTok{(}\StringTok{"../datasets/YesScotlandTweets\_cleaned.csv"}\NormalTok{, }\AttributeTok{delim=}\StringTok{","}\NormalTok{, }\AttributeTok{escape\_double=}\ConstantTok{TRUE}\NormalTok{)}
-\NormalTok{sentiments }\OtherTok{\textless{}{-}} \FunctionTok{vader\_df}\NormalTok{(tweets}\SpecialCharTok{$}\NormalTok{text)}
+\NormalTok{yes }\OtherTok{\textless{}{-}}\FunctionTok{read\_csv}\NormalTok{(}\StringTok{"../datasets/YesScotlandTweets\_cleaned.csv"}\NormalTok{)}
+\NormalTok{yes}\SpecialCharTok{$}\NormalTok{campaign }\OtherTok{\textless{}{-}} \StringTok{"YesScotland"}
+\NormalTok{no }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"../datasets/UkTogetherTweets\_cleaned.csv"}\NormalTok{)}
+\NormalTok{no}\SpecialCharTok{$}\NormalTok{campaign }\OtherTok{\textless{}{-}} \StringTok{"UkTogether"}
+\NormalTok{tweets }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(yes, no)}
 
+\NormalTok{sentiments }\OtherTok{\textless{}{-}} \FunctionTok{vader\_df}\NormalTok{(tweets}\SpecialCharTok{$}\NormalTok{text)}
 \NormalTok{tweet\_sentiment }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(tweets, }\FunctionTok{select}\NormalTok{(sentiments,}\SpecialCharTok{{-}}\NormalTok{text))}
 
 \NormalTok{pos }\OtherTok{\textless{}{-}}\NormalTok{ tweet\_sentiment }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(compound)) }\SpecialCharTok{\%\textgreater{}\%} 
@@ -492,6 +509,8 @@ Let's look at the most positive tweets
 \end{Shaded}
 
 \begin{verbatim}
+## [1] "RT @dobbs_michael: Off to Edinburgh. Yesterday great campaigning in W Scotland, smiles, great support. Hope to find many more proud Scots t\u008a\u0097_"
+## [1] 0.965
 ## [1] "A Yes means greater financial security for families - we can expand free childcare, safeguard free education and create more jobs. #indyref"
 ## [1] 0.96
 ## [1] "RT @mstewart_23: #indyref is about the country we want to live in &amp; how best to create that. YES gives us the best opportunity to do that. \u008a\u0097_"
@@ -502,16 +521,14 @@ Let's look at the most positive tweets
 ## [1] 0.944
 ## [1] "With a Yes vote, we can secure the best prospects for our children by safeguarding free university education http://t.co/6RC9ZCnL3v #indyref"
 ## [1] 0.942
-## [1] "RT @theSNP: Nobel prize winning economist Joseph Stiglitz believes rUK will agree to shared currency as best option http://t.co/z7wWhGGORf \u008a\u0097_"
-## [1] 0.941
 \end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{VADER in practice}
 \protect\hypertarget{vader-in-practice-1}{}
 Let's load a \href{https://doi.org/10.7910/DVN/RQ7P1F}{dataset} of
-tweets from the VoteYes campaign from the Scottish independence
-referendum. We can calculate sentiment for each tweet using
+tweets from the VoteYes and UkTogether campaigns from the Scottish
+independence referendum. We can calculate sentiment for each tweet using
 \texttt{vader\_df()}.
 
 Let's look at the most negative tweets
@@ -550,45 +567,83 @@ Let's look at the most negative tweets
 \begin{frame}[fragile]{Sentiment over time}
 \protect\hypertarget{sentiment-over-time}{}
 We can also look at how sentiment changed over time by taking the mean
-compound score in each time period. Given the regular week-weekend
-variation, it also makes sense to show the 7 day rolling mean
+compound score in each time period, for each campaign group. Given the
+regular week-weekend variation, it also makes sense to show the 7 day
+rolling mean.
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyr)}
+\NormalTok{tweet\_sentiment}\SpecialCharTok{$}\NormalTok{date }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(tweet\_sentiment}\SpecialCharTok{$}\NormalTok{created) }
+\NormalTok{wide\_sentiment }\OtherTok{\textless{}{-}}\NormalTok{ tweet\_sentiment }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(campaign, date) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{score =} \FunctionTok{mean}\NormalTok{(compound)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from=}\NormalTok{campaign, }\AttributeTok{values\_from=}\NormalTok{score)}
+
+\NormalTok{days }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{date=}\FunctionTok{seq}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(}\StringTok{"2014{-}06{-}01"}\NormalTok{),}\FunctionTok{as.Date}\NormalTok{(}\StringTok{"2014{-}09{-}18"}\NormalTok{),}\DecValTok{1}\NormalTok{))}
+
+\NormalTok{daily\_sentiment }\OtherTok{\textless{}{-}}\NormalTok{ days }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{left\_join}\NormalTok{(wide\_sentiment) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols=}\SpecialCharTok{{-}}\NormalTok{date, }\AttributeTok{names\_to=}\StringTok{"campaign"}\NormalTok{, }\AttributeTok{values\_to=}\StringTok{"score"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(campaign) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(date) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{score7 =}\NormalTok{ data.table}\SpecialCharTok{::}\FunctionTok{frollmean}\NormalTok{(score, }\DecValTok{7}\NormalTok{))}
+
+\NormalTok{daily\_sentiment }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+## # Groups:   campaign [2]
+##   date       campaign     score score7
+##   <date>     <chr>        <dbl>  <dbl>
+## 1 2014-06-01 UkTogether   0.647     NA
+## 2 2014-06-01 YesScotland NA         NA
+## 3 2014-06-02 UkTogether   0.132     NA
+## 4 2014-06-02 YesScotland NA         NA
+## 5 2014-06-03 UkTogether   0.174     NA
+## 6 2014-06-03 YesScotland NA         NA
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Sentiment over time}
+\protect\hypertarget{sentiment-over-time-1}{}
+Now that we have the data in the format we want, we can plug this into
+ggplot2
 
 \medskip
 
 \begin{cols}
 
-\begin{col}{0.6\textwidth}
+\begin{col}{0.5\textwidth}
 
 \scriptsize
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{tweet\_sentiment}\SpecialCharTok{$}\NormalTok{date }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(tweet\_sentiment}\SpecialCharTok{$}\NormalTok{created) }
-\NormalTok{daily\_sentiment }\OtherTok{\textless{}{-}}\NormalTok{ tweet\_sentiment }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(date) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{score =} \FunctionTok{mean}\NormalTok{(compound)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{score7 =}\NormalTok{ data.table}\SpecialCharTok{::}\FunctionTok{frollmean}\NormalTok{(score, }\DecValTok{7}\NormalTok{))}
-
 \FunctionTok{library}\NormalTok{(ggplot2)}
-\FunctionTok{ggplot}\NormalTok{(daily\_sentiment, }\FunctionTok{aes}\NormalTok{(date)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{score)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(daily\_sentiment, }\FunctionTok{aes}\NormalTok{(date, }\AttributeTok{colour=}\NormalTok{campaign)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{score),}\AttributeTok{size=}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{score7))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plots/sentiment\_time.png"}\NormalTok{, }\AttributeTok{width=}\DecValTok{4}\NormalTok{, }\AttributeTok{height=}\DecValTok{3}\NormalTok{)}
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plots/sentiment\_time.png"}\NormalTok{, }\AttributeTok{width=}\DecValTok{6}\NormalTok{, }\AttributeTok{height=}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \end{col}
 
-\begin{col}{0.03\textwidth}
+\begin{col}{0.05\textwidth}
 ~
 
 \end{col}
 
-\begin{col}{0.37\textwidth}
+\begin{col}{0.45\textwidth}
 
 \begin{figure}
 \includegraphics[width=\linewidth]{plots/sentiment_time.png}
@@ -597,11 +652,6 @@ variation, it also makes sense to show the 7 day rolling mean
 \end{col}
 
 \end{cols}
-\end{frame}
-
-\begin{frame}{Comparing sentiment analysis with wordshift}
-\protect\hypertarget{comparing-sentiment-analysis-with-wordshift}{}
-Why is one corpus more positive/negative than another?
 \end{frame}
 
 \hypertarget{fancy-sentiment-analysis}{%
@@ -626,12 +676,11 @@ sessions, but you can access one of many such models
 \href{https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment}{here}
 \end{frame}
 
-\hypertarget{sentiment-analysis-validation}{%
-\section{Sentiment analysis
-validation}\label{sentiment-analysis-validation}}
+\hypertarget{validation}{%
+\section{Validation}\label{validation}}
 
 \begin{frame}{Validation}
-\protect\hypertarget{validation}{}
+\protect\hypertarget{validation-1}{}
 Almost all methods for sentiment analysis are validated, but almost none
 are validated on your dataset. Unless your dataset is very similar to
 the validation dataset, you should validate yourself.
@@ -641,15 +690,199 @@ sentiment of these texts by hand, then comparing the label you gave with
 the score given by your method.
 
 If your method gives the same label as you in 100\% of cases, then you
-have an accuracy of 100\%
+have an accuracy of 100\%.
+
+We will explore validation metrics in the next session on supervised
+learning.
 \end{frame}
 
-\hypertarget{sentiment-analysis-in-the-wild}{%
-\section{Sentiment analysis in the
-wild}\label{sentiment-analysis-in-the-wild}}
+\begin{frame}{Exercise - validating on your own data}
+\protect\hypertarget{exercise---validating-on-your-own-data}{}
+\begin{itemize}
+\tightlist
+\item
+  In a spreadsheet, write 5 texts that express your feelings about
+  recent political events, with each text in a new row of the same
+  column
+\item
+  Ask your neighbour to rate the sentiment of your texts in the
+  neighbouring column. The value should be between -1 (completely
+  negative) and 1 (completely positive).
+\item
+  Apply one of the techniques we have learnt today to your texts and
+  compare with the human annotation
+\item
+  What is the average (absolute) difference between your human label and
+  the automated technique?
+\item
+  For what text is the divergence greatest?
+\end{itemize}
+\end{frame}
 
-\begin{frame}{Paper 1}
-\protect\hypertarget{paper-1}{}
+\hypertarget{examples-in-research}{%
+\section{Examples in research}\label{examples-in-research}}
+
+\begin{frame}{Tones from a Narrowing Race}
+\protect\hypertarget{tones-from-a-narrowing-race}{}
+In
+\href{https://www.cambridge.org/core/journals/british-journal-of-political-science/article/tones-from-a-narrowing-race-polling-and-online-political-communication-during-the-2014-scottish-referendum-campaign/49CEE09374F4729B4C0B7048FBA4521C}{Tones
+from a Narrowing Race: Polling and Online Political Communication during
+the 2014 Scottish Referendum Campaign}, Evelyne Brie and Yannick
+Dufresne set out to investigate the dynamics of how political campaigns
+use negative communication.
+
+They use the data that we've just seen: tweets sent by the
+pro-independence and pro-union campaigns in the Scottish independence
+referendum of 2014.
+\end{frame}
+
+\begin{frame}{Tones from a Narrowing Race: Obectives}
+\protect\hypertarget{tones-from-a-narrowing-race-obectives}{}
+The authors want to provide evidence on negative campaigning \emph{in
+practice} that complements political theory about how and why actors use
+negative campaigning.
+
+They are interested in how real organisations use twitter, meaning their
+findings are not subject to the same external validity concerns
+generated by the unrepresentativeness of twitter.
+\end{frame}
+
+\begin{frame}[fragile]{Tones from a Narrowing Race: Results}
+\protect\hypertarget{tones-from-a-narrowing-race-results}{}
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+The authors' analysis, which uses the Opinion Observer lexicon (I think
+available with the ``bing'' option in tidytext's
+\texttt{get\_sentiments()}) finds a similar pattern of sentiment scores
+in the different campaigns over time
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/narrowing-fig3.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Tones from a Narrowing Race: Results}
+\protect\hypertarget{tones-from-a-narrowing-race-results-1}{}
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+They find a significant relationship between the no campaign leading in
+the polls and the negativity of their tweets. The more NO leads, the
+more negatively they tweet.
+
+\medskip
+
+In a simpler model, there is a significant relationship between the
+number of days to the election and the negativity of the YES campaign.
+That is, the decline in positivity as the election is statistically
+significant.
+
+\medskip
+
+There is also evidence that the YES campaign tweeted more negatively the
+day after each debate (which they were said to have lost)
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\only<1>{\includegraphics[width=\linewidth]{images/narrowing-table1.png}}
+\only<2>{\includegraphics[width=\linewidth]{images/narrowing-fig1.png}}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Discusion}
+\protect\hypertarget{discusion}{}
+What does this tell us about the scottish election campagin?
+
+What does this tell us about negative communication in political
+campaigns in general?
+
+What potential confounding factors might explain the results?
+\end{frame}
+
+\begin{frame}{Other examples}
+\protect\hypertarget{other-examples}{}
+\begin{itemize}
+\tightlist
+\item
+  \href{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195750}{Baylis
+  and Obradovich et al.} explore how weather affects sentiment
+\item
+  \href{https://www.cambridge.org/core/journals/european-political-science-review/article/abs/going-in-circles-the-influence-of-the-electoral-cycle-on-the-party-behaviour-in-parliament/B4693B1A27049DB3BCE314F32D6BD1EB}{Schwalbach}
+  looks at how political debate varies in sentiment through the
+  legislative period, depending on their involvement in the government.
+\item
+  \href{https://www.nature.com/articles/s41562-022-01312-y}{Wang et al.}
+  explore how the COVID-19 pandemic affected how people expressed
+  sentiment
+\item
+  \href{https://link.springer.com/chapter/10.1007/978-3-030-66891-4_9}{Arratia
+  et al.} describe how sentiment analysis is used to provide information
+  about financial markets
+\end{itemize}
+\end{frame}
+
+\hypertarget{wrapup-and-outlook}{%
+\section{Wrapup and Outlook}\label{wrapup-and-outlook}}
+
+\begin{frame}{Wrapup}
+\protect\hypertarget{wrapup}{}
+So far in this course, we have covered:
+
+\begin{itemize}
+\tightlist
+\item
+  How to get texts from tricky places
+\item
+  How to process them and manipulate them
+\item
+  How to represent them in different ways
+\item
+  How to find the similarity between texts
+\item
+  Hot to find what texts are about
+\end{itemize}
+
+Now we know how to find out what emotions are present in texts
+\end{frame}
+
+\begin{frame}{Outlook}
+\protect\hypertarget{outlook}{}
+We said sentiment analysis is a special case of classification. We will
+explore this in detail next week when we cover \textbf{supervised text
+classification}.
+
+We'll be training machine learning classifiers to assign documents to
+predefined classes, and learning how to evaluate how well these work.
+
+This is the last major technique we will learn, before the penultimate
+session where we will find about how to apply a range of the techniques
+we have seen using the fanciest most up-to-date methods.
 \end{frame}
 
 \begin{frame}[allowframebreaks]{}
