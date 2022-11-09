@@ -279,13 +279,13 @@ and its value
 
 \begin{verbatim}
 ## # A tibble: 5 x 2
-##   word         value
-##   <chr>        <dbl>
-## 1 hooligan        -2
-## 2 damn            -4
-## 3 slicker          2
-## 4 brainwashing    -3
-## 5 faggot          -3
+##   word          value
+##   <chr>         <dbl>
+## 1 ignorant         -2
+## 2 opportunities     2
+## 3 lawsuit          -2
+## 4 promotes          1
+## 5 weak             -2
 \end{verbatim}
 \end{frame}
 
@@ -450,6 +450,117 @@ score for that document
 \end{verbatim}
 \end{frame}
 
+\begin{frame}[fragile]{Using Lexicons in Python}
+\protect\hypertarget{using-lexicons-in-python}{}
+Doing this in Python is very similar. We can use the afinn package to
+access the afinn lexion
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{from}\NormalTok{ sklearn.feature\_extraction.text }\ImportTok{import}\NormalTok{ CountVectorizer}
+\ImportTok{from}\NormalTok{ afinn }\ImportTok{import}\NormalTok{ Afinn}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\NormalTok{afinn }\OperatorTok{=}\NormalTok{ Afinn()}
+\NormalTok{lex }\OperatorTok{=}\NormalTok{ pd.DataFrame(afinn.\_dict.items(),columns}\OperatorTok{=}\NormalTok{[}\StringTok{"word"}\NormalTok{,}\StringTok{"value"}\NormalTok{])}
+
+\NormalTok{lex.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         word  value
+## 0    abandon     -2
+## 1  abandoned     -2
+## 2   abandons     -2
+## 3   abducted     -2
+## 4  abduction     -2
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Using Lexicons in Python}
+\protect\hypertarget{using-lexicons-in-python-1}{}
+Then, in the same way, we can put our dfm into a ``tidy'' form and merge
+with our lexicon
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{texts }\OperatorTok{=}\NormalTok{ [}
+    \StringTok{"Elon Musk is a champion of free speech"}\NormalTok{,}
+    \StringTok{"It\textquotesingle{}s a terrible shame to see mashed potato thrown at art"}
+\NormalTok{]}
+\NormalTok{vec }\OperatorTok{=}\NormalTok{ CountVectorizer()}
+\NormalTok{dfmat }\OperatorTok{=}\NormalTok{ vec.fit\_transform(texts)}
+
+\KeywordTok{def}\NormalTok{ tidy\_dfmat(dfmat, vec):}
+\NormalTok{    nz }\OperatorTok{=}\NormalTok{ dfmat.nonzero()}
+\NormalTok{    text\_df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}
+        \StringTok{"document"}\NormalTok{: np.array(texts)[nz[}\DecValTok{0}\NormalTok{]],}
+        \StringTok{"term"}\NormalTok{: vec.get\_feature\_names\_out()[nz[}\DecValTok{1}\NormalTok{]],}
+        \StringTok{"count"}\NormalTok{: dfmat[nz].A1}
+\NormalTok{    \})}
+    \ControlFlowTok{return}\NormalTok{ text\_df}
+\NormalTok{text\_df }\OperatorTok{=}\NormalTok{ tidy\_dfmat(dfmat, vec)}
+\NormalTok{text\_tokens }\OperatorTok{=}\NormalTok{ text\_df.merge(lex, left\_on}\OperatorTok{=}\StringTok{"term"}\NormalTok{, right\_on}\OperatorTok{=}\StringTok{"word"}\NormalTok{)}
+\NormalTok{text\_tokens[}\StringTok{"value"}\NormalTok{] }\OperatorTok{*=}\NormalTok{ text\_tokens[}\StringTok{"count"}\NormalTok{]}
+\NormalTok{text\_tokens}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                             document      term  ...      word value
+## 0             Elon Musk is a champion of free speech  champion  ...  champion     2
+## 1             Elon Musk is a champion of free speech      free  ...      free     1
+## 2  It's a terrible shame to see mashed potato thr...  terrible  ...  terrible    -3
+## 3  It's a terrible shame to see mashed potato thr...     shame  ...     shame    -2
+## 
+## [4 rows x 5 columns]
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Using Lexicons in Python}
+\protect\hypertarget{using-lexicons-in-python-2}{}
+In the very same way, we can sum across documents \medskip \scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{doc\_sentiments }\OperatorTok{=}\NormalTok{ text\_tokens.groupby(}\StringTok{"document"}\NormalTok{)[}\StringTok{"value"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{()}
+\NormalTok{doc\_sentiments}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## document
+## Elon Musk is a champion of free speech                      3
+## It's a terrible shame to see mashed potato thrown at art   -5
+## Name: value, dtype: int64
+\end{verbatim}
+
+\medskip
+
+Although we can also get the sentiment from a text directly
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scores }\OperatorTok{=}\NormalTok{ [afinn.score(t) }\ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ texts]}
+\ControlFlowTok{for}\NormalTok{ text, score }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(texts,scores):}
+  \BuiltInTok{print}\NormalTok{(text, score)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Elon Musk is a champion of free speech 3.0
+## It's a terrible shame to see mashed potato thrown at art -5.0
+\end{verbatim}
+\end{frame}
+
 \begin{frame}{VADER}
 \protect\hypertarget{vader}{}
 VADER represents just about the state of the art in lexicon-based
@@ -553,14 +664,14 @@ Let's look at the most negative tweets
 ## [1] -0.934
 ## [1] "Westminster wants to waste our resources on renewing obscene and dangerous weapons of mass destruction. Scotland can do better. #indyref"
 ## [1] -0.925
+## [1] ".@TogetherAlistairDarling - \"The nationalist threat to default on our debt is irresponsible and reckless.\" http://t.co/xQSWYauTgg"
+## [1] -0.889
 ## [1] "RT @AlexSalmond: The murder of David Haines shows a degree of brutality which defies description. Thoughts &amp; prayers with his family http:/\u008a\u0097_"
 ## [1] -0.866
-## [1] "Damaging Westminster cuts are threatening Scotland\u008a\u0097Ès public services. #indyref #VoteYes http://t.co/xrpUlOBbJO"
-## [1] -0.836
-## [1] "RT @martin_compston: More ridiculous scare stories this regarding losing BBC shows I'm in a hotel in Ireland watching bbc1, reason im here \u008a\u0097_"
-## [1] -0.835
-## [1] "RT @StephenNoon: Hearing that a truly desperate &amp; shameful scare story is coming @DHgovuk about to threaten patients over cross-border tran\u008a\u0097_"
-## [1] -0.813
+## [1] "Salmond warned that reckless threat to default on debt could lead to higher mortgage payments for Scots http://t.co/2Nmk95diKP #indyref"
+## [1] -0.866
+## [1] "RT @Kevin_Maguire: However much I hate banksters, hedgies, speculators et al I think Salmond threatening to defaul on Scotland's debt is un\u008a\u0097_"
+## [1] -0.862
 \end{verbatim}
 \end{frame}
 
@@ -647,6 +758,133 @@ ggplot2
 
 \begin{figure}
 \includegraphics[width=\linewidth]{plots/sentiment_time.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{VADER with Python}
+\protect\hypertarget{vader-with-python}{}
+In python, we can use the
+\href{https://github.com/cjhutto/vaderSentiment}{vaderSentiment} package
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ vaderSentiment.vaderSentiment }\ImportTok{import}\NormalTok{ SentimentIntensityAnalyzer}
+
+\NormalTok{yes }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{"../datasets/YesScotlandTweets\_cleaned.csv"}\NormalTok{)}
+\NormalTok{yes[}\StringTok{"campaign"}\NormalTok{] }\OperatorTok{=} \StringTok{"YesScotland"}
+\NormalTok{no }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{"../datasets/UkTogetherTweets\_cleaned.csv"}\NormalTok{)}
+\NormalTok{no[}\StringTok{"campaign"}\NormalTok{] }\OperatorTok{=} \StringTok{"UkTogether"}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.concat([yes, no]).reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\NormalTok{analyzer }\OperatorTok{=}\NormalTok{ SentimentIntensityAnalyzer()}
+
+\NormalTok{results }\OperatorTok{=}\NormalTok{ [analyzer.polarity\_scores(x) }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ df[}\StringTok{"text"}\NormalTok{]]}
+\NormalTok{sentiment }\OperatorTok{=}\NormalTok{ pd.DataFrame.from\_dict(results)}
+
+\NormalTok{sentiment\_df }\OperatorTok{=}\NormalTok{ pd.concat([df,sentiment], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{sentiment\_df.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    x                                               text  ...    pos  compound
+## 0  1  Thank you, everyone! #indyref http://t.co/1kTz...  ...  0.411    0.4199
+## 1  2  As the polls close, total likes on the @YesSco...  ...  0.147    0.4754
+## 2  3  RT @YESforScotland4: #voteyes YES what a fanta...  ...  0.297    0.8668
+## 3  4  We can be proud of #indyref, which has seen a ...  ...  0.147    0.4767
+## 4  5  RT @Crafty_Goddess: Txt from 25 year old niece...  ...  0.122    0.4497
+## 
+## [5 rows x 22 columns]
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{VADER with Python}
+\protect\hypertarget{vader-with-python-1}{}
+We get the data into the format where there is a row for every day, and
+the score for each day is in a column for each campaign
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\NormalTok{sentiment\_df[}\StringTok{"date"}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(df.created).dt.date}
+\NormalTok{daily\_sentiment }\OperatorTok{=}\NormalTok{ (sentiment\_df}
+\NormalTok{                   .groupby([}\StringTok{"date"}\NormalTok{,}\StringTok{"campaign"}\NormalTok{])[}\StringTok{"compound"}\NormalTok{]}
+\NormalTok{                   .mean()}
+\NormalTok{                   .reset\_index()}
+\NormalTok{                   .pivot\_table(columns}\OperatorTok{=}\StringTok{"campaign"}\NormalTok{, values}\OperatorTok{=}\StringTok{"compound"}\NormalTok{, index}\OperatorTok{=}\StringTok{"date"}\NormalTok{)}
+\NormalTok{                   .reset\_index()}
+\NormalTok{                  )}
+
+\NormalTok{daily\_sentiment[}\StringTok{"date"}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(daily\_sentiment[}\StringTok{"date"}\NormalTok{])}
+\NormalTok{days }\OperatorTok{=}\NormalTok{ pd.date\_range(start}\OperatorTok{=}\StringTok{"2014{-}06{-}01"}\NormalTok{,end}\OperatorTok{=}\StringTok{"2014{-}09{-}18"}\NormalTok{)}
+\NormalTok{daily\_sentiment }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}\StringTok{"date"}\NormalTok{: days\}).merge(daily\_sentiment, how}\OperatorTok{=}\StringTok{"left"}\NormalTok{)}
+
+\NormalTok{daily\_sentiment.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         date  UkTogether  YesScotland
+## 0 2014-06-01    0.647000          NaN
+## 1 2014-06-02    0.228642          NaN
+## 2 2014-06-03    0.174267          NaN
+## 3 2014-06-04    0.209287          NaN
+## 4 2014-06-05    0.202725          NaN
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Sentiment over time}
+\protect\hypertarget{sentiment-over-time-2}{}
+The easiest way to plot this is with base matplotlib
+
+\medskip
+
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{6}\NormalTok{,}\DecValTok{4}\NormalTok{))}
+
+\ControlFlowTok{for}\NormalTok{ campaign }\KeywordTok{in}\NormalTok{ [}\StringTok{"UkTogether"}\NormalTok{, }\StringTok{"YesScotland"}\NormalTok{]:}
+\NormalTok{    ax.scatter(}
+\NormalTok{      daily\_sentiment.date, daily\_sentiment[campaign],}
+\NormalTok{      s}\OperatorTok{=}\DecValTok{5}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.7}
+\NormalTok{    )}
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ daily\_sentiment[campaign].rolling(}\DecValTok{7}\NormalTok{).mean()}
+\NormalTok{    ax.plot(daily\_sentiment.date, x, label}\OperatorTok{=}\NormalTok{campaign)}
+
+\NormalTok{fig.autofmt\_xdate()}
+\NormalTok{ax.legend()}
+
+\NormalTok{plt.savefig(}\StringTok{"plots/sentiment\_time\_py.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/sentiment_time_py.png}
 \end{figure}
 
 \end{col}
@@ -883,6 +1121,20 @@ predefined classes, and learning how to evaluate how well these work.
 This is the last major technique we will learn, before the penultimate
 session where we will find about how to apply a range of the techniques
 we have seen using the fanciest most up-to-date methods.
+\end{frame}
+
+\begin{frame}{Homework assignment (optional)}
+\protect\hypertarget{homework-assignment-optional}{}
+Take a protocol from the Bundestag and process it as you did in
+Assignment 1
+
+Using a German sentiment lexicon, calculate a sentiment score for each
+speech.
+
+Show the average sentiment score for each party.
+
+Show the 5 speeches with the most positive sentiment, and the 5 speeches
+with the most negative sentiment.
 \end{frame}
 
 \begin{frame}[allowframebreaks]{}

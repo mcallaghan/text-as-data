@@ -199,6 +199,76 @@ doc_sentiments <- tidy(dfmat) %>%
 
 doc_sentiments
 ```
+## Using Lexicons in Python
+
+Doing this in Python is very similar. We can use the afinn package to access the afinn lexion
+
+\medskip
+\scriptsize
+
+```{python echo=TRUE, include=TRUE, message=FALSE}
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from afinn import Afinn
+import numpy as np
+
+afinn = Afinn()
+lex = pd.DataFrame(afinn._dict.items(),columns=["word","value"])
+
+lex.head()
+```
+
+## Using Lexicons in Python
+
+Then, in the same way, we can put our dfm into a "tidy" form and merge with our lexicon
+
+\medskip
+\scriptsize
+
+```{python echo=TRUE, include=TRUE, message=FALSE}
+texts = [
+    "Elon Musk is a champion of free speech",
+    "It's a terrible shame to see mashed potato thrown at art"
+]
+vec = CountVectorizer()
+dfmat = vec.fit_transform(texts)
+
+def tidy_dfmat(dfmat, vec):
+    nz = dfmat.nonzero()
+    text_df = pd.DataFrame({
+        "document": np.array(texts)[nz[0]],
+        "term": vec.get_feature_names_out()[nz[1]],
+        "count": dfmat[nz].A1
+    })
+    return text_df
+text_df = tidy_dfmat(dfmat, vec)
+text_tokens = text_df.merge(lex, left_on="term", right_on="word")
+text_tokens["value"] *= text_tokens["count"]
+text_tokens
+```
+
+## Using Lexicons in Python
+
+In the very same way, we can sum across documents
+\medskip
+\scriptsize
+
+```{python echo=TRUE, include=TRUE, message=FALSE}
+doc_sentiments = text_tokens.groupby("document")["value"].sum()
+doc_sentiments
+```
+
+
+\medskip
+
+Although we can also get the sentiment from a text directly
+
+```{python echo=TRUE, include=TRUE, message=FALSE}
+scores = [afinn.score(t) for t in texts]
+for text, score in zip(texts,scores):
+  print(text, score)
+```
+
 
 ## VADER
 
@@ -318,6 +388,99 @@ ggsave("plots/sentiment_time.png", width=6, height=3)
 
 \begin{figure}
 \includegraphics[width=\linewidth]{plots/sentiment_time.png}
+\end{figure}
+
+:::
+
+::::::
+
+## VADER with Python
+
+In python, we can use the [vaderSentiment](https://github.com/cjhutto/vaderSentiment) package
+
+\medskip
+\scriptsize
+
+```{python echo=TRUE, include=TRUE, message=FALSE}
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+yes = pd.read_csv("../datasets/YesScotlandTweets_cleaned.csv")
+yes["campaign"] = "YesScotland"
+no = pd.read_csv("../datasets/UkTogetherTweets_cleaned.csv")
+no["campaign"] = "UkTogether"
+df = pd.concat([yes, no]).reset_index(drop=True)
+
+analyzer = SentimentIntensityAnalyzer()
+
+results = [analyzer.polarity_scores(x) for x in df["text"]]
+sentiment = pd.DataFrame.from_dict(results)
+
+sentiment_df = pd.concat([df,sentiment], axis=1)
+sentiment_df.head()
+```
+
+## VADER with Python
+
+We get the data into the format where there is a row for every day, and the score for each day is in a column for each campaign
+
+\medskip
+\scriptsize
+
+```{python echo=TRUE, include=TRUE, message=FALSE}
+import matplotlib.pyplot as plt
+sentiment_df["date"] = pd.to_datetime(df.created).dt.date
+daily_sentiment = (sentiment_df
+                   .groupby(["date","campaign"])["compound"]
+                   .mean()
+                   .reset_index()
+                   .pivot_table(columns="campaign", values="compound", index="date")
+                   .reset_index()
+                  )
+
+daily_sentiment["date"] = pd.to_datetime(daily_sentiment["date"])
+days = pd.date_range(start="2014-06-01",end="2014-09-18")
+daily_sentiment = pd.DataFrame({"date": days}).merge(daily_sentiment, how="left")
+
+daily_sentiment.head()
+```
+
+## Sentiment over time
+
+The easiest way to plot this is with base matplotlib
+
+\medskip
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.5\textwidth}"}
+\scriptsize
+
+```{python echo=TRUE, warning=FALSE, include=TRUE, message=FALSE, cache=TRUE, fig.show='hide'}
+fig, ax = plt.subplots(figsize=(6,4))
+
+for campaign in ["UkTogether", "YesScotland"]:
+    ax.scatter(
+      daily_sentiment.date, daily_sentiment[campaign],
+      s=5, alpha=0.7
+    )
+    x = daily_sentiment[campaign].rolling(7).mean()
+    ax.plot(daily_sentiment.date, x, label=campaign)
+
+fig.autofmt_xdate()
+ax.legend()
+
+plt.savefig("plots/sentiment_time_py.png")
+```
+:::
+
+::: {.col data-latex="{0.05\textwidth}"}
+\ 
+:::
+
+::: {.col data-latex="{0.45\textwidth}"}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/sentiment_time_py.png}
 \end{figure}
 
 :::
@@ -465,3 +628,13 @@ We said sentiment analysis is a special case of classification. We will explore 
 We'll be training machine learning classifiers to assign documents to predefined classes, and learning how to evaluate how well these work.
 
 This is the last major technique we will learn, before the penultimate session where we will find about how to apply a range of the techniques we have seen using the fanciest most up-to-date methods.
+
+## Homework assignment (optional)
+
+Take a protocol from the Bundestag and process it as you did in Assignment 1
+
+Using a German sentiment lexicon, calculate a sentiment score for each speech.
+
+Show the average sentiment score for each party.
+
+Show the 5 speeches with the most positive sentiment, and the 5 speeches with the most negative sentiment.
