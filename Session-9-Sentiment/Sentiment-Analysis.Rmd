@@ -51,7 +51,7 @@ Feel free to ask for quick feedback on any ideas you have in the coming days
 
 By now we have spent a long time understanding how to **represent** texts in simple and more complex ways.
 
-We've also started asking questions about texts. Viz. What is it about?
+We've also started asking questions about texts: What are they about?
 
 Today we will ask a new question about texts: what sentiment does it express?
 
@@ -73,11 +73,11 @@ With sentiment analysis, the classes are inherent features of how humans use lan
 
 ## An overview of techniques to do sentiment analysis
 
-Doing sentiment analysis usually involves rule-based or statistical techniques
+Doing sentiment analysis usually involves **rule-based** or **statistical machine-learning** techniques
 
 \begin{itemize}
-  \item<1->Assessing sentiment based on counting words have a predefined sentiment
-  \item<2->Using a classifier that has been trained to identify sentiment with text examples that have been labelled.
+  \item<2->Assessing sentiment based on counting words have a predefined sentiment
+  \item<3->Using a classifier that has been trained to identify sentiment with text examples that have been labelled.
 \end{itemize}
 
 # Lexicon-based sentiment analysis
@@ -287,6 +287,25 @@ The Vader [paper](https://www.aaai.org/ocs/index.php/ICWSM/ICWSM14/paper/view/81
   \item<4->"But" signals shift in sentiment, and that second clause is stronger: "Food here is good, but the service is bad" -> Overall more negative than positive
   \item<5->Negations in a tri-gram preceeding a sentiment-laden feature flip the polarity
 \end{itemize}
+
+## Exercise: trying VADER out
+
+Try out a few examples of texts with VADER. See if you can show how the rules it employs work, and see if you can "trick" the algorithm.
+
+\medskip
+
+```{r echo=TRUE, include=TRUE, message=FALSE}
+library(vader)
+get_vader("This text is a test")
+```
+
+\medskip
+
+```{python echo=TRUE, include=TRUE, message=FALSE}
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+analyzer = SentimentIntensityAnalyzer()
+analyzer.polarity_scores("This text is a test")
+```
 
 ## VADER in practice
 

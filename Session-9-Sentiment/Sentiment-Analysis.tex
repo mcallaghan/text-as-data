@@ -187,7 +187,7 @@ days
 By now we have spent a long time understanding how to \textbf{represent}
 texts in simple and more complex ways.
 
-We've also started asking questions about texts. Viz. What is it about?
+We've also started asking questions about texts: What are they about?
 
 Today we will ask a new question about texts: what sentiment does it
 express?
@@ -223,12 +223,12 @@ contexts.
 
 \begin{frame}{An overview of techniques to do sentiment analysis}
 \protect\hypertarget{an-overview-of-techniques-to-do-sentiment-analysis}{}
-Doing sentiment analysis usually involves rule-based or statistical
-techniques
+Doing sentiment analysis usually involves \textbf{rule-based} or
+\textbf{statistical machine-learning} techniques
 
 \begin{itemize}
-  \item<1->Assessing sentiment based on counting words have a predefined sentiment
-  \item<2->Using a classifier that has been trained to identify sentiment with text examples that have been labelled.
+  \item<2->Assessing sentiment based on counting words have a predefined sentiment
+  \item<3->Using a classifier that has been trained to identify sentiment with text examples that have been labelled.
 \end{itemize}
 \end{frame}
 
@@ -281,11 +281,11 @@ and its value
 ## # A tibble: 5 x 2
 ##   word          value
 ##   <chr>         <dbl>
-## 1 ignorant         -2
-## 2 opportunities     2
-## 3 lawsuit          -2
-## 4 promotes          1
-## 5 weak             -2
+## 1 inspires          2
+## 2 fraudster        -4
+## 3 choke            -2
+## 4 sobering          1
+## 5 incapacitated    -2
 \end{verbatim}
 \end{frame}
 
@@ -583,6 +583,42 @@ and implements these in their algorithm.
   \item<4->"But" signals shift in sentiment, and that second clause is stronger: "Food here is good, but the service is bad" -> Overall more negative than positive
   \item<5->Negations in a tri-gram preceeding a sentiment-laden feature flip the polarity
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: trying VADER out}
+\protect\hypertarget{exercise-trying-vader-out}{}
+Try out a few examples of texts with VADER. See if you can show how the
+rules it employs work, and see if you can ``trick'' the algorithm.
+
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(vader)}
+\FunctionTok{get\_vader}\NormalTok{(}\StringTok{"This text is a test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       word_scores          compound               pos               neu 
+## "{0, 0, 0, 0, 0}"               "0"               "0"               "1" 
+##               neg         but_count 
+##               "0"               "0"
+\end{verbatim}
+
+\medskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ vaderSentiment.vaderSentiment }\ImportTok{import}\NormalTok{ SentimentIntensityAnalyzer}
+\NormalTok{analyzer }\OperatorTok{=}\NormalTok{ SentimentIntensityAnalyzer()}
+\NormalTok{analyzer.polarity\_scores(}\StringTok{"This text is a test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## {'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}
+\end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{VADER in practice}
