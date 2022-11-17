@@ -1,0 +1,1635 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+  aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Singapore}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newenvironment{cols}[1][]{}{}
+
+\newenvironment{col}[1]{\begin{minipage}{#1}\ignorespaces}{%
+\end{minipage}
+\ifhmode\unskip\fi
+\aftergroup\useignorespacesandallpars}
+
+\def\useignorespacesandallpars#1\ignorespaces\fi{%
+#1\fi\ignorespacesandallpars}
+
+\makeatletter
+\def\ignorespacesandallpars{%
+  \@ifnextchar\par
+    {\expandafter\ignorespacesandallpars\@gobble}%
+    {}%
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Supervised Learning},
+  pdfauthor={Max Callaghan},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Supervised Learning}
+\author{Max Callaghan}
+\date{2022-11-17}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{introduction-and-objectives}{%
+\section{Introduction and
+Objectives}\label{introduction-and-objectives}}
+
+\begin{frame}{Assignment 2}
+\protect\hypertarget{assignment-2}{}
+Assignment 2 is due tonight. I am looking forward to receiving your
+submissions.
+\end{frame}
+
+\begin{frame}{Objectives}
+\protect\hypertarget{objectives}{}
+Last week we asked if a text was \textbf{positive} or \textbf{negative}
+in sentiment.
+
+This question is a special case of a common classification problem. Is a
+text X? Is it Y?
+
+We will look at variants of this question and how to answer these by
+\emph{training} a machine learning model to reproduce a given set of
+labels
+\end{frame}
+
+\hypertarget{classification}{%
+\section{Classification}\label{classification}}
+
+\begin{frame}[fragile]{(Re-)Introduction to classification}
+\protect\hypertarget{re-introduction-to-classification}{}
+Classification is when we want to know if a given label or (labels)
+applies to a text.
+
+Recall our first practical session where we built a rudimentary spam
+filter. We were looking for a functional form which allowed us to
+predict spam-ness as a function of our features.
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.feature\_extraction.text }\ImportTok{import}\NormalTok{ CountVectorizer}
+\NormalTok{texts }\OperatorTok{=}\NormalTok{ [}
+    \StringTok{"Win cash"}\NormalTok{, }\StringTok{"free money"}\NormalTok{, }\StringTok{"free cash"}\NormalTok{,}\StringTok{"cash money"}\NormalTok{,}
+    \StringTok{"Thank you"}\NormalTok{, }\StringTok{"Best wishes"}\NormalTok{,}\StringTok{"Cheers mate"}
+\NormalTok{]}
+\NormalTok{spam }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]}
+
+\NormalTok{vec }\OperatorTok{=}\NormalTok{ CountVectorizer()}
+\NormalTok{dfmat }\OperatorTok{=}\NormalTok{ vec.fit\_transform(texts)}
+\NormalTok{pd.DataFrame(dfmat.todense(),columns}\OperatorTok{=}\NormalTok{vec.get\_feature\_names\_out(), index}\OperatorTok{=}\NormalTok{texts)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              best  cash  cheers  free  mate  money  thank  win  wishes  you
+## Win cash        0     1       0     0     0      0      0    1       0    0
+## free money      0     0       0     1     0      1      0    0       0    0
+## free cash       0     1       0     1     0      0      0    0       0    0
+## cash money      0     1       0     0     0      1      0    0       0    0
+## Thank you       0     0       0     0     0      0      1    0       0    1
+## Best wishes     1     0       0     0     0      0      0    0       1    0
+## Cheers mate     0     0       1     0     1      0      0    0       0    0
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{(Re-)Introduction to classification}
+\protect\hypertarget{re-introduction-to-classification-1}{}
+A very simple way of finding this functional form is via logistic
+regression
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.linear\_model }\ImportTok{import}\NormalTok{ LogisticRegression}
+\NormalTok{clf }\OperatorTok{=}\NormalTok{ LogisticRegression()}
+\NormalTok{clf.fit(dfmat, spam)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## LogisticRegression()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(clf.intercept\_)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [-0.01988335]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coefs }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(}
+\NormalTok{  vec.get\_feature\_names\_out(),}
+\NormalTok{  clf.coef\_.ravel().}\BuiltInTok{round}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{))}
+\NormalTok{coefs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## {'best': -0.33, 'cash': 0.73, 'cheers': -0.33, 'free': 0.5, 'mate': -0.33, 'money': 0.5, 'thank': -0.33, 'win': 0.27, 'wishes': -0.33, 'you': -0.33}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{(Re-)Introduction to classification}
+\protect\hypertarget{re-introduction-to-classification-2}{}
+We can just add up the intercept and the coefficients, and apply a
+sigmoid function to this score .
+
+\[ t = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k\] \[p(X) = \sigma(t)\]
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ scipy.stats }\ImportTok{import}\NormalTok{ logistic}
+
+\BuiltInTok{print}\NormalTok{(logistic.cdf(clf.intercept\_ }\OperatorTok{+}\NormalTok{ coefs[}\StringTok{"cash"}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [0.67042693]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{clf.predict\_proba(vec.transform([}\StringTok{"cash please"}\NormalTok{])).}\BuiltInTok{round}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## array([[0.33, 0.67]])
+\end{verbatim}
+
+\normalsize
+
+By \emph{fitting} the logistic regression model, we have found a
+functional form which minimises a loss function (distance between
+predictions and reality)
+\end{frame}
+
+\begin{frame}{Classification in a nutshell}
+\protect\hypertarget{classification-in-a-nutshell}{}
+Some would say we've done machine-learning again!
+
+No matter how much fancier we get than logistic regression, the steps
+stay the same
+
+\begin{enumerate}
+  \item<1->Turn texts into features
+  \item<2->Specify a model type
+  \item<3->\textit{Fit} a model on our features and response value
+  \item<4->Using our fitted model, we can make predictions for any new text \textit{in the same feature space}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Types of classification problems}
+\protect\hypertarget{types-of-classification-problems}{}
+So far we have explored simple binary classification tasks. In fact, we
+have three types
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Binary classification}: Is a text spam OR not-spam
+\item
+  \textbf{Multiclass classification}: Is a text written by Labour or the
+  Conservatives or the Liberal Democrats (choose exactly one)
+\item
+  \textbf{Multilabel classification}: Is a text about climate impacts or
+  climate mitigation or climate adaptation (choose 0 or more).
+\end{itemize}
+
+The principle will remain the same, but we'll have to make a few changes
+to how we represent the problem. Pay particular attention to the
+difference between the last 2.
+\end{frame}
+
+\hypertarget{measuring-success}{%
+\section{Measuring success}\label{measuring-success}}
+
+\begin{frame}{Training and validating}
+\protect\hypertarget{training-and-validating}{}
+To evaluate a certain model, we train it on some data, and validate it
+on some \textbf{other} data.
+
+To validate a model on \textbf{other} data means to use the features to
+make predictions for that data, then compare the predictions to the true
+values for our response variable.
+
+It is \textbf{very} important that data does not \textbf{leak} from
+training to validation.
+
+We want to understand not just how well a model fits the data it is
+trained on, but also how well this \textbf{generalises} to other similar
+data.
+\end{frame}
+
+\begin{frame}[fragile]{Metrics for classification tasks}
+\protect\hypertarget{metrics-for-classification-tasks}{}
+Given a binary variable, when we compare the value of \(y\) with
+\(\hat{y}\) (or \texttt{y\_true} with \texttt{y\_pred}), we can have 4
+outcomes
+
+\begin{itemize}
+\tightlist
+\item
+  True positive (TP) - \(y=1 \;\;\;\;\; \hat{y}=1\)
+\item
+  True negative (TN) - \(y=0 \;\;\;\;\; \hat{y}=0\)
+\item
+  False positive (FP) - \(y=0 \;\;\;\;\; \hat{y}=1\)
+\item
+  False negative (FN) - \(y=1 \;\;\;\;\; \hat{y}=0\)
+\end{itemize}
+
+A perfect classifier contains \emph{only} \textbf{true positives} and
+\textbf{true negatives}.
+
+Most validation metrics are various ways to count these up
+\end{frame}
+
+\begin{frame}{Accuracy}
+\protect\hypertarget{accuracy}{}
+Accuracy is simply the number of right decisions divided by the total
+number of decisions we make
+
+\[\frac{TP+TN}{TP+TN+FP+FN}\]
+
+It is bounded between 0 (every single decision was wrong), and 1 (every
+single decision was right).
+
+It is the easiest metric to understand, but it can be misleading when
+data is unbalanced (which it mostly is)
+\end{frame}
+
+\begin{frame}[fragile]{Misleading Accuracy}
+\protect\hypertarget{misleading-accuracy}{}
+Let's consider the case where 90\% of emails are \textbf{not spam}. We
+can achieve an accuracy of 90\% simply by always predicting 0.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y\_true }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{y\_pred }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{correct }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(y\_true}\SpecialCharTok{==}\NormalTok{y\_pred)}
+\NormalTok{accuracy }\OtherTok{\textless{}{-}}\NormalTok{ correct}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(y\_true)}
+\NormalTok{accuracy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9
+\end{verbatim}
+
+Despite an impressive accuracy score, this classifier is not useful at
+all
+\end{frame}
+
+\begin{frame}[fragile]{Recall (sensitivity)}
+\protect\hypertarget{recall-sensitivity}{}
+Recall (sometimes called sensitivity) measures something much more
+specific:
+
+~
+
+\begin{quote}
+the proportion of truly positive samples we find by using our classifier
+\end{quote}
+
+Formally, this is given by
+
+\[ \frac{TP}{TP+FN}\]
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y\_true}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{==}\DecValTok{1}\NormalTok{))}
+\NormalTok{fn }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y\_true}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{==}\DecValTok{0}\NormalTok{))}
+\NormalTok{recall }\OtherTok{\textless{}{-}}\NormalTok{ tp }\SpecialCharTok{/}\NormalTok{ (tp}\SpecialCharTok{+}\NormalTok{fn)}
+\NormalTok{recall}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Precision}
+\protect\hypertarget{precision}{}
+Precision, on the other hand, refers to
+
+~
+
+\begin{quote}
+the proportion of positive predictions which are truly positive
+\end{quote}
+
+This is given by
+
+\[ \frac{TP}{TP+FP}\]
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y\_true}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{==}\DecValTok{1}\NormalTok{))}
+\NormalTok{fp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y\_true}\SpecialCharTok{==}\DecValTok{0}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{==}\DecValTok{1}\NormalTok{))}
+\NormalTok{precision }\OtherTok{\textless{}{-}}\NormalTok{ tp }\SpecialCharTok{/}\NormalTok{ (tp}\SpecialCharTok{+}\NormalTok{fp)}
+\NormalTok{precision}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NaN
+\end{verbatim}
+
+If we make zero positive predictions, we can't calculate precision.
+\end{frame}
+
+\begin{frame}[fragile]{F1 score}
+\protect\hypertarget{f1-score}{}
+The F1 score is the harmonic (balanced) mean of precision and recall. It
+also ranges between 1 (perfect) and 0 (perfectly bad) but it is not so
+misleading given unbalanced data
+
+\medskip
+
+Let's make a random 90\% of our predictions correct, and flip the other
+10\%
+
+\medskip
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{accuracy\_target }\OtherTok{\textless{}{-}} \FloatTok{0.9}
+
+\NormalTok{p }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{100}\NormalTok{)}
+\NormalTok{n }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{900}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(p,n))}
+\NormalTok{y\_pred }\OtherTok{\textless{}{-}}\NormalTok{ y}
+\NormalTok{perturb }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{length}\NormalTok{(y)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{accuracy\_target))}
+\NormalTok{y\_pred[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{perturb] }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ y\_pred[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{perturb]}
+\NormalTok{tp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{==}\DecValTok{1}\NormalTok{))}
+\NormalTok{fn }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{==}\DecValTok{0}\NormalTok{))}
+\NormalTok{fp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{==}\DecValTok{0}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{==}\DecValTok{1}\NormalTok{))}
+\NormalTok{tn }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{==}\DecValTok{0}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{==}\DecValTok{0}\NormalTok{))}
+
+\NormalTok{recall }\OtherTok{\textless{}{-}}\NormalTok{ tp }\SpecialCharTok{/}\NormalTok{ (tp}\SpecialCharTok{+}\NormalTok{fn)}
+\NormalTok{precision }\OtherTok{\textless{}{-}}\NormalTok{ tp }\SpecialCharTok{/}\NormalTok{ (tp}\SpecialCharTok{+}\NormalTok{fp)}
+\NormalTok{f1 }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(recall,precision))}
+\NormalTok{acc }\OtherTok{\textless{}{-}}\NormalTok{ (tp}\SpecialCharTok{+}\NormalTok{tn)}\SpecialCharTok{/}\NormalTok{(tp}\SpecialCharTok{+}\NormalTok{tn}\SpecialCharTok{+}\NormalTok{fp}\SpecialCharTok{+}\NormalTok{fn)}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"Precision: \%f, recall: \%f, f1: \%f, accuracy: \%f"}\NormalTok{, precision, recall, f1, acc)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Precision: 0.500000, recall: 0.880000, f1: 0.690000, accuracy: 0.900000"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Thresholds}
+\protect\hypertarget{thresholds}{}
+The sigmoid function gives us score between 0 and 1. We usually treat
+0.5 as a threshold, where everything above it belongs to the class and
+everything below it does not. However, we can adjust this threshold
+
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stats)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{1000}
+\NormalTok{t }\OtherTok{\textless{}{-}} \FunctionTok{rlogis}\NormalTok{(n, }\AttributeTok{location=}\FunctionTok{qlogis}\NormalTok{(}\FloatTok{0.1}\NormalTok{))}
+\NormalTok{noise }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n,}\AttributeTok{sd=}\FloatTok{0.5}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{plogis}\NormalTok{(t)}
+\NormalTok{y\_pred }\OtherTok{\textless{}{-}} \FunctionTok{plogis}\NormalTok{(t}\SpecialCharTok{+}\NormalTok{noise)}
+
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{y=}\NormalTok{y,}\AttributeTok{y\_pred=}\NormalTok{y\_pred) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(y)}
+
+\FunctionTok{png}\NormalTok{(}\StringTok{"plots/thresholds.png"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{y)}
+\FunctionTok{points}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{y\_pred, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{which}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{y}\SpecialCharTok{\textgreater{}}\FloatTok{0.5}\NormalTok{)[}\DecValTok{1}\NormalTok{])}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\FloatTok{0.5}\NormalTok{)}
+\FunctionTok{dev.off}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## pdf 
+##   2
+\end{verbatim}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/thresholds.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{Precision-recall tradeoff}
+\protect\hypertarget{precision-recall-tradeoff}{}
+Adjusting the threshold therefore gives us different values of precision
+and recall
+
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{t=}\FunctionTok{numeric}\NormalTok{(), }\AttributeTok{p=}\FunctionTok{numeric}\NormalTok{(), }\AttributeTok{r=}\FunctionTok{numeric}\NormalTok{())}
+\ControlFlowTok{for}\NormalTok{ (thresh }\ControlFlowTok{in} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.01}\NormalTok{)) \{}
+\NormalTok{  tp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{\textgreater{}=}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{\textgreater{}=}\NormalTok{thresh))}
+\NormalTok{  fn }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{\textgreater{}=}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{\textless{}=}\NormalTok{thresh))}
+\NormalTok{  fp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{\textless{}=}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{\textgreater{}=}\NormalTok{thresh))}
+\NormalTok{  recall }\OtherTok{\textless{}{-}}\NormalTok{ tp }\SpecialCharTok{/}\NormalTok{ (tp}\SpecialCharTok{+}\NormalTok{fn)}
+\NormalTok{  precision }\OtherTok{\textless{}{-}}\NormalTok{ tp }\SpecialCharTok{/}\NormalTok{ (tp}\SpecialCharTok{+}\NormalTok{fp)}
+\NormalTok{  df }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{add\_row}\NormalTok{(}\AttributeTok{t=}\NormalTok{thresh, }\AttributeTok{p=}\NormalTok{precision, }\AttributeTok{r=}\NormalTok{recall)}
+\NormalTok{\}}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(r, p, }\AttributeTok{colour=}\NormalTok{t)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 1 rows containing missing values (`geom_point()`).
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plots/precision{-}recall.png"}\NormalTok{, }\AttributeTok{width=}\DecValTok{5}\NormalTok{, }\AttributeTok{height=}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 1 rows containing missing values (`geom_point()`).
+\end{verbatim}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/precision-recall.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{Precision-recall tradeoff}
+\protect\hypertarget{precision-recall-tradeoff-1}{}
+The maximum value of f1 does not necessarily lie at a threshold of 0.5
+(be aware this is entirely synthetic data!)
+
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{f1 }\OtherTok{\textless{}{-}}\NormalTok{ (df}\SpecialCharTok{$}\NormalTok{p }\SpecialCharTok{+}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{r) }\SpecialCharTok{/} \DecValTok{2}
+
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(t, f1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 1 rows containing missing values (`geom_point()`).
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plots/threshold{-}f1.png"}\NormalTok{, }\AttributeTok{width=}\DecValTok{5}\NormalTok{, }\AttributeTok{height=}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 1 rows containing missing values (`geom_point()`).
+\end{verbatim}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/threshold-f1.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Specificity}
+\protect\hypertarget{specificity}{}
+Specificity, also known as the \textbf{true negative rate} tells us:
+
+~
+
+\begin{quote}
+What proportion of non-spam emails were correctly identified as not-spam
+\end{quote}
+
+and it is given by
+
+\[ \frac{TN}{TN+FP}  \]
+
+It's inverse, the \textbf{false positive rate}, tells us the probability
+of a false alarm.
+\end{frame}
+
+\begin{frame}[fragile]{ROC-AUC}
+\protect\hypertarget{roc-auc}{}
+Like precision, the false positive rate trades off against recall
+(sensitivity). The curve we get by examining this tradeoff at different
+thresholds is also called the Receiver operating characteristic (after
+its use in radar systems).
+
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{t=}\FunctionTok{numeric}\NormalTok{(), }\AttributeTok{tpr=}\FunctionTok{numeric}\NormalTok{(), }\AttributeTok{fpr=}\FunctionTok{numeric}\NormalTok{())}
+\ControlFlowTok{for}\NormalTok{ (thresh }\ControlFlowTok{in} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.01}\NormalTok{)) \{}
+\NormalTok{  tp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{\textgreater{}=}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{\textgreater{}=}\NormalTok{thresh))}
+\NormalTok{  fn }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{\textgreater{}=}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{\textless{}=}\NormalTok{thresh))}
+\NormalTok{  fp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((y}\SpecialCharTok{\textless{}=}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{\&}\NormalTok{(y\_pred}\SpecialCharTok{\textgreater{}=}\NormalTok{thresh))}
+\NormalTok{  tpr }\OtherTok{\textless{}{-}}\NormalTok{ tp }\SpecialCharTok{/}\NormalTok{ (tp}\SpecialCharTok{+}\NormalTok{fn)}
+\NormalTok{  fpr }\OtherTok{\textless{}{-}}\NormalTok{ fp }\SpecialCharTok{/}\NormalTok{ (fp}\SpecialCharTok{+}\NormalTok{tn)}
+\NormalTok{  df }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{add\_row}\NormalTok{(}\AttributeTok{t=}\NormalTok{thresh, }\AttributeTok{tpr=}\NormalTok{tpr, }\AttributeTok{fpr=}\NormalTok{fpr)}
+\NormalTok{\}}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(fpr, tpr, }\AttributeTok{colour=}\NormalTok{t)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plots/roc.png"}\NormalTok{, }\AttributeTok{width=}\DecValTok{5}\NormalTok{, }\AttributeTok{height=}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/roc.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{ROC-AUC}
+\protect\hypertarget{roc-auc-1}{}
+You can calculate the area under the curve, which is known as the
+ROC-AUC score
+
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+
+The ROC-AUC score tells us the probability that a randomly selected
+positive instance will be ranked higher than a randomly selected
+negative instance.
+
+\begin{itemize}
+\tightlist
+\item
+  ROC-AUC==1: the classifier is perfect
+\item
+  ROC-AUC==0.5: the classifier is as good as random chance
+\item
+  ROC-AUC\textless0.5: the classifier is worse than random chance
+\end{itemize}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ModelMetrics)}
+\FunctionTok{auc}\NormalTok{(}\FunctionTok{round}\NormalTok{(y),y\_pred)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9858427
+\end{verbatim}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/roc.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Training, validation, and test splits}
+\protect\hypertarget{training-validation-and-test-splits}{}
+Any validation metric tells us how good a particular instance of a model
+performs in predicting the right labels for a particular set of
+documents it has not seen.
+
+In practice, we want to do two things:
+
+\begin{itemize}
+\tightlist
+\item
+  Select a model which we think works best (by validating)
+\item
+  Evaluate this best model on another set of data that has never been
+  seen before
+\end{itemize}
+
+This gives us an estimate of how well our \textbf{best} model might
+perform on new data.
+
+This means we \textbf{first} split our data into a training and a test
+split, and hold this test split back entirely. We must never use it to
+make decisions, but only to estimate performance of our chosen model.
+
+We can further split our training set into further training and
+validation sets in order to make decisions about which model is best.
+\end{frame}
+
+\hypertarget{training-a-model}{%
+\section{Training a model}\label{training-a-model}}
+
+\begin{frame}[fragile]{Data}
+\protect\hypertarget{data}{}
+We're going to take our UK manifestos again, and use the annotations
+provided as labels. The label 501 is used to describe Environmental
+Protection
+\href{https://manifesto-project.wzb.eu/coding_schemes/mp_v5}{source}.
+We'll see if we can predict this label using machine learning.
+
+As a first step, we can create a dummy variable for environmental
+protection, and look at how its distributed.
+
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{"../datasets/uk\_manifestos.csv"}\NormalTok{)}
+\NormalTok{df[}\StringTok{"env"}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.where(df[}\StringTok{"cmp\_code"}\NormalTok{]}\OperatorTok{==}\DecValTok{501}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{df.groupby([}\StringTok{"env"}\NormalTok{])[}\StringTok{"text"}\NormalTok{].count().plot.bar(ax}\OperatorTok{=}\NormalTok{ax)}
+\NormalTok{plt.savefig(}
+  \StringTok{"plots/env\_text\_count.png"}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/env_text_count.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}[fragile]{Loading the data in R}
+\protect\hypertarget{loading-the-data-in-r}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(tidyr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"../datasets/uk\_manifestos.csv"}\NormalTok{)}
+\NormalTok{df}\OtherTok{\textless{}{-}}\NormalTok{ df[}\FunctionTok{sample}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(df)),]}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{env }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{env[df}\SpecialCharTok{$}\NormalTok{cmp\_code}\SpecialCharTok{==}\DecValTok{501}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{env }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{env) }
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Setting up a pipeline}
+\protect\hypertarget{setting-up-a-pipeline}{}
+Now we want to set up a pipeline that describes all the steps from data
+into predictions. This includes our usual vectorizer, then a Support
+Vector Machine classifier. These work by trying to fit a hyperplane that
+best separates the data in our multidimensional feature space.
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.pipeline }\ImportTok{import}\NormalTok{ Pipeline}
+\ImportTok{from}\NormalTok{ sklearn.svm }\ImportTok{import}\NormalTok{ SVC}
+\ImportTok{from}\NormalTok{ sklearn.feature\_extraction.text }\ImportTok{import}\NormalTok{ TfidfVectorizer}
+\NormalTok{clf }\OperatorTok{=}\NormalTok{ Pipeline(}
+\NormalTok{    steps}\OperatorTok{=}\NormalTok{[}
+\NormalTok{        (}\StringTok{"vect"}\NormalTok{, TfidfVectorizer()),}
+\NormalTok{        (}\StringTok{"clf"}\NormalTok{, SVC(probability}\OperatorTok{=}\VariableTok{True}\NormalTok{, class\_weight}\OperatorTok{=}\StringTok{"balanced"}\NormalTok{)),}
+\NormalTok{    ]}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Splitting train and test data}
+\protect\hypertarget{splitting-train-and-test-data}{}
+Now we split our data into train and test sets, and we can try fitting
+our pipeline on the training data. Once this is fit, we can make
+predictions on any new text data
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.model\_selection }\ImportTok{import}\NormalTok{ train\_test\_split}
+\NormalTok{X\_train, X\_test, y\_train, y\_test }\OperatorTok{=}\NormalTok{ train\_test\_split(}
+\NormalTok{    df.text, df.env, test\_size}\OperatorTok{=}\FloatTok{0.2}\NormalTok{, random\_state}\OperatorTok{=}\DecValTok{42}\NormalTok{)}
+
+\NormalTok{clf.fit(X\_train, y\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Pipeline(steps=[('vect', TfidfVectorizer()),
+##                 ('clf', SVC(class_weight='balanced', probability=True))])
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{clf.predict\_proba([}
+    \StringTok{"We will not raise taxes"}\NormalTok{,}
+    \StringTok{"We will protect our natural resources"}
+\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## array([[0.98729825, 0.01270175],
+##        [0.13167107, 0.86832893]])
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluating our model}
+\protect\hypertarget{evaluating-our-model}{}
+Now we can evaluate the model on our test data. Although the accuracy is
+quite good, our F1 score is not wonderful.
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.metrics }\ImportTok{import}\NormalTok{ f1\_score, accuracy\_score, precision\_score, recall\_score, roc\_auc\_score}
+
+\NormalTok{y\_pred }\OperatorTok{=}\NormalTok{ clf.predict\_proba(X\_test)}
+
+\NormalTok{roc\_auc }\OperatorTok{=}\NormalTok{ roc\_auc\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{])}
+\NormalTok{recall }\OperatorTok{=}\NormalTok{ recall\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{].}\BuiltInTok{round}\NormalTok{())}
+\NormalTok{prec }\OperatorTok{=}\NormalTok{ precision\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{].}\BuiltInTok{round}\NormalTok{())}
+\NormalTok{acc }\OperatorTok{=}\NormalTok{ accuracy\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{].}\BuiltInTok{round}\NormalTok{())}
+\NormalTok{f1 }\OperatorTok{=}\NormalTok{ f1\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{].}\BuiltInTok{round}\NormalTok{())}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"ROC{-}AUC: }\SpecialCharTok{\{}\NormalTok{roc\_auc}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, Accuracy: }\SpecialCharTok{\{}\NormalTok{acc}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, Precision: }\SpecialCharTok{\{}\NormalTok{prec}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, recall: }\SpecialCharTok{\{}\NormalTok{recall}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, F1 score: }\SpecialCharTok{\{}\NormalTok{f1}\SpecialCharTok{:.1\%\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ROC-AUC: 93.8%, Accuracy: 92.8%, Precision: 81.2%, recall: 52.0%, F1 score: 63.4%
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Writing a Rrecipe}
+\protect\hypertarget{writing-a-rrecipe}{}
+In the tidymodels ecosystem in R, a pipeline is called a
+``recipe''/``workflow''
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidymodels)}
+\FunctionTok{library}\NormalTok{(textrecipes)}
+
+\NormalTok{df\_split }\OtherTok{\textless{}{-}} \FunctionTok{initial\_split}\NormalTok{(df, }\AttributeTok{prop=}\FloatTok{0.8}\NormalTok{)}
+\NormalTok{train\_data }\OtherTok{\textless{}{-}} \FunctionTok{training}\NormalTok{(df\_split)}
+\NormalTok{test\_data }\OtherTok{\textless{}{-}} \FunctionTok{testing}\NormalTok{(df\_split)}
+
+\NormalTok{rec }\OtherTok{\textless{}{-}}\FunctionTok{recipe}\NormalTok{(env }\SpecialCharTok{\textasciitilde{}}\NormalTok{ text, }\AttributeTok{data =}\NormalTok{ train\_data) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_tokenize}\NormalTok{(text) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_tokenfilter}\NormalTok{(text, }\AttributeTok{max\_tokens =} \FloatTok{1e3}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_tfidf}\NormalTok{(text)}
+
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{svm\_linear}\NormalTok{(}\AttributeTok{mode=}\StringTok{"classification"}\NormalTok{)}
+
+\NormalTok{wf }\OtherTok{\textless{}{-}} \FunctionTok{workflow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_recipe}\NormalTok{(rec) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_model}\NormalTok{(model)}
+
+\NormalTok{model\_fit }\OtherTok{\textless{}{-}}\NormalTok{ wf }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{fit}\NormalTok{(train\_data)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Evaluating our model}
+\protect\hypertarget{evaluating-our-model-1}{}
+Now we can evaluate the model on our test data. Although the accuracy is
+quite good, our F1 score is not wonderful.
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_data}\SpecialCharTok{$}\NormalTok{prediction }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model\_fit, test\_data)}\SpecialCharTok{$}\NormalTok{.pred\_class}
+
+\NormalTok{scorer }\OtherTok{\textless{}{-}} \FunctionTok{metric\_set}\NormalTok{(}
+\NormalTok{  yardstick}\SpecialCharTok{::}\NormalTok{accuracy, }
+\NormalTok{  yardstick}\SpecialCharTok{::}\NormalTok{precision, }
+\NormalTok{  yardstick}\SpecialCharTok{::}\NormalTok{recall,}
+\NormalTok{  yardstick}\SpecialCharTok{::}\NormalTok{f\_meas}
+\NormalTok{)}
+
+\FunctionTok{scorer}\NormalTok{(test\_data, }\AttributeTok{truth=}\NormalTok{env, }\AttributeTok{estimate=}\NormalTok{prediction, }\AttributeTok{event\_level=}\StringTok{"second"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 3
+##   .metric   .estimator .estimate
+##   <chr>     <chr>          <dbl>
+## 1 accuracy  binary         0.922
+## 2 precision binary         0.543
+## 3 recall    binary         0.494
+## 4 f_meas    binary         0.518
+\end{verbatim}
+\end{frame}
+
+\hypertarget{optimizing-and-selecting-a-model}{%
+\section{Optimizing and selecting a
+model}\label{optimizing-and-selecting-a-model}}
+
+\begin{frame}[fragile]{Tuning hyperparamters}
+\protect\hypertarget{tuning-hyperparamters}{}
+There are a lot of different choices we can make in how we set up our
+model, and we can try out the effect of each of these, across 5 further
+splits of the training data. This takes quite a bit of time, so the set
+of parameter choices in the example is very small
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.model\_selection }\ImportTok{import}\NormalTok{ GridSearchCV}
+
+\NormalTok{parameters }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{    \{}
+        \StringTok{\textquotesingle{}vect\_\_max\_df\textquotesingle{}}\NormalTok{: (}\FloatTok{0.5}\NormalTok{,),}
+        \StringTok{\textquotesingle{}vect\_\_min\_df\textquotesingle{}}\NormalTok{: (}\DecValTok{5}\NormalTok{,),}
+        \CommentTok{\#\textquotesingle{}vect\_\_ngram\_range\textquotesingle{}: ((1, 1), (1, 2)),  }
+        \StringTok{\textquotesingle{}clf\_\_kernel\textquotesingle{}}\NormalTok{: [}\StringTok{\textquotesingle{}linear\textquotesingle{}}\NormalTok{], }
+        \CommentTok{\#\textquotesingle{}clf\_\_C\textquotesingle{}: [1, 1e2]}
+\NormalTok{    \}}
+\NormalTok{]}
+
+\NormalTok{grid\_search }\OperatorTok{=}\NormalTok{ GridSearchCV(}
+\NormalTok{  clf, parameters, scoring}\OperatorTok{=}\StringTok{"f1"}\NormalTok{, n\_jobs}\OperatorTok{=}\DecValTok{4}\NormalTok{, verbose}\OperatorTok{=}\DecValTok{1}\NormalTok{, cv}\OperatorTok{=}\DecValTok{2}
+\NormalTok{)}
+\NormalTok{grid\_search.fit(X\_train, y\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Fitting 2 folds for each of 1 candidates, totalling 2 fits
+## GridSearchCV(cv=2,
+##              estimator=Pipeline(steps=[('vect', TfidfVectorizer()),
+##                                        ('clf',
+##                                         SVC(class_weight='balanced',
+##                                             probability=True))]),
+##              n_jobs=4,
+##              param_grid=[{'clf__kernel': ['linear'], 'vect__max_df': (0.5,),
+##                           'vect__min_df': (5,)}],
+##              scoring='f1', verbose=1)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{The spread of performance across hyperparameters}
+\protect\hypertarget{the-spread-of-performance-across-hyperparameters}{}
+The results of each model specification are stored in .cv\_results\_ -
+we can quickly look at the spread of f1 scores across specifications
+
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res }\OperatorTok{=}\NormalTok{ (pd.DataFrame(grid\_search.cv\_results\_)}
+\NormalTok{  .sort\_values(}\StringTok{"rank\_test\_score"}\NormalTok{,ascending}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{hist }\OperatorTok{=}\NormalTok{ plt.hist(res[}\StringTok{"mean\_test\_score"}\NormalTok{])}
+\NormalTok{res.head()}
+\CommentTok{\# The plot on the right {-}\textgreater{} comes from a wider }
+\CommentTok{\# search we carried out in the notebook}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    mean_fit_time  std_fit_time  ...  std_test_score  rank_test_score
+## 0       1.168876      0.009475  ...        0.009588                1
+## 
+## [1 rows x 13 columns]
+\end{verbatim}
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/hyperparam.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+
+\medskip
+\scriptsize
+\end{frame}
+
+\begin{frame}[fragile]{Testing tuned hyperparameters}
+\protect\hypertarget{testing-tuned-hyperparameters}{}
+Now we can test the model specification that performed best in our
+tuning procedure on our test dataset (which it has \emph{not} seen
+before)
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y\_pred }\OperatorTok{=}\NormalTok{ grid\_search.predict\_proba(X\_test)}
+
+\NormalTok{roc\_auc }\OperatorTok{=}\NormalTok{ roc\_auc\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{])}
+\NormalTok{recall }\OperatorTok{=}\NormalTok{ recall\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{].}\BuiltInTok{round}\NormalTok{())}
+\NormalTok{prec }\OperatorTok{=}\NormalTok{ precision\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{].}\BuiltInTok{round}\NormalTok{())}
+\NormalTok{acc }\OperatorTok{=}\NormalTok{ accuracy\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{].}\BuiltInTok{round}\NormalTok{())}
+\NormalTok{f1 }\OperatorTok{=}\NormalTok{ f1\_score(y\_test, y\_pred[:,}\DecValTok{1}\NormalTok{].}\BuiltInTok{round}\NormalTok{())}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"ROC{-}AUC: }\SpecialCharTok{\{}\NormalTok{roc\_auc}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, Accuracy: }\SpecialCharTok{\{}\NormalTok{acc}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, Precision: }\SpecialCharTok{\{}\NormalTok{prec}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, recall: }\SpecialCharTok{\{}\NormalTok{recall}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, F1 score: }\SpecialCharTok{\{}\NormalTok{f1}\SpecialCharTok{:.1\%\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ROC-AUC: 92.3%, Accuracy: 91.6%, Precision: 77.6%, recall: 41.6%, F1 score: 54.2%
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Tuning hyperparameters in R}
+\protect\hypertarget{tuning-hyperparameters-in-r}{}
+We can tune hyperparaters using the tune package in R. We say what
+parameters we want to tune, add this to a workflow, define the folds,
+and then apply \texttt{tune\_grid()} to our workflow
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{svm\_poly}\NormalTok{(}\AttributeTok{cost=}\FunctionTok{tune}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{set\_engine}\NormalTok{(}\StringTok{"kernlab"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{set\_mode}\NormalTok{(}\StringTok{"classification"}\NormalTok{)}
+
+\NormalTok{wf }\OtherTok{\textless{}{-}} \FunctionTok{workflow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_recipe}\NormalTok{(rec) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_model}\NormalTok{(model)}
+
+\NormalTok{folds }\OtherTok{\textless{}{-}} \FunctionTok{vfold\_cv}\NormalTok{(train\_data, }\AttributeTok{v =} \DecValTok{2}\NormalTok{)}
+\NormalTok{svm\_res }\OtherTok{\textless{}{-}} \FunctionTok{tune\_grid}\NormalTok{(}
+\NormalTok{  wf, }\AttributeTok{resamples =}\NormalTok{ folds, }\AttributeTok{grid =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{metrics =} \FunctionTok{metric\_set}\NormalTok{(f\_meas),}
+  \AttributeTok{control =} \FunctionTok{control\_grid}\NormalTok{(}\AttributeTok{event\_level=}\StringTok{"second"}\NormalTok{)}
+\NormalTok{  )}
+\FunctionTok{collect\_metrics}\NormalTok{(svm\_res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 7
+##     cost .metric .estimator  mean     n std_err .config             
+##    <dbl> <chr>   <chr>      <dbl> <int>   <dbl> <chr>               
+## 1 2.03   f_meas  binary     0.443     2  0.0277 Preprocessor1_Model1
+## 2 0.0360 f_meas  binary     0.451     2  0.0421 Preprocessor1_Model2
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Testing our best model}
+\protect\hypertarget{testing-our-best-model}{}
+We then select our best model, and add finalise our workflow with this
+model
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{best\_model }\OtherTok{\textless{}{-}}\NormalTok{ svm\_res }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select\_best}\NormalTok{()}
+
+\NormalTok{final\_workflow }\OtherTok{\textless{}{-}}\NormalTok{ wf }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{finalize\_workflow}\NormalTok{(best\_model)}
+
+\NormalTok{final\_model }\OtherTok{\textless{}{-}}\NormalTok{ final\_workflow }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{fit}\NormalTok{(train\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Setting default kernel parameters
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_data}\SpecialCharTok{$}\NormalTok{opt\_prediction }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(final\_model, test\_data)}\SpecialCharTok{$}\NormalTok{.pred\_class}
+\FunctionTok{scorer}\NormalTok{(test\_data, }\AttributeTok{truth=}\NormalTok{env, }\AttributeTok{estimate=}\NormalTok{opt\_prediction, }\AttributeTok{event\_level=}\StringTok{"second"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 3
+##   .metric   .estimator .estimate
+##   <chr>     <chr>          <dbl>
+## 1 accuracy  binary         0.893
+## 2 precision binary         0.475
+## 3 recall    binary         0.538
+## 4 f_meas    binary         0.504
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Threshold tuning}
+\protect\hypertarget{threshold-tuning}{}
+The fact that there is a large spread between precision and recall, and
+that ROC-AUC is much better than F1, indicates we may have a less than
+optimal threshold. Across 5 train-test splits of our train data, we can
+try out different thresholds using our best model.
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X\_train }\OperatorTok{=}\NormalTok{ X\_train.reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{y\_train }\OperatorTok{=}\NormalTok{ y\_train.reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\NormalTok{res }\OperatorTok{=}\NormalTok{ []}
+
+\ImportTok{from}\NormalTok{ sklearn.model\_selection }\ImportTok{import}\NormalTok{ KFold}
+\NormalTok{kf }\OperatorTok{=}\NormalTok{ KFold(n\_splits}\OperatorTok{=}\DecValTok{5}\NormalTok{, random\_state}\OperatorTok{=}\VariableTok{None}\NormalTok{, shuffle}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{k }\OperatorTok{=} \DecValTok{0}
+\ControlFlowTok{for}\NormalTok{ train\_index, test\_index }\KeywordTok{in}\NormalTok{ kf.split(X\_train):}
+\NormalTok{    clf }\OperatorTok{=}\NormalTok{ grid\_search.best\_estimator\_}
+\NormalTok{    clf.fit(X\_train[train\_index], y\_train[train\_index])}
+\NormalTok{    y\_pred\_k }\OperatorTok{=}\NormalTok{ clf.predict\_proba(X\_train[test\_index])}
+    \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in}\NormalTok{ np.linspace(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.9}\NormalTok{, }\DecValTok{50}\NormalTok{):}
+\NormalTok{        y\_pred\_bin }\OperatorTok{=}\NormalTok{ np.where(y\_pred\_k[:,}\DecValTok{1}\NormalTok{]}\OperatorTok{\textgreater{}}\NormalTok{t,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{        res.append(\{}
+            \StringTok{"t"}\NormalTok{: t, }
+            \StringTok{"f1"}\NormalTok{: f1\_score(y\_train[test\_index], y\_pred\_bin),}
+            \StringTok{"k"}\NormalTok{: k}
+\NormalTok{        \})}
+\NormalTok{    k}\OperatorTok{+=}\DecValTok{1}
+    
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Pipeline(steps=[('vect', TfidfVectorizer(max_df=0.5, min_df=5)),
+##                 ('clf',
+##                  SVC(class_weight='balanced', kernel='linear',
+##                      probability=True))])
+## Pipeline(steps=[('vect', TfidfVectorizer(max_df=0.5, min_df=5)),
+##                 ('clf',
+##                  SVC(class_weight='balanced', kernel='linear',
+##                      probability=True))])
+## Pipeline(steps=[('vect', TfidfVectorizer(max_df=0.5, min_df=5)),
+##                 ('clf',
+##                  SVC(class_weight='balanced', kernel='linear',
+##                      probability=True))])
+## Pipeline(steps=[('vect', TfidfVectorizer(max_df=0.5, min_df=5)),
+##                 ('clf',
+##                  SVC(class_weight='balanced', kernel='linear',
+##                      probability=True))])
+## Pipeline(steps=[('vect', TfidfVectorizer(max_df=0.5, min_df=5)),
+##                 ('clf',
+##                  SVC(class_weight='balanced', kernel='linear',
+##                      probability=True))])
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res }\OperatorTok{=}\NormalTok{ pd.DataFrame(res)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Threshold tuning}
+\protect\hypertarget{threshold-tuning-1}{}
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{optimal\_t }\OperatorTok{=}\NormalTok{ res.groupby(}\StringTok{"t"}\NormalTok{)[}\StringTok{"f1"}\NormalTok{].mean().sort\_values(ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{).index[}\DecValTok{0}\NormalTok{]}
+
+\BuiltInTok{print}\NormalTok{(optimal\_t)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 0.3122448979591837
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y\_pred\_bin }\OperatorTok{=}\NormalTok{ np.where(y\_pred[:,}\DecValTok{1}\NormalTok{]}\OperatorTok{\textgreater{}}\NormalTok{optimal\_t,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{recall }\OperatorTok{=}\NormalTok{ recall\_score(y\_test, y\_pred\_bin)}
+\NormalTok{prec }\OperatorTok{=}\NormalTok{ precision\_score(y\_test, y\_pred\_bin)}
+\NormalTok{acc }\OperatorTok{=}\NormalTok{ accuracy\_score(y\_test, y\_pred\_bin)}
+\NormalTok{f1 }\OperatorTok{=}\NormalTok{ f1\_score(y\_test, y\_pred\_bin)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Accuracy: }\SpecialCharTok{\{}\NormalTok{acc}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, Precision: }\SpecialCharTok{\{}\NormalTok{prec}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, recall: }\SpecialCharTok{\{}\NormalTok{recall}\SpecialCharTok{:.1\%\}}\SpecialStringTok{, F1 score: }\SpecialCharTok{\{}\NormalTok{f1}\SpecialCharTok{:.1\%\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Accuracy: 92.2%, Precision: 70.1%, recall: 60.0%, F1 score: 64.7%
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Threshold tuning in R}
+\protect\hypertarget{threshold-tuning-in-r}{}
+The fact that there is a large spread between precision and recall, and
+that ROC-AUC is much better than F1, indicates we may have a less than
+optimal threshold. Across 5 train-test splits of our train data, we can
+try out different thresholds using our best model.
+
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{k=}\FunctionTok{numeric}\NormalTok{(),}\AttributeTok{t=}\FunctionTok{numeric}\NormalTok{(),}\AttributeTok{f1=}\FunctionTok{numeric}\NormalTok{())}
+\NormalTok{n\_splits}\OtherTok{=}\DecValTok{5}
+\NormalTok{folds }\OtherTok{\textless{}{-}} \FunctionTok{vfold\_cv}\NormalTok{(train\_data, }\AttributeTok{v =}\NormalTok{ n\_splits)}
+\ControlFlowTok{for}\NormalTok{ (k }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{n\_splits) \{}
+\NormalTok{  k\_split }\OtherTok{\textless{}{-}}\NormalTok{ folds}\SpecialCharTok{$}\NormalTok{splits[[k]]}
+\NormalTok{  k\_train }\OtherTok{\textless{}{-}} \FunctionTok{training}\NormalTok{(k\_split)}
+\NormalTok{  k\_test }\OtherTok{\textless{}{-}} \FunctionTok{testing}\NormalTok{(k\_split)}
+\NormalTok{  k\_model }\OtherTok{\textless{}{-}}\NormalTok{ final\_workflow }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{fit}\NormalTok{(k\_train)}
+\NormalTok{  k\_test}\SpecialCharTok{$}\NormalTok{pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(k\_model, k\_test, }\AttributeTok{type=}\StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{.pred\_1}
+  \ControlFlowTok{for}\NormalTok{ (t }\ControlFlowTok{in} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.9}\NormalTok{, }\AttributeTok{length.out=}\DecValTok{50}\NormalTok{)) \{}
+\NormalTok{    est }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(k\_test}\SpecialCharTok{$}\NormalTok{pred}\SpecialCharTok{\textgreater{}=}\NormalTok{t,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\NormalTok{    f1 }\OtherTok{\textless{}{-}} \FunctionTok{f\_meas\_vec}\NormalTok{(k\_test}\SpecialCharTok{$}\NormalTok{env, est, }\AttributeTok{event\_level =} \StringTok{"second"}\NormalTok{)}
+\NormalTok{    res }\OtherTok{\textless{}{-}} \FunctionTok{add\_row}\NormalTok{(res,}\AttributeTok{k=}\NormalTok{k,}\AttributeTok{t=}\NormalTok{t,}\AttributeTok{f1=}\NormalTok{f1)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Setting default kernel parameters  
+##  Setting default kernel parameters  
+##  Setting default kernel parameters  
+##  Setting default kernel parameters  
+##  Setting default kernel parameters
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Threshold tuning in R}
+\protect\hypertarget{threshold-tuning-in-r-1}{}
+\medskip
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res }\OtherTok{\textless{}{-}}\NormalTok{ res }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(t) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{f1 =} \FunctionTok{mean}\NormalTok{(f1)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(f1))}
+
+\NormalTok{optimal\_t }\OtherTok{\textless{}{-}}\NormalTok{ res}\SpecialCharTok{$}\NormalTok{t[}\DecValTok{1}\NormalTok{]}
+
+\FunctionTok{print}\NormalTok{(optimal\_t)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1816327
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_data}\SpecialCharTok{$}\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(final\_model, test\_data, }\AttributeTok{type=}\StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{.pred\_1}
+\NormalTok{test\_data}\SpecialCharTok{$}\NormalTok{p\_tuned }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(test\_data}\SpecialCharTok{$}\NormalTok{p}\SpecialCharTok{\textgreater{}=}\NormalTok{optimal\_t,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\FunctionTok{scorer}\NormalTok{(test\_data, }\AttributeTok{truth=}\NormalTok{env, }\AttributeTok{estimate=}\NormalTok{p\_tuned, }\AttributeTok{event\_level=}\StringTok{"second"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 3
+##   .metric   .estimator .estimate
+##   <chr>     <chr>          <dbl>
+## 1 accuracy  binary         0.891
+## 2 precision binary         0.469
+## 3 recall    binary         0.575
+## 4 f_meas    binary         0.517
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Exercise}
+\protect\hypertarget{exercise}{}
+Choose a different category (or set of categories) from manifesto
+project data.
+
+Build a classifier for your chosen category(ies).
+
+Report metrics on your classifier performance.
+
+Investigate examples where the predictions are wrong. What could account
+for these?
+\end{frame}
+
+\hypertarget{examples}{%
+\section{Examples}\label{examples}}
+
+\begin{frame}{Computer-assisted classification of contrarian claims
+about climate change}
+\protect\hypertarget{computer-assisted-classification-of-contrarian-claims-about-climate-change}{}
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+\href{https://www.nature.com/articles/s41598-021-01714-4}{Travis G. Coan and coauthors (2021)}
+develop a machine-learning model which can classify contrarian claims
+about climate change according to a pre-defined taxonomy
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/coan_1.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Computer-assisted classification of contrarian claims
+about climate change}
+\protect\hypertarget{computer-assisted-classification-of-contrarian-claims-about-climate-change-1}{}
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+The use this to show how the evolution of climate denial in conservative
+think tanks (CTTs) and blogs, showing empirically that CTTs have shifted
+from denying that climate change is happening to arguing that solutions
+won't work
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/coan_2.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\begin{frame}{Computer-assisted classification of contrarian claims
+about climate change}
+\protect\hypertarget{computer-assisted-classification-of-contrarian-claims-about-climate-change-2}{}
+They coded 31,000 paragraphs by hand to achieve these results. Best
+results were achieved with a combination of fancy (RoBERTa) and simply
+(Logistic) classifiers.
+
+\includegraphics{images/coan_tab.png}
+\end{frame}
+
+\begin{frame}{Computer-assisted classification of contrarian claims
+about climate change}
+\protect\hypertarget{computer-assisted-classification-of-contrarian-claims-about-climate-change-3}{}
+\begin{cols}
+
+\begin{col}{0.5\textwidth}
+The performance varies somewhat across categories, but is better for the
+most coarse-grained categories
+
+\end{col}
+
+\begin{col}{0.05\textwidth}
+~
+
+\end{col}
+
+\begin{col}{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{images/coan_tab2.png}
+\end{figure}
+
+\end{col}
+
+\end{cols}
+\end{frame}
+
+\hypertarget{wrapup-and-outlook}{%
+\section{Wrapup and Outlook}\label{wrapup-and-outlook}}
+
+\begin{frame}{Wrapup}
+\protect\hypertarget{wrapup}{}
+We've now covered almost everything in the course
+
+We know how to represent texts, and we know how to use various methods
+to ask questions about the texts.
+
+We've had a brief introduction to machine-learning, including how to
+train a model to reproduce \emph{any} label we might apply to texts.
+
+We've investigated how these methods work, learned how to be skeptical
+about what they can and can't represent, and we've had a look at a few
+examples of how they are used in research.
+\end{frame}
+
+\begin{frame}{Outlook}
+\protect\hypertarget{outlook}{}
+In the last session we will look at how we might achieve some of these
+tasks (and some more tasks) using the very latest techniques from NLP
+research.
+
+This will be Python-only!
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \bibliography{../presentation-resources/MyLibrary.bib}
+\end{frame}
+
+\end{document}
