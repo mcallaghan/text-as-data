@@ -259,7 +259,7 @@ dataset = Dataset.from_dict({"text": texts, "label": y})
 model_name = "bert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 def tokenize_function(examples):
-    return tokenizer(examples["text"], padding="longest", truncation=True)
+    return tokenizer(examples["text"], padding="max_length", truncation=True)
 tokenized_dataset = dataset.map(tokenize_function, batched=True)
 tokenized_dataset
 ```
@@ -281,7 +281,7 @@ def datasetify(x, tokenizer, y=None):
     dataset = Dataset.from_dict(data_dict)
 
     def tokenize_function(examples):
-        return tokenizer(examples["text"], padding="longest", truncation=True)
+        return tokenizer(examples["text"], padding="max_length", truncation=True)
 
     return dataset.map(tokenize_function, batched=True)
   

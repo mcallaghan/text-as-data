@@ -1,7 +1,7 @@
 ---
 title: "Text-as-data"
 author: "Max Callaghan"
-date: "2022-09-08"
+date: "2023-09-11"
 output: 
   beamer_presentation:
     keep_tex: true
@@ -20,7 +20,7 @@ bibliography: ../presentation-resources/MyLibrary.bib
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
-use_python("/usr/bin/python3.9")
+use_python("/usr/bin/python3.10")
 ```
 
 # Welcome
@@ -75,6 +75,7 @@ This will involve learning new quantitative techniques, but the emphasis will be
 
 - Able to acquire and process text data from various sources 
 - comfortable producing a range of different analyses of text data
+- comfortable using programming creatively as a tool to solve problems
 - aware of what research questions are possible to address with text data, and able to understand what a good research question is
 - able to *critically* engage with this type of analysis
 - able to report the results of your work, and show your working
@@ -165,6 +166,20 @@ A basic familiarity with git and github is *extremely useful*. [Here](https://th
 
 :::::: 
 
+## Expectations
+
+- Turn up to every class with a laptop with R or Python installed and ready to run code (let me know if you do not have a laptop or cannot do this for any other reason).
+
+- Stop me if you don't understand something 
+
+- Treat each other with respect in class (and let me know if something has made you uncomfortable)
+
+- Hand **something** in with **some** answer for every question for every assignment
+
+- Write to me (\url{callaghan@mcc-berlin.net}) if you need something
+
+- Office hours: arrange a meeting with me on Mondays (other days potentially possible online).  
+
 ## Course Mechanics
 
 ### Classes
@@ -175,7 +190,7 @@ Classes will consist of an input from me along with examples of code, short codi
 
 Assessment will comprise
 
-- A programming exercise, set 6 October - due on 13 October (30%)
+- 3 short programming exercises (due 25.09, 02.10, 09.10) (30\%)
 - A data analysis exercise, set 3 November - due on November 17 (30%)
 - Group presentation of a research project, detailed instructions November 3, presentations on December 1 (40%)
 
@@ -273,6 +288,16 @@ In the following 5 weeks, we will learn different approaches to analysing texts,
 In the final session, you will present your group research projects.
 
 # Appendix {.unlisted .unnumbered}
+
+## Rapidly declining remarkability
+
+- What do the authors do with the texts?
+
+- What techniques do they employ?
+
+- How do they validate these? How does that validation affect their/our confidence in the model?
+
+\citep{moore_rapidly_2019}
 
 ## Plato's Pharmacy
 \label{PHARMAKON}
