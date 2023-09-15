@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
 library(quanteda)
 library(lexicon)
-use_python("/usr/bin/python3.9")
+use_python("/usr/bin/python3.10")
 
 #def.chunk.hook  <- knitr::knit_hooks$get("chunk")
 #knitr::knit_hooks$set(chunk = function(x, options) {
@@ -253,7 +253,20 @@ To reflect this, we often apply a *weight* which penalizes words that appear in 
 
 Formally, multiplying the count of each word in each document by the log of the number of documents in the corpus divided by the number of documents containing the word gives us the *term frequency inverse document frequency* of *tf-idf* for short.
 
+
+## TFIDF By hand
+
 EXERCISE: Go back to your handmade document feature matrices. Turn these into tfidf matrices.
+
+$tf(t,d) = f_{t,d}$ 
+
+(The frequency of term $t$ in document $D$)
+
+$idf(t,D) = log \frac{N}{|\{ d  \in D : t\in d\}|}$ 
+
+(The log of $N$, the number of documents in the corpus, divided by the length of the set ($|\{\dots\}|$) of documents that contain the term.)
+
+$tfidf(t,d,D) = tf(t,d) \cdot idf(t,D)$
 
 ## TFIDF in practice
 

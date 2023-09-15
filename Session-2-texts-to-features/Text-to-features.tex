@@ -501,9 +501,23 @@ Formally, multiplying the count of each word in each document by the log
 of the number of documents in the corpus divided by the number of
 documents containing the word gives us the \emph{term frequency inverse
 document frequency} of \emph{tf-idf} for short.
+\end{frame}
 
+\begin{frame}{TFIDF By hand}
+\protect\hypertarget{tfidf-by-hand}{}
 EXERCISE: Go back to your handmade document feature matrices. Turn these
 into tfidf matrices.
+
+\(tf(t,d) = f_{t,d}\)
+
+(The frequency of term \(t\) in document \(D\))
+
+\(idf(t,D) = log \frac{N}{|\{ d \in D : t\in d\}|}\)
+
+(The log of \(N\), the number of documents in the corpus, divided by the
+length of the set (\(|\{\dots\}|\)) of documents that contain the term.)
+
+\(tfidf(t,d,D) = tf(t,d) \cdot idf(t,D)\)
 \end{frame}
 
 \begin{frame}[fragile]{TFIDF in practice}
