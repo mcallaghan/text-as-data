@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
 library(quanteda)
 library(lexicon)
-use_python("/usr/bin/python3.9")
+use_python("/usr/bin/python3.10")
 
 #def.chunk.hook  <- knitr::knit_hooks$get("chunk")
 #knitr::knit_hooks$set(chunk = function(x, options) {
@@ -415,57 +415,7 @@ Often, someone will already have built a scraper or an API for the dataset you a
 
 Always search this first, but these libraries often do very simple things.
 
-One thing that can be especially annoying is **authentication**. We're going to use [rtweet](https://cbail.github.io/textasdata/apis/rmarkdown/Application_Programming_interfaces.html)
-
-## Rtweet
-
-To use rtweet, you will need to authenticate interactively (by leaving the argument blank) using the "Bearer Token" you generated on the [twitter](https://developer.twitter.com/en/portal/apps/) website, or provide the token directly to `rtweet_app``. NEVER expose your secret keys in a Github repository!
-
-Once you have done this you can pass the result as the **token** argument to your API call. For now, we will explore the `search_tweets` endpoint
-
-\scriptsize
-
-```{r echo=TRUE, include=TRUE, cache=TRUE, warning=FALSE}
-library(rtweet)
-library(dotenv)
-load_dot_env(".env")
-auth <- rtweet_app(Sys.getenv("bearer_token"))
-rt <- search_tweets("hertie", n = 1000, include_rts = FALSE, token=auth)
-rt
-```
-
-## Tweepy
-
-Tweepy is a similar library for python, which works in a similar way
-
-\scriptsize
-
-```{python echo=TRUE, include=TRUE, cache=TRUE, warning=FALSE}
-import tweepy
-from dotenv import load_dotenv
-import os
-load_dotenv()
-
-auth = tweepy.OAuth2BearerHandler(os.getenv("bearer_token"))
-api = tweepy.API(auth)
-results = api.search_tweets("hertie")
-json_data = [r._json for r in results]
-df = pd.json_normalize(json_data)
-df
-```
-
-## Some limitations of twitter
-
-Without the academic API, twitter search offers only a non-random sample of recent tweets
-
-Even with the academic API, many limitations remain
-
-- Geotag availability
-- Non-representative populations
-- Country/language overlaps
-- Bots
-
-Still, it is a very interesting data source, and valuable for understanding social behaviour *on twitter*
+One thing that can be especially annoying is **authentication**. Various twitter API clients used to manage this complicated process.
 
 # Other data sources
 

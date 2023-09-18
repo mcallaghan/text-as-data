@@ -383,4 +383,6 @@ Keep track of the accuracy of your classifiers!
 
 Next week we'll be looking at a variety of text sources, and exploring how to acquire and use them. We'll cover scraping as well as using APIs.
 
-Have a look at this [explanation of how to use APIs in R](https://cbail.github.io/textasdata/apis/rmarkdown/Application_Programming_interfaces.html) as well as this [recent paper](https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00173-5/fulltext) on the relationship between temperatures and hate speech.
+The programming skills we will need will step up a notch. You may want to brush up on your **control structures** in [R](https://www.r-bloggers.com/2019/06/how-to-use-if-else-statements-and-loops-in-r/) or [python](https://docs.python.org/3/tutorial/introduction.html#first-steps-towards-programming) (sections 3.2 to 4.7), as well as **data types and structures** in [R](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures.html) or [python](https://docs.python.org/3/tutorial/datastructures.html#). You will need some of these to complete the next homework assignment.
+
+For content input, have a look at this [fairly recent paper](https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00173-5/fulltext) on the relationship between temperatures and hate speech.

@@ -1,7 +1,7 @@
 ---
 title: "Assignment 1"
 author: "Text as Data"
-date: "2022-09-08"
+date: "2023-09-18"
 output: 
   pdf_document:
     keep_tex: true
@@ -17,32 +17,42 @@ bibliography: ../presentation-resources/MyLibrary.bib
 
 # Introduction
 
-In this assignment, you are asked to produce analysis that follows a set of instructions. You can do this any way you like, as long as you show me your results and the code you used to get there. The easier this is for me to replicate, and the clearer the code is, the higher your mark will be. One option would be to make a copy of this file, add in code snippets, and submit the RMarkdown file along with the PDF of completed results. Another option would be to send me a link to an .ipynb notebook file on Github. 
+This first assignment will test your grasp of some of the concepts and methods we covered in sessions 1-2. Give an answer to each question, even if you are not sure. In an ideal world, you should present your work as a document with integrated code, execution and text, but if this doesn't work out a script and a pdf will do fine.
 
-## Getting and parsing texts
+# 1 
 
-To start with, you are asked to retrieve *Songs of Innocence and of Experience* by William Blake from Project Gutenberg. It is located at https://www.gutenberg.org/cache/epub/1934/pg1934.txt. This is a collection of poems in two books: *Songs of Innocence* and *Songs of Experience*.
+Consider the two following texts.
 
-Parse this into a dataframe where each row is a line of a poem (there should be no empty lines). The following columns should describe where each line was found:
+```{r echo=TRUE, include=TRUE}
+texts <- c(
+  "I don't like cricket",
+  "You like cricket"
+)
+```
 
-- line_number 
-- stanza_number
-- poem_title
-- book_title
+1.1 Write two text processing pipelines that create document feature matrices that **do** and **do not** preserve the differences in the texts. 
 
-## Visualising text data
+1.2. Describe how the preprocessing choices you make affect the representation of those texts.
 
-- Create a histogram showing the number of lines per poem
-- Create a document feature matrix treating each line as a document
-- Create a separate document feature matrix treating each poem as a document
-- Using one of these document feature matrices, create a plot that compares the frequency of words in each book. Comment on the features that are more or less frequent in one book than another.
+1.3. Give one example each of **tasks** where your text preprocessing choices that do not preserve the differences in the texts **would** and **would not** limit our ability to perform the task.
 
-## Parsing XML text data
+# 2
 
-Now we will work with German Parliamentary data, which is available in XML format [here](https://www.bundestag.de/services/opendata) for the last two parliamentary periods. Remember XML format is very like HTML format, and we can parse it using a scraper and CSS selectors. Speeches are contained in `<rede>` elements, which each contain a paragraph element describing the speaker, and paragraph elements recording what they said. Not that class selectors won't work, because the class attribute is called "klasse". You can use normal attribute selectors.
+Now consider the following three texts.
 
-Choose one of the sessions, and retrieve it using R or Python. Using a scraper, get a list of all the <rede> elements. For each element, get the name of the speaker, and a single string containing everything that they said. Put this into a dataframe. Print the number of speeches, and the content of the first speech, by a politician of your choice.
+```{r echo=TRUE, include=TRUE}
+texts <- c(
+  "Climatic change is causing adverse impacts",
+  "Changes in the climate have caused impacts to human systems",
+  "Chelsea have a goal difference of zero in the premier league this season"
+)
+```
 
-## Using regular expressions
+2.1. Turn these texts into a document feature matrix without any additional pre-processing steps
 
-Using a regular expression, get a list of words spoken in your parliamentary protocol that contain (in upper or lower case) the string "kohle" (coal). Show the number of occurrences of each of these words. If there are no mentions in the debate you have selected, try another protocol.
+2.2. Calculate a simplistic measure of how similar each text is to each other, by reporting the number of columns where both texts contain a non-zero value (you can do this with code or by hand).
+
+2.3. Create a text processing pipeline that results in a matrix that preserves the similarity  we can see intuitively between the texts.
+
+2.4. Comment on why the additional pre-processing steps created a more useful representation of the texts *in this case*.
+

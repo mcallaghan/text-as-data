@@ -1,3 +1,5 @@
+install.packages(c("quanteda","ggplot2","reshape2","tidytext"))
+
 library(quanteda)
 
 # First we define a list of texts

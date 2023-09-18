@@ -10,3 +10,7 @@
 *.toc
 *.vrb
 *.nav
+*.ipynb_checkpoints*
+*.env
+*_cache*
+*_files*

@@ -399,11 +399,10 @@ and discussion}.
 
 \begin{verbatim}
 ## [
-## │   'Large language models can be useful. However, more and more languages',
-## │   'can contain different language features, and the lack of',
-## │   "representation of such features means it's not clear how different",
-## │   'their representation is from each other. As it stands, an example of a',
-## │   'Chinese'
+## │   'Large language models can be useful. However, for small programs like',
+## │   'Java, C++, C# or Objective-C, the language features of Java are a',
+## │   'little off.  So, if you are looking for something a little different',
+## │   'but not'
 ## ]
 \end{verbatim}
 \end{frame}
@@ -473,13 +472,13 @@ a huggingface dataset object and tokenize this
 \NormalTok{model\_name }\OperatorTok{=} \StringTok{"bert{-}base{-}uncased"}
 \NormalTok{tokenizer }\OperatorTok{=}\NormalTok{ AutoTokenizer.from\_pretrained(model\_name)}
 \KeywordTok{def}\NormalTok{ tokenize\_function(examples):}
-    \ControlFlowTok{return}\NormalTok{ tokenizer(examples[}\StringTok{"text"}\NormalTok{], padding}\OperatorTok{=}\StringTok{"longest"}\NormalTok{, truncation}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{ tokenizer(examples[}\StringTok{"text"}\NormalTok{], padding}\OperatorTok{=}\StringTok{"max\_length"}\NormalTok{, truncation}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 \NormalTok{tokenized\_dataset }\OperatorTok{=}\NormalTok{ dataset.}\BuiltInTok{map}\NormalTok{(tokenize\_function, batched}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 90.43ba/s]
+##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 31.56ba/s]
 \end{verbatim}
 
 \begin{Shaded}
@@ -513,7 +512,7 @@ texts (and list of labels) into a tokenized dataset, given a tokenizer.
 \NormalTok{    dataset }\OperatorTok{=}\NormalTok{ Dataset.from\_dict(data\_dict)}
 
     \KeywordTok{def}\NormalTok{ tokenize\_function(examples):}
-        \ControlFlowTok{return}\NormalTok{ tokenizer(examples[}\StringTok{"text"}\NormalTok{], padding}\OperatorTok{=}\StringTok{"longest"}\NormalTok{, truncation}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+        \ControlFlowTok{return}\NormalTok{ tokenizer(examples[}\StringTok{"text"}\NormalTok{], padding}\OperatorTok{=}\StringTok{"max\_length"}\NormalTok{, truncation}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 
     \ControlFlowTok{return}\NormalTok{ dataset.}\BuiltInTok{map}\NormalTok{(tokenize\_function, batched}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
   
@@ -522,7 +521,7 @@ texts (and list of labels) into a tokenized dataset, given a tokenizer.
 \end{Shaded}
 
 \begin{verbatim}
-##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 262.31ba/s]
+##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 129.58ba/s]
 \end{verbatim}
 \end{frame}
 
@@ -543,7 +542,7 @@ We can load a model and train it using an instance of the
 \end{Shaded}
 
 \begin{verbatim}
-## Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.bias', 'cls.predictions.bias', 'cls.predictions.transform.dense.weight']
+## Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.bias']
 ## - This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 ## - This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
 ## Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
@@ -558,7 +557,7 @@ We can load a model and train it using an instance of the
 \end{Shaded}
 
 \begin{verbatim}
-##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 260.27ba/s]
+##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 158.56ba/s]
 \end{verbatim}
 
 \begin{Shaded}
@@ -568,8 +567,8 @@ We can load a model and train it using an instance of the
 \end{Shaded}
 
 \begin{verbatim}
-## {'train_runtime': 20.8521, 'train_samples_per_second': 2.158, 'train_steps_per_second': 0.288, 'train_loss': 0.6397539774576823, 'epoch': 3.0}
-## TrainOutput(global_step=6, training_loss=0.6397539774576823, metrics={'train_runtime': 20.8521, 'train_samples_per_second': 2.158, 'train_steps_per_second': 0.288, 'train_loss': 0.6397539774576823, 'epoch': 3.0})
+## {'train_runtime': 5870.6374, 'train_samples_per_second': 0.008, 'train_steps_per_second': 0.001, 'train_loss': 0.6716297467549642, 'epoch': 3.0}
+## TrainOutput(global_step=6, training_loss=0.6716297467549642, metrics={'train_runtime': 5870.6374, 'train_samples_per_second': 0.008, 'train_steps_per_second': 0.001, 'train_loss': 0.6716297467549642, 'epoch': 3.0})
 ## 
 ## The following columns in the training set don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: text. If text are not expected by `BertForSequenceClassification.forward`,  you can safely ignore this message.
 ## /home/max/software/py39/lib/python3.9/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
@@ -581,12 +580,12 @@ We can load a model and train it using an instance of the
 ##   Total train batch size (w. parallel, distributed & accumulation) = 8
 ##   Gradient Accumulation steps = 1
 ##   Total optimization steps = 6
-##   0%|          | 0/6 [00:00<?, ?it/s] 17%|#6        | 1/6 [00:03<00:17,  3.50s/it] 33%|###3      | 2/6 [00:07<00:14,  3.63s/it] 50%|#####     | 3/6 [00:10<00:10,  3.39s/it] 67%|######6   | 4/6 [00:13<00:06,  3.50s/it] 83%|########3 | 5/6 [00:17<00:03,  3.38s/it]100%|##########| 6/6 [00:20<00:00,  3.48s/it]
+##   0%|          | 0/6 [00:00<?, ?it/s] 17%|#6        | 1/6 [02:31<12:38, 151.64s/it] 33%|###3      | 2/6 [04:07<07:54, 118.64s/it] 50%|#####     | 3/6 [1:33:48<2:06:05, 2521.67s/it] 67%|######6   | 4/6 [1:35:05<51:53, 1556.66s/it]   83%|########3 | 5/6 [1:36:33<17:07, 1027.07s/it]100%|##########| 6/6 [1:37:50<00:00, 703.98s/it] 
 ## 
 ## Training completed. Do not forget to share your model on huggingface.co/models =)
 ## 
 ## 
-##                                              100%|##########| 6/6 [00:20<00:00,  3.48s/it]100%|##########| 6/6 [00:20<00:00,  3.47s/it]
+##                                                 100%|##########| 6/6 [1:37:50<00:00, 703.98s/it]100%|##########| 6/6 [1:37:50<00:00, 978.44s/it]
 \end{verbatim}
 \end{frame}
 
@@ -612,12 +611,12 @@ With a trained model, we can make predictions on a set of new texts
 \end{Shaded}
 
 \begin{verbatim}
-##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 315.65ba/s]
+##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 36.82ba/s]
 ## The following columns in the test set don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: text. If text are not expected by `BertForSequenceClassification.forward`,  you can safely ignore this message.
 ## ***** Running Prediction *****
 ##   Num examples = 3
 ##   Batch size = 8
-##   0%|          | 0/1 [00:00<?, ?it/s]100%|##########| 1/1 [00:00<00:00, 3216.49it/s]
+##   0%|          | 0/1 [00:00<?, ?it/s]100%|##########| 1/1 [00:00<00:00, 1332.79it/s]
 \end{verbatim}
 
 \begin{Shaded}
@@ -627,9 +626,9 @@ With a trained model, we can make predictions on a set of new texts
 \end{Shaded}
 
 \begin{verbatim}
-## PredictionOutput(predictions=array([[-0.49534038, -0.13962194],
-##        [ 0.10782427, -0.41164818],
-##        [-0.18241827, -0.51983464]], dtype=float32), label_ids=array([1, 0, 0]), metrics={'test_loss': 0.5121317505836487, 'test_runtime': 0.2638, 'test_samples_per_second': 11.373, 'test_steps_per_second': 3.791})
+## PredictionOutput(predictions=array([[-0.44623327,  0.07649825],
+##        [-0.04447261,  0.04163995],
+##        [-0.1721632 ,  0.10295288]], dtype=float32), label_ids=array([1, 0, 0]), metrics={'test_loss': 0.6809406876564026, 'test_runtime': 10.9274, 'test_samples_per_second': 0.275, 'test_steps_per_second': 0.092})
 \end{verbatim}
 \end{frame}
 
@@ -655,9 +654,9 @@ that these probabilities are not necessarily well calibrated.
 \end{Shaded}
 
 \begin{verbatim}
-## tensor([[0.4120, 0.5880],
-##         [0.6270, 0.3730],
-##         [0.5836, 0.4164]])
+## tensor([[0.3722, 0.6278],
+##         [0.4785, 0.5215],
+##         [0.4317, 0.5683]])
 ## 
 ## <string>:1: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
 \end{verbatim}

@@ -324,10 +324,29 @@ In Python, a similar no-frills option is
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ requests}
 \ImportTok{from}\NormalTok{ rich.pretty }\ImportTok{import}\NormalTok{ pprint}
-\CommentTok{\#r = requests.get("https://www.iea.org/policies")}
-\CommentTok{\#pprint(r.\_\_dict\_\_, max\_string=40)}
+\NormalTok{r }\OperatorTok{=}\NormalTok{ requests.get(}\StringTok{"https://www.iea.org/policies"}\NormalTok{)}
+\NormalTok{pprint(r.\_\_dict\_\_, max\_string}\OperatorTok{=}\DecValTok{40}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## {
+## │   '_content': b'<!DOCTYPE html>\n<html dir="ltr" lang="en'+305061,
+## │   '_content_consumed': True,
+## │   '_next': None,
+## │   'status_code': 200,
+## │   'headers': {'Date': 'Thu, 29 Sep 2022 06:51:22 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'public, max-age=14400', 'Content-Encoding': 'gzip', 'Content-Security-Policy-Report-Only': "base-uri 'self';connect-src 'self' https: https://www.recaptcha.net wss:;default-src 'self' https: wss: blob: data:;form-action 'self' https:;img-src 'self' https: http://iea.imgix.net https://iea.imgix.net data:;media-src 'self' https: data: http://iea.imgix.net https://iea.imgix.net;object-src 'none';script-src 'self' 'unsafe-eval' https://www.google.com https://www.googletagmanager.com https://www.youtube.com https://www.google-analytics.com https://www.recaptcha.net https://snap.licdn.com https://www.gstatic.com https://stats.g.doubleclick.net https://p.adsymptotic.com https://px.ads.linkedin.com 'sha256-l/3fcn6MZG0SSVJq6fOLe49ZKIjbWdNzhreJz7KQ/1M=' 'sha256-+MedjqNIfWWYUGuHJ53XLEjzmGDCp9Om50MVUO/C/zo=' 'nonce-KjNse0TNQzAzHxJyix6ZAMUL6mBCnqXY';style-src 'self' https: 'unsafe-inline';frame-ancestors 'self'", 'Referrer-Policy': 'no-referrer-when-downgrade', 'Strict-Transport-Security': 'max-age=31536000;', 'Vary': 'Accept-Encoding', 'X-Cached-At': 'Thu, 29 Sep 2022 04:14:52 +0200', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'SAMEORIGIN', 'X-Xss-Protection': '1; mode=block', 'CF-Cache-Status': 'EXPIRED', 'Last-Modified': 'Thu, 29 Sep 2022 04:27:53 GMT', 'Server': 'cloudflare', 'CF-RAY': '7522ca2f4d419b25-FRA'},
+## │   'raw': <urllib3.response.HTTPResponse object at 0x7f8c08a46940>,
+## │   'url': 'https://www.iea.org/policies',
+## │   'encoding': 'UTF-8',
+## │   'history': [],
+## │   'reason': 'OK',
+## │   'cookies': <RequestsCookieJar[]>,
+## │   'elapsed': datetime.timedelta(seconds=2, microseconds=115359),
+## │   'request': <PreparedRequest [GET]>,
+## │   'connection': <requests.adapters.HTTPAdapter object at 0x7f8c08a53b20>
+## }
+\end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{Understanding HTML responses}
@@ -891,132 +910,7 @@ Always search this first, but these libraries often do very simple
 things.
 
 One thing that can be especially annoying is \textbf{authentication}.
-We're going to use
-\href{https://cbail.github.io/textasdata/apis/rmarkdown/Application_Programming_interfaces.html}{rtweet}
-\end{frame}
-
-\begin{frame}[fragile]{Rtweet}
-\protect\hypertarget{rtweet}{}
-To use rtweet, you will need to authenticate interactively (by leaving
-the argument blank) using the ``Bearer Token'' you generated on the
-\href{https://developer.twitter.com/en/portal/apps/}{twitter} website,
-or provide the token directly to `rtweet\_app``. NEVER expose your
-secret keys in a Github repository!
-
-Once you have done this you can pass the result as the \textbf{token}
-argument to your API call. For now, we will explore the
-\texttt{search\_tweets} endpoint
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(rtweet)}
-\FunctionTok{library}\NormalTok{(dotenv)}
-\FunctionTok{load\_dot\_env}\NormalTok{(}\StringTok{".env"}\NormalTok{)}
-\NormalTok{auth }\OtherTok{\textless{}{-}} \FunctionTok{rtweet\_app}\NormalTok{(}\FunctionTok{Sys.getenv}\NormalTok{(}\StringTok{"bearer\_token"}\NormalTok{))}
-\NormalTok{rt }\OtherTok{\textless{}{-}} \FunctionTok{search\_tweets}\NormalTok{(}\StringTok{"hertie"}\NormalTok{, }\AttributeTok{n =} \DecValTok{1000}\NormalTok{, }\AttributeTok{include\_rts =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{token=}\NormalTok{auth)}
-\NormalTok{rt}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 105 x 43
-##    created_at               id id_str       full_~1 trunc~2 displ~3 entities    
-##    <dttm>                <dbl> <chr>        <chr>   <lgl>     <dbl> <list>      
-##  1 2022-09-21 10:26:04 1.57e18 15725024087~ "Say h~ FALSE       274 <named list>
-##  2 2022-09-21 20:00:34 1.57e18 15726469878~ "\"Coo~ FALSE       275 <named list>
-##  3 2022-09-21 19:02:12 1.57e18 15726322963~ "@Deba~ FALSE        66 <named list>
-##  4 2022-09-21 17:38:08 1.57e18 15726111413~ "@Shub~ FALSE       125 <named list>
-##  5 2022-09-21 17:22:54 1.57e18 15726073093~ "@Shub~ FALSE        97 <named list>
-##  6 2022-09-21 16:45:41 1.57e18 15725979419~ "@Shub~ FALSE       110 <named list>
-##  7 2022-09-21 16:01:02 1.57e18 15725867068~ "From ~ FALSE       284 <named list>
-##  8 2022-09-21 14:18:25 1.57e18 15725608826~ "@Hert~ FALSE        59 <named list>
-##  9 2022-09-21 13:51:04 1.57e18 15725539968~ "Does ~ FALSE       278 <named list>
-## 10 2022-09-21 12:10:36 1.57e18 15725287166~ "What ~ FALSE       108 <named list>
-## # ... with 95 more rows, 36 more variables: metadata <list>, source <chr>,
-## #   in_reply_to_status_id <dbl>, in_reply_to_status_id_str <chr>,
-## #   in_reply_to_user_id <dbl>, in_reply_to_user_id_str <chr>,
-## #   in_reply_to_screen_name <chr>, geo <list>, coordinates <list>,
-## #   place <list>, contributors <lgl>, is_quote_status <lgl>,
-## #   retweet_count <int>, favorite_count <int>, favorited <lgl>,
-## #   retweeted <lgl>, possibly_sensitive <lgl>, lang <chr>, ...
-\end{verbatim}
-\end{frame}
-
-\begin{frame}[fragile]{Tweepy}
-\protect\hypertarget{tweepy}{}
-Tweepy is a similar library for python, which works in a similar way
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ImportTok{import}\NormalTok{ tweepy}
-\ImportTok{from}\NormalTok{ dotenv }\ImportTok{import}\NormalTok{ load\_dotenv}
-\ImportTok{import}\NormalTok{ os}
-\NormalTok{load\_dotenv()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## True
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{auth }\OperatorTok{=}\NormalTok{ tweepy.OAuth2BearerHandler(os.getenv(}\StringTok{"bearer\_token"}\NormalTok{))}
-\NormalTok{api }\OperatorTok{=}\NormalTok{ tweepy.API(auth)}
-\NormalTok{results }\OperatorTok{=}\NormalTok{ api.search\_tweets(}\StringTok{"hertie"}\NormalTok{)}
-\NormalTok{json\_data }\OperatorTok{=}\NormalTok{ [r.\_json }\ControlFlowTok{for}\NormalTok{ r }\KeywordTok{in}\NormalTok{ results]}
-\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.json\_normalize(json\_data)}
-\NormalTok{df}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##                         created_at  ...  possibly_sensitive
-## 0   Wed Sep 21 20:27:13 +0000 2022  ...                 NaN
-## 1   Wed Sep 21 19:59:54 +0000 2022  ...                 NaN
-## 2   Wed Sep 21 18:20:33 +0000 2022  ...                 NaN
-## 3   Wed Sep 21 18:00:34 +0000 2022  ...               False
-## 4   Wed Sep 21 17:02:12 +0000 2022  ...                 NaN
-## 5   Wed Sep 21 15:38:08 +0000 2022  ...                 NaN
-## 6   Wed Sep 21 15:22:54 +0000 2022  ...                 NaN
-## 7   Wed Sep 21 14:51:17 +0000 2022  ...                 NaN
-## 8   Wed Sep 21 14:45:41 +0000 2022  ...                 NaN
-## 9   Wed Sep 21 14:25:35 +0000 2022  ...                 NaN
-## 10  Wed Sep 21 14:01:02 +0000 2022  ...               False
-## 11  Wed Sep 21 13:44:08 +0000 2022  ...                 NaN
-## 12  Wed Sep 21 13:21:48 +0000 2022  ...                 NaN
-## 13  Wed Sep 21 12:29:33 +0000 2022  ...                 NaN
-## 14  Wed Sep 21 12:18:25 +0000 2022  ...                 NaN
-## 
-## [15 rows x 144 columns]
-\end{verbatim}
-\end{frame}
-
-\begin{frame}{Some limitations of twitter}
-\protect\hypertarget{some-limitations-of-twitter}{}
-Without the academic API, twitter search offers only a non-random sample
-of recent tweets
-
-Even with the academic API, many limitations remain
-
-\begin{itemize}
-\tightlist
-\item
-  Geotag availability
-\item
-  Non-representative populations
-\item
-  Country/language overlaps
-\item
-  Bots
-\end{itemize}
-
-Still, it is a very interesting data source, and valuable for
-understanding social behaviour \emph{on twitter}
+Various twitter API clients used to manage this complicated process.
 \end{frame}
 
 \hypertarget{other-data-sources}{%
@@ -1045,21 +939,14 @@ We can use RVest to parse these
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 155 x 8
-##    id                             speak~1 type  perso~2 colnum time  url   text 
-##    <chr>                          <chr>   <chr> <chr>   <chr>  <chr> <chr> <chr>
-##  1 uk.org.publicwhip/debate/2022~ Lindsa~ uk.o~ 653     ""     ""    "uk.~ "Fol~
-##  2 uk.org.publicwhip/debate/2022~ Lindsa~ uk.o~ 654     ""     ""    "uk.~ "I w~
-##  3 uk.org.publicwhip/debate/2022~ Lindsa~ uk.o~ 654     ""     ""    "uk.~ "We ~
-##  4 uk.org.publicwhip/debate/2022~ Lindsa~ uk.o~ 655     "13:1~ ""    "uk.~ "I n~
-##  5 uk.org.publicwhip/debate/2022~ Theres~ Star~ uk.org~ "655"  "13:~ ""    "Tha~
-##  6 uk.org.publicwhip/debate/2022~ Yvette~ Star~ uk.org~ "656"  "13:~ ""    "Thi~
-##  7 uk.org.publicwhip/debate/2022~ Amanda~ Star~ uk.org~ "657"  "13:~ ""    "My ~
-##  8 uk.org.publicwhip/debate/2022~ George~ Star~ uk.org~ "658"  "13:~ ""    "Her~
-##  9 uk.org.publicwhip/debate/2022~ Grant ~ Star~ uk.org~ "658"  "13:~ ""    "Lik~
-## 10 uk.org.publicwhip/debate/2022~ Lindsa~ uk.o~ 659     "13:3~ ""    "uk.~ "I c~
-## # ... with 145 more rows, and abbreviated variable names 1: speakername,
-## #   2: person_id
+## # A tibble: 4 x 8
+##   id                              speak~1 type  perso~2 colnum time  url   text 
+##   <chr>                           <chr>   <chr> <chr>   <chr>  <chr> <chr> <chr>
+## 1 uk.org.publicwhip/debate/2022-~ Lindsa~ uk.o~ 654     ""     ""    "uk.~ "I w~
+## 2 uk.org.publicwhip/debate/2022-~ Lindsa~ uk.o~ 654     ""     ""    "uk.~ "We ~
+## 3 uk.org.publicwhip/debate/2022-~ Stephe~ Star~ uk.org~ "712"  "16:~ ""    "Tha~
+## 4 uk.org.publicwhip/debate/2022-~ Robert~ Star~ uk.org~ "733"  "18:~ ""    "Thu~
+## # ... with abbreviated variable names 1: speakername, 2: person_id
 \end{verbatim}
 \end{frame}
 
@@ -1091,7 +978,7 @@ We can use RVest to parse these, or BeautifulSoup in Python
 \end{Shaded}
 
 \begin{verbatim}
-## (155, 9)
+## (4, 8)
 \end{verbatim}
 
 \begin{Shaded}
@@ -1101,14 +988,13 @@ We can use RVest to parse these, or BeautifulSoup in Python
 \end{Shaded}
 
 \begin{verbatim}
-##                                            id  ... nospeaker
-## 0  uk.org.publicwhip/debate/2022-09-10a.653.1  ...       NaN
-## 1  uk.org.publicwhip/debate/2022-09-10a.654.1  ...       NaN
-## 2  uk.org.publicwhip/debate/2022-09-10a.654.2  ...       NaN
-## 3  uk.org.publicwhip/debate/2022-09-10a.655.1  ...       NaN
-## 4  uk.org.publicwhip/debate/2022-09-10a.655.2  ...       NaN
+##                                            id  ...          type
+## 0  uk.org.publicwhip/debate/2022-09-10a.654.1  ...           NaN
+## 1  uk.org.publicwhip/debate/2022-09-10a.654.2  ...           NaN
+## 2  uk.org.publicwhip/debate/2022-09-10a.712.0  ...  Start Speech
+## 3  uk.org.publicwhip/debate/2022-09-10a.733.0  ...  Start Speech
 ## 
-## [5 rows x 9 columns]
+## [4 rows x 8 columns]
 \end{verbatim}
 \end{frame}
 
