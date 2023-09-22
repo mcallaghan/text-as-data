@@ -46,18 +46,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Singapore}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -157,7 +160,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Acquiring and importing texts},
   pdfauthor={Max Callaghan},
@@ -271,7 +274,12 @@ own set of headers.
 \end{col}
 
 \begin{col}{0.60\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{iea_network_request.png}
+\caption{IEA Network Screenshot}
+\end{figure}
 
 \end{col}
 
@@ -385,7 +393,12 @@ this hierarchy we refer to
 \end{col}
 
 \begin{col}{0.60\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{iea_html.png}
+\caption{IEA Network Screenshot}
+\end{figure}
 
 \end{col}
 

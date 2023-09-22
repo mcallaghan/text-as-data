@@ -10,7 +10,17 @@
 *.toc
 *.vrb
 *.nav
+*.log
 *.ipynb_checkpoints*
 *.env
 *_cache*
 *_files*
+embeddings/*
+*.Rproj
+readings/*
+*__pycache__*
+Assignments/explanations/*
+Session-6-Distance-and-Dimensionality-Reduction/data/*
+datasets/*
+Session-11-Spacy-and-Transformers/out/*
+Session-11-Spacy-and-Transformers/tmp_trainer/*

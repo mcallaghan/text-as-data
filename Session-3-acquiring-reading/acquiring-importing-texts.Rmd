@@ -71,7 +71,6 @@ We will explore how to gain access to the following sources of text
 \begin{itemize}
   \item<1-> The IEA's Policies and Measures database, by scraping the website
   \item<2-> Scientific articles, using the OpenAlex API
-  \item<2-> Twitter posts, using their API
   \item<3-> Parliamentary data, by parsing XML data published by Hansard
 \end{itemize}
 
@@ -429,7 +428,7 @@ We can use RVest to parse these
 
 ```{r echo=TRUE, include=TRUE, cache=TRUE, warning=FALSE}
 library(rvest)
-data <- read_html("https://www.theyworkforyou.com/pwdata/scrapedxml/debates/debates2022-09-10a.xml")
+data <- read_html("https://www.theyworkforyou.com/pwdata/scrapedxml/debates/debates2023-09-19b.xml")
 speeches <- data %>% html_elements("speech") 
 df <- as_tibble(do.call(rbind, html_attrs(speeches)))
 df$text <- speeches %>% html_text()
