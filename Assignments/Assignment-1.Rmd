@@ -17,7 +17,7 @@ bibliography: ../presentation-resources/MyLibrary.bib
 
 # Introduction
 
-This first assignment will test your grasp of some of the concepts and methods we covered in sessions 1-2. Give an answer to each question, even if you are not sure. In an ideal world, you should present your work as a document with integrated code, execution and text, but if this doesn't work out a script and a pdf will do fine.
+This first assignment will test your grasp of some of the concepts and methods we covered in sessions 1-2. Give an answer to each question, even if you are not sure. In an ideal world, you should present your work as a document with integrated code, execution and text, such as an Rmd file, or an .ipynb notebook, but if this doesn't work out a script and a pdf will do fine.
 
 # 1 
 

@@ -51,7 +51,7 @@ By the end of this session, you will be able to
 \begin{itemize}
   \item<1-> Scrape texts from a website
   \item<2-> Use an API to retrieve texts
-  \item<3-> Read texts stored in various formats and process these with R
+  \item<3-> Read texts stored in various formats and process 
 \end{itemize}
 
 ## Fundamentals of the internet
@@ -304,7 +304,7 @@ Let's start by searching the institutions endpoint for the Hertie School
 
 \url{https://api.openalex.org/institutions?filter=display_name.search:hertie}
 
-We can plug the ID we find here into a query of the works enpoint, where we search works where an author is affiliated with Hertie
+We can plug the ID we find here into a query of the works endpoint, where we search works where an author is affiliated with Hertie
 
 \url{https://api.openalex.org/works?filter=authorships.institutions.id:I24830596}
 
@@ -463,7 +463,7 @@ df.head()
 
 ## Exercise
 
-We've had a look at 4 different data sources. Pick one, alter the query parameters (if applicable) and try to process it as we did last week. Report on commonly used words in the data. 
+We've had a look at 3 different data sources. Pick one, alter the query parameters (if applicable) and try to process it as we did last week. Report on commonly used words in the data. 
 
 ## Extensions
 

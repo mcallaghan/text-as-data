@@ -1,7 +1,7 @@
 ---
 title: "Assignment 2"
 author: "Text as Data"
-date: "2022-11-03"
+date: "2023-09-25"
 output: 
   pdf_document:
     keep_tex: true
@@ -15,30 +15,34 @@ urlcolor: blue
 bibliography: ../presentation-resources/MyLibrary.bib
 ---
 
-# Introduction
+## Parsing XML text data
 
-In this assignment, you are asked to use topic modelling to investigate manifestos from the manifesto project maintained by [WZB](https://manifesto-project.wzb.eu/). You can either use the UK manifestos we looked at together in class, or collect your own set of manifestos by choosing the country/countries, year/years and party/parties you are interested in. You should produce a report which includes your code, that addresses the following aspects of creating a topic model, making sure to answer the questions below.
+In this assignment we will access and work with German Parliamentary data, which is available in XML format [here](https://www.bundestag.de/services/opendata) (scroll down) for the last two parliamentary periods. Remember XML format is very like HTML format, and we can parse it using a scraper and CSS selectors. Speeches are contained in `<rede>` elements, which each contain a paragraph element describing the speaker, and paragraph elements recording what they said.
 
-## 1. Data acquisition, description, and preparation
+### 1.1 
 
-Bring together a dataset from the WZB. 
+Choose one of the sessions, and retrieve it using R or Python. 
 
-What years, countries and parties are included in the dataset? How many texts do you have for each of these?
+### 1.2 
 
-Prepare your data for topic modelling by creating a document feature matrix. Describe the choices you make here, and comment on how these might affect your final result.
+Using a scraper, get a list of all the <rede> elements. 
 
-## 2. Research question
+### 1.3 
 
-Describe a research question you want to explore with topic modelling. Comment on how answerable this is with the methods and data at your disposal.
+For each element, get the name of the speaker, and a single string containing everything that they said. Put this into a dataframe. 
 
-## 3. Topic model development
+### 2.1 
 
-Create a topic model using your data. Explain to a non-specialist what the topic model does. Comment on the choices you make here in terms of hyperparameter selection and model choice. How might these affect your results and the ability to answer your research question?
+Choose a politician, and print the number of speeches they made in this session
 
-## 4. Topic model description
+### 2.2 
 
-Describe the topic model. What topics does it contain? How are these distributed across the data?
+Print the content of the first speech by the politician you choose.
 
-## 5. Answering your research question
+### 2.3 
 
-Use your topic model to answer your research question by showing plots or statistical results. Discuss the implications of what you find, and any limitations inherent in your approach. Discuss how the work could be improved upon in future research.
+Process the list of speeches into a TFIDF matrix. What are the highest scoring terms in this matrix for the first speech by the politician you have chosen?
+
+### 2.4 
+
+Using the resource "Stammdaten aller Abgeordneten seit 1949 im XML-Format", retrieve the records pertaining to your chosen politician and print the information they contain.
