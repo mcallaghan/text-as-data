@@ -46,18 +46,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Singapore}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -144,7 +147,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Manipulating Strings},
   pdfauthor={Max Callaghan},
@@ -181,7 +184,9 @@ But first, we will do a quick recap of the scraping exercise
 
 \begin{frame}{Recap}
 \protect\hypertarget{recap-1}{}
-I posted a step-by-step \href{online}{solution}
+I posted a step-by-step
+\href{https://github.com/mcallaghan/text-as-data/blob/master/Session-3-acquiring-reading/scraping_iea.html}{solution}
+online
 
 Some useful basic concepts
 
@@ -919,7 +924,7 @@ below, it says ``u'' must appear 0 or 1 times
 \end{Shaded}
 
 \begin{verbatim}
-## [<_sre.SRE_Match object; span=(0, 5), match='color'>, <_sre.SRE_Match object; span=(0, 6), match='colour'>]
+## [<re.Match object; span=(0, 5), match='color'>, <re.Match object; span=(0, 6), match='colour'>]
 \end{verbatim}
 
 \normalsize
@@ -989,10 +994,10 @@ Square brackets indicate a list of possible character matches
 
 \begin{frame}[fragile]{Exercise}
 \protect\hypertarget{exercise}{}
-Download a list of 1,000 tweets which mention net zero. Use regular
-expressions to find dates in the future. How many tweets mention a date?
-If we extract the first date using \texttt{str\_extract()}, what dates
-are most common?
+Load the dataset of papers which mention net zero. Use regular
+expressions to extract dates in the future from their abstracts. How
+many papers mention a date? If we extract the first date using
+\texttt{str\_extract()}, what dates are most common?
 \end{frame}
 
 \begin{frame}[fragile]{Shortcuts to character lists}
