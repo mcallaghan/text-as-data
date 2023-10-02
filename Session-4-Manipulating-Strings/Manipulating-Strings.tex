@@ -160,7 +160,7 @@
 
 \title{Manipulating Strings}
 \author{Max Callaghan}
-\date{2022-09-15}
+\date{2023-10-02}
 
 \begin{document}
 \frame{\titlepage}
@@ -807,7 +807,7 @@ use \texttt{str\_c} or \texttt{paste}
 
 \begin{frame}[fragile]{Replacing parts of strings}
 \protect\hypertarget{replacing-parts-of-strings}{}
-Sometimes we want to replace occurences of a certain string or sequence
+Sometimes we want to replace occurrences of a certain string or sequence
 of characters with something or nothing.
 
 \medskip
@@ -1000,6 +1000,73 @@ many papers mention a date? If we extract the first date using
 \texttt{str\_extract()}, what dates are most common?
 \end{frame}
 
+\begin{frame}[fragile]{Downloading papers in R}
+\protect\hypertarget{downloading-papers-in-r}{}
+\tiny
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(jsonlite)}
+\FunctionTok{library}\NormalTok{(dotenv)}
+\FunctionTok{library}\NormalTok{(httr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{load\_dot\_env}\NormalTok{(}\StringTok{".env"}\NormalTok{)}
+\NormalTok{r }\OtherTok{\textless{}{-}} \FunctionTok{GET}\NormalTok{(}
+  \StringTok{"https://api.openalex.org/works?search=\%22net\%20zero\%22\&per{-}page=200"}\NormalTok{,}
+  \FunctionTok{add\_headers}\NormalTok{(}\AttributeTok{email=}\FunctionTok{Sys.getenv}\NormalTok{(}\StringTok{"email"}\NormalTok{))}
+\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{fromJSON}\NormalTok{(}\FunctionTok{content}\NormalTok{(r, }\StringTok{"text"}\NormalTok{))}
+\NormalTok{rdata }\OtherTok{\textless{}{-}} \FunctionTok{fromJSON}\NormalTok{(}\FunctionTok{content}\NormalTok{(r, }\StringTok{"text"}\NormalTok{), }\AttributeTok{simplifyVector=}\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{uninvert }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(aii) \{ }\CommentTok{\# turn the abstract inverted index into an abstract}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.null}\NormalTok{(aii}\SpecialCharTok{$}\NormalTok{abstract\_inverted\_index)) \{}
+    \FunctionTok{return}\NormalTok{(}\ConstantTok{NULL}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{stack}\NormalTok{(aii}\SpecialCharTok{$}\NormalTok{abstract\_inverted\_index) }
+\NormalTok{  words }\OtherTok{\textless{}{-}}\NormalTok{ x[}\FunctionTok{order}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{values),}\StringTok{"ind"}\NormalTok{]}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{paste}\NormalTok{(words, }\AttributeTok{collapse=}\StringTok{" "}\NormalTok{))}
+\NormalTok{\}}
+
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}
+  \FunctionTok{select}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{results, }\FunctionTok{where}\NormalTok{(is.character)), }
+  \FunctionTok{select}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{results, }\FunctionTok{where}\NormalTok{(is.numeric))}
+\NormalTok{)}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{abstract }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(rdata}\SpecialCharTok{$}\NormalTok{results, uninvert)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Downloading papers in python}
+\protect\hypertarget{downloading-papers-in-python}{}
+\tiny
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ requests}
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\NormalTok{r }\OperatorTok{=}\NormalTok{ requests.get(}\StringTok{"https://api.openalex.org/works?search=\%22net\%20zero\%22\&per{-}page=200"}\NormalTok{)}
+\NormalTok{res }\OperatorTok{=}\NormalTok{ r.json()}
+\KeywordTok{def}\NormalTok{ uninvert\_abstract(aii):}
+    \ControlFlowTok{if}\NormalTok{ aii }\KeywordTok{is} \VariableTok{None}\NormalTok{:}
+        \ControlFlowTok{return} \VariableTok{None}
+\NormalTok{    word\_index }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(aii.items())}
+\NormalTok{    word\_index }\OperatorTok{=} \BuiltInTok{sorted}\NormalTok{(word\_index, key}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ x: x[}\DecValTok{1}\NormalTok{])}
+    \ControlFlowTok{return} \StringTok{" "}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x[}\DecValTok{0}\NormalTok{], word\_index))}
+\NormalTok{keep\_fields }\OperatorTok{=}\NormalTok{ [}\StringTok{"id"}\NormalTok{,}\StringTok{"doi"}\NormalTok{,}\StringTok{"title"}\NormalTok{,}\StringTok{"publication\_year"}\NormalTok{]}
+\NormalTok{work\_dicts }\OperatorTok{=}\NormalTok{ []}
+\ControlFlowTok{for}\NormalTok{ work }\KeywordTok{in}\NormalTok{ res[}\StringTok{"results"}\NormalTok{]:}
+    \CommentTok{\# Get the basic fields we want}
+\NormalTok{    work\_min }\OperatorTok{=}\NormalTok{ \{k: work[k] }\ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in}\NormalTok{ keep\_fields\}}
+    \CommentTok{\# uninvert the abstract}
+\NormalTok{    work\_min[}\StringTok{"abstract"}\NormalTok{] }\OperatorTok{=}\NormalTok{ uninvert\_abstract(work[}\StringTok{"abstract\_inverted\_index"}\NormalTok{])}
+    \CommentTok{\# put the authors into a single string}
+\NormalTok{    authors }\OperatorTok{=}\NormalTok{ [author[}\StringTok{"author"}\NormalTok{][}\StringTok{"display\_name"}\NormalTok{] }\ControlFlowTok{for}\NormalTok{ author }\KeywordTok{in}\NormalTok{ work[}\StringTok{"authorships"}\NormalTok{]]}
+\NormalTok{    work\_min[}\StringTok{"authors"}\NormalTok{] }\OperatorTok{=} \StringTok{", "}\NormalTok{.join([a }\ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in}\NormalTok{ authors }\ControlFlowTok{if}\NormalTok{ a }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}\NormalTok{])}
+\NormalTok{    work\_dicts.append(work\_min)}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame.from\_dict(work\_dicts)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
 \begin{frame}[fragile]{Shortcuts to character lists}
 \protect\hypertarget{shortcuts-to-character-lists}{}
 We also have some shortcuts that represent character lists or types. The
@@ -1068,8 +1135,8 @@ made in the text?
 
 \begin{frame}{Next week}
 \protect\hypertarget{next-week}{}
-Next week we'll be brushing up on our ggplot skills, and putting them to
-use in plotting text data
+Next week we'll be brushing up on our ggplot / matplotlib / seaborn
+skills, and putting them to use in plotting text data
 \end{frame}
 
 \begin{frame}[allowframebreaks]{}

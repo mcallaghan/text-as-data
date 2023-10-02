@@ -1,7 +1,7 @@
 ---
 title: "Manipulating Strings"
 author: "Max Callaghan"
-date: "2022-09-15"
+date: "2023-10-02"
 output: 
   beamer_presentation:
     latex_engine: xelatex
@@ -381,7 +381,7 @@ poem_start
 
 ## Replacing parts of strings
 
-Sometimes we want to replace occurences of a certain string or sequence of characters with something or nothing.
+Sometimes we want to replace occurrences of a certain string or sequence of characters with something or nothing.
 
 \medskip
 
@@ -484,6 +484,65 @@ Square brackets indicate a list of possible character matches
 
 Load the dataset of papers which mention net zero. Use regular expressions to extract dates in the future from their abstracts. How many papers mention a date? If we extract the first date using `str_extract()`, what dates are most common?
 
+## Downloading papers in R
+
+\tiny
+```{r echo=TRUE, include=TRUE, error=TRUE, message=FALSE}
+library(jsonlite)
+library(dotenv)
+library(httr)
+library(dplyr)
+load_dot_env(".env")
+r <- GET(
+  "https://api.openalex.org/works?search=%22net%20zero%22&per-page=200",
+  add_headers(email=Sys.getenv("email"))
+)
+data <- fromJSON(content(r, "text"))
+rdata <- fromJSON(content(r, "text"), simplifyVector=FALSE)
+uninvert <- function(aii) { # turn the abstract inverted index into an abstract
+  if (is.null(aii$abstract_inverted_index)) {
+    return(NULL)
+  }
+  x <- stack(aii$abstract_inverted_index) 
+  words <- x[order(x$values),"ind"]
+  return(paste(words, collapse=" "))
+}
+
+df <- cbind(
+  select(data$results, where(is.character)), 
+  select(data$results, where(is.numeric))
+)
+df$abstract <- sapply(rdata$results, uninvert)
+```
+
+## Downloading papers in python
+
+\tiny
+```{python echo=TRUE, include=TRUE, error=TRUE}
+import requests
+import pandas as pd
+r = requests.get("https://api.openalex.org/works?search=%22net%20zero%22&per-page=200")
+res = r.json()
+def uninvert_abstract(aii):
+    if aii is None:
+        return None
+    word_index = list(aii.items())
+    word_index = sorted(word_index, key=lambda x: x[1])
+    return " ".join(map(lambda x: x[0], word_index))
+keep_fields = ["id","doi","title","publication_year"]
+work_dicts = []
+for work in res["results"]:
+    # Get the basic fields we want
+    work_min = {k: work[k] for k in keep_fields}
+    # uninvert the abstract
+    work_min["abstract"] = uninvert_abstract(work["abstract_inverted_index"])
+    # put the authors into a single string
+    authors = [author["author"]["display_name"] for author in work["authorships"]]
+    work_min["authors"] = ", ".join([a for a in authors if a is not None])
+    work_dicts.append(work_min)
+df = pd.DataFrame.from_dict(work_dicts)
+```
+
 ## Shortcuts to character lists
 
 We also have some shortcuts that represent character lists or types. The upper case letter is often the negated version of the lower case letter
@@ -521,4 +580,4 @@ QJE.txt contains the opening two paragraphs of a recent paper in the Quarterly J
 
 ## Next week
 
-Next week we'll be brushing up on our ggplot skills, and putting them to use in plotting text data
+Next week we'll be brushing up on our ggplot / matplotlib / seaborn skills, and putting them to use in plotting text data
