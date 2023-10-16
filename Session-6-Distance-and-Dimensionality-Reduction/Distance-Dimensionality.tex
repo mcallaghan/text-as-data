@@ -1111,6 +1111,8 @@ In python we use the
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ umap}
 \ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+\ImportTok{import}\NormalTok{ warnings}
+\NormalTok{warnings.filterwarnings(}\StringTok{\textquotesingle{}ignore\textquotesingle{}}\NormalTok{)}
 \NormalTok{df }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{"data/uk\_manifestos.csv"}\NormalTok{)}
 \NormalTok{vec }\OperatorTok{=}\NormalTok{ TfidfVectorizer(min\_df}\OperatorTok{=}\DecValTok{5}\NormalTok{, stop\_words}\OperatorTok{=}\StringTok{"english"}\NormalTok{)}
 \NormalTok{dfmat }\OperatorTok{=}\NormalTok{ vec.fit\_transform(df[}\StringTok{"text"}\NormalTok{])}
@@ -1122,16 +1124,6 @@ In python we use the
 \NormalTok{\}}
 \NormalTok{reducer }\OperatorTok{=}\NormalTok{ umap.UMAP()}
 \NormalTok{embeddings }\OperatorTok{=}\NormalTok{ reducer.fit\_transform(dfmat)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## /home/max/.local/lib/python3.10/site-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: [1mThe TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.[0m
-##   warnings.warn(problem)
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{df[}\StringTok{"x"}\NormalTok{] }\OperatorTok{=}\NormalTok{ embeddings[:,}\DecValTok{0}\NormalTok{]}
 \NormalTok{df[}\StringTok{"y"}\NormalTok{] }\OperatorTok{=}\NormalTok{ embeddings[:,}\DecValTok{1}\NormalTok{]}
 \NormalTok{sns.relplot(}

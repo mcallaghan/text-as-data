@@ -592,9 +592,11 @@ In python we use the [umap-learn](https://umap-learn.readthedocs.io/en/latest/) 
 
 \scriptsize
 
-```{python echo=TRUE, include=TRUE, cache=True, message=FALSE, warning=FALSE, fig.show="hide"}
+```{python echo=TRUE, include=TRUE, cache=FALSE, message=FALSE, warning=FALSE, fig.show="hide"}
 import umap
 import seaborn as sns
+import warnings
+warnings.filterwarnings('ignore')
 df = pd.read_csv("data/uk_manifestos.csv")
 vec = TfidfVectorizer(min_df=5, stop_words="english")
 dfmat = vec.fit_transform(df["text"])
