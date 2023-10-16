@@ -1,7 +1,7 @@
 ---
 title: "Text similarity and dimensionality reduction"
 author: "Max Callaghan"
-date: "2022-10-13"
+date: "2023-10-16"
 output: 
   beamer_presentation:
     latex_engine: xelatex
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
 library(quanteda)
 library(lexicon)
-use_virtualenv("~/software/py39")
+use_python("/usr/bin/python3.10")
 library(dplyr)
 library(ggplot2)
 ```
@@ -45,10 +45,8 @@ import pandas as pd
 
 \begin{itemize}
   \item<1->The data manipulation tasks were **tricky**.
-  \item<2->Don't be afraid to submit imperfect implementations that get us part of the way there
-  \item<3->You will likely need loops: remember that the easiest way to get a loop working is to try it out on a single element of the sort you will be looping through.
-  \item<4->Getting unstructured texts into data formats is a really important skill for real world text as data work. BUT, our focus shifts now on to what to do with this data.
-  \item<5->However, this means we need a bit of maths today
+  \item<2->Getting unstructured texts into data formats is a really important skill for real world text as data work. BUT, our focus shifts now on to what to do with this data.
+  \item<3->However, this means we need a bit of maths today
 \end{itemize}
 
 :::
@@ -62,7 +60,7 @@ import pandas as pd
 
 ::: {.col data-latex="{0.48\textwidth}"}
 
-\only<5->{
+\only<4->{
 \includegraphics[width=\linewidth]{images/horse.png}
 }
 
@@ -87,7 +85,7 @@ Why do we want to measure whether texts are similar or different?
 \begin{itemize}
   \item<2-> Retrieving relevant but inexact information
   \item<3-> Learning topics or clusters which group similar documents together
-  \item<4-> Building a classifier that allocates labels to texts that a similar to our labelled data
+  \item<4-> Understanding if texts by one actor/group are similar to another
 \end{itemize}
 
 What does similarity mean?
@@ -140,7 +138,7 @@ print(b)
 
 \scriptsize
 ```{python echo=TRUE, include=TRUE, error=TRUE}
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 texts = ["apple orange pear", "apple pear quince"]
 vec = CountVectorizer()
@@ -537,7 +535,8 @@ corp <- corpus(df)
 dfmat <- corp %>% tokens(remove_punc=TRUE) %>%
   tokens_remove(pattern=stopwords("en")) %>%
   dfm() %>%
-  dfm_trim(min_termfreq=5)
+  dfm_trim(min_termfreq=5) %>%
+  dfm_tfidf()
 ```
 
 ## Plotting UK manifestos with UMAP
@@ -593,11 +592,11 @@ In python we use the [umap-learn](https://umap-learn.readthedocs.io/en/latest/) 
 
 \scriptsize
 
-```{python echo=TRUE, include=TRUE, cache=TRUE, message=FALSE, warning=FALSE, fig.show="hide"}
+```{python echo=TRUE, include=TRUE, cache=True, message=FALSE, warning=FALSE, fig.show="hide"}
 import umap
 import seaborn as sns
 df = pd.read_csv("data/uk_manifestos.csv")
-vec = CountVectorizer(min_df=5, stop_words="english")
+vec = TfidfVectorizer(min_df=5, stop_words="english")
 dfmat = vec.fit_transform(df["text"])
 cdict = {
     'Labour': 'red',

@@ -46,18 +46,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Singapore}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -157,7 +160,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Text similarity and dimensionality reduction},
   pdfauthor={Max Callaghan},
@@ -170,7 +173,7 @@
 
 \title{Text similarity and dimensionality reduction}
 \author{Max Callaghan}
-\date{2022-10-13}
+\date{2023-10-16}
 
 \begin{document}
 \frame{\titlepage}
@@ -187,10 +190,8 @@ Objectives}\label{introduction-and-objectives}}
 
 \begin{itemize}
   \item<1->The data manipulation tasks were **tricky**.
-  \item<2->Don't be afraid to submit imperfect implementations that get us part of the way there
-  \item<3->You will likely need loops: remember that the easiest way to get a loop working is to try it out on a single element of the sort you will be looping through.
-  \item<4->Getting unstructured texts into data formats is a really important skill for real world text as data work. BUT, our focus shifts now on to what to do with this data.
-  \item<5->However, this means we need a bit of maths today
+  \item<2->Getting unstructured texts into data formats is a really important skill for real world text as data work. BUT, our focus shifts now on to what to do with this data.
+  \item<3->However, this means we need a bit of maths today
 \end{itemize}
 
 \end{col}
@@ -202,7 +203,7 @@ Objectives}\label{introduction-and-objectives}}
 
 \begin{col}{0.48\textwidth}
 
-\only<5->{
+\only<4->{
 \includegraphics[width=\linewidth]{images/horse.png}
 }
 
@@ -238,7 +239,7 @@ Why do we want to measure whether texts are similar or different?
 \begin{itemize}
   \item<2-> Retrieving relevant but inexact information
   \item<3-> Learning topics or clusters which group similar documents together
-  \item<4-> Building a classifier that allocates labels to texts that a similar to our labelled data
+  \item<4-> Understanding if texts by one actor/group are similar to another
 \end{itemize}
 
 What does similarity mean?
@@ -324,7 +325,7 @@ each of these documents, we simply take the relevant row
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ImportTok{from}\NormalTok{ sklearn.feature\_extraction.text }\ImportTok{import}\NormalTok{ CountVectorizer}
+\ImportTok{from}\NormalTok{ sklearn.feature\_extraction.text }\ImportTok{import}\NormalTok{ CountVectorizer, TfidfVectorizer}
 
 \NormalTok{texts }\OperatorTok{=}\NormalTok{ [}\StringTok{"apple orange pear"}\NormalTok{, }\StringTok{"apple pear quince"}\NormalTok{]}
 \NormalTok{vec }\OperatorTok{=}\NormalTok{ CountVectorizer()}
@@ -1034,7 +1035,8 @@ data.
 \NormalTok{dfmat }\OtherTok{\textless{}{-}}\NormalTok{ corp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{tokens}\NormalTok{(}\AttributeTok{remove\_punc=}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{tokens\_remove}\NormalTok{(}\AttributeTok{pattern=}\FunctionTok{stopwords}\NormalTok{(}\StringTok{"en"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{dfm}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{dfm\_trim}\NormalTok{(}\AttributeTok{min\_termfreq=}\DecValTok{5}\NormalTok{)}
+  \FunctionTok{dfm\_trim}\NormalTok{(}\AttributeTok{min\_termfreq=}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{dfm\_tfidf}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
@@ -1110,7 +1112,7 @@ In python we use the
 \ImportTok{import}\NormalTok{ umap}
 \ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
 \NormalTok{df }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{"data/uk\_manifestos.csv"}\NormalTok{)}
-\NormalTok{vec }\OperatorTok{=}\NormalTok{ CountVectorizer(min\_df}\OperatorTok{=}\DecValTok{5}\NormalTok{, stop\_words}\OperatorTok{=}\StringTok{"english"}\NormalTok{)}
+\NormalTok{vec }\OperatorTok{=}\NormalTok{ TfidfVectorizer(min\_df}\OperatorTok{=}\DecValTok{5}\NormalTok{, stop\_words}\OperatorTok{=}\StringTok{"english"}\NormalTok{)}
 \NormalTok{dfmat }\OperatorTok{=}\NormalTok{ vec.fit\_transform(df[}\StringTok{"text"}\NormalTok{])}
 \NormalTok{cdict }\OperatorTok{=}\NormalTok{ \{}
     \StringTok{\textquotesingle{}Labour\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{,}
@@ -1120,6 +1122,16 @@ In python we use the
 \NormalTok{\}}
 \NormalTok{reducer }\OperatorTok{=}\NormalTok{ umap.UMAP()}
 \NormalTok{embeddings }\OperatorTok{=}\NormalTok{ reducer.fit\_transform(dfmat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## /home/max/.local/lib/python3.10/site-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: [1mThe TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.[0m
+##   warnings.warn(problem)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{df[}\StringTok{"x"}\NormalTok{] }\OperatorTok{=}\NormalTok{ embeddings[:,}\DecValTok{0}\NormalTok{]}
 \NormalTok{df[}\StringTok{"y"}\NormalTok{] }\OperatorTok{=}\NormalTok{ embeddings[:,}\DecValTok{1}\NormalTok{]}
 \NormalTok{sns.relplot(}
