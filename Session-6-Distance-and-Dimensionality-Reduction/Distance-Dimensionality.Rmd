@@ -232,6 +232,7 @@ norm_c <- c/sqrt(sum(c*c))
 print(norm_c)
 
 print(sum(norm_a*norm_b))
+print(sum(norm_a*norm_a))
 print(sum(norm_a*norm_c))
 ```
 :::
