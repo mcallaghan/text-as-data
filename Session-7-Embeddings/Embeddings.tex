@@ -46,18 +46,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Singapore}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -157,7 +160,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Word and Document Embeddings},
   pdfauthor={Max Callaghan},
@@ -170,7 +173,7 @@
 
 \title{Word and Document Embeddings}
 \author{Max Callaghan}
-\date{2022-10-20}
+\date{2023-10-30}
 
 \begin{document}
 \frame{\titlepage}
@@ -244,7 +247,12 @@ words (Skip-gram)
 \begin{cols}
 
 \begin{col}{0.6\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{images/cbow-skipgram.png}
+\caption{CBOW AND SKIPGRAM}
+\end{figure}
 
 \end{col}
 
@@ -307,7 +315,7 @@ our words.
 \FunctionTok{library}\NormalTok{(coop)}
 
 \NormalTok{N\_DIM }\OtherTok{\textless{}{-}} \DecValTok{100}
-\NormalTok{glove }\OtherTok{\textless{}{-}} \FunctionTok{embedding\_glove6b}\NormalTok{(}\AttributeTok{dimensions=}\NormalTok{N\_DIM, }\AttributeTok{dir=}\StringTok{"embeddings"}\NormalTok{)}
+\NormalTok{glove }\OtherTok{\textless{}{-}} \FunctionTok{embedding\_glove6b}\NormalTok{(}\AttributeTok{dimensions=}\NormalTok{N\_DIM, }\AttributeTok{dir=}\StringTok{"../embeddings"}\NormalTok{)}
 \NormalTok{word\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(glove[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{])}
 \FunctionTok{rownames}\NormalTok{(word\_matrix) }\OtherTok{\textless{}{-}}\NormalTok{ glove}\SpecialCharTok{$}\NormalTok{token}
 \NormalTok{words }\OtherTok{\textless{}{-}}\NormalTok{ word\_matrix[}\FunctionTok{c}\NormalTok{(}\StringTok{"dog"}\NormalTok{,}\StringTok{"cat"}\NormalTok{,}\StringTok{"carbon"}\NormalTok{),]}
@@ -364,7 +372,7 @@ the embedding space. Do they represent meaningful distances?
 \ImportTok{import}\NormalTok{ csv}
 \ImportTok{from}\NormalTok{ zipfile }\ImportTok{import}\NormalTok{ ZipFile}
 \NormalTok{N\_DIMS }\OperatorTok{=} \DecValTok{100}
-\NormalTok{z }\OperatorTok{=}\NormalTok{ ZipFile(}\StringTok{"embeddings/glove6b/glove.6B.zip"}\NormalTok{)}
+\NormalTok{z }\OperatorTok{=}\NormalTok{ ZipFile(}\StringTok{"../embeddings/glove6b/glove.6B.zip"}\NormalTok{)}
 \NormalTok{f }\OperatorTok{=}\NormalTok{ z.}\BuiltInTok{open}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}glove.6B.}\SpecialCharTok{\{}\NormalTok{N\_DIMS}\SpecialCharTok{\}}\SpecialStringTok{d.txt\textquotesingle{}}\NormalTok{)}
 \NormalTok{word\_matrix }\OperatorTok{=}\NormalTok{ pd.read\_table(}
 \NormalTok{    f, sep}\OperatorTok{=}\StringTok{" "}\NormalTok{, index\_col}\OperatorTok{=}\DecValTok{0}\NormalTok{, }
@@ -833,14 +841,15 @@ Embedding documents in python works exactly the same
 \NormalTok{dfmat }\OperatorTok{=}\NormalTok{ vec.fit\_transform(docs).todense()}
 
 \NormalTok{common\_features }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(word\_matrix.index) }\OperatorTok{\&} \BuiltInTok{set}\NormalTok{(vec.get\_feature\_names\_out())}
+\NormalTok{common\_features }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(common\_features)}
 \NormalTok{vocab\_ids }\OperatorTok{=}\NormalTok{ [vec.vocabulary\_[x] }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ common\_features]}
 \NormalTok{doc\_matrix }\OperatorTok{=}\NormalTok{ dfmat[:,vocab\_ids].dot(word\_matrix.loc[common\_features,])}
-\DecValTok{1} \OperatorTok{{-}}\NormalTok{ cosine(doc\_matrix[}\DecValTok{0}\NormalTok{,], doc\_matrix[}\DecValTok{1}\NormalTok{,])}
+\DecValTok{1} \OperatorTok{{-}}\NormalTok{ cosine(doc\_matrix[}\DecValTok{0}\NormalTok{,].A1, doc\_matrix[}\DecValTok{1}\NormalTok{,].A1)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## 0.7854257726317804
+## 0.7854257726317802
 \end{verbatim}
 
 \medskip
@@ -873,10 +882,8 @@ dimensionality.
 \begin{frame}{Outlook}
 \protect\hypertarget{outlook}{}
 \begin{itemize}
-  \item<1->No class next week!
-  \item<2->You will receive your homework grade over the course of next week.
-  \item<3->In two weeks time, we will go into \textit{topic modelling}, on which there will be another assignment. Come to the class prepared by doing the  \href{http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf}{reading}
-  \item<4->Please fill out this informal midterm evaluation \href{https://docs.google.com/forms/d/e/1FAIpQLSf3W4erny4OmLh8cFIocRIL0epzCn9D0NF66gAboNU3aI1uhg/viewform?usp=sf_link}{link}
+  \item<1->Next week, we will go into \textit{topic modelling}, on which there will be another assignment. Come to the class prepared by doing the  \href{http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf}{reading}
+  \item<2->Please fill out this informal midterm evaluation \href{https://forms.gle/MZLSxZHRnYCCMZmm6}{link}
 \end{itemize}
 \end{frame}
 
