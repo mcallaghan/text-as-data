@@ -409,9 +409,9 @@ print(corpus_word_matrix)
 
 We want a score in each dimension, for each document.
 
-We can achieve this by taking the inner product of the two matrices.
+We can achieve this by multiplying the two matrices: $AB = C$.
 
-This means summing the d1 scores for each occurrence of each word in a document, then doing the same for d2, d3, etc.
+This means that each cell $C_{i,j}$  is the dot product of the $i$th row of A and the $j$th column of B $A_{i,} \cdot B_{,j}$
 
 \medskip
 
@@ -480,6 +480,8 @@ The cosine similarity of these documents in the embedding space is very high, ev
 ## Embedded manifestos
 
 Now let's try embedding our manifesto sentences and reducing the dimensionality.
+
+Can you write your own manifesto sentence and find the real sentence that is most similar to it?
 
 # Wrapup and Outlook
 
