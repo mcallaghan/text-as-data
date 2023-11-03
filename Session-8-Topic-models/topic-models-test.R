@@ -39,14 +39,17 @@ error
 
 library(readr)
 library(dplyr)
-df <- read_csv("../datasets/hertie_papers.csv")
+df <- read_csv("datasets/hertie_papers.csv")
 df <- df %>% filter(!is.na(abstract)) %>%
-  distinct(abstract)
+  distinct(abstract, .keep_all = TRUE)
+
 dfmat <- df$abstract %>%
   tokens(remove_punct = T) %>%
   tokens_remove(pattern=stopwords("en")) %>%
   dfm()  %>%
   dfm_trim(min_termfreq = 5)
+
+rownames(dfmat) <- df$id
 
 dim(dfmat)
 
@@ -70,13 +73,30 @@ topic_words %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 
+doc_topics <- tidy(lda, matrix="gamma") %>%
+  left_join(df, by=c("document"="id"))
+
+yearly_topics <- doc_topics %>% 
+  group_by(publication_year, topic) %>%
+  summarise(gamma = sum(gamma)) %>%
+  group_by(publication_year) %>%
+  mutate(year_share = gamma/sum(gamma)) %>%
+  ungroup() %>%
+  mutate(topic = factor(topic))
+
+ggplot(filter(yearly_topics, topic==2), aes(
+    x=publication_year, y=year_share,
+    group=topic, colour=topic, fill=topic
+  )) +
+  geom_line()
+
 
 topicmodels2LDAvis <- function(x, ...){
   post <- topicmodels::posterior(x)
   if (ncol(post[["topics"]]) < 3) stop("The model must contain > 2 topics")
   mat <- x@wordassignments
   json <- LDAvis::createJSON(
-    phi = post[["terms"]], 
+    phi = post[["terms"]]+1, 
     theta = post[["topics"]],
     vocab = colnames(post[["terms"]]),
     doc.length = slam::row_sums(mat, na.rm = TRUE),
