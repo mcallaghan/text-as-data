@@ -1,7 +1,7 @@
 ---
 title: "Topic Models"
 author: "Max Callaghan"
-date: "2022-11-03"
+date: "2023-11-06"
 output: 
   beamer_presentation:
     latex_engine: xelatex
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
 library(quanteda)
 library(lexicon)
-use_virtualenv("~/software/py39")
+use_python("/usr/bin/python3.10")
 library(dplyr)
 library(ggplot2)
 ```
@@ -39,22 +39,19 @@ import pandas as pd
 
 ## Summary of feedback
 
-95.5\% of respondents said they had learnt *something* about text as data!
+100\% of respondents said they had learnt *something* about text as data!
 
 Throughout the rest of the course I will try to provide
 
 - More examples from real research
-- Materials before Thursday morning!
-- Exercises each non-homework week
-- No more poems!
+- Python less as afterthought
+- Options to dive into technical detail
+- Multilingual approaches / translation
 
-## Homework Assignment 1
+Hertie offers/used to offer NLP as a separate course.
 
-Marks have been communicated and solutions posted.
-
-Each section was marked independently, with 100 points for any answer that got the job done, with 5 points removed for every minor issue, and 10 points removed for larger issues.
-
-The median grade was slightly higher than our target, expect slightly harsher marks next time!
+I'll also present a hands on tutorial as part of the Data for Good series directly
+after the last session
 
 ## Objectives
 
@@ -76,7 +73,7 @@ Non-negative Matrix Factorization (NMF) ([Lee and Seung, 1999](https://www.natur
 
 Essentially, it is a form of **dimensionality reduction**, in that it takes our multidimensional document-feature matrix V, and creates two matrices W and H, which help us to describe it.
 
-\[ V_{i\mu} \approx (WH){i\mu} =\sum_{a=1}^{r}W_{ia}H_{a\mu} \]
+\[ V_{i\mu} \approx (WH)_{i\mu} =\sum_{a=1}^{r}W_{ia}H_{a\mu} \]
 
 In this equation, $r$ is the number of topics, $W$ is a matrix describing the score for each topic in each document, and $H$ is a matrix describing the score for each word in each topic.
 
@@ -269,7 +266,7 @@ The dot product of $W$ and $H$ should give us a matrix that is similar to our do
 
 ```{python eval=FALSE, include=TRUE, echo=TRUE}
 WH = W.dot(H)
-plot_heatmap(WH, vec.get_feature_names(), texts)
+plot_heatmap(WH, vec.get_feature_names_out(), texts)
 plt.savefig("plots/WH.pdf", bbox_inches="tight")
 ```
 
@@ -320,7 +317,7 @@ The difference between the real document-feature matrix and the product of our d
 
 ```{python eval=FALSE, include=TRUE, echo=TRUE}
 error = V - WH
-plot_heatmap(error, vec.get_feature_names(), texts)
+plot_heatmap(error, vec.get_feature_names_out(), texts)
 plt.savefig("plots/error.pdf", bbox_inches="tight")
 ```
 
@@ -334,7 +331,7 @@ Hyperparameters are options that need to be set or left as default that are not 
 It is useful to check different values of these
 
 - TFIDF (usually a good idea)
-- numer of topics
+- number of topics
 - alpha_W - low values indicate documents should be composed of few topics
 - alpha_H - low values indicate topics should be composed of few words
 
@@ -376,7 +373,7 @@ We often compare the prevalence of topics in documents of different types.
 
 ## Dynamic Topic Models
 
-Dynamic topic models incorporate time into the modelling process. [Dynamic Topic Models](https://mimno.infosci.cornell.edu/info6150/readings/dynamic_topic_models.pdf) by from the Blei lab ([Github](https://github.com/blei-lab/dtm)) does this by allowing the words associated with topics to update in each time period.
+Dynamic topic models incorporate time into the modelling process. [Dynamic Topic Models](https://mimno.infosci.cornell.edu/info6150/readings/dynamic_topic_models.pdf) from the Blei lab ([Github](https://github.com/blei-lab/dtm)) does this by allowing the words associated with topics to update in each time period.
 
 I haven't come across any satisfying implementations that allow **new** topics to emerge..
 
@@ -466,7 +463,7 @@ We can simply pass this to the LDA function of topic models to learn our first m
 \medskip
 \scriptsize
 
-```{r echo=TRUE, include=TRUE, message=FALSE, cache=TRUE}
+```{r echo=TRUE, include=TRUE, message=FALSE, cache=FALSE}
 library(topicmodels)
 lda <- LDA(dfmat, 15)
 ```
@@ -730,7 +727,7 @@ Like many of our applications so far, our model forms a matrix with each documen
 
 ## Assignment 2
 
-Assignment 2 is now live, and due on 17. November 23:59. Please submit on Moodle.
+Assignment 2 is now live, and due on 20 November 23:59. Please submit on Moodle.
 
 You are asked to use a topic model to answer a simple research question about the content of manifestos. For maximum *possible* marks, this should be **interesting** and **answerable**. For maximum likelihood of **good** marks, focus on the **answerable** part.
 
@@ -758,7 +755,7 @@ In around 10 minutes, you will need to present
 
 Get into groups of 3-4. Consider joining forces across programmes, you will need complementary skills!
 
-Please email me your group and your proposed topic by the end of **week beginning 14 November**.
+Please email me your group and your proposed topic by the end of **week beginning 20 November**.
 
 ## Next week
 
