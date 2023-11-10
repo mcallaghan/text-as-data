@@ -3,6 +3,7 @@ library(dplyr)
 library(quanteda)
 library(vader)
 library(tidyr)
+library(readr)
 
 texts <- c(
   "Elon Musk is a champion of free speech",
@@ -34,9 +35,9 @@ doc_sentiments <- tidy(dfmat) %>%
 doc_sentiments
 
 
-yes <-read_csv("../datasets/YesScotlandTweets_cleaned.csv")
+yes <-read_csv("datasets/YesScotlandTweets_cleaned.csv")
 yes$campaign <- "YesScotland"
-no <- read_csv("../datasets/UkTogetherTweets_cleaned.csv")
+no <- read_csv("datasets/UkTogetherTweets_cleaned.csv")
 no$campaign <- "UkTogether"
 
 tweets <- rbind(yes, no)
@@ -89,6 +90,8 @@ daily_sentiment <- days %>%
 library(ggplot2)
 ggplot(daily_sentiment, aes(date, colour=campaign)) + 
   geom_point(aes(y=score)) + 
-  geom_line(aes(y=score7))
+  geom_line(aes(y=score7)) + 
+  geom_smooth(aes(y=score))
+
 
 

@@ -46,18 +46,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Singapore}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -144,7 +147,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Sentiment Analysis},
   pdfauthor={Max Callaghan},
@@ -166,16 +169,16 @@
 \section{Introduction and
 Objectives}\label{introduction-and-objectives}}
 
-\begin{frame}{Assignment 2}
-\protect\hypertarget{assignment-2}{}
-Assignment 2 is still live. If you have issues, or encounter
+\begin{frame}{Assignment 4}
+\protect\hypertarget{assignment-4}{}
+Assignment 4 is still live. If you have issues, or encounter
 difficulties, raise an issue on the Github repository, or write me an
 email!
 \end{frame}
 
-\begin{frame}{Assignment 3}
-\protect\hypertarget{assignment-3}{}
-Assignment 3 is approaching, and you should have a clear idea of what
+\begin{frame}{Assignment 5}
+\protect\hypertarget{assignment-5}{}
+Assignment 5 is approaching, and you should have a clear idea of what
 you want to do by the end of next week.
 
 Feel free to ask for quick feedback on any ideas you have in the coming
@@ -279,13 +282,13 @@ and its value
 
 \begin{verbatim}
 ## # A tibble: 5 x 2
-##   word          value
-##   <chr>         <dbl>
-## 1 inspires          2
-## 2 fraudster        -4
-## 3 choke            -2
-## 4 sobering          1
-## 5 incapacitated    -2
+##   word        value
+##   <chr>       <dbl>
+## 1 criticizing    -2
+## 2 aggression     -2
+## 3 lovable         3
+## 4 abilities       2
+## 5 friendly        2
 \end{verbatim}
 \end{frame}
 

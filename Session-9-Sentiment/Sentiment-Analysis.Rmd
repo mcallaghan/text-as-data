@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
 library(quanteda)
 library(lexicon)
-use_virtualenv("~/software/py39")
+use_python("/usr/bin/python3.10")
 library(dplyr)
 library(ggplot2)
 ```
@@ -37,13 +37,13 @@ import pandas as pd
 
 # Introduction and Objectives
 
-## Assignment 2
+## Assignment 4
 
-Assignment 2 is still live. If you have issues, or encounter difficulties, raise an issue on the Github repository, or write me an email!
+Assignment 4 is still live. If you have issues, or encounter difficulties, raise an issue on the Github repository, or write me an email!
 
-## Assignment 3
+## Assignment 5
 
-Assignment 3 is approaching, and you should have a clear idea of what you want to do by the end of next week.
+Assignment 5 is approaching, and you should have a clear idea of what you want to do by the end of next week.
 
 Feel free to ask for quick feedback on any ideas you have in the coming days
 

@@ -1,0 +1,145 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Assignment 3},
+  pdfauthor={Text as Data},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Assignment 3}
+\author{Text as Data}
+\date{2023-10-02}
+
+\begin{document}
+\maketitle
+
+\hypertarget{string-manipulation}{%
+\subsection{String manipulation}\label{string-manipulation}}
+
+The following homework sets you a challenging task to give structure to
+raw text. You will need to look through the text to discover text
+patterns that will allow you to split, join, and extract in order to
+create the structure we are looking for. If you struggle to implement
+this, describe \emph{in words} how you would plan to go about the task,
+thinking about how to split this into subtasks and how to describe
+these.
+
+To start with, you are asked to retrieve \emph{Songs of Innocence and of
+Experience} by William Blake from Project Gutenberg. It is located at
+\url{https://www.gutenberg.org/cache/epub/1934/pg1934.txt}. This is a
+collection of poems in two books: \emph{Songs of Innocence} and
+\emph{Songs of Experience}.
+
+The goal of the task is to parse this into a dataframe where each row is
+a line of a poem (there should be no empty lines). The following columns
+should describe where each line was found:
+
+\begin{itemize}
+\tightlist
+\item
+  line\_number
+\item
+  stanza\_number
+\item
+  poem\_title
+\item
+  book\_title
+\end{itemize}
+
+\hypertarget{substeps}{%
+\subsection{Substeps}\label{substeps}}
+
+Think about how to split this up into smaller tasks before bringing this
+all together. Remember that when working on loops it is often easier to
+work with a single item in the list first, before putting this into a
+loop. There will be other ways to approach this, but a step-by-step
+approach will do the following:
+
+\begin{itemize}
+\tightlist
+\item
+  Get the content of the book (removing publisher information, contents,
+  and the copyright notice)
+\item
+  Split the book into the two sub-books (Songs of Innocence and Songs of
+  Experience)
+\item
+  Split each book into poems
+\item
+  Split each poem into stanzas (verses)
+\item
+  Split each stanza into lines
+\end{itemize}
+
+  \bibliography{../presentation-resources/MyLibrary.bib}
+
+\end{document}
