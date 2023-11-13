@@ -1,7 +1,7 @@
 ---
 title: "Visualising Texts and their Features"
 author: "Max Callaghan"
-date: "2022-09-15"
+date: "2023-10-09"
 output: 
   beamer_presentation:
     latex_engine: xelatex
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
 library(quanteda)
 library(lexicon)
-use_virtualenv("~/software/py39")
+use_python("/usr/bin/python3.10")
 library(dplyr)
 library(ggplot2)
 ```
@@ -40,7 +40,7 @@ import math
 
 In this session we will start exploring how to visualise texts and their features with R and Python. 
 
-We are going to explore this using [ggplot2](https://ggplot2.tidyverse.org/) and [seaborn](https://seaborn.pydata.org/).
+We are going to explore this using [ggplot2](https://ggplot2.tidyverse.org/) and [seaborn](https://seaborn.pydata.org/), with a bit of [matplotlib](https://matplotlib.org/).
 
 # First plots with ggplot2 / Seaborn
 
@@ -706,13 +706,16 @@ Colour is another great way to convey information, and colorbrewer.org tells you
 \scriptsize
 
 ```{r echo=TRUE, include=TRUE, cache=TRUE, message=FALSE, warning=FALSE, fig.show="hide"}
-ytfreq <- dfmat %>% dfm_weight(scheme="prop") %>% 
+ytfreq <- dfmat %>%
   textstat_frequency(groups=df$era) %>%
   filter(docfreq>10) %>%
+  group_by(group) %>%
+  mutate(prop=docfreq/n()) %>%
+  ungroup() %>%
   pivot_wider(
     id_cols=feature, 
     names_from=group, 
-    values_from=frequency
+    values_from=prop
   )
 
 ytfreq$change <- log(ytfreq$Post / ytfreq$Pre)
@@ -862,7 +865,7 @@ norm = CenteredNorm()
 wide_dfm["change"] = np.log(wide_dfm["Post"] / wide_dfm["Pre"])
 sns.relplot(
     data=wide_dfm, x="Post", y="Pre", hue="change", 
-    palette=colormap, norm=norm, edgecolor="grey"
+    palette=colormap, hue_norm=norm, edgecolor="grey"
 )
 plt.savefig("plots/scattertext_sns_2.png")
 ```
@@ -901,7 +904,7 @@ from adjustText import adjust_text
 
 scatter = sns.relplot(
     data=wide_dfm, x="Post", y="Pre", hue="change", 
-    palette=colormap, norm=norm, edgecolor="grey"
+    palette=colormap, hue_norm=norm, edgecolor="grey"
 )
 ax = scatter.ax
 texts = []
@@ -943,7 +946,3 @@ The plotting libraries are much bigger than what we can cover, but you have enou
 ## Outlook
 
 Next week we'll be getting more technical. We'll look at ways of measuring similarity and at how we can do dimensionality reduction.
-
-## Homework
-
-I will send you the homework assignment after class. This is due by 23:59 on 13 October. You are allowed - and *encouraged* - to ask questions when you are stuck, ideally as a Github Issue, so that your question and the answer will help everyone.

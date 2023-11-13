@@ -478,7 +478,7 @@ Square brackets indicate a list of possible character matches
 - `[sz]` matches either an s or a z (we can also use the `|` symbol as an or operator, so `s|z` is equivalent)
 - `[0-5]` matches any digit from 0 to 5
 - `[a-f]` matches any lower case letter from a to f
-- `[G-Z]` matches any lower case letter from G to Z
+- `[G-Z]` matches any upper case letter from G to Z
 
 ## Exercise
 

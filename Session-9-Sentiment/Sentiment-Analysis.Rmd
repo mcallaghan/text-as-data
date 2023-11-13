@@ -1,7 +1,7 @@
 ---
 title: "Sentiment Analysis"
 author: "Max Callaghan"
-date: "2022-11-10"
+date: "2023-11-13"
 output: 
   beamer_presentation:
     latex_engine: xelatex
@@ -506,6 +506,11 @@ plt.savefig("plots/sentiment_time_py.png")
 
 ::::::
 
+## Sentiment analysis in other languages
+
+- [GerVADER](https://github.com/KarstenAMF/GerVADER)
+- [Spanish Emotion Lexicon](https://www.cic.ipn.mx/~sidorov/#SEL)
+
 # Fancy sentiment analysis
 
 ## Fancy sentiment analysis
@@ -518,7 +523,7 @@ Sentiment datasets are often comprised of movie or product reviews.
 
 ## Fancy sentiment analysis
 
-We will learn more about how training such models work in the next sessions, but you can access one of many such models [here](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment)
+We will learn more about how training such models work in the next sessions, but you can access one of many such models [here](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment). See also [Spanish](https://huggingface.co/pysentimiento/robertuito-sentiment-analysis), [German](https://huggingface.co/oliverguhr/german-sentiment-bert), [Brazilian Portuguese](https://huggingface.co/turing-usp/FinBertPTBR), [Chinese](https://huggingface.co/uer/roberta-base-finetuned-chinanews-chinese)
 
 # Validation
 

@@ -1,4 +1,4 @@
-install.packages(c("quanteda","ggplot2","reshape2","tidytext"))
+#install.packages(c("quanteda","ggplot2","reshape2","tidytext"))
 
 library(quanteda)
 
@@ -49,4 +49,19 @@ ggplot(tidy_dfm, aes(features, docs)) + # so we pass features and docs to x and 
   theme(axis.text.x = element_text(angle=60, vjust=0.5, hjust=0)) # and adjust their angles
 
 
+texts <- c(
+  "Poverty and inequality implications of carbon pricing",
+  "Optimizing and Comparing Topic Models is Simple",
+  "How to stop cities and companies causing planetary harm",
+  "Contextualized Document Embeddings Improve Topic Coherence",
+  "Optimal carbon taxation and horizontal equity"
+)
+dfmat <- texts %>%
+  tokens() %>%
+  tokens_wordstem() %>% 
+  dfm() %>%
+  dfm_tfidf()
+pred <- (-1 + dfmat[,"document"]*0.5 + dfmat[,"topic"]*3)@x
+
+pred
 

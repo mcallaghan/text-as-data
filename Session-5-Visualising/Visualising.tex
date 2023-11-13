@@ -46,18 +46,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Singapore}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -157,7 +160,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Visualising Texts and their Features},
   pdfauthor={Max Callaghan},
@@ -170,7 +173,7 @@
 
 \title{Visualising Texts and their Features}
 \author{Max Callaghan}
-\date{2022-09-15}
+\date{2023-10-09}
 
 \begin{document}
 \frame{\titlepage}
@@ -185,7 +188,8 @@ features with R and Python.
 
 We are going to explore this using
 \href{https://ggplot2.tidyverse.org/}{ggplot2} and
-\href{https://seaborn.pydata.org/}{seaborn}.
+\href{https://seaborn.pydata.org/}{seaborn}, with a bit of
+\href{https://matplotlib.org/}{matplotlib}.
 \end{frame}
 
 \hypertarget{first-plots-with-ggplot2-seaborn}{%
@@ -225,9 +229,9 @@ Let's first load some data.
 
 \begin{verbatim}
 ##                                  id  ...                                            authors
-## 0  https://openalex.org/W2195453830  ...  Pete Smith, Steven J. Davis, Felix Creutzig, S...
-## 1    https://openalex.org/W18536190  ...                                         Claus Offe
-## 2  https://openalex.org/W2092902022  ...      Alnoor Ebrahim, Julie Battilana, Johanna Mair
+## 0  https://openalex.org/W3110437710  ...  Nick Watts, Markus Amann, Nigel W. Arnell, Son...
+## 1  https://openalex.org/W2195453830  ...  Pete Smith, Steven J. Davis, Felix Creutzig, S...
+## 2  https://openalex.org/W2987568643  ...  Nick Watts, Markus Amann, Nigel W. Arnell, Son...
 ## 
 ## [3 rows x 6 columns]
 \end{verbatim}
@@ -277,7 +281,12 @@ in that year
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/pubs_time_gg.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -322,7 +331,12 @@ clearly defined way.
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/pubs_time_bar_gg.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -371,7 +385,12 @@ We build up the plot bit by bit by adding more grammar. \scriptsize
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/pubs_time_point_gg.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -422,7 +441,12 @@ and count, and coerce the result into a dataframe
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/pubs_time_sns.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -460,7 +484,12 @@ Pandas can already produce a lot of the plots we want
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/pubs_time_pd.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -507,7 +536,12 @@ accordingly.
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/pubs_time_bar_sns.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -559,7 +593,12 @@ Matplotlib is sometimes the simplest option for simple plots.
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/pubs_time_bar_mpl.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -638,8 +677,8 @@ Let's create a document feature matrix from our list of abstracts
 \end{Shaded}
 
 \begin{verbatim}
-## <1115x15084 sparse matrix of type '<class 'numpy.int64'>'
-##  with 78193 stored elements in Compressed Sparse Row format>
+## <1231x16532 sparse matrix of type '<class 'numpy.int64'>'
+##  with 98557 stored elements in Compressed Sparse Row format>
 \end{verbatim}
 \end{frame}
 
@@ -678,7 +717,12 @@ frequency of each term in the corpus. \medskip
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/top_terms_gg.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -727,7 +771,12 @@ We can also get the frequency of features per subgroup \medskip
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/top_terms_time_gg.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -754,21 +803,29 @@ feature names \medskip
 \NormalTok{\}).sort\_values(}\StringTok{"count"}\NormalTok{,ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{).reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 
 \NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{))}
-\NormalTok{sns.barplot(data}\OperatorTok{=}\NormalTok{tidy\_dfm.head(), x}\OperatorTok{=}\StringTok{"count"}\NormalTok{, y}\OperatorTok{=}\StringTok{"feature"}\NormalTok{, color}\OperatorTok{=}\StringTok{"grey"}\NormalTok{)}
+\NormalTok{sns.barplot(}
+\NormalTok{  data}\OperatorTok{=}\NormalTok{tidy\_dfm.head(}\DecValTok{10}\NormalTok{), }
+\NormalTok{  x}\OperatorTok{=}\StringTok{"count"}\NormalTok{, y}\OperatorTok{=}\StringTok{"feature"}\NormalTok{, color}\OperatorTok{=}\StringTok{"grey"}
+\NormalTok{)}
 
-\NormalTok{plt.savefig(}\StringTok{"plots/top\_terms\_sns.png"}\NormalTok{)}
+\NormalTok{plt.savefig(}\StringTok{"plots/top\_terms\_sns.png"}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \end{col}
 
-\begin{col}{0.04\textwidth}
+\begin{col}{0.08\textwidth}
 ~
 
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/top_terms_sns.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -826,7 +883,12 @@ low-level arithmetic and indexing \medskip
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/top_terms_time_sns.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -880,7 +942,12 @@ the other \medskip
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/scattertext_gg.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -1029,7 +1096,12 @@ In Pandas the functions we need to switch between wide and long data are
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
+\begin{figure}
+\centering
 \includegraphics{plots/scattertext_sns.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -1060,13 +1132,16 @@ tells you all about colour scales, of which there are three kinds:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ytfreq }\OtherTok{\textless{}{-}}\NormalTok{ dfmat }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{dfm\_weight}\NormalTok{(}\AttributeTok{scheme=}\StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{ytfreq }\OtherTok{\textless{}{-}}\NormalTok{ dfmat }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{textstat\_frequency}\NormalTok{(}\AttributeTok{groups=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{era) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{filter}\NormalTok{(docfreq}\SpecialCharTok{\textgreater{}}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(group) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prop=}\NormalTok{docfreq}\SpecialCharTok{/}\FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{pivot\_wider}\NormalTok{(}
     \AttributeTok{id\_cols=}\NormalTok{feature, }
     \AttributeTok{names\_from=}\NormalTok{group, }
-    \AttributeTok{values\_from=}\NormalTok{frequency}
+    \AttributeTok{values\_from=}\NormalTok{prop}
 \NormalTok{  )}
 
 \NormalTok{ytfreq}\SpecialCharTok{$}\NormalTok{change }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(ytfreq}\SpecialCharTok{$}\NormalTok{Post }\SpecialCharTok{/}\NormalTok{ ytfreq}\SpecialCharTok{$}\NormalTok{Pre)}
@@ -1149,10 +1224,15 @@ points on an appropriate \textbf{diverging} scale.
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
 We can add labels so we know what the points represent, but these often
 get in the way of readability
 
+\begin{figure}
+\centering
 \includegraphics{plots/scattertext_gg_3.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -1199,6 +1279,7 @@ get in the way of readability
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
 We can add labels so we know what the points represent, but these often
 get in the way of readability
 
@@ -1207,7 +1288,11 @@ get in the way of readability
 \texttt{ggrepel} allows us to put labels in positions that maintain
 readability
 
+\begin{figure}
+\centering
 \includegraphics{plots/scattertext_gg_4.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -1248,7 +1333,7 @@ readability
 \NormalTok{wide\_dfm[}\StringTok{"change"}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.log(wide\_dfm[}\StringTok{"Post"}\NormalTok{] }\OperatorTok{/}\NormalTok{ wide\_dfm[}\StringTok{"Pre"}\NormalTok{])}
 \NormalTok{sns.relplot(}
 \NormalTok{    data}\OperatorTok{=}\NormalTok{wide\_dfm, x}\OperatorTok{=}\StringTok{"Post"}\NormalTok{, y}\OperatorTok{=}\StringTok{"Pre"}\NormalTok{, hue}\OperatorTok{=}\StringTok{"change"}\NormalTok{, }
-\NormalTok{    palette}\OperatorTok{=}\NormalTok{colormap, norm}\OperatorTok{=}\NormalTok{norm, edgecolor}\OperatorTok{=}\StringTok{"grey"}
+\NormalTok{    palette}\OperatorTok{=}\NormalTok{colormap, hue\_norm}\OperatorTok{=}\NormalTok{norm, edgecolor}\OperatorTok{=}\StringTok{"grey"}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1267,10 +1352,15 @@ readability
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
 We can do the color rescaling much more easily with matplotlib (which we
 use to tweak seaborn)
 
+\begin{figure}
+\centering
 \includegraphics{plots/scattertext_sns_2.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -1296,7 +1386,7 @@ use to tweak seaborn)
 
 \NormalTok{scatter }\OperatorTok{=}\NormalTok{ sns.relplot(}
 \NormalTok{    data}\OperatorTok{=}\NormalTok{wide\_dfm, x}\OperatorTok{=}\StringTok{"Post"}\NormalTok{, y}\OperatorTok{=}\StringTok{"Pre"}\NormalTok{, hue}\OperatorTok{=}\StringTok{"change"}\NormalTok{, }
-\NormalTok{    palette}\OperatorTok{=}\NormalTok{colormap, norm}\OperatorTok{=}\NormalTok{norm, edgecolor}\OperatorTok{=}\StringTok{"grey"}
+\NormalTok{    palette}\OperatorTok{=}\NormalTok{colormap, hue\_norm}\OperatorTok{=}\NormalTok{norm, edgecolor}\OperatorTok{=}\StringTok{"grey"}
 \NormalTok{)}
 \NormalTok{ax }\OperatorTok{=}\NormalTok{ scatter.ax}
 \NormalTok{texts }\OperatorTok{=}\NormalTok{ []}
@@ -1308,7 +1398,7 @@ use to tweak seaborn)
 \end{Shaded}
 
 \begin{verbatim}
-## 500
+## 6
 \end{verbatim}
 
 \begin{Shaded}
@@ -1325,13 +1415,18 @@ use to tweak seaborn)
 \end{col}
 
 \begin{col}{0.38\textwidth}
+
 We can do the color rescaling much more easily with matplotlib (which we
 use to tweak seaborn)
 
 To arrange text labels nicely we can use \texttt{adjustText}, which
 works like ggrepel.
 
+\begin{figure}
+\centering
 \includegraphics{plots/scattertext_sns_3.png}
+\caption{Publications per year}
+\end{figure}
 
 \end{col}
 
@@ -1358,12 +1453,6 @@ documentation}.
 \protect\hypertarget{outlook}{}
 Next week we'll be getting more technical. We'll look at ways of
 measuring similarity and at how we can do dimensionality reduction.
-\end{frame}
-
-\begin{frame}{Homework}
-\protect\hypertarget{homework}{}
-I will send you the homework assignment after class. This is due by
-11:59 on 13 October.
 \end{frame}
 
 \begin{frame}[allowframebreaks]{}

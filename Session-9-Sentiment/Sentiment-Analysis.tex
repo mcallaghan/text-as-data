@@ -160,7 +160,7 @@
 
 \title{Sentiment Analysis}
 \author{Max Callaghan}
-\date{2022-11-10}
+\date{2023-11-13}
 
 \begin{document}
 \frame{\titlepage}
@@ -282,13 +282,13 @@ and its value
 
 \begin{verbatim}
 ## # A tibble: 5 x 2
-##   word        value
-##   <chr>       <dbl>
-## 1 criticizing    -2
-## 2 aggression     -2
-## 3 lovable         3
-## 4 abilities       2
-## 5 friendly        2
+##   word      value
+##   <chr>     <dbl>
+## 1 allow         1
+## 2 welcomed      2
+## 3 triumph       4
+## 4 cynic        -2
+## 5 abilities     2
 \end{verbatim}
 \end{frame}
 
@@ -931,6 +931,17 @@ The easiest way to plot this is with base matplotlib
 \end{cols}
 \end{frame}
 
+\begin{frame}{Sentiment analysis in other languages}
+\protect\hypertarget{sentiment-analysis-in-other-languages}{}
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/KarstenAMF/GerVADER}{GerVADER}
+\item
+  \href{https://www.cic.ipn.mx/~sidorov/\#SEL}{Spanish Emotion Lexicon}
+\end{itemize}
+\end{frame}
+
 \hypertarget{fancy-sentiment-analysis}{%
 \section{Fancy sentiment analysis}\label{fancy-sentiment-analysis}}
 
@@ -950,7 +961,13 @@ Sentiment datasets are often comprised of movie or product reviews.
 \protect\hypertarget{fancy-sentiment-analysis-2}{}
 We will learn more about how training such models work in the next
 sessions, but you can access one of many such models
-\href{https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment}{here}
+\href{https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment}{here}.
+See also
+\href{https://huggingface.co/pysentimiento/robertuito-sentiment-analysis}{Spanish},
+\href{https://huggingface.co/oliverguhr/german-sentiment-bert}{German},
+\href{https://huggingface.co/turing-usp/FinBertPTBR}{Brazilian
+Portuguese},
+\href{https://huggingface.co/uer/roberta-base-finetuned-chinanews-chinese}{Chinese}
 \end{frame}
 
 \hypertarget{validation}{%
