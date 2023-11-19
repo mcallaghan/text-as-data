@@ -1,7 +1,7 @@
 ---
 title: "Supervised Learning"
 author: "Max Callaghan"
-date: "2022-11-17"
+date: "2023-11-20"
 output: 
   beamer_presentation:
     latex_engine: xelatex
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
 library(quanteda)
 library(lexicon)
-use_virtualenv("~/software/py39")
+use_python("/usr/bin/python3.10")
 library(dplyr)
 library(ggplot2)
 ```
@@ -70,9 +70,9 @@ plt.show()
 
 # Introduction and Objectives
 
-## Assignment 2
+## Assignment 4
 
-Assignment 2 is due tonight. I am looking forward to receiving your submissions.
+Assignment 4 is due tomorrow night I am looking forward to receiving your submissions.
 
 ## Objectives
 

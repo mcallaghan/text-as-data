@@ -46,18 +46,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Singapore}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -157,7 +160,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Supervised Learning},
   pdfauthor={Max Callaghan},
@@ -170,7 +173,7 @@
 
 \title{Supervised Learning}
 \author{Max Callaghan}
-\date{2022-11-17}
+\date{2023-11-20}
 
 \begin{document}
 \frame{\titlepage}
@@ -179,10 +182,10 @@
 \section{Introduction and
 Objectives}\label{introduction-and-objectives}}
 
-\begin{frame}{Assignment 2}
-\protect\hypertarget{assignment-2}{}
-Assignment 2 is due tonight. I am looking forward to receiving your
-submissions.
+\begin{frame}{Assignment 4}
+\protect\hypertarget{assignment-4}{}
+Assignment 4 is due tomorrow night I am looking forward to receiving
+your submissions.
 \end{frame}
 
 \begin{frame}{Objectives}
@@ -544,7 +547,7 @@ Let's make a random 90\% of our predictions correct, and flip the other
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Precision: 0.500000, recall: 0.880000, f1: 0.690000, accuracy: 0.900000"
+## [1] "Precision: 0.500000, recall: 0.910000, f1: 0.705000, accuracy: 0.900000"
 \end{verbatim}
 \end{frame}
 
@@ -825,7 +828,7 @@ negative instance.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.9858427
+## [1] 0.9873891
 \end{verbatim}
 
 \end{col}
@@ -1001,8 +1004,8 @@ predictions on any new text data
 \end{Shaded}
 
 \begin{verbatim}
-## array([[0.98729825, 0.01270175],
-##        [0.13167107, 0.86832893]])
+## array([[0.98755764, 0.01244236],
+##        [0.12685591, 0.87314409]])
 \end{verbatim}
 \end{frame}
 
@@ -1096,10 +1099,10 @@ quite good, our F1 score is not wonderful.
 ## # A tibble: 4 x 3
 ##   .metric   .estimator .estimate
 ##   <chr>     <chr>          <dbl>
-## 1 accuracy  binary         0.922
-## 2 precision binary         0.543
-## 3 recall    binary         0.494
-## 4 f_meas    binary         0.518
+## 1 accuracy  binary         0.918
+## 2 precision binary         0.627
+## 3 recall    binary         0.408
+## 4 f_meas    binary         0.494
 \end{verbatim}
 \end{frame}
 
@@ -1177,7 +1180,7 @@ we can quickly look at the spread of f1 scores across specifications
 
 \begin{verbatim}
 ##    mean_fit_time  std_fit_time  ...  std_test_score  rank_test_score
-## 0       1.168876      0.009475  ...        0.009588                1
+## 0       1.034389      0.018585  ...        0.009588                1
 ## 
 ## [1 rows x 13 columns]
 \end{verbatim}
