@@ -268,7 +268,7 @@ If we make zero positive predictions, we can't calculate precision.
 
 ## F1 score
 
-The F1 score is the harmonic (balanced) mean of precision and recall. It also ranges between 1 (perfect) and 0 (perfectly bad) but it is not so misleading given unbalanced data
+The F1 score is the harmonic (where outliers drag the score down) mean of precision and recall. It also ranges between 1 (perfect) and 0 (perfectly bad) but it is not so misleading given unbalanced data
 
 \medskip
 
@@ -955,7 +955,7 @@ Investigate examples where the predictions are wrong. What could account for the
 
 ::: {.col data-latex="{0.5\textwidth}"}
 
-The use this to show how the evolution of climate denial in conservative think tanks (CTTs) and blogs, showing empirically that CTTs have shifted from denying that climate change is happening to arguing that solutions won't work
+They use this to show how the evolution of climate denial in conservative think tanks (CTTs) and blogs, showing empirically that CTTs have shifted from denying that climate change is happening to arguing that solutions won't work
 
 :::
 
@@ -975,7 +975,7 @@ The use this to show how the evolution of climate denial in conservative think t
 
 ## Computer-assisted classification of contrarian claims about climate change
 
-They coded 31,000 paragraphs by hand to achieve these results. Best results were achieved with a combination of fancy (RoBERTa) and simply (Logistic) classifiers.
+They coded 31,000 paragraphs by hand to achieve these results. Best results were achieved with a combination of fancy (RoBERTa) and simple (Logistic) classifiers.
 
 ![](images/coan_tab.png)
 
@@ -1017,6 +1017,6 @@ We've investigated how these methods work, learned how to be skeptical about wha
 
 ## Outlook
 
-In the last session we will look at how we might achieve some of these tasks (and some more tasks) using the very latest techniques from NLP research.
+In the last session we will look at how we might achieve some of these tasks (and some more tasks) using more modern techniques from NLP research.
 
 This will be Python-only!

@@ -510,9 +510,9 @@ If we make zero positive predictions, we can't calculate precision.
 
 \begin{frame}[fragile]{F1 score}
 \protect\hypertarget{f1-score}{}
-The F1 score is the harmonic (balanced) mean of precision and recall. It
-also ranges between 1 (perfect) and 0 (perfectly bad) but it is not so
-misleading given unbalanced data
+The F1 score is the harmonic (where outliers drag the score down) mean
+of precision and recall. It also ranges between 1 (perfect) and 0
+(perfectly bad) but it is not so misleading given unbalanced data
 
 \medskip
 
@@ -638,7 +638,7 @@ and recall
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 1 rows containing missing values (`geom_point()`).
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
 \begin{Shaded}
@@ -648,7 +648,7 @@ and recall
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 1 rows containing missing values (`geom_point()`).
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
 \end{col}
@@ -692,7 +692,7 @@ The maximum value of f1 does not necessarily lie at a threshold of 0.5
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 1 rows containing missing values (`geom_point()`).
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
 \begin{Shaded}
@@ -702,7 +702,7 @@ The maximum value of f1 does not necessarily lie at a threshold of 0.5
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 1 rows containing missing values (`geom_point()`).
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
 \end{col}
@@ -828,7 +828,7 @@ negative instance.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.9873891
+## [1] 0.9922412
 \end{verbatim}
 
 \end{col}
@@ -1004,8 +1004,8 @@ predictions on any new text data
 \end{Shaded}
 
 \begin{verbatim}
-## array([[0.98755764, 0.01244236],
-##        [0.12685591, 0.87314409]])
+## array([[0.98756409, 0.01243591],
+##        [0.13396927, 0.86603073]])
 \end{verbatim}
 \end{frame}
 
@@ -1099,10 +1099,10 @@ quite good, our F1 score is not wonderful.
 ## # A tibble: 4 x 3
 ##   .metric   .estimator .estimate
 ##   <chr>     <chr>          <dbl>
-## 1 accuracy  binary         0.918
-## 2 precision binary         0.627
-## 3 recall    binary         0.408
-## 4 f_meas    binary         0.494
+## 1 accuracy  binary         0.920
+## 2 precision binary         0.625
+## 3 recall    binary         0.441
+## 4 f_meas    binary         0.517
 \end{verbatim}
 \end{frame}
 
@@ -1180,7 +1180,7 @@ we can quickly look at the spread of f1 scores across specifications
 
 \begin{verbatim}
 ##    mean_fit_time  std_fit_time  ...  std_test_score  rank_test_score
-## 0       1.034389      0.018585  ...        0.009588                1
+## 0       1.055708      0.004693  ...        0.009588                1
 ## 
 ## [1 rows x 13 columns]
 \end{verbatim}
@@ -1230,7 +1230,7 @@ before)
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-AUC: 92.3%, Accuracy: 91.6%, Precision: 77.6%, recall: 41.6%, F1 score: 54.2%
+## ROC-AUC: 92.3%, Accuracy: 91.7%, Precision: 77.9%, recall: 42.4%, F1 score: 54.9%
 \end{verbatim}
 \end{frame}
 
@@ -1410,7 +1410,7 @@ try out different thresholds using our best model.
 \end{Shaded}
 
 \begin{verbatim}
-## Accuracy: 92.2%, Precision: 70.1%, recall: 60.0%, F1 score: 64.7%
+## Accuracy: 92.4%, Precision: 70.6%, recall: 61.6%, F1 score: 65.8%
 \end{verbatim}
 \end{frame}
 
@@ -1543,10 +1543,10 @@ about climate change}
 \begin{cols}
 
 \begin{col}{0.5\textwidth}
-The use this to show how the evolution of climate denial in conservative
-think tanks (CTTs) and blogs, showing empirically that CTTs have shifted
-from denying that climate change is happening to arguing that solutions
-won't work
+They use this to show how the evolution of climate denial in
+conservative think tanks (CTTs) and blogs, showing empirically that CTTs
+have shifted from denying that climate change is happening to arguing
+that solutions won't work
 
 \end{col}
 
@@ -1570,7 +1570,7 @@ won't work
 about climate change}
 \protect\hypertarget{computer-assisted-classification-of-contrarian-claims-about-climate-change-2}{}
 They coded 31,000 paragraphs by hand to achieve these results. Best
-results were achieved with a combination of fancy (RoBERTa) and simply
+results were achieved with a combination of fancy (RoBERTa) and simple
 (Logistic) classifiers.
 
 \includegraphics{images/coan_tab.png}
@@ -1624,7 +1624,7 @@ examples of how they are used in research.
 \begin{frame}{Outlook}
 \protect\hypertarget{outlook}{}
 In the last session we will look at how we might achieve some of these
-tasks (and some more tasks) using the very latest techniques from NLP
+tasks (and some more tasks) using more modern techniques from NLP
 research.
 
 This will be Python-only!
