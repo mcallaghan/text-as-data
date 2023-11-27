@@ -1,7 +1,7 @@
 ---
 title: "Fancy NLP"
 author: "Max Callaghan"
-date: "2022-11-23"
+date: "2023-11-26"
 output: 
   beamer_presentation:
     latex_engine: xelatex
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(reticulate)
 library(quanteda)
 library(lexicon)
-use_virtualenv("~/software/py39")
+use_python("/usr/bin/python3.10")
 library(dplyr)
 library(ggplot2)
 ```
@@ -70,9 +70,9 @@ plt.show()
 
 # Introduction and Objectives
 
-## Assignment 2
+## Assignment 4
 
-Thanks to all who submitted assignment 2. You can expect your grades by the end of this week week.
+Thanks to all who submitted assignment 4. I hope to provide grades by the end of this week.
 
 ## Fancy NLP
 
@@ -185,9 +185,9 @@ res = pipe("The Hertie School is committed to embedding and mainstreaming divers
 pprint(res)
 ```
 
-## Pipelines - Text Generation (here be dragons!)
+## Pipelines - Text Generation (!!)
 
-You can also use a model to generate text, but be warned this is likely to cause convincing-sounding "hallucinations" [examples and discussion](https://twitter.com/search?q=galactica&src=typed_query). 
+You can also use a model to generate text, but be warned this is likely to cause convincing-sounding "hallucinations". ``Solving'' hallucination is non-trivial. 
 
 \medskip
 \scriptsize
@@ -203,6 +203,26 @@ else:
 res = pipe("Large language models can be useful. However,")
 pprint(wrap(res[0]["generated_text"]))
 ```
+
+## ChatGPT
+
+Since ChatGPT, the world has gone wild for text generation models. What's different?
+
+\begin{itemize}
+  \item<1->ChatGPT is larger
+  \item<2->It's trained on more text (we don't know exactly what)
+  \item<3->It is trained to predict the next word based on previous words (auto-regressive)
+  \item<4->It is improved using reinforcement learning RLHF? Humans are asked to rank multiple response to questions
+  \item<5->It has a nice interface and is easy to use
+\end{itemize}
+
+## Some simplified positions on GPT/LLMs
+
+### They are dangerously powerful and may soon kill us all (unless...)
+
+### They are very powerful but everything will be fine
+
+### They ``just predict the next word'', but applications have real harms in the here and now
 
 ## Exercise
 
@@ -245,6 +265,16 @@ texts, y = zip(
 )
 ```
 
+## Classification with large language models
+
+Can we not simply use chatGPT-like models to label texts?
+
+Many are investigating this, with mixed results ([1](https://arxiv.org/abs/2311.05769),[2](https://arxiv.org/abs/2305.03514)).
+
+It is an open question whether, to what extent, and in what circumstances, LLMs can replace both human labelling and predictions from fine-tuned BERT-like models.
+
+We do know that LLM labels are orders of magnitude cheaper than human labels, but orders of magnitude more expensive than predictions from fine-tuned models.
+
 ## Tokenization
 
 First we need to tokenize our texts. It's easier if we put everything in a huggingface dataset object and tokenize this
@@ -259,7 +289,7 @@ dataset = Dataset.from_dict({"text": texts, "label": y})
 model_name = "bert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 def tokenize_function(examples):
-    return tokenizer(examples["text"], padding="max_length", truncation=True)
+    return tokenizer(examples["text"], padding="max_length", truncation=False)
 tokenized_dataset = dataset.map(tokenize_function, batched=True)
 tokenized_dataset
 ```
@@ -296,7 +326,7 @@ We can load a model and train it using an instance of the `Trainer` class.
 \medskip
 \scriptsize
 
-```{python echo=TRUE, include=TRUE, message=FALSE}
+```{python echo=TRUE, include=TRUE, message=FALSE, cache=TRUE}
 from transformers import AutoModelForSequenceClassification, Trainer
 # We set num_labels to 2 for binary classification, as we have two classes - positive and negative
 model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
@@ -312,7 +342,7 @@ With a trained model, we can make predictions on a set of new texts
 \medskip
 \scriptsize
 
-```{python echo=TRUE, include=TRUE, message=FALSE}
+```{python echo=TRUE, include=TRUE, message=FALSE, cache=TRUE}
 # To generate predictions, we just need to supply a dataset to the predict method
 new_texts = [
     "climate change is impacting terrestrial ecosystems",
@@ -332,7 +362,7 @@ As we did last week, we need  a variation of the **sigmoid** function (**Softmax
 \medskip
 \scriptsize
 
-```{python echo=TRUE, include=TRUE, message=FALSE}
+```{python echo=TRUE, include=TRUE, message=FALSE, cache=TRUE}
 # To generate predictions, we just need to supply a dataset to the predict method
 from torch import tensor
 from torch.nn import Sigmoid, Softmax
@@ -398,7 +428,7 @@ len(param_space)
 
 ## Hyperparameters
 
-We can plug these values into a TrainingArguments object, which we pass to our trainer. This would take quite some time.
+We can plug these values into a TrainingArguments object, which we pass to our trainer. This would take quite some time. 
 
 \medskip
 \scriptsize
@@ -416,6 +446,8 @@ for p in param_space:
     trainer.train()
     # Evaluate our model
 ```
+
+Grid search with fine-tuning is very expensive and inefficient. Better tuning procedures are [available](https://huggingface.co/docs/transformers/hpo_train). 
 
 ## Pre-training
 
@@ -514,10 +546,10 @@ Today we have covered
 
 This concludes the input part of the course!
 
-## Assignment 3
+## Assignment 5
 
-Next week we'll see 7 student presentations.
+Next week we'll see ?? student presentations.
 
-Each group will have **8** minutes to present (*strictly enforced*), with 4 minutes for questions (mainly from the audience!). 
+Each group will have **??** minutes to present (*strictly enforced*), with ?? minutes for questions (mainly from the audience!). 
 
-Present directly from your laptop, which we will connect to the projector via HDMI cable (bring an adaptor if necessary). Try to keep transitions < 1 minute!
+Present directly from your laptop, which we will connect to the projector via HDMI cable or wirelessly (bring an adaptor if necessary). Try to keep transitions < 1 minute!

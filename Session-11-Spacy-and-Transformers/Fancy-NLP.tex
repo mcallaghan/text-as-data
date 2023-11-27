@@ -46,18 +46,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Singapore}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -157,7 +160,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Fancy NLP},
   pdfauthor={Max Callaghan},
@@ -170,7 +173,7 @@
 
 \title{Fancy NLP}
 \author{Max Callaghan}
-\date{2022-11-23}
+\date{2023-11-26}
 
 \begin{document}
 \frame{\titlepage}
@@ -179,10 +182,10 @@
 \section{Introduction and
 Objectives}\label{introduction-and-objectives}}
 
-\begin{frame}{Assignment 2}
-\protect\hypertarget{assignment-2}{}
-Thanks to all who submitted assignment 2. You can expect your grades by
-the end of this week week.
+\begin{frame}{Assignment 4}
+\protect\hypertarget{assignment-4}{}
+Thanks to all who submitted assignment 4. I hope to provide grades by
+the end of this week.
 \end{frame}
 
 \begin{frame}{Fancy NLP}
@@ -352,12 +355,11 @@ classification. Using one of these is simple.
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile]{Pipelines - Text Generation (here be dragons!)}
-\protect\hypertarget{pipelines---text-generation-here-be-dragons}{}
+\begin{frame}[fragile]{Pipelines - Text Generation (!!)}
+\protect\hypertarget{pipelines---text-generation}{}
 You can also use a model to generate text, but be warned this is likely
-to cause convincing-sounding ``hallucinations''
-\href{https://twitter.com/search?q=galactica\&src=typed_query}{examples
-and discussion}.
+to cause convincing-sounding ``hallucinations''. ``Solving'\,'
+hallucination is non-trivial.
 
 \medskip
 \scriptsize
@@ -387,7 +389,7 @@ and discussion}.
 
 \begin{verbatim}
 ## Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
-## /home/max/software/py39/lib/python3.9/site-packages/transformers/generation_utils.py:1202: UserWarning: Neither `max_length` nor `max_new_tokens` have been set, `max_length` will default to 50 (`self.config.max_length`). Controlling `max_length` via the config is deprecated and `max_length` will be removed from the config in v5 of Transformers -- we recommend using `max_new_tokens` to control the maximum length of the generation.
+## /home/max/.local/lib/python3.10/site-packages/transformers/generation/utils.py:1387: UserWarning: Neither `max_length` nor `max_new_tokens` has been set, `max_length` will default to 50 (`self.config.max_length`). Controlling `max_length` via the config is deprecated and `max_length` will be removed from the config in v5 of Transformers -- we recommend using `max_new_tokens` to control the maximum length of the generation.
 ##   warnings.warn(
 \end{verbatim}
 
@@ -399,12 +401,42 @@ and discussion}.
 
 \begin{verbatim}
 ## [
-## │   'Large language models can be useful. However, for small programs like',
-## │   'Java, C++, C# or Objective-C, the language features of Java are a',
-## │   'little off.  So, if you are looking for something a little different',
-## │   'but not'
+## │   "Large language models can be useful. However, it's better to keep your",
+## │   "system up to date, so that you don't run into any issues of missing or",
+## │   'missing classes.  With the new "Pagination" editor, you can customize'
 ## ]
 \end{verbatim}
+\end{frame}
+
+\begin{frame}{ChatGPT}
+\protect\hypertarget{chatgpt}{}
+Since ChatGPT, the world has gone wild for text generation models.
+What's different?
+
+\begin{itemize}
+  \item<1->ChatGPT is larger
+  \item<2->It's trained on more text (we don't know exactly what)
+  \item<3->It is trained to predict the next word based on previous words (auto-regressive)
+  \item<4->It is improved using reinforcement learning RLHF? Humans are asked to rank multiple response to questions
+  \item<5->It has a nice interface and is easy to use
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Some simplified positions on GPT/LLMs}
+\protect\hypertarget{some-simplified-positions-on-gptllms}{}
+\begin{block}{They are dangerously powerful and may soon kill us all
+(unless\ldots)}
+\protect\hypertarget{they-are-dangerously-powerful-and-may-soon-kill-us-all-unless}{}
+\end{block}
+
+\begin{block}{They are very powerful but everything will be fine}
+\protect\hypertarget{they-are-very-powerful-but-everything-will-be-fine}{}
+\end{block}
+
+\begin{block}{They ``just predict the next word'\,', but applications
+have real harms in the here and now}
+\protect\hypertarget{they-just-predict-the-next-word-but-applications-have-real-harms-in-the-here-and-now}{}
+\end{block}
 \end{frame}
 
 \begin{frame}{Exercise}
@@ -456,6 +488,22 @@ texts.
 \end{Shaded}
 \end{frame}
 
+\begin{frame}{Classification with large language models}
+\protect\hypertarget{classification-with-large-language-models}{}
+Can we not simply use chatGPT-like models to label texts?
+
+Many are investigating this, with mixed results
+(\href{https://arxiv.org/abs/2311.05769}{1},\href{https://arxiv.org/abs/2305.03514}{2}).
+
+It is an open question whether, to what extent, and in what
+circumstances, LLMs can replace both human labelling and predictions
+from fine-tuned BERT-like models.
+
+We do know that LLM labels are orders of magnitude cheaper than human
+labels, but orders of magnitude more expensive than predictions from
+fine-tuned models.
+\end{frame}
+
 \begin{frame}[fragile]{Tokenization}
 \protect\hypertarget{tokenization}{}
 First we need to tokenize our texts. It's easier if we put everything in
@@ -472,13 +520,13 @@ a huggingface dataset object and tokenize this
 \NormalTok{model\_name }\OperatorTok{=} \StringTok{"bert{-}base{-}uncased"}
 \NormalTok{tokenizer }\OperatorTok{=}\NormalTok{ AutoTokenizer.from\_pretrained(model\_name)}
 \KeywordTok{def}\NormalTok{ tokenize\_function(examples):}
-    \ControlFlowTok{return}\NormalTok{ tokenizer(examples[}\StringTok{"text"}\NormalTok{], padding}\OperatorTok{=}\StringTok{"max\_length"}\NormalTok{, truncation}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{ tokenizer(examples[}\StringTok{"text"}\NormalTok{], padding}\OperatorTok{=}\StringTok{"max\_length"}\NormalTok{, truncation}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
 \NormalTok{tokenized\_dataset }\OperatorTok{=}\NormalTok{ dataset.}\BuiltInTok{map}\NormalTok{(tokenize\_function, batched}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 31.56ba/s]
+##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 91.97ba/s]
 \end{verbatim}
 
 \begin{Shaded}
@@ -521,7 +569,7 @@ texts (and list of labels) into a tokenized dataset, given a tokenizer.
 \end{Shaded}
 
 \begin{verbatim}
-##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 129.58ba/s]
+##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 178.12ba/s]
 \end{verbatim}
 \end{frame}
 
@@ -542,10 +590,10 @@ We can load a model and train it using an instance of the
 \end{Shaded}
 
 \begin{verbatim}
-## Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.bias']
+## Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias']
 ## - This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 ## - This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-## Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+## Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.weight', 'classifier.bias']
 ## You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 \end{verbatim}
 
@@ -557,7 +605,7 @@ We can load a model and train it using an instance of the
 \end{Shaded}
 
 \begin{verbatim}
-##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 158.56ba/s]
+##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 168.05ba/s]
 \end{verbatim}
 
 \begin{Shaded}
@@ -567,11 +615,11 @@ We can load a model and train it using an instance of the
 \end{Shaded}
 
 \begin{verbatim}
-## {'train_runtime': 5870.6374, 'train_samples_per_second': 0.008, 'train_steps_per_second': 0.001, 'train_loss': 0.6716297467549642, 'epoch': 3.0}
-## TrainOutput(global_step=6, training_loss=0.6716297467549642, metrics={'train_runtime': 5870.6374, 'train_samples_per_second': 0.008, 'train_steps_per_second': 0.001, 'train_loss': 0.6716297467549642, 'epoch': 3.0})
+## {'train_runtime': 149.3915, 'train_samples_per_second': 0.301, 'train_steps_per_second': 0.04, 'train_loss': 0.6399818261464437, 'epoch': 3.0}
+## TrainOutput(global_step=6, training_loss=0.6399818261464437, metrics={'train_runtime': 149.3915, 'train_samples_per_second': 0.301, 'train_steps_per_second': 0.04, 'train_loss': 0.6399818261464437, 'epoch': 3.0})
 ## 
 ## The following columns in the training set don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: text. If text are not expected by `BertForSequenceClassification.forward`,  you can safely ignore this message.
-## /home/max/software/py39/lib/python3.9/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+## /home/max/.local/lib/python3.10/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
 ##   warnings.warn(
 ## ***** Running training *****
 ##   Num examples = 15
@@ -580,12 +628,13 @@ We can load a model and train it using an instance of the
 ##   Total train batch size (w. parallel, distributed & accumulation) = 8
 ##   Gradient Accumulation steps = 1
 ##   Total optimization steps = 6
-##   0%|          | 0/6 [00:00<?, ?it/s] 17%|#6        | 1/6 [02:31<12:38, 151.64s/it] 33%|###3      | 2/6 [04:07<07:54, 118.64s/it] 50%|#####     | 3/6 [1:33:48<2:06:05, 2521.67s/it] 67%|######6   | 4/6 [1:35:05<51:53, 1556.66s/it]   83%|########3 | 5/6 [1:36:33<17:07, 1027.07s/it]100%|##########| 6/6 [1:37:50<00:00, 703.98s/it] 
+##   Number of trainable parameters = 109483778
+##   0%|          | 0/6 [00:00<?, ?it/s] 17%|#6        | 1/6 [00:25<02:06, 25.29s/it] 33%|###3      | 2/6 [00:48<01:37, 24.27s/it] 50%|#####     | 3/6 [01:18<01:20, 26.89s/it] 67%|######6   | 4/6 [01:41<00:50, 25.19s/it] 83%|########3 | 5/6 [02:07<00:25, 25.41s/it]100%|##########| 6/6 [02:29<00:00, 24.30s/it]
 ## 
 ## Training completed. Do not forget to share your model on huggingface.co/models =)
 ## 
 ## 
-##                                                 100%|##########| 6/6 [1:37:50<00:00, 703.98s/it]100%|##########| 6/6 [1:37:50<00:00, 978.44s/it]
+##                                              100%|##########| 6/6 [02:29<00:00, 24.30s/it]100%|##########| 6/6 [02:29<00:00, 24.90s/it]
 \end{verbatim}
 \end{frame}
 
@@ -611,12 +660,12 @@ With a trained model, we can make predictions on a set of new texts
 \end{Shaded}
 
 \begin{verbatim}
-##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 36.82ba/s]
+##   0%|          | 0/1 [00:00<?, ?ba/s]100%|##########| 1/1 [00:00<00:00, 306.67ba/s]
 ## The following columns in the test set don't have a corresponding argument in `BertForSequenceClassification.forward` and have been ignored: text. If text are not expected by `BertForSequenceClassification.forward`,  you can safely ignore this message.
 ## ***** Running Prediction *****
 ##   Num examples = 3
 ##   Batch size = 8
-##   0%|          | 0/1 [00:00<?, ?it/s]100%|##########| 1/1 [00:00<00:00, 1332.79it/s]
+##   0%|          | 0/1 [00:00<?, ?it/s]100%|##########| 1/1 [00:00<00:00, 670.12it/s]
 \end{verbatim}
 
 \begin{Shaded}
@@ -626,9 +675,9 @@ With a trained model, we can make predictions on a set of new texts
 \end{Shaded}
 
 \begin{verbatim}
-## PredictionOutput(predictions=array([[-0.44623327,  0.07649825],
-##        [-0.04447261,  0.04163995],
-##        [-0.1721632 ,  0.10295288]], dtype=float32), label_ids=array([1, 0, 0]), metrics={'test_loss': 0.6809406876564026, 'test_runtime': 10.9274, 'test_samples_per_second': 0.275, 'test_steps_per_second': 0.092})
+## PredictionOutput(predictions=array([[ 0.1950232 ,  0.6942916 ],
+##        [ 0.14461216, -0.08771813],
+##        [ 0.11453751,  0.01685479]], dtype=float32), label_ids=array([1, 0, 0]), metrics={'test_loss': 0.567855179309845, 'test_runtime': 4.7227, 'test_samples_per_second': 0.635, 'test_steps_per_second': 0.212})
 \end{verbatim}
 \end{frame}
 
@@ -654,9 +703,9 @@ that these probabilities are not necessarily well calibrated.
 \end{Shaded}
 
 \begin{verbatim}
-## tensor([[0.3722, 0.6278],
-##         [0.4785, 0.5215],
-##         [0.4317, 0.5683]])
+## tensor([[0.3777, 0.6223],
+##         [0.5578, 0.4422],
+##         [0.5244, 0.4756]])
 ## 
 ## <string>:1: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
 \end{verbatim}
@@ -811,6 +860,10 @@ to our trainer. This would take quite some time.
     \CommentTok{\# Evaluate our model}
 \end{Highlighting}
 \end{Shaded}
+
+Grid search with fine-tuning is very expensive and inefficient. Better
+tuning procedures are
+\href{https://huggingface.co/docs/transformers/hpo_train}{available}.
 \end{frame}
 
 \begin{frame}{Pre-training}
@@ -976,16 +1029,16 @@ Today we have covered
 This concludes the input part of the course!
 \end{frame}
 
-\begin{frame}{Assignment 3}
-\protect\hypertarget{assignment-3}{}
-Next week we'll see 7 student presentations.
+\begin{frame}{Assignment 5}
+\protect\hypertarget{assignment-5}{}
+Next week we'll see ?? student presentations.
 
-Each group will have \textbf{8} minutes to present (\emph{strictly
-enforced}), with 4 minutes for questions (mainly from the audience!).
+Each group will have \textbf{??} minutes to present (\emph{strictly
+enforced}), with ?? minutes for questions (mainly from the audience!).
 
 Present directly from your laptop, which we will connect to the
-projector via HDMI cable (bring an adaptor if necessary). Try to keep
-transitions \textless{} 1 minute!
+projector via HDMI cable or wirelessly (bring an adaptor if necessary).
+Try to keep transitions \textless{} 1 minute!
 \end{frame}
 
 \begin{frame}[allowframebreaks]{}
